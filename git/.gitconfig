@@ -1,5 +1,13 @@
 [user]
-	name = Sirut Buasai
+	name = sirutBuasai
 	email = sirutbuasai27@hotmail.com
+[alias]
+	co = checkout
+	cmsg = commit -m
+	cm = commit
+	pu = push
+	st = status
+	cl = clone
+	re = restore --staged
 [credential]
 	helper = osxkeychain

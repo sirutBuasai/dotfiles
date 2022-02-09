@@ -1,0 +1,6 @@
+Host *
+	Compression yes
+	#CompressionLevel 2
+	ServerAliveInterval 15
+	TCPKeepAlive yes
+	StrictHostKeyChecking no
