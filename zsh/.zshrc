@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
-plugins=(git colored-man-pages colorize pip python brew osx)
+plugins=(git colored-man-pages colorize pip python brew macos web-search sudo history)
 
 # Source scripts
 source $ZSH/oh-my-zsh.sh
