@@ -23,9 +23,10 @@ source ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighti
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # User configuration
+export PATH="/usr/local/share/python:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.9.1/lib/python3.9/site-packages"
+#export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages
 
 # Aliases
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
@@ -37,6 +38,7 @@ alias ip6='curl -6 icanhazip.com'
 alias o='open .'
 alias ut='uptime'
 alias tc='touch'
+alias gg='google'
 
 # Othersv
 eval "$(pyenv init -)"
