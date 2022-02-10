@@ -37,8 +37,6 @@ alias o='open .'
 alias ut='uptime'
 alias tc='touch'
 alias gg='google'
-alias fd*='find . -type d -name'
-alias ff='find . -type f -name'
 
 # Othersv
 eval "$(pyenv init -)"
