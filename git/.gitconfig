@@ -13,6 +13,12 @@
 	st = status
 	cl = clone
 	re = restore --staged
- 
+
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+  ui = auto
+
 [credential]
 	helper = osxkeychain
