@@ -36,6 +36,9 @@ alias ip6='curl -6 icanhazip.com'
 alias ut='uptime'
 alias tc='touch'
 alias gg='google'
+alias p='cd ~/Personal\ Codes/'
+alias de='cd ~/Desktop/'
+alias mkdir='mkdir -pv'
 
 # Othersv
 eval "$(pyenv init -)"
