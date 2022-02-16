@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
-plugins=(git colored-man-pages colorize pip python brew macos web-search sudo history zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git colored-man-pages colorize pip python macos web-search sudo history zsh-autosuggestions zsh-syntax-highlighting)
 
 # Source scripts
 source $ZSH/oh-my-zsh.sh
@@ -25,6 +25,11 @@ export PATH="/usr/local/share/python:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 #export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages
+
+# User functions
+ol() {
+  open 'https://'${1}
+}
 
 # Aliases
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
@@ -40,5 +45,6 @@ alias p='cd ~/Personal\ Codes/'
 alias de='cd ~/Desktop/'
 alias mkdir='mkdir -pv'
 
-# Othersv
+# Others
 eval "$(pyenv init -)"
+
