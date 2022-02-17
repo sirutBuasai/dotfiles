@@ -27,6 +27,7 @@ export PATH="/usr/local/sbin:$PATH"
 #export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages
 
 # User functions
+## Open link start https:// prefix
 function ol() {
   if [[ ! -z "${1}" ]] then
     input="${1}"
@@ -36,10 +37,12 @@ function ol() {
   fi
 }
 
+## Open application on the computer
 function oa() {
   if [[ ! -z "${1}" ]] then
     input="${1}"
 
+    ## Add your applicaiton aliases here
     declare -A app_map=( ['chrome']='google chrome'
                          ['outlook']='microsoft outlook'
                          ['vscode']='visual studio code'
