@@ -27,8 +27,34 @@ export PATH="/usr/local/sbin:$PATH"
 #export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages
 
 # User functions
-ol() {
-  open 'https://'${1}
+function ol() {
+  if [[ ! -z "${1}" ]] then
+    input="${1}"
+    open 'https://'"${input}"
+  else
+    >&2 echo 'Error: No website given'
+  fi
+}
+
+function oa() {
+  if [[ ! -z "${1}" ]] then
+    input="${1}"
+
+    declare -A app_map=( ['chrome']='google chrome'
+                         ['outlook']='microsoft outlook'
+                         ['vscode']='visual studio code'
+                         ['tor']='tor browser'
+                         ['zoom']='zoom.us'
+                         ['sys']='system preferences'
+                         ['pb']='photo booth'
+                         ['store']='app store'
+                         ['act']='activity monitor')
+
+    open -a "${app_map[${input}]:=${input}}"
+
+  else
+    >&2 echo 'Error: No application given'
+  fi
 }
 
 # Aliases
@@ -44,7 +70,6 @@ alias gg='google'
 alias p='cd ~/Personal\ Codes/'
 alias de='cd ~/Desktop/'
 alias mkdir='mkdir -pv'
-alias oa='open -a'
 
 # Others
 eval "$(pyenv init -)"
