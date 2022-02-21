@@ -62,6 +62,8 @@ function oa() {
 
 # Aliases
 alias cppcompile='c++ -std=c++11 -stdlib=libc++'
+alias cp='cp -i'
+alias mv='mv -i'
 alias rm='rm -i'
 alias ll='ls -la'
 alias clr='clear'
