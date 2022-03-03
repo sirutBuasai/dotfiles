@@ -13,7 +13,6 @@
 	st = status
 	cl = clone
 	re = restore --staged
-  o = origin
 
 [color]
   diff = auto
