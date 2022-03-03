@@ -45,13 +45,13 @@ function oa() {
     ## Add your applicaiton aliases here
     declare -A app_map=( ['chrome']='google chrome'
                          ['outlook']='microsoft outlook'
-                         ['vscode']='visual studio code'
                          ['tor']='tor browser'
                          ['zoom']='zoom.us'
                          ['sys']='system preferences'
                          ['pb']='photo booth'
                          ['store']='app store'
-                         ['act']='activity monitor')
+                         ['act']='activity monitor'
+                       )
 
     open -a "${app_map[${input}]:=${input}}"
 
@@ -61,7 +61,7 @@ function oa() {
 }
 
 # Aliases
-alias cppcompile='c++ -std=c++11 -stdlib=libc++'
+alias cppc='c++ -std=c++11 -stdlib=libc++'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
