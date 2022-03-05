@@ -75,6 +75,7 @@ alias gg='google'
 alias p='cd ~/Personal\ Codes/'
 alias de='cd ~/Desktop/'
 alias mkdir='mkdir -pv'
+alias weather='curl http://wttr.in/\?m'
 
 # Others
 eval "$(pyenv init -)"
