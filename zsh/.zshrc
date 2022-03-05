@@ -41,7 +41,6 @@ function ol() {
 function oa() {
   if [[ ! -z "${1}" ]] then
     input="${1}"
-
     ## Add your applicaiton aliases here
     declare -A app_map=( ['chrome']='google chrome'
                          ['outlook']='microsoft outlook'
@@ -60,6 +59,16 @@ function oa() {
   fi
 }
 
+## Report weather depending on the location as the input
+function weather() {
+  if [[ ! -z "${1}" ]] then
+    input="${1}"
+    curl http://wttr.in/"${input}"\?m
+  else
+    curl http://wttr.in/\?m
+  fi
+}
+
 # Aliases
 alias cppc='c++ -std=c++11 -stdlib=libc++'
 alias cp='cp -i'
@@ -75,7 +84,6 @@ alias gg='google'
 alias p='cd ~/Personal\ Codes/'
 alias de='cd ~/Desktop/'
 alias mkdir='mkdir -pv'
-alias weather='curl http://wttr.in/\?m'
 
 # Others
 eval "$(pyenv init -)"
