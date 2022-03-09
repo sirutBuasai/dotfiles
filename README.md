@@ -10,6 +10,7 @@ personal repo for .files and general macbook migration
 - Todoist https://todoist.com/downloads
 - Tor https://www.torproject.org/download/
 - Zoom https://zoom.us/download
+- Notion https://www.notion.so/desktop
 
 ### terminal and coding configurations
 - Mac Setup https://sourabhbajaj.com/mac-setup/
