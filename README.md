@@ -14,3 +14,4 @@ personal repo for .files and general macbook migration
 
 ### terminal and coding configurations
 - Mac Setup https://sourabhbajaj.com/mac-setup/
+
