@@ -11,9 +11,12 @@
   cmsg = commit -m
   cl = clone
   co = checkout
-  df = diff
   dc = diff --cached
+  df = diff
+  dl = diff HEAD^
   f = fetch
+  pl = pull
+  plo = pull origin
   po = push origin
   pu = push
   re = restore --staged

@@ -85,6 +85,7 @@ alias p='cd ~/personal_dev'
 alias de='cd ~/Desktop/'
 alias mkdir='mkdir -pv'
 alias grep='grep --color=auto'
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Others
 eval "$(pyenv init -)"

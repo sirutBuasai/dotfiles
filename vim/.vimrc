@@ -3,8 +3,9 @@ set tabstop=2
 set expandtab
 set autoindent
 set shiftwidth=2
-colorscheme onedark
+
+colorscheme molokai
 syntax on
 highlight Normal ctermbg=None
-highlight LineNr ctermfg=DarkGrey
+highlight LineNr ctermfg=Grey ctermbg=Black
 
