@@ -84,6 +84,7 @@ alias gg='google'
 alias p='cd ~/Personal\ Codes/'
 alias de='cd ~/Desktop/'
 alias mkdir='mkdir -pv'
+alias grep='grep --color=auto'
 
 # Others
 eval "$(pyenv init -)"
