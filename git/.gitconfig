@@ -6,19 +6,25 @@
   user = sirutBuasai
 
 [alias]
-	co = checkout
-	cmsg = commit -m
+  b = branch
 	cm = commit
-	pu = push
-	st = status
+	cmsg = commit -m
 	cl = clone
+	co = checkout
+  df = diff
+  dc = diff --cached
+  f = fetch
+	po = push origin
+  pu = push
 	re = restore --staged
+	st = status
   tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
+
 [color]
-  diff = auto
-  status = auto
   branch = auto
+  diff = auto
   ui = auto
+  status = auto
 
 [credential]
 	helper = osxkeychain
