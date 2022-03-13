@@ -13,7 +13,7 @@
 	st = status
 	cl = clone
 	re = restore --staged
-
+  tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
 [color]
   diff = auto
   status = auto
