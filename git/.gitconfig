@@ -1,23 +1,23 @@
 [user]
-	name = Sirut Buasai
-	email = sirutbuasai27@hotmail.com
+  name = Sirut Buasai
+  email = sirutbuasai27@hotmail.com
 
 [github]
   user = sirutBuasai
 
 [alias]
   b = branch
-	cm = commit
-	cmsg = commit -m
-	cl = clone
-	co = checkout
+  cm = commit
+  cmsg = commit -m
+  cl = clone
+  co = checkout
   df = diff
   dc = diff --cached
   f = fetch
-	po = push origin
+  po = push origin
   pu = push
-	re = restore --staged
-	st = status
+  re = restore --staged
+  st = status
   tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
 
 [color]
@@ -27,5 +27,5 @@
   status = auto
 
 [credential]
-	helper = osxkeychain
+  helper = osxkeychain
 
