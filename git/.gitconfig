@@ -18,6 +18,7 @@
   pl = pull
   plo = pull origin
   po = push origin
+  pom = push origin master
   pu = push
   re = restore --staged
   st = status
