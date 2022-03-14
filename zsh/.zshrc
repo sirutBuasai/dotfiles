@@ -30,7 +30,7 @@ export PATH="/usr/local/sbin:$PATH"
 # User functions
 ## Open link start https:// prefix
 function ol() {
-  if [[ ! -z "${1}" ]] then
+  if [[ ! -z "${1}" ]]; then
     input="${1}"
     open 'https://'"${input}"
   else
@@ -40,7 +40,7 @@ function ol() {
 
 ## Open application on the computer
 function oa() {
-  if [[ ! -z "${1}" ]] then
+  if [[ ! -z "${1}" ]]; then
     input="${1}"
     ## Add your applicaiton aliases here
     declare -A app_map=( ['chrome']='google chrome'
@@ -62,10 +62,10 @@ function oa() {
 
 ## Create and write a file in current directory
 function tv() {
-  if [[ ! -z "${1}" ]] then
+  if [[ ! -z "${1}" ]]; then
     file_name="${1}"
     curr_dir="$(pwd)"
-    tc "${curr_dir}/${file_name}"
+    touch "${curr_dir}/${file_name}"
     vim "${curr_dir}/${file_name}"
 
   else
@@ -74,22 +74,32 @@ function tv() {
 }
 
 # Aliases
-alias cppc='c++ -std=c++11 -stdlib=libc++'
+# Utilities
+alias clr='clear'
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias grep='grep --color=auto'
+alias ut='uptime'
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias ll='ls -la'
-alias clr='clear'
+alias mkdir='mkdir -pv'
+alias tc='touch'
+
+# Code compilation
+alias cppc='c++ -std=c++11 -stdlib=libc++'
+alias py3='python3'
+
+# Change dir
+alias de='cd ~/Desktop/'
+alias dl='cd ~/Downloads'
+alias p='cd ~/personal_dev'
+alias ..='cd ../'
+
+# Others
+alias gg='google'
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
-alias ut='uptime'
-alias tc='touch'
-alias gg='google'
-alias p='cd ~/personal_dev'
-alias de='cd ~/Desktop/'
-alias mkdir='mkdir -pv'
-alias grep='grep --color=auto'
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
 
 # Others
 eval "$(pyenv init -)"
