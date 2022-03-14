@@ -15,3 +15,7 @@ personal repo for .files and general macbook migration
 ### terminal and coding configurations
 - Mac Setup https://sourabhbajaj.com/mac-setup/
 
+# useful vim plugin resources
+- https://www.twilio.com/blog/5-must-have-vim-plugins-that-will-change-your-workflow
+- https://vimawesome.com/
+

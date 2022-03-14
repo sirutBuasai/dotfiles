@@ -21,6 +21,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # User configuration
+export PATH="/usr/local/Cellar:$PATH"
 export PATH="/usr/local/share/python:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
@@ -59,13 +60,16 @@ function oa() {
   fi
 }
 
-## Report weather depending on the location as the input
-function weather() {
+## Create and write a file in current directory
+function tv() {
   if [[ ! -z "${1}" ]] then
-    input="${1}"
-    curl http://wttr.in/"${input}"\?m
+    file_name="${1}"
+    curr_dir="$(pwd)"
+    tc "${curr_dir}/${file_name}"
+    vim "${curr_dir}/${file_name}"
+
   else
-    curl http://wttr.in/\?m
+    >&2 echo 'Error: No file name given'
   fi
 }
 
