@@ -6,6 +6,7 @@
   user = sirutBuasai
 
 [alias]
+  aa = add .
   b = branch
   cm = commit
   cmsg = commit -m
