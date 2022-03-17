@@ -44,17 +44,10 @@ syntax on
 highlight Normal ctermbg=None
 highlight LineNr ctermfg=Grey ctermbg=Black
 
-" Syntastic settings ----------------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+" Youcompleteme Settings ------------------------------------------------------------------------
+nnoremap <C-z> :pclose<CR>
+set completeopt-=preview
 
 " NERDTree settings -----------------------------------------------------------------------------
-nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
-

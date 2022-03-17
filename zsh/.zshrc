@@ -12,7 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
-plugins=(git colored-man-pages colorize pip python macos web-search sudo history zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git colored-man-pages colorize pip python macos web-search sudo history zsh-autosuggestions zsh-syntax-highlighting copypath)
 
 # Source scripts
 source $ZSH/oh-my-zsh.sh
@@ -89,6 +89,7 @@ alias tc='touch'
 # Code compilation
 alias cppc='c++ -std=c++11 -stdlib=libc++'
 alias py3='python3'
+alias py3test='python3 -m unittest'
 
 # Change dir
 alias de='cd ~/Desktop/'

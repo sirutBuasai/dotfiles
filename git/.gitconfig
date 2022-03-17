@@ -21,7 +21,8 @@
   po = push origin
   pom = push origin master
   pu = push
-  re = restore --staged
+  re = restore
+  res = restore --staged
   st = status
   tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
 
