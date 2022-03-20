@@ -9,7 +9,7 @@
   aa = add .
   b = branch
   cm = commit
-  cmsg = commit -m
+  cmm = commit -m
   cl = clone
   co = checkout
   dc = diff --cached
