@@ -14,7 +14,7 @@
   co = checkout
   dc = diff --cached
   df = diff
-  dl = diff HEAD^
+  dh = diff HEAD^
   f = fetch
   pl = pull
   plo = pull origin
