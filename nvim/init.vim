@@ -17,7 +17,7 @@ set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 " Add plugins here
 Plugin 'VundleVim/Vundle.vim'
-" Plugin 'valloric/youcompleteme'
+Plugin 'valloric/youcompleteme'
 Plugin 'https://github.com/tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
@@ -56,7 +56,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " Treesitter settings ---------------------------------------------------------------------------
 lua <<EOF
 require('nvim-treesitter.configs').setup {
-  ensure_installed = "all",
+  ensure_installed = "maintained",
   ignore_install = { "phpdoc" },
   highlight = { enable = true },
   indent = { enable = true }
