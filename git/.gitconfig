@@ -6,6 +6,7 @@
   user = sirutBuasai
 
 [alias]
+  a = add
   aa = add .
   b = branch
   cm = commit
@@ -23,6 +24,9 @@
   pu = push
   re = restore
   res = restore --staged
+  rhard = reset --hard HEAD~
+  rstg = reset --mixed HEAD~
+  rsoft = reset --soft HEAD~
   st = status
   tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
 
