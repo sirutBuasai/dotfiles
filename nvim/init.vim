@@ -45,6 +45,10 @@ syntax on
 highlight Normal ctermbg=None
 highlight LineNr ctermfg=Grey ctermbg=Black
 
+" Spell check -----------------------------------------------------------------------------------
+nnoremap <C-s> :set spell spelllang='en_us'<CR>
+nnoremap <C-d> :set nospell<CR>
+
 " Youcompleteme Settings ------------------------------------------------------------------------
 nnoremap <C-z> :pclose<CR>
 set completeopt-=preview
