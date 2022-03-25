@@ -34,9 +34,9 @@ call vundle#end()
 " Set env ---------------------------------------------------------------------------------------
 set number
 set tabstop=2
+set shiftwidth=2
 set expandtab
 set autoindent
-set shiftwidth=2
 set backspace=2
 
 " Set color schemes and visuals -----------------------------------------------------------------
@@ -49,7 +49,7 @@ highlight LineNr ctermfg=Grey ctermbg=Black
 nnoremap <C-s> :set spell spelllang='en_us'<CR>
 nnoremap <C-d> :set nospell<CR>
 
-" Youcompleteme Settings ------------------------------------------------------------------------
+" Youcompleteme settings ------------------------------------------------------------------------
 nnoremap <C-z> :pclose<CR>
 set completeopt-=preview
 
