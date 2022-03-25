@@ -39,3 +39,9 @@
 [credential]
   helper = osxkeychain
 
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+

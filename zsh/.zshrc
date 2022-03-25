@@ -85,8 +85,9 @@ alias rm='rm -i'
 alias ll='ls -la'
 alias mkdir='mkdir -pv'
 alias tc='touch'
+alias vim='nvim'
 
-# Code compilation
+# Language compilation
 alias cppc='c++ -std=c++11 -stdlib=libc++'
 alias py3='python3'
 alias py3test='python3 -m unittest'
