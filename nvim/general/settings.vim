@@ -5,7 +5,7 @@ set encoding=utf-8          " Display encoding
 set pumheight=10            " Minimal popup menu
 set fileencoding=utf-8      " Encoding written to file
 set ruler                   " Show cursor position at all times
-set cmdheight=2             " More space to display messages
+set cmdheight=1             " More space to display messages
 set iskeyword+=-            " Treat - separated word as a word object
 set splitbelow              " Force split screen downwards
 set splitright              " Force split screen rightwards
