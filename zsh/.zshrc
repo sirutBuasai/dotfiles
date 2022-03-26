@@ -20,7 +20,7 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# User configuration
+# User configuration ------------------------------------------------------------------------------
 export PATH="/usr/local/Cellar:$PATH"
 export PATH="/usr/local/share/python:$PATH"
 export PATH="/usr/local/bin:$PATH"
@@ -29,7 +29,7 @@ export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site
 export PYTHONPATH="/Users/sirutbuasai/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
 export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
 
-# User functions
+# User functions ----------------------------------------------------------------------------------
 ## Open link start https:// prefix
 function ol() {
   if [[ ! -z "${1}" ]]; then
@@ -87,7 +87,7 @@ function updotfiles(){
   cd ~/personal_dev/dotfiles/
 }
 
-# Aliases
+# Aliases -----------------------------------------------------------------------------------------
 # Utilities
 alias clr='clear'
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
