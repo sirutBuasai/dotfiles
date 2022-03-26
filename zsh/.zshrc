@@ -100,6 +100,7 @@ alias ll='ls -lah'
 alias mkdir='mkdir -pv'
 alias tc='touch'
 alias vim='nvim'
+alias gir='git'
 
 # Language compilation
 alias cppc='c++ -std=c++11 -stdlib=libc++'
