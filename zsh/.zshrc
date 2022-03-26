@@ -76,7 +76,7 @@ function fh() {
 }
 
 ## Update all dotfiles onto git repo
-function updotfiles(){
+function upd(){
   yes | cp -rf ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc
   yes | cp -rf ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig
   yes | cp -rf ~/.config/nvim/init.vim ~/personal_dev/dotfiles/nvim/init.vim
