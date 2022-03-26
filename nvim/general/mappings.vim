@@ -8,7 +8,7 @@ nnoremap <C-u> viwU<ESC>          " Ctrl+u capitalize words in normal mode
 
 " Easy save and quit
 nnoremap <C-s> :w<CR>             " Ctrl+s to save
-nnoremap <C-w> :q<CR>             " Ctrl+w to quit"
+nnoremap <C-w> :q<CR>             " Ctrl+w to quit
 
 " Window navigation
 nnoremap <C-h> <C-w>h             " Ctrl+h to go to left window

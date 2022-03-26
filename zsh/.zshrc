@@ -62,17 +62,29 @@ function oa() {
   fi
 }
 
-## Create and write a file in current directory
-function tv() {
-  if [[ ! -z "${1}" ]]; then
-    file_name="${1}"
-    curr_dir="$(pwd)"
-    touch "${curr_dir}/${file_name}"
-    vim "${curr_dir}/${file_name}"
+## Fizzy find directory
+function fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}
 
-  else
-    >&2 echo 'Error: No file name given'
-  fi
+## Fuzzy find command history
+function fh() {
+  eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+}
+
+## Update all dotfiles onto git repo
+function updotfiles(){
+  yes | cp -rf ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc
+  yes | cp -rf ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig
+  yes | cp -rf ~/.config/nvim/init.vim ~/personal_dev/dotfiles/nvim/init.vim
+  yes | cp -rf ~/.config/nvim/coc-settings.json ~/personal_dev/dotfiles/nvim/coc-settings.json
+  yes | cp -rf ~/.config/nvim/general/* ~/personal_dev/dotfiles/nvim/general/
+  yes | cp -rf ~/.config/nvim/plug-config/* ~/personal_dev/dotfiles/nvim/plug-config/
+  yes | cp -rf ~/.config/nvim/vim-plug/* ~/personal_dev/dotfiles/nvim/vim-plug/
+  cd ~/personal_dev/dotfiles/
 }
 
 # Aliases
