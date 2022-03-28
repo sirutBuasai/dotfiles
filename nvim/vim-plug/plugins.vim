@@ -8,6 +8,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'unblevable/quick-scope'
+Plug 'tpope/vim-commentary'
+Plug 'wikitopian/hardmode'
 
 call plug#end()
 
