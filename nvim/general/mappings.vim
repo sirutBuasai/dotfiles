@@ -1,3 +1,6 @@
+" Set leader key
+let mapleader = ","
+
 " Switching between buffers
 nnoremap <C-n> :bnext<CR>         " Ctrl+n to go to next buffer
 nnoremap <C-b> :bprevious<CR>     " Ctrl+b to go to previous buffer

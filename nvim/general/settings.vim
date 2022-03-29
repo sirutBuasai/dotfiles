@@ -21,6 +21,7 @@ set cursorline              " Highlighting of the current line
 set updatetime=300          " Faster autocompletion
 set clipboard=unnamedplus   " Use global clipboard
 set formatoptions-=cro      " Disaple comments continuation on new line
+set mouse=a                 " Enable mouse withing vim
 
 " checkhealth python3
 let g:python3_host_prog = '/opt/homebrew/lib/python3.9/site-packages'
