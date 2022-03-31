@@ -19,6 +19,7 @@ set laststatus=0            " Always display last status
 set number                  " Display line numbers
 set cursorline              " Highlighting of the current line
 set updatetime=300          " Faster autocompletion
+set timeoutlen=500          " Set timeoutlen for key mappins (default = 1000ms)
 set clipboard=unnamedplus   " Use global clipboard
 set formatoptions-=cro      " Disaple comments continuation on new line
 set mouse=a                 " Enable mouse withing vim
