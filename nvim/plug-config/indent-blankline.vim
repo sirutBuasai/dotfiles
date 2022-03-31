@@ -1,5 +1,5 @@
 set list
-set listchars=eol:↴
+set listchars=eol:¬
 
 lua <<EOF
 require("indent_blankline").setup {
