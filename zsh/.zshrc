@@ -91,6 +91,7 @@ function upd(){
 # Utilities
 alias clr='clear'
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias cppath='copypath'
 alias grep='grep --color=auto'
 alias ut='uptime'
 alias cp='cp -i'
