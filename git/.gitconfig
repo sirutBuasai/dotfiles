@@ -8,6 +8,7 @@
 [alias]
   a = add
   aa = add .
+  ac = commit -am
   b = branch
   cm = commit
   cmm = commit -m
