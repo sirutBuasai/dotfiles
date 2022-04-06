@@ -25,3 +25,9 @@ nnoremap <leader>ns :set nospell<CR>      " Disable spell cheking
 
 " Highlighting text
 nnoremap <leader>nh :noh<CR>              " Disable Highlighting
+
+" Lazy shift fingers
+:command WQ wq                            " Allows WQ to write and quit
+:command Wq wq                            " Allows Wq to write and quit
+:command W w                              " Allows W to write
+:command Q q                              " Allows Q to quit
