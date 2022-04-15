@@ -87,6 +87,17 @@ function upd(){
   cd ~/personal_dev/dotfiles/
 }
 
+## Make a directory and cd into the new directory
+function mkcd() {
+  if [ ! -n "$1" ]; then
+    echo "Enter a directory name"
+  elif [ -d $1 ]; then
+    echo "\`$1' already exists"
+  else
+    mkdir $1 && cd $1
+  fi
+}
+
 # Aliases -----------------------------------------------------------------------------------------
 # Utilities
 alias clr='clear'
@@ -112,7 +123,6 @@ alias py3test='python3 -m unittest'
 alias de='cd ~/Desktop/'
 alias dl='cd ~/Downloads'
 alias p='cd ~/personal_dev'
-alias ..='cd ../'
 
 # Others
 alias gg='google'
