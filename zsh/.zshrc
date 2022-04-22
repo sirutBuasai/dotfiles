@@ -21,10 +21,10 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # User configuration ------------------------------------------------------------------------------
-export PATH="/usr/local/Cellar:$PATH"
-export PATH="/usr/local/share/python:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+# export PATH="/usr/local/share/python:$PATH"
+# export PATH="/usr/local/Cellar:$PATH"
 export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages:$PYTHONPATH"
 export PYTHONPATH="/Users/sirutbuasai/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
 export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
@@ -112,7 +112,10 @@ alias ll='ls -lah'
 alias mkdir='mkdir -pv'
 alias tc='touch'
 alias vim='nvim'
+
+# Git typos
 alias gir='git'
+alias gti='git'
 
 # Language compilation
 alias cppc='c++ -std=c++11 -stdlib=libc++'
