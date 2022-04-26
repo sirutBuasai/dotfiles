@@ -10,6 +10,6 @@ Plug 'tpope/vim-commentary'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'akinsho/toggleterm.nvim'
 
 call plug#end()
-
