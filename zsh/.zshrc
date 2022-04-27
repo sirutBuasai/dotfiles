@@ -112,6 +112,7 @@ alias ll='ls -lah'
 alias mkdir='mkdir -pv'
 alias tc='touch'
 alias vim='nvim'
+alias diff='git diff --no-index'
 
 # Git typos
 alias gir='git'

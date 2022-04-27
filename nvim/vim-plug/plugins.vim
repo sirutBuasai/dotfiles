@@ -1,15 +1,19 @@
 call plug#begin('~/.config/nvim/autoload/plugged/')
 
-" Add plugins here
-Plug 'https://github.com/tpope/vim-fugitive'
+" Status line
 Plug 'bling/vim-airline'
+" Code interface highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" LSP and Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'unblevable/quick-scope'
+" Better comment keybind
 Plug 'tpope/vim-commentary'
+" Better indentation marker
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'nvim-lua/plenary.nvim'
+" Fuzzy finder
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+" Terminal emulator
 Plug 'akinsho/toggleterm.nvim'
 
 call plug#end()
