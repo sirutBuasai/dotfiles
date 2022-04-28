@@ -77,14 +77,9 @@ function fh() {
 
 ## Update all dotfiles onto git repo
 function upd(){
-  yes | cp -rf ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc
-  yes | cp -rf ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig
-  yes | cp -rf ~/.config/nvim/init.vim ~/personal_dev/dotfiles/nvim/init.vim
-  yes | cp -rf ~/.config/nvim/coc-settings.json ~/personal_dev/dotfiles/nvim/coc-settings.json
-  yes | cp -rf ~/.config/nvim/general/* ~/personal_dev/dotfiles/nvim/general/
-  yes | cp -rf ~/.config/nvim/plug-config/* ~/personal_dev/dotfiles/nvim/plug-config/
-  yes | cp -rf ~/.config/nvim/vim-plug/* ~/personal_dev/dotfiles/nvim/vim-plug/
-  yes | cp -rf ~/.config/nvim/lua/plug-config/* ~/personal_dev/dotfiles/nvim/lua/plug-config/
+  rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
+  rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
+  rsync -avh ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
   cd ~/personal_dev/dotfiles/
 }
 
