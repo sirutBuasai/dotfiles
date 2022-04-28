@@ -8,6 +8,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Better comment keybind
 Plug 'tpope/vim-commentary'
+" Better quotation keybind
+Plug 'tpope/vim-surround'
 " Better indentation marker
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Fuzzy finder

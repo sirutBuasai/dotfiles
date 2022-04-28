@@ -131,4 +131,3 @@ alias ip6='curl -6 icanhazip.com'
 
 # Others
 eval "$(pyenv init -)"
-
