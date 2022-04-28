@@ -5,7 +5,6 @@ source $HOME/.config/nvim/general/mappings.vim
 source $HOME/.config/nvim/general/colorscheme.vim
 source $HOME/.config/nvim/plug-config/treesetter.vim
 source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/quickscope.vim
 source $HOME/.config/nvim/plug-config/indent-blankline.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
 source $HOME/.config/nvim/plug-config/toggleterm.vim
