@@ -84,6 +84,7 @@ function upd(){
   yes | cp -rf ~/.config/nvim/general/* ~/personal_dev/dotfiles/nvim/general/
   yes | cp -rf ~/.config/nvim/plug-config/* ~/personal_dev/dotfiles/nvim/plug-config/
   yes | cp -rf ~/.config/nvim/vim-plug/* ~/personal_dev/dotfiles/nvim/vim-plug/
+  yes | cp -rf ~/.config/nvim/lua/plug-config/* ~/personal_dev/dotfiles/nvim/lua/plug-config/
   cd ~/personal_dev/dotfiles/
 }
 
