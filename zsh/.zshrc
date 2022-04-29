@@ -23,8 +23,6 @@ source $ZSH/oh-my-zsh.sh
 # User configuration ------------------------------------------------------------------------------
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-# export PATH="/usr/local/share/python:$PATH"
-# export PATH="/usr/local/Cellar:$PATH"
 export PATH="$(pyenv root)/shims:$PATH"
 export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages:$PYTHONPATH"
 export PYTHONPATH="/Users/sirutbuasai/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
