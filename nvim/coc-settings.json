@@ -41,7 +41,4 @@
     "typeParameter": "\uf728", //  file presentation box
     "default": "\uf29c" //  question mark in circle
   },
-  // Python LSP settings
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
 }
