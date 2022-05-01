@@ -17,5 +17,10 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
 " Terminal emulator
 Plug 'akinsho/toggleterm.nvim'
+" File explorer
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
+" Bufferline
+Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 call plug#end()

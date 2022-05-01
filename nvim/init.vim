@@ -5,7 +5,10 @@ source $HOME/.config/nvim/general/colorscheme.vim
 source $HOME/.config/nvim/general/plugins.vim
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/telescope.vim
+source $HOME/.config/nvim/plug-config/nvim-tree.vim
 " Lua files setup --------------------------------------------------------------------------------
 lua require("plug-config.indent-blankline")
 lua require("plug-config.treesetter")
 lua require("plug-config.toggleterm")
+lua require("plug-config.nvim-tree")
+lua require("plug-config.bufferline")
