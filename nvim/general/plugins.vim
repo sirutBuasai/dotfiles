@@ -24,5 +24,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 " Better buffer closing
 Plug 'moll/vim-bbye'
+" Coloring gui
+Plug 'norcalli/nvim-colorizer.lua'
 
 call plug#end()
