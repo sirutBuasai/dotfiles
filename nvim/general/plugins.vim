@@ -10,8 +10,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-commentary'
 " Better quotation keybind
 Plug 'tpope/vim-surround'
-" Better parentheses pairing
-Plug 'jiangmiao/auto-pairs'
 " Better indentation marker
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Fuzzy finder

@@ -78,7 +78,7 @@ function fh() {
 function upd(){
   rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
   rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
-  rsync -avh ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
+  rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
   cd ~/personal_dev/dotfiles/
 }
 
