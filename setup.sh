@@ -30,4 +30,3 @@ echo 'Setup is done!'
 echo 'Todo: ---------------------------------------------------------'
 echo '1. Dont forget to setup iterm2 preferences!'
 echo '2. Dont forget to download your applications!'
-
