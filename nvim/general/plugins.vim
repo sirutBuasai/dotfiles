@@ -22,5 +22,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 " Bufferline
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
+" Better buffer closing
+Plug 'moll/vim-bbye'
 
 call plug#end()
