@@ -77,6 +77,7 @@ function fh() {
 ## Update all dotfiles onto git repo
 function upd(){
   rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
+  rsync -avh ~/.ssh/config ~/personal_dev/dotfiles/ssh/config --delete
   rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
   rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
   cd ~/personal_dev/dotfiles/
@@ -130,19 +131,3 @@ alias ip6='curl -6 icanhazip.com'
 
 # Others ------------------------------------------------------------------------------------------
 eval "$(pyenv init -)"
-
-# Conda
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/sirutbuasai/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/sirutbuasai/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/sirutbuasai/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/sirutbuasai/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
