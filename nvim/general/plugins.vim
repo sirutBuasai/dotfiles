@@ -6,6 +6,8 @@ Plug 'bling/vim-airline'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP and Autocompletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Better scrolling
+Plug 'karb94/neoscroll.nvim'
 " Better comment keybind
 Plug 'tpope/vim-commentary'
 " Better quotation keybind
