@@ -27,3 +27,11 @@ nnoremap <leader>nh :noh<CR>              " Disable Highlighting
 :command Wq wq                            " Allows Wq to write and quit
 :command W w                              " Allows W to write
 :command Q q                              " Allows Q to quit
+
+" Window splitting
+nnoremap <leader>vs :vs<CR>
+nnoremap <leader>hs :sp<CR>
+
+" Replace words
+nnoremap c* /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgn
+nnoremap c# ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgN
