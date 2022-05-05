@@ -1,5 +1,5 @@
 " Set leader key
-let mapleader = ","
+let mapleader = " "
 
 " Switching between buffers
 nnoremap <C-n> :bnext<CR>                 " Ctrl+n to go to next buffer

@@ -61,6 +61,16 @@ function oa() {
   fi
 }
 
+## Open a set of default applications
+function startup() {
+  # Add your default applications here
+  default=('spotify' 'todoist' 'notion' 'outlook')
+
+  for app in ${default}; do
+    oa "${app}"
+  done
+}
+
 ## Fizzy find directory
 function fd() {
   local dir
@@ -97,7 +107,7 @@ function mkcd() {
 # Aliases -----------------------------------------------------------------------------------------
 # Utilities
 alias clr='clear'
-alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+alias cln="find . -type f -name '*.DS_Store' -ls -delete"
 alias cppath='copypath'
 alias grep='grep --color=auto'
 alias ut='uptime'
