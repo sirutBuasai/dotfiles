@@ -28,5 +28,7 @@ Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'moll/vim-bbye'
 " Coloring gui
 Plug 'norcalli/nvim-colorizer.lua'
+" Sneak for code navigation
+Plug 'justinmk/vim-sneak'
 
 call plug#end()
