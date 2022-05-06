@@ -20,6 +20,7 @@
   f = fetch
   pl = pull
   plo = pull origin
+  plom = pull origin master
   po = push origin
   pom = push origin master
   pu = push
