@@ -28,8 +28,9 @@ Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 Plug 'moll/vim-bbye'
 " Coloring gui
 Plug 'norcalli/nvim-colorizer.lua'
-" Sneak for code navigation
-Plug 'justinmk/vim-sneak'
+" Better code navigation
+Plug 'tpope/vim-repeat'
+Plug 'ggandor/lightspeed.nvim'
 " Git integration
 Plug 'lewis6991/gitsigns.nvim'
 " Remove trailing whitespace
