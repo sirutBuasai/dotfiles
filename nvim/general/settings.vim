@@ -17,6 +17,7 @@ set expandtab               " Convert tabs to spaces
 set autoindent              " Set auto indentation
 set laststatus=2            " Always display last status
 set number                  " Display line numbers
+set signcolumn=yes          " Allow icons to be shown next to line numbers
 set cursorline              " Highlighting of the current line
 set updatetime=300          " Faster autocompletion
 set timeoutlen=500          " Set timeoutlen for key mappins (default = 1000ms)

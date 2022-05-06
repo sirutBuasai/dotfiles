@@ -1,7 +1,8 @@
 colorscheme molokai
 syntax on
 set termguicolors
-highlight Normal ctermfg=Gray ctermbg=None guifg=Gray85 guibg=None
-highlight LineNr ctermfg=Gray guifg=Gray60 guibg=Gray5
-highlight NonText ctermbg=None guibg=None
-highlight Comment ctermfg=Gray guifg=Gray35
+highlight Normal guifg=Gray85 guibg=None
+highlight LineNr guifg=Gray60 guibg=Gray7
+highlight SignColumn guibg=Gray7
+highlight NonText guibg=None
+highlight Comment guifg=Gray35

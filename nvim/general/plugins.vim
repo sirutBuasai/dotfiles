@@ -30,5 +30,7 @@ Plug 'moll/vim-bbye'
 Plug 'norcalli/nvim-colorizer.lua'
 " Sneak for code navigation
 Plug 'justinmk/vim-sneak'
+" Git integration
+Plug 'lewis6991/gitsigns.nvim'
 
 call plug#end()

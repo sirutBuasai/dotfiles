@@ -81,3 +81,5 @@ nvim_tree.setup {
     },
   },
 }
+
+vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = true })
