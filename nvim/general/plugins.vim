@@ -32,5 +32,7 @@ Plug 'norcalli/nvim-colorizer.lua'
 Plug 'justinmk/vim-sneak'
 " Git integration
 Plug 'lewis6991/gitsigns.nvim'
+" Remove trailing whitespace
+Plug 'McAuleyPenney/tidy.nvim'
 
 call plug#end()
