@@ -1,7 +1,7 @@
 call plug#begin('~/.config/nvim/autoload/plugged/')
 
 " Status line
-Plug 'bling/vim-airline'
+Plug 'nvim-lualine/lualine.nvim'
 " Code interface highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " LSP and Autocompletion

@@ -56,8 +56,8 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 nmap <silent> <C-e> <esc>:noh<cr><Plug>(coc-float-hide)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>fm  <Plug>(coc-format-selected)
+nmap <leader>fm  <Plug>(coc-format-selected)
 
 " Applying codeAction to the selected region.
 xmap <leader>a  <Plug>(coc-codeaction-selected)

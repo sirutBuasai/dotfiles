@@ -15,7 +15,7 @@ set shiftwidth=2            " Set number of spaces characters in indentation
 set smarttab                " Auto detect tab sizes
 set expandtab               " Convert tabs to spaces
 set autoindent              " Set auto indentation
-set laststatus=0            " Always display last status
+set laststatus=2            " Always display last status
 set number                  " Display line numbers
 set cursorline              " Highlighting of the current line
 set updatetime=300          " Faster autocompletion
