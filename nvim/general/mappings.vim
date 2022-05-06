@@ -29,9 +29,12 @@ nnoremap <leader>nh :noh<CR>              " Disable Highlighting
 :command Q q                              " Allows Q to quit
 
 " Window splitting
-nnoremap <leader>vs :vs<CR>
-nnoremap <leader>hs :sp<CR>
+nnoremap <leader>vs :vs<CR>               " Split window vertically
+nnoremap <leader>hs :sp<CR>               " Split window horizontally
 
 " Replace words
-nnoremap c* /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgn
-nnoremap c# ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgN
+nnoremap c* /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgn " Replace current word and move to the next occurence
+nnoremap c# ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgN " Replace current word and move to the previous occurence
+
+" Highlight the whole file
+nmap - ggVG<CR>                           " Highlight the whole file
