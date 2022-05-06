@@ -12,6 +12,7 @@ local colors = {
   lightgray = '#BBC2CF',
   green     = '#A6E22E',
   violet    = '#7070F0',
+  orange    = '#FD971F',
 }
 
 local mode = {
@@ -44,7 +45,12 @@ local filename = {
 
 local location = {
   "location",
-  color = {fg = colors.violet }
+  color = { fg = colors.violet }
+}
+
+local coc = {
+  'g:coc_status',
+  color = { fg = colors.orange }
 }
 
 local diff = {
@@ -63,7 +69,7 @@ local filetype = {
 
 local progress = {
   'progress',
-  color = { fg = colors.lightgray }
+  color = { fg = colors.lightgray, gui = 'bold' }
 }
 
 local encoding = {
@@ -84,7 +90,7 @@ lualine.setup({
   sections = {
     lualine_a = { mode },
     lualine_b = { branch, diagnostics },
-    lualine_c = { filename, location },
+    lualine_c = { filename, location, coc },
     lualine_x = { diff, filetype, progress },
     lualine_y = {},
     lualine_z = { encoding },
