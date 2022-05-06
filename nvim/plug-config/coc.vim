@@ -1,5 +1,4 @@
-" """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim settings
+" Vim settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Some servers have issues with backup files.
 set nobackup
@@ -19,8 +18,7 @@ endif
 " Add (Neo)Vim's native statusline support.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Usage keymaps.
+" Usage keymaps.
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use tab for trigger completion with characters ahead and navigate.
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
@@ -81,8 +79,7 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Autocommands
+" Autocommands
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup mygroup
   autocmd!
@@ -92,8 +89,7 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
+" Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! s:check_back_space() abort
