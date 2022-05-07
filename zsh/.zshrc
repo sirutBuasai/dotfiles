@@ -130,7 +130,7 @@ alias py3='python3'
 alias py3test='python3 -m unittest'
 
 # Change dir
-alias de='cd ~/Desktop/'
+alias de='cd ~/Desktop'
 alias dl='cd ~/Downloads'
 alias p='cd ~/personal_dev'
 
