@@ -49,7 +49,7 @@ function oa() {
                          ['tor']='tor browser'
                          ['zoom']='zoom.us'
                          ['sys']='system preferences'
-                         ['pb']='photo booth'
+                         ['camera']='photo booth'
                          ['store']='app store'
                          ['act']='activity monitor'
                        )
