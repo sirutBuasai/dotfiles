@@ -19,9 +19,6 @@ nnoremap <C-l> <C-w>l                     " Ctrl+l to go to right window
 nnoremap <leader>ss :set spell<CR>        " Enable spell checking
 nnoremap <leader>ns :set nospell<CR>      " Disable spell cheking
 
-" Highlighting text
-nnoremap <leader>nh :noh<CR>              " Disable Highlighting
-
 " Lazy shift fingers
 :command WQ wq                            " Allows WQ to write and quit
 :command Wq wq                            " Allows Wq to write and quit
