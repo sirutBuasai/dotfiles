@@ -46,6 +46,9 @@ gitsigns.setup {
     enable = false,
   },
 }
+vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gn', ':Gitsigns next_hunk<CR>',    { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>gb', ':Gitsigns prev_hunk<CR>',    { noremap = true })
 
 vim.cmd[[ highlight GitSignsAdd guifg=#87FF87 ]]
 vim.cmd[[ highlight GitSignsChange guifg=#8787FF ]]
