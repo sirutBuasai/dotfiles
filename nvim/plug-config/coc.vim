@@ -94,3 +94,13 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Automatic CocInstall extensions
+let g:coc_global_extensions = ['coc-pairs',
+                              \'coc-json',
+                              \'coc-sh',
+                              \'coc-rls',
+                              \'coc-pyright',
+                              \'coc-lua',
+                              \'coc-java',
+                              \'coc-go']
