@@ -7,7 +7,7 @@ nnoremap <C-b> :bprevious<CR>             " Ctrl+b to go to previous buffer
 
 " Window navigation
 nnoremap <C-h> <C-w>h                     " Ctrl+h to go to left window
-nnoremap <C-j> <C-j>j                     " Ctrl+j to go to bottom window
+nnoremap <C-j> <C-w>j                     " Ctrl+j to go to bottom window
 nnoremap <C-k> <C-w>k                     " Ctrl+k to go to top window
 nnoremap <C-l> <C-w>l                     " Ctrl+l to go to right window
 
