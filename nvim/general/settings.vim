@@ -1,4 +1,5 @@
 syntax enable                   " Enable Syntax highlighting
+set backspace=indent,eol,start  " Allow backspace to work as normal
 set hidden                      " Required to keep multiple buffers open
 set nowrap                      " Display long lines instead of one line
 set encoding=utf-8              " Display encoding
@@ -24,4 +25,3 @@ set timeoutlen=500              " Set timeoutlen for key mappins (default = 1000
 set clipboard=unnamedplus       " Use global clipboard
 set formatoptions-=cro          " Disaple comments continuation on new line
 set mouse=a                     " Enable mouse withing vim
-set backspace=indent,eol,start  " Allow backspace to work as normal
