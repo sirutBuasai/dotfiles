@@ -59,7 +59,7 @@ nmap <leader>aq  <Plug>(coc-fix-current)
 command! -nargs=0 Format :call CocActionAsync('format')
 
 " Add `:Fold` command to fold current buffer.
-command! -nargs=? Fold :call     CocActionAsync('fold', <f-args>)
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
@@ -72,7 +72,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocActionAsync('formatSelected')
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -96,11 +96,11 @@ function! s:show_documentation()
 endfunction
 
 " Automatic CocInstall extensions
-let g:coc_global_extensions = ['coc-pairs',
-                              \'coc-json',
+let g:coc_global_extensions = ['coc-json',
                               \'coc-sh',
                               \'coc-rls',
                               \'coc-pyright',
                               \'coc-lua',
                               \'coc-java',
-                              \'coc-go']
+                              \'coc-go',
+                              \'coc-pairs']
