@@ -18,7 +18,7 @@ local colors = {
 local mode = {
   "mode",
   fmt = function(str)
-    return " " .. str
+    return " " .. str
   end,
 }
 
@@ -32,7 +32,7 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
-  symbols = { error = " ", warn = " " },
+  symbols = { error = " ", warn = " " },
   colored = false,
   update_in_insert = false,
   always_visible = true,
@@ -48,9 +48,24 @@ local location = {
   color = { fg = colors.violet }
 }
 
-local coc = {
-  'g:coc_status',
-  color = { fg = colors.orange }
+local lsp = {
+ function()
+    local msg = 'No Active Lsp'
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
+    end
+    for _, client in ipairs(clients) do
+      local filetypes = client.config.filetypes
+      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+        return client.name
+      end
+    end
+    return msg
+  end,
+  icon = ':',
+  color = { fg = '#ffffff', gui = 'bold' }
 }
 
 local diff = {
@@ -90,8 +105,8 @@ lualine.setup({
   sections = {
     lualine_a = { mode },
     lualine_b = { branch, diagnostics },
-    lualine_c = { filename, location, coc },
-    lualine_x = { diff, filetype, progress },
+    lualine_c = { filename, location },
+    lualine_x = { diff, filetype, lsp, progress },
     lualine_y = {},
     lualine_z = { encoding },
   },
