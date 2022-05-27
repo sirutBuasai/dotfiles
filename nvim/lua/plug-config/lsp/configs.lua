@@ -15,6 +15,7 @@ for _, server in pairs(servers) do
   local opts = {
     on_attach = require("plug-config.lsp.handlers").on_attach,
     capabilities = require("plug-config.lsp.handlers").capabilities,
+    root_dir = vim.loop.cwd,
   }
   local has_custom_opts, server_custom_opts = pcall(require, "plug-config.lsp.settings." .. server)
   if has_custom_opts then
