@@ -3,8 +3,8 @@ if not status_ok then
   return
 end
 
-vim.cmd [[highlight IndentBlanklineIndent1 guibg=None gui=nocombine]]
-vim.cmd [[highlight IndentBlanklineIndent2 guibg=Gray15 gui=nocombine]]
+vim.cmd [[ highlight IndentBlanklineIndent1 guibg=None gui=nocombine ]]
+vim.cmd [[ highlight IndentBlanklineIndent2 guibg=Gray15 gui=nocombine ]]
 
 vim.opt.list = true
 -- vim.opt.listchars = "eol:¬"

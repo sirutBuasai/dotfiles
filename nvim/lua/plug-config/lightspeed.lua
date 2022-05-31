@@ -21,5 +21,5 @@ lightspeed.setup {
 vim.cmd [[ highlight LightspeedLabel guifg=#87D7FF ]]
 vim.cmd [[ highlight LightspeedLabelDistant guifg=#FFAFD7 ]]
 vim.cmd [[ highlight LightspeedShortcut guifg=#000000 guibg=#87D7FF ]]
-vim.cmd [[ map <expr> ; "<Plug>Lightspeed_;_sx" ]]
-vim.cmd [[ map <expr> , "<Plug>Lightspeed_,_sx" ]]
+vim.api.nvim_set_keymap('', ';', '<Plug>Lightspeed_;_sx', { expr = true })
+vim.api.nvim_set_keymap('', ',', '<Plug>Lightspeed_,_sx', { expr = true })

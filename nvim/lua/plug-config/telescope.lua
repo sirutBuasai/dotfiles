@@ -3,14 +3,24 @@ if not status_ok then
   return
 end
 
-telescope.setup {
+telescope.setup({
   defaults = {
-
+    layout_strategy = "vertical",
     prompt_prefix = " ",
     selection_caret = " ",
     path_display = { "smart" },
   },
-}
+  pickers = {
+    buffers = {
+      sort_lastused = true,
+      mappings = {
+        i = {
+          ["<C-d>"] = "delete_buffer",
+        }
+      }
+    },
+  },
+})
 
 vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files cwd=..<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>fc', ':Telescope find_files<CR>',        { noremap = true })

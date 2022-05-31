@@ -3,11 +3,10 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/mappings.vim
 source $HOME/.config/nvim/general/colorscheme.vim
 source $HOME/.config/nvim/general/plugins.vim
-" Vimscript plugins
-source $HOME/.config/nvim/plug-config/bbye.vim
 " Lua plugins
 lua require("plug-config.lsp")
 lua require("plug-config.autopairs")
+lua require("plug-config.bbye")
 lua require("plug-config.bufferline")
 lua require("plug-config.cmp")
 lua require("plug-config.colorizer")
