@@ -90,6 +90,7 @@ function upd(){
   rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
   rsync -avh ~/.ssh/config ~/personal_dev/dotfiles/ssh/config --delete
   rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
+  rsync -avh ~/.p10k.zsh ~/personal_dev/dotfiles/zsh/.p10k.zsh --delete
   rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
   cd ~/personal_dev/dotfiles/
 }
