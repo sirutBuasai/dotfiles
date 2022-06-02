@@ -1,5 +1,4 @@
 call plug#begin('~/.config/nvim/autoload/plugged/')
-
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'           " The completion plugin
 Plug 'hrsh7th/cmp-buffer'         " buffer completions
@@ -46,6 +45,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/nvim-lsp-installer'
 Plug 'tamago324/nlsp-settings.nvim'
+Plug 'stevearc/dressing.nvim'
 " Remove trailing whitespace
 Plug 'McAuleyPenney/tidy.nvim'
 " Snippets
