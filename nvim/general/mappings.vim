@@ -2,8 +2,8 @@
 let mapleader = " "
 
 " Switching between buffers
-nnoremap <S-l> :bnext<CR>                   " Ctrl+n to go to next buffer
-nnoremap <S-h> :bprevious<CR>               " Ctrl+b to go to previous buffer
+nnoremap <C-n> :bnext<CR>                   " Ctrl+n to go to next buffer
+nnoremap <C-b> :bprevious<CR>               " Ctrl+b to go to previous buffer
 
 " Window navigation
 nnoremap <C-h> <C-w>h                       " Ctrl+h to go to left window
