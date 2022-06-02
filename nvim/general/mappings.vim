@@ -39,3 +39,6 @@ nnoremap c# ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``cgN
 
 " Highlight the whole file
 nmap - ggVG<CR>                             " Highlight the whole file
+
+" Remove command history
+nnoremap q: <nop>
