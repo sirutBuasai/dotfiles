@@ -8,7 +8,14 @@ local lspconfig = require("lspconfig")
 local servers = { "jsonls", "sumneko_lua", "pyright", "jdtls", "gopls", "rust_analyzer", "clangd" }
 
 lsp_installer.setup {
-  ensure_installed = servers
+  ensure_installed = servers,
+  ui = {
+    icons = {
+      server_installed = "✓",
+      server_pending = "➜",
+      server_uninstalled = "✗"
+    },
+  },
 }
 
 for _, server in pairs(servers) do
