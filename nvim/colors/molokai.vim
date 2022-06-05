@@ -130,6 +130,17 @@ else
    hi SpecialKey      guifg=#465457
 end
 
+" Custom theme
+hi Normal guifg=Gray85 guibg=None
+hi LineNr guifg=Gray60 guibg=Gray7
+hi SignColumn guibg=Gray7
+hi NonText guibg=None
+hi Comment guifg=Gray35
+hi Pmenu guibg=Gray20 guifg=#4CC9FF
+hi FloatTitle guifg=#E6DB74 guibg=None
+hi NormalFloat guifg=Gray85 guibg=Gray15
+hi FloatBorder guifg=Gray85 guibg=None
+
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
 set background=dark
