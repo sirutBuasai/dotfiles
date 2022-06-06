@@ -1,3 +1,3 @@
-colorscheme molokai
-syntax on
 set termguicolors
+syntax on
+colorscheme molokai

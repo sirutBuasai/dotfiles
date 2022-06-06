@@ -1,8 +1,8 @@
 " Local files setup
+source $HOME/.config/nvim/general/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/mappings.vim
 source $HOME/.config/nvim/general/colorscheme.vim
-source $HOME/.config/nvim/general/plugins.vim
 " Lua plugins
 lua require("plug-config.lsp")
 lua require("plug-config.autopairs")
