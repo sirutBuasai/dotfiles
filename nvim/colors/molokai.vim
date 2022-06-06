@@ -65,7 +65,7 @@ hi MoreMsg         guifg=#E6DB74
 hi Operator        guifg=#F92672
 
 " complete menu
-hi Pmenu           guifg=#66D9EF guibg=#000000
+hi Pmenu           guifg=#66D9EF guibg=#303030
 hi PmenuSel                      guibg=#808080
 hi PmenuSbar                     guibg=#080808
 hi PmenuThumb      guifg=#66D9EF
@@ -76,7 +76,7 @@ hi Question        guifg=#66D9EF
 hi Repeat          guifg=#F92672               gui=bold
 hi Search          guifg=#000000 guibg=#FFE792
 " marks
-hi SignColumn      guifg=#A6E22E guibg=#232526
+hi SignColumn      guifg=#A6E22E guibg=#121212
 hi SpecialChar     guifg=#F92672               gui=bold
 hi SpecialComment  guifg=#7E8E91               gui=bold
 hi Special         guifg=#66D9EF guibg=bg      gui=italic
@@ -109,37 +109,31 @@ hi TabLineFill     guifg=#1B1D1E guibg=#1B1D1E
 hi TabLine         guibg=#1B1D1E guifg=#808080 gui=none
 
 if s:molokai_original == 1
-   hi Normal          guifg=#F8F8F2 guibg=#272822
-   hi Comment         guifg=#75715E
+   hi Normal          guifg=#F8F8F2 guibg=none
+   hi Comment         guifg=#585858
    hi CursorLine                    guibg=#3E3D32
    hi CursorLineNr    guifg=#FD971F               gui=none
    hi CursorColumn                  guibg=#3E3D32
    hi ColorColumn                   guibg=#3B3A32
-   hi LineNr          guifg=#BCBCBC guibg=#3B3A32
-   hi NonText         guifg=#75715E
+   hi LineNr          guifg=#BCBCBC guibg=#121212
+   hi NonText         guifg=#75715E guibg=none
    hi SpecialKey      guifg=#75715E
 else
-   hi Normal          guifg=#F8F8F2 guibg=#1B1D1E
-   hi Comment         guifg=#7E8E91
+   hi Normal          guifg=#F8F8F2 guibg=none
+   hi Comment         guifg=#585858
    hi CursorLine                    guibg=#293739
    hi CursorLineNr    guifg=#FD971F               gui=none
    hi CursorColumn                  guibg=#293739
    hi ColorColumn                   guibg=#232526
-   hi LineNr          guifg=#465457 guibg=#232526
-   hi NonText         guifg=#465457
+   hi LineNr          guifg=#465457 guibg=#121212
+   hi NonText         guifg=#465457 guibg=none
    hi SpecialKey      guifg=#465457
 end
 
 " Custom theme
-hi Normal guifg=Gray85 guibg=None
-hi LineNr guifg=Gray60 guibg=Gray7
-hi SignColumn guibg=Gray7
-hi NonText guibg=None
-hi Comment guifg=Gray35
-hi Pmenu guibg=Gray20 guifg=#4CC9FF
-hi FloatTitle guifg=#E6DB74 guibg=None
-hi NormalFloat guifg=Gray85 guibg=Gray15
-hi FloatBorder guifg=Gray85 guibg=None
+hi FloatTitle guifg=#E6DB74 guibg=none
+hi NormalFloat guifg=#dadada guibg=#262626
+hi FloatBorder guifg=#dadada guibg=none
 
 " Must be at the end, because of ctermbg=234 bug.
 " https://groups.google.com/forum/#!msg/vim_dev/afPqwAFNdrU/nqh6tOM87QUJ
