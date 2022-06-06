@@ -8,7 +8,7 @@ vim.cmd [[ highlight IndentBlanklineIndent2 guibg=Gray15 gui=nocombine ]]
 
 vim.opt.list = true
 -- vim.opt.listchars = "eol:¬"
-vim.opt.listchars = "eol: "
+vim.opt.listchars = ""
 
 indent_blankline.setup {
   char = "",

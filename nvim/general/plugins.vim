@@ -82,5 +82,11 @@ Plug 'akinsho/toggleterm.nvim'
 
 " Colorscheme
 Plug 'sirutBuasai/molokai.nvim'
+Plug 'marko-cerovac/material.nvim'
+Plug 'shaunsingh/moonlight.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'catppuccin/nvim'
+Plug 'FrenzyExists/aquarium-vim'
+Plug 'tiagovla/tokyodark.nvim'
 
 call plug#end()
