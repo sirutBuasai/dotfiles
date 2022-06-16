@@ -45,11 +45,11 @@ end
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-    local status_ok, illuminate = pcall(require, "illuminate")
-    if not status_ok then
-      return
-    end
-    illuminate.on_attach(client)
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
   -- end
 end
 
@@ -62,6 +62,7 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>fm", "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>fm", "<esc><cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ac", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
@@ -74,7 +75,7 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
--- vim.notify(client.name .. " starting...")
+  -- vim.notify(client.name .. " starting...")
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
