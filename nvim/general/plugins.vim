@@ -68,7 +68,7 @@ Plug 'tamago324/nlsp-settings.nvim'
 Plug 'stevearc/dressing.nvim'
 
 " Remove trailing whitespace
-Plug 'McAuleyPenney/tidy.nvim'
+Plug 'mcauley-penney/tidy.nvim'
 
 " Snippets
 Plug 'L3MON4D3/LuaSnip'

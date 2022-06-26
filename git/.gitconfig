@@ -7,7 +7,7 @@
 
 [alias]
   a = add
-  aa = add .
+  aa = add -A
   ac = commit -am
   b = branch
   cm = commit
