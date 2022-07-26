@@ -6,7 +6,14 @@ end
 local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 
-local servers = { "jsonls", "sumneko_lua", "pyright", "jdtls", "clangd", "bashls" }
+local servers = {
+  "jsonls",
+  "sumneko_lua",
+  "pyright",
+  "jdtls",
+  "clangd",
+  "bashls"
+}
 
 mason_lspconfig.setup {
   ensure_installed = servers
