@@ -15,7 +15,7 @@ Plug 'moll/vim-bbye'
 
 " Better code navigation
 Plug 'tpope/vim-repeat'
-Plug 'ggandor/lightspeed.nvim'
+Plug 'ggandor/leap.nvim'
 
 " Better comment keybind
 Plug 'tpope/vim-commentary'
@@ -61,7 +61,8 @@ Plug 'lewis6991/gitsigns.nvim'
 " LSP
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
-Plug 'williamboman/nvim-lsp-installer'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'tamago324/nlsp-settings.nvim'
 
 " LSP UI
