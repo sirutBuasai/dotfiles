@@ -3,23 +3,11 @@ if not status_ok then
   return
 end
 
-vim.cmd [[ highlight IndentBlanklineIndent1 guibg=None gui=nocombine ]]
-vim.cmd [[ highlight IndentBlanklineIndent2 guibg=Gray15 gui=nocombine ]]
-
 vim.opt.list = true
 -- vim.opt.listchars = "eol:¬"
 vim.opt.listchars = ""
 
 indent_blankline.setup {
-  char = "",
-  char_highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
-  },
-  space_char_highlight_list = {
-    "IndentBlanklineIndent1",
-    "IndentBlanklineIndent2",
-  },
   buftype_exclude = {
     "terminal",
     "nofile",
@@ -37,25 +25,36 @@ indent_blankline.setup {
   use_treesitter = false,
   show_current_context = true,
   context_patterns = {
-    "class",
-    "return",
-    "function",
-    "method",
-    "^if",
-    "^while",
-    "jsx_element",
-    "^for",
-    "^object",
-    "^table",
-    "block",
-    "arguments",
-    "if_statement",
-    "else_clause",
-    "jsx_element",
-    "jsx_self_closing_element",
-    "try_statement",
-    "catch_clause",
-    "import_statement",
-    "operation_type",
-  },
+    '^func',
+    '^if',
+    '^object',
+    '^table',
+    'argument_list',
+    'arguments',
+    'block',
+    'catch_clause',
+    'class',
+    'dictionary',
+    'do_block',
+    'element',
+    'else_clause',
+    'except',
+    'for',
+    'if_statement',
+    'import_statement',
+    'jsx_element',
+    'jsx_element',
+    'jsx_self_closing_element',
+    'method',
+    'operation_type',
+    'return',
+    'try',
+    'try_statement',
+    'tuple',
+    'while',
+    'with'
+  }
 }
+
+vim.cmd[[ highlight IndentBlanklineContextStart guisp=#F92672 gui=nocombine ]]
+vim.cmd[[ highlight IndentBlanklineContextChar guifg=#7B8BA9 ]]

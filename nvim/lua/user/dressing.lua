@@ -36,12 +36,6 @@ dressing.setup({
     -- Change default highlight groups (see :help winhl)
     winhighlight = "",
 
-    override = function(conf)
-      -- This is the config that will be passed to nvim_open_win.
-      -- Change values here to customize the layout
-      return conf
-    end,
-
     -- see :help dressing_get_config
     get_config = nil,
   },
