@@ -37,6 +37,7 @@ Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
 
 " Code interface highlighting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Coloring gui
 Plug 'norcalli/nvim-colorizer.lua'
@@ -65,8 +66,10 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'tamago324/nlsp-settings.nvim'
 
-" LSP UI
+" UI and visual QOL
 Plug 'stevearc/dressing.nvim'
+Plug 'winston0410/cmd-parser.nvim'
+Plug 'winston0410/range-highlight.nvim'
 
 " Remove trailing whitespace
 Plug 'mcauley-penney/tidy.nvim'
