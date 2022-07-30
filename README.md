@@ -1,5 +1,5 @@
 # dotfiles
-personal repo for .files and general macbook migration
+personal repo for configuration files
 
 ### needed programs
 - Google Chrome https://www.google.com/chrome/
