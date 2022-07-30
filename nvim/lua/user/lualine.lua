@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require("user.icons")
+
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
 end
@@ -32,7 +34,7 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
-  symbols = { error = " ", warn = " " },
+  symbols = { error = icons.diagnostics.Error, warn = icons.diagnostics.Warning},
   colored = false,
   update_in_insert = false,
   always_visible = true,
@@ -71,7 +73,7 @@ local lsp = {
 local diff = {
   "diff",
   colored = false,
-  symbols = { added = ' ', modified = '柳 ', removed = ' ' },
+  symbols = { added = icons.git.Add, modified = icons.git.Mod, removed = icons.diagnostics.Remove},
   cond = hide_in_width
 }
 

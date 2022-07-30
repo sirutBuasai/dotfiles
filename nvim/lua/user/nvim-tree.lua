@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require("user.icons")
+
 local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
 if not config_status_ok then
   return
@@ -21,10 +23,10 @@ nvim_tree.setup({
   diagnostics = {
     enable = true,
     icons = {
-      hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      hint = icons.diagnostics.Hint,
+      info = icons.diagnostics.Info,
+      warning = icons.diagnostics.Warning,
+      error = icons.diagnostics.Error,
     },
   },
   renderer = {
@@ -40,25 +42,25 @@ nvim_tree.setup({
         git = true,
       },
       glyphs = {
-        default = "",
-        symlink = "",
+        default = icons.documents.File,
+        symlink = icons.documents.SymlinkFile,
         folder = {
-          arrow_closed = "",
-          arrow_open = "",
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
+          arrow_closed = icons.ui.ArrowClosed,
+          arrow_open = icons.ui.ArrowOpen,
+          default = icons.documents.Folder,
+          open = icons.documents.OpenFolder,
+          empty = icons.documents.EmptyFolder,
+          empty_open = icons.documents.OpenEmptyFolder,
+          symlink = icons.documents.SymlinkFolder,
         },
         git = {
-          unstaged = "",
-          staged = "",
-          unmerged = "",
-          renamed = "➜",
-          deleted = "",
-          untracked = "U",
-          ignored = "◌",
+          unstaged = icons.git.Unstaged,
+          staged = icons.git.Staged,
+          unmerged = icons.git.Unmerged,
+          renamed = icons.git.Renamed,
+          deleted = icons.git.Remove,
+          untracked = icons.git.Untracked,
+          ignored = icons.git.Ignored,
         },
       },
     },
