@@ -13,6 +13,9 @@ Plug 'romainl/vim-cool'
 " Better buffer closing
 Plug 'moll/vim-bbye'
 
+" Better buffer switching
+Plug 'ghillb/cybu.nvim'
+
 " Better code navigation
 Plug 'tpope/vim-repeat'
 Plug 'ggandor/leap.nvim'

@@ -22,8 +22,7 @@ telescope.setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files cwd=..<CR>',         { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>',                   { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>f/', ':Telescope current_buffer_fuzzy_find<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>',                 { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>fh', ':Telescope help_tags<CR>',                 { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>ff', ':Telescope find_files cwd=..<CR>',                         { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fb', ':Telescope buffers<CR>',                                   { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>f/', ':Telescope current_buffer_fuzzy_find previewer=false<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<leader>fg', ':Telescope live_grep<CR>',                                 { noremap = true })

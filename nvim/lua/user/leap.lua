@@ -10,10 +10,10 @@ leap.setup {
   highlight_unlabeled = false,
   case_sensitive = false,
   special_keys = {
-    repeat_search = '<ENTER>',
-    next_match    = '<ENTER>',
-    prev_match    = '<TAB>',
-    next_group    = '<SPACE>',
-    prev_group    = '<TAB>',
+    repeat_search = '<enter>',
+    next_match    = '<enter>',
+    prev_match    = '<tab>',
+    next_group    = '<space>',
+    prev_group    = '<tab>',
   },
 }
