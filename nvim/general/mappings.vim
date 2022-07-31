@@ -12,6 +12,12 @@ nnoremap <C-j> <C-w>j                       " Ctrl+j to go to bottom window
 nnoremap <C-k> <C-w>k                       " Ctrl+k to go to top window
 nnoremap <C-l> <C-w>l                       " Ctrl+l to go to right window
 
+" Line navigation
+nnoremap <S-h> ^
+nnoremap <S-l> $
+vnoremap <S-h> ^
+vnoremap <S-l> $
+
 " Window resizing
 nnoremap <S-Up> :resize +2<CR>              " Resize up
 nnoremap <S-Down> :resize -2<CR>            " Resize down

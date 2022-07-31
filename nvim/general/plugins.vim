@@ -45,6 +45,15 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 " Coloring gui
 Plug 'norcalli/nvim-colorizer.lua'
 
+" Colorscheme
+Plug 'sirutBuasai/molokai.nvim'
+Plug 'marko-cerovac/material.nvim'
+Plug 'shaunsingh/moonlight.nvim'
+Plug 'olimorris/onedarkpro.nvim'
+Plug 'catppuccin/nvim'
+Plug 'FrenzyExists/aquarium-vim'
+Plug 'tiagovla/tokyodark.nvim'
+
 " Errors diagnostics
 Plug 'folke/trouble.nvim'
 
@@ -69,11 +78,6 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'tamago324/nlsp-settings.nvim'
 
-" UI and visual QOL
-Plug 'stevearc/dressing.nvim'
-Plug 'winston0410/cmd-parser.nvim'
-Plug 'winston0410/range-highlight.nvim'
-
 " Remove trailing whitespace
 Plug 'mcauley-penney/tidy.nvim'
 
@@ -87,13 +91,9 @@ Plug 'nvim-lualine/lualine.nvim'
 " Terminal emulator
 Plug 'akinsho/toggleterm.nvim'
 
-" Colorscheme
-Plug 'sirutBuasai/molokai.nvim'
-Plug 'marko-cerovac/material.nvim'
-Plug 'shaunsingh/moonlight.nvim'
-Plug 'olimorris/onedarkpro.nvim'
-Plug 'catppuccin/nvim'
-Plug 'FrenzyExists/aquarium-vim'
-Plug 'tiagovla/tokyodark.nvim'
+" UI and visual QOL
+Plug 'stevearc/dressing.nvim'
+Plug 'winston0410/cmd-parser.nvim'
+Plug 'winston0410/range-highlight.nvim'
 
 call plug#end()
