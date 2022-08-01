@@ -27,7 +27,7 @@ zen_mode.setup {
       showcmd = false, -- disables the command in the last line of the screen
     },
     twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
-    gitsigns = { enabled = true }, -- disables git signs
+    gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = false }, -- disables the tmux statusline
     kitty = {
       enabled = false,
