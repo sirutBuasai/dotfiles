@@ -96,4 +96,7 @@ Plug 'stevearc/dressing.nvim'
 Plug 'winston0410/cmd-parser.nvim'
 Plug 'winston0410/range-highlight.nvim'
 
+" Zenmode
+Plug 'folke/zen-mode.nvim'
+
 call plug#end()
