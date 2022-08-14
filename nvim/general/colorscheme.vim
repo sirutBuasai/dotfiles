@@ -5,7 +5,7 @@ syntax on
 colorscheme molokai
 
 " Catpuccin
-" let g:catpuccin_falvour = "mocha"
+" let g:catppuccin_flavour = "mocha"
 " colorscheme catppuccin
 
 " Material
@@ -24,3 +24,7 @@ colorscheme molokai
 
 " Tokyodark
 " colorscheme tokyodark
+
+" Oxocarbon
+" let g:oxocarbon_lua_keep_terminal = 1
+" colorscheme oxocarbon-lua

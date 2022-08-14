@@ -18,6 +18,12 @@ nnoremap <S-l> $
 vnoremap <S-h> ^
 vnoremap <S-l> $
 
+" Extend custom line navigation
+nnoremap d<S-h> d^
+nnoremap d<S-l> d$
+nnoremap c<S-h> d^
+nnoremap c<S-l> d$
+
 " Window resizing
 nnoremap <S-Up> :resize +2<CR>              " Resize up
 nnoremap <S-Down> :resize -2<CR>            " Resize down

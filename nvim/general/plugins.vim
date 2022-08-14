@@ -53,6 +53,7 @@ Plug 'olimorris/onedarkpro.nvim'
 Plug 'catppuccin/nvim'
 Plug 'FrenzyExists/aquarium-vim'
 Plug 'tiagovla/tokyodark.nvim'
+Plug 'B4mbus/oxocarbon-lua.nvim'
 
 " Errors diagnostics
 Plug 'folke/trouble.nvim'
