@@ -2,7 +2,7 @@ set termguicolors
 syntax on
 
 " Molokai
-colorscheme molokai
+" colorscheme molokai
 
 " Catpuccin
 " let g:catppuccin_flavour = "mocha"
@@ -26,5 +26,5 @@ colorscheme molokai
 " colorscheme tokyodark
 
 " Oxocarbon
-" let g:oxocarbon_lua_keep_terminal = 1
-" colorscheme oxocarbon-lua
+let g:oxocarbon_lua_keep_terminal = 1
+colorscheme oxocarbon-lua
