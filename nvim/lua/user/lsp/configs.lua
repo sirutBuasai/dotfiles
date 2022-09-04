@@ -3,9 +3,6 @@ if not status_ok then
   return
 end
 
-local lspconfig = require("lspconfig")
-local mason_lspconfig = require("mason-lspconfig")
-
 local servers = {
   "jsonls",
   "sumneko_lua",
@@ -14,6 +11,9 @@ local servers = {
   "clangd",
   "bashls"
 }
+
+local lspconfig = require("lspconfig")
+local mason_lspconfig = require("mason-lspconfig")
 
 mason_lspconfig.setup {
   ensure_installed = servers

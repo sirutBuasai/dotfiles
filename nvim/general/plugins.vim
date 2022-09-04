@@ -21,7 +21,7 @@ Plug 'tpope/vim-repeat'
 Plug 'ggandor/leap.nvim'
 
 " Better comment keybind
-Plug 'tpope/vim-commentary'
+Plug 'numToStr/Comment.nvim'
 
 " Better indentation marker
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -43,7 +43,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/nvim-treesitter-context'
 
 " Coloring gui
-Plug 'norcalli/nvim-colorizer.lua'
+Plug 'NvChad/nvim-colorizer.lua'
 
 " Colorscheme
 Plug 'sirutBuasai/molokai.nvim'
@@ -78,6 +78,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'tamago324/nlsp-settings.nvim'
+Plug 'stevearc/aerial.nvim'
 
 " Remove trailing whitespace
 Plug 'mcauley-penney/tidy.nvim'

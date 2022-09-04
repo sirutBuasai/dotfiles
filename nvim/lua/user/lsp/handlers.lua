@@ -1,3 +1,6 @@
+local aerial = require('aerial')
+aerial.setup{}
+
 local M = {}
 
 M.setup = function()
@@ -76,6 +79,7 @@ end
 
 M.on_attach = function(client, bufnr)
   -- vim.notify(client.name .. " starting...")
+  aerial.on_attach(client, bufnr)
   lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
