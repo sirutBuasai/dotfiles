@@ -27,4 +27,5 @@ syntax on
 
 " Oxocarbon
 let g:oxocarbon_lua_keep_terminal = 1
+let g:oxocarbon_lua_alternative_telescope = 1
 colorscheme oxocarbon-lua
