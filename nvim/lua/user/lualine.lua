@@ -13,7 +13,7 @@ local colors = {
   darkgray  = '#202328',
   lightgray = '#BBC2CF',
   green     = '#A6E22E',
-  violet    = '#7070F0',
+  lavender  = '#7070F0',
   orange    = '#FD971F',
 }
 
@@ -47,7 +47,7 @@ local filename = {
 
 local location = {
   "location",
-  color = { fg = colors.violet }
+  color = { fg = colors.lavender }
 }
 
 local lsp = {

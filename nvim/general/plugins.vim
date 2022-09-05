@@ -72,6 +72,9 @@ Plug 'nvim-lua/plenary.nvim'
 " Git integration
 Plug 'lewis6991/gitsigns.nvim'
 
+" Lazy-loading
+Plug 'lewis6991/impatient.nvim'
+
 " LSP
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
@@ -89,6 +92,9 @@ Plug 'rafamadriz/friendly-snippets'
 
 " Status line
 Plug 'nvim-lualine/lualine.nvim'
+
+" Startup dashboard
+Plug 'goolord/alpha-nvim'
 
 " Terminal emulator
 Plug 'akinsho/toggleterm.nvim'

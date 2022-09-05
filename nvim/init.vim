@@ -4,7 +4,9 @@ source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/general/mappings.vim
 source $HOME/.config/nvim/general/colorscheme.vim
 " Lua plugins
+lua require("impatient")
 lua require("user.lsp")
+lua require("user.alpha")
 lua require("user.autopairs")
 lua require("user.bbye")
 lua require("user.bufferline")
