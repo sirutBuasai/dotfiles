@@ -47,8 +47,8 @@ gitsigns.setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', '[c',         ':Gitsigns next_hunk<CR>',    { noremap = true })
-vim.api.nvim_set_keymap('n', ']c',         ':Gitsigns prev_hunk<CR>',    { noremap = true })
+vim.api.nvim_set_keymap('n', ']h',         ':Gitsigns next_hunk<CR>',    { noremap = true })
+vim.api.nvim_set_keymap('n', '[h',         ':Gitsigns prev_hunk<CR>',    { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>sh', ':Gitsigns stage_hunk<CR>',   { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>sb', ':Gitsigns stage_buffer<CR>', { noremap = true })

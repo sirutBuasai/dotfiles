@@ -17,37 +17,48 @@ local colors = {
   orange    = '#FD971F',
 }
 
-local mode = {
-  "mode",
-  fmt = function(str)
-    return " " .. str
+local icon = {
+  function()
+    return '▊'
   end,
+  padding = { left = 0, right = 1 },
 }
 
-local branch = {
-  "branch",
+local filetype = {
+  'filetype',
+  fmt = string.upper,
   icons_enabled = true,
-  icon = "",
+  icon = nil,
+  color = { fg = colors.green, gui = 'bold' }
+}
+
+local filename = {
+  'filename',
+  color = { fg = colors.lightgray, gui = 'bold' }
 }
 
 local diagnostics = {
-  "diagnostics",
-  sources = { "nvim_diagnostic" },
-  sections = { "error", "warn" },
+  'diagnostics',
+  sources = { 'nvim_diagnostic' },
+  sections = { 'error', 'warn' },
   symbols = { error = icons.diagnostics.Error, warn = icons.diagnostics.Warning},
-  colored = false,
+  colored = true,
   update_in_insert = false,
   always_visible = true,
 }
 
-local filename = {
-  "filename",
-  color = { fg = colors.lightgray, gui = 'bold' }
+local diff = {
+  'diff',
+  colored = true,
+  symbols = { added = icons.git.Add, modified = icons.git.Mod, removed = icons.diagnostics.Remove},
+  cond = hide_in_width
 }
 
-local location = {
-  "location",
-  color = { fg = colors.lavender }
+local branch = {
+  'branch',
+  icons_enabled = true,
+  icon = '',
+  color = { fg = colors.lightgray }
 }
 
 local lsp = {
@@ -66,22 +77,14 @@ local lsp = {
     end
     return msg
   end,
-  icon = ':',
+  icon = '',
   color = { fg = '#ffffff', gui = 'bold' }
 }
 
-local diff = {
-  "diff",
-  colored = false,
-  symbols = { added = icons.git.Add, modified = icons.git.Mod, removed = icons.diagnostics.Remove},
-  cond = hide_in_width
-}
-
-local filetype = {
-  "filetype",
-  icons_enabled = true,
-  icon = nil,
-  color = { fg = colors.green }
+local location = {
+  'location',
+  padding = { left = 0, right = 1 },
+  color = { fg = colors.lavender, gui = 'bold' }
 }
 
 local progress = {
@@ -92,6 +95,7 @@ local progress = {
 local encoding = {
   'encoding',
   fmt = string.upper,
+  icon = '',
   color = { fg = colors.darkgray, gui = 'bold' },
 }
 
@@ -100,17 +104,17 @@ lualine.setup({
     icons_enabled = true,
     theme = "molokai",
     component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+    section_separators = { left = '', right = '' },
+    disabled_filetypes = { 'dashboard', 'NvimTree', 'Outline' },
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { mode },
-    lualine_b = { branch, diagnostics },
-    lualine_c = { filename, location },
-    lualine_x = { diff, filetype, lsp, progress },
-    lualine_y = {},
-    lualine_z = { encoding },
+    lualine_a = { icon },
+    lualine_b = {},
+    lualine_c = { filetype, filename, diagnostics },
+    lualine_x = { diff, branch, lsp, location, progress },
+    lualine_y = { encoding },
+    lualine_z = {},
   },
   inactive_sections = {
     lualine_a = {},
