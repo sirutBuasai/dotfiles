@@ -26,3 +26,4 @@ set timeoutlen=500              " Set timeoutlen for key mappins (default = 1000
 set clipboard=unnamedplus       " Use global clipboard
 set formatoptions-=cro          " Disaple comments continuation on new line
 set mouse=a                     " Enable mouse withing vim
+set fillchars+=diff:╱           " Add fill characters for diff panels

@@ -54,7 +54,3 @@ vim.api.nvim_set_keymap('n', '<leader>sh', ':Gitsigns stage_hunk<CR>',   { norem
 vim.api.nvim_set_keymap('n', '<leader>sb', ':Gitsigns stage_buffer<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>rh', ':Gitsigns reset_hunk<CR>',   { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>rb', ':Gitsigns reset_buffer<CR>', { noremap = true })
-
-vim.cmd[[ highlight GitSignsAdd guifg=#87FF87 ]]
-vim.cmd[[ highlight GitSignsChange guifg=#8787FF ]]
-vim.cmd[[ highlight GitSignsDelete guifg=#FF8787 ]]

@@ -47,13 +47,13 @@ Plug 'NvChad/nvim-colorizer.lua'
 
 " Colorscheme
 Plug 'sirutBuasai/molokai.nvim'
+Plug 'sirutBuasai/oxocarbon-lua.nvim'
 Plug 'marko-cerovac/material.nvim'
 Plug 'shaunsingh/moonlight.nvim'
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'catppuccin/nvim'
 Plug 'FrenzyExists/aquarium-vim'
 Plug 'tiagovla/tokyodark.nvim'
-Plug 'B4mbus/oxocarbon-lua.nvim'
 
 " Errors diagnostics
 Plug 'folke/trouble.nvim'
@@ -71,6 +71,7 @@ Plug 'nvim-lua/plenary.nvim'
 
 " Git integration
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'sindrets/diffview.nvim'
 
 " Lazy-loading
 Plug 'lewis6991/impatient.nvim'

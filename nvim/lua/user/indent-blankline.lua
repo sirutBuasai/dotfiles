@@ -55,6 +55,3 @@ indent_blankline.setup {
     'with'
   }
 }
-
-vim.cmd[[ highlight IndentBlanklineContextStart guisp=#F92672 gui=nocombine ]]
-vim.cmd[[ highlight IndentBlanklineContextChar guifg=#7B8BA9 ]]
