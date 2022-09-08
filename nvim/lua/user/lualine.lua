@@ -89,14 +89,14 @@ local location = {
 
 local progress = {
   'progress',
-  color = { fg = colors.lightgray, gui = 'bold' }
+  color = { fg = colors.orange, gui = 'bold' }
 }
 
 local encoding = {
   'encoding',
   fmt = string.upper,
   icon = '',
-  color = { fg = colors.darkgray, gui = 'bold' },
+  color = { fg = colors.green, gui = 'bold' },
 }
 
 lualine.setup({
@@ -104,7 +104,7 @@ lualine.setup({
     icons_enabled = true,
     theme = "molokai",
     component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = '' },
+    section_separators = { left = '', right = '' },
     disabled_filetypes = { 'dashboard', 'NvimTree', 'Outline' },
     always_divide_middle = true,
   },
@@ -112,8 +112,8 @@ lualine.setup({
     lualine_a = { icon },
     lualine_b = {},
     lualine_c = { filetype, filename, diagnostics },
-    lualine_x = { diff, branch, lsp, location, progress },
-    lualine_y = { encoding },
+    lualine_x = { diff, branch, lsp, location, progress, encoding },
+    lualine_y = { icon },
     lualine_z = {},
   },
   inactive_sections = {
