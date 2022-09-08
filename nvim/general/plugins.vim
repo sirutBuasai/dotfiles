@@ -1,11 +1,12 @@
 call plug#begin('~/.config/nvim/autoload/plugged/')
 
 " Autocompletion
-Plug 'hrsh7th/nvim-cmp'           " The completion plugin
+Plug 'hrsh7th/nvim-cmp'           " the completion plugin
 Plug 'hrsh7th/cmp-buffer'         " buffer completions
 Plug 'hrsh7th/cmp-path'           " path completions
 Plug 'hrsh7th/cmp-cmdline'        " cmdline completions
 Plug 'saadparwaiz1/cmp_luasnip'   " snippet completions
+Plug 'hrsh7th/cmp-nvim-lsp'       " lsp completions
 
 " Auto unhighlight search
 Plug 'romainl/vim-cool'
@@ -77,7 +78,6 @@ Plug 'sindrets/diffview.nvim'
 Plug 'lewis6991/impatient.nvim'
 
 " LSP
-Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'

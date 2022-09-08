@@ -16,6 +16,7 @@ nvim_tree.setup({
   disable_netrw = true,
   hijack_netrw = true,
   open_on_setup = false,
+  open_on_setup_file = false,
   ignore_ft_on_setup = {},
   open_on_tab = false,
   hijack_cursor = false,
@@ -83,8 +84,9 @@ nvim_tree.setup({
     mappings = {
       custom_only = false,
       list = {
-        { key = { "<CR>" }, cb = tree_cb "edit" },
-        { key = "+", cb = tree_cb "cd" },
+        { key = { "<CR>" }, action = "edit" },
+        { key = "+", action = "cd" },
+        { key = "o", action = "close" },
         { key = "v", cb = tree_cb "vsplit" },
         { key = "h", cb = tree_cb "split" },
       },
