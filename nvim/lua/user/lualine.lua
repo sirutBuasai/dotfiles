@@ -63,7 +63,7 @@ local branch = {
 
 local lsp = {
  function()
-    local msg = 'No Active Lsp'
+    local msg = 'no active lsp'
     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
