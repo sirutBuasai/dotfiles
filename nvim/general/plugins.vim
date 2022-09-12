@@ -11,6 +11,9 @@ Plug 'hrsh7th/cmp-nvim-lsp'       " lsp completions
 " Auto unhighlight search
 Plug 'romainl/vim-cool'
 
+" Better argument highlighting
+Plug 'm-demare/hlargs.nvim'
+
 " Better buffer closing
 Plug 'moll/vim-bbye'
 
