@@ -57,6 +57,6 @@ nmap \ ggVG<CR>                             " Highlight the whole file
 nnoremap q: <nop>
 
 " Get highlight groups under cursor
-nnoremap <leader>// :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+nnoremap <leader>col :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<cr>

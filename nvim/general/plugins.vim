@@ -19,7 +19,7 @@ Plug 'ghillb/cybu.nvim'
 
 " Better code navigation
 Plug 'tpope/vim-repeat'
-Plug 'ggandor/leap.nvim'
+Plug 'phaazon/hop.nvim'
 
 " Better comment keybind and QoL
 Plug 'numToStr/Comment.nvim'
