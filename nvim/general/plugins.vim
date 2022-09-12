@@ -21,8 +21,9 @@ Plug 'ghillb/cybu.nvim'
 Plug 'tpope/vim-repeat'
 Plug 'ggandor/leap.nvim'
 
-" Better comment keybind
+" Better comment keybind and QoL
 Plug 'numToStr/Comment.nvim'
+Plug 'folke/todo-comments.nvim'
 
 " Better indentation marker
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -67,8 +68,9 @@ Plug 'kyazdani42/nvim-tree.lua'
 Plug 'jose-elias-alvarez/null-ls.nvim'
 
 " Fuzzy finder
-Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
 " Git integration
 Plug 'lewis6991/gitsigns.nvim'

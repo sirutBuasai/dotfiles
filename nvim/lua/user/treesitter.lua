@@ -30,7 +30,7 @@ local ensure_servers = {
   "sql",
   "typescript",
   "vim",
-  "yaml"
+  "yaml",
 }
 
 local ignore_servers = {
