@@ -14,4 +14,4 @@ vim.api.nvim_set_keymap('', 'T',  "<cmd>lua require'hop'.hint_char2({ hint_offse
 
 -- utility hop commands
 vim.api.nvim_set_keymap('', '//', "<cmd>lua require'hop'.hint_patterns()<cr>", {})
-vim.api.nvim_set_keymap('', '-',  "<cmd>lua require'ho:'.hint_lines()<cr>", {})
+vim.api.nvim_set_keymap('', '-',  "<cmd>lua require'hop:'.hint_lines()<cr>", {})
