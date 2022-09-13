@@ -8,9 +8,6 @@ Plug 'hrsh7th/cmp-cmdline'        " cmdline completions
 Plug 'saadparwaiz1/cmp_luasnip'   " snippet completions
 Plug 'hrsh7th/cmp-nvim-lsp'       " lsp completions
 
-" Auto unhighlight search
-Plug 'romainl/vim-cool'
-
 " Better argument highlighting
 Plug 'm-demare/hlargs.nvim'
 
@@ -23,8 +20,9 @@ Plug 'ghillb/cybu.nvim'
 " Better code navigation
 Plug 'tpope/vim-repeat'
 Plug 'phaazon/hop.nvim'
+Plug 'rlane/pounce.nvim'
 
-" Better comment keybind and QoL
+" Better comment
 Plug 'numToStr/Comment.nvim'
 Plug 'folke/todo-comments.nvim'
 
@@ -33,6 +31,9 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 " Better parentheses pairing
 Plug 'windwp/nvim-autopairs'
+
+" Better search
+Plug 'romainl/vim-cool'
 
 " Better scrolling
 Plug 'karb94/neoscroll.nvim'
@@ -53,11 +54,8 @@ Plug 'NvChad/nvim-colorizer.lua'
 " Colorscheme
 Plug 'sirutBuasai/molokai.nvim'
 Plug 'sirutBuasai/oxocarbon-lua.nvim'
-Plug 'marko-cerovac/material.nvim'
-Plug 'shaunsingh/moonlight.nvim'
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'catppuccin/nvim'
-Plug 'FrenzyExists/aquarium-vim'
 Plug 'tiagovla/tokyodark.nvim'
 
 " Errors diagnostics

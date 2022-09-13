@@ -8,19 +8,8 @@ syntax on
 " let g:catppuccin_flavour = "mocha"
 " colorscheme catppuccin
 
-" Material
-" let g:material_style = "darker"
-" colorscheme material
-
-" Moonlight
-" colorscheme moonlight
-
 " Onedark
 " colorscheme onedarkpro
-
-" Aquarium
-" let g:aquarium_style = "dark"
-" colorscheme aquarium
 
 " Tokyodark
 " colorscheme tokyodark
