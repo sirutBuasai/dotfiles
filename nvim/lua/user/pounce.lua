@@ -4,7 +4,7 @@ if not status_ok then
 end
 
 pounce.setup{
-  accept_keys = "FJKDLSAHGNUVRBYTMICEOXWPQZ",
+  accept_keys = "FJGHDKSLANUVRBYTMICEOXWPQZ",
   accept_best_key = "<enter>",
   multi_window = true,
   debug = false,
