@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local modes = { 'n' }
+
 gitsigns.setup {
   signs = {
     add          = { hl = "GitSignsAdd",    text = "▎",  numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn" },
@@ -47,10 +49,10 @@ gitsigns.setup {
   },
 }
 
-vim.api.nvim_set_keymap('n', ']h',         ':Gitsigns next_hunk<CR>',    { noremap = true })
-vim.api.nvim_set_keymap('n', '[h',         ':Gitsigns prev_hunk<CR>',    { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>gh', ':Gitsigns preview_hunk<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>sh', ':Gitsigns stage_hunk<CR>',   { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>sb', ':Gitsigns stage_buffer<CR>', { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>rh', ':Gitsigns reset_hunk<CR>',   { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>rb', ':Gitsigns reset_buffer<CR>', { noremap = true })
+vim.keymap.set(modes, ']h',         ':Gitsigns next_hunk<CR>',    { noremap = true })
+vim.keymap.set(modes, '[h',         ':Gitsigns prev_hunk<CR>',    { noremap = true })
+vim.keymap.set(modes, '<leader>gh', ':Gitsigns preview_hunk<CR>', { noremap = true })
+vim.keymap.set(modes, '<leader>sh', ':Gitsigns stage_hunk<CR>',   { noremap = true })
+vim.keymap.set(modes, '<leader>sb', ':Gitsigns stage_buffer<CR>', { noremap = true })
+vim.keymap.set(modes, '<leader>rh', ':Gitsigns reset_hunk<CR>',   { noremap = true })
+vim.keymap.set(modes, '<leader>rb', ':Gitsigns reset_buffer<CR>', { noremap = true })

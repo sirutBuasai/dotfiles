@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local modes = { 'n' }
+
 zen_mode.setup {
   window = {
     backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
@@ -42,4 +44,4 @@ zen_mode.setup {
   end,
 }
 
-vim.api.nvim_set_keymap("n", "<leader>z", "<cmd>ZenMode<cr>", { silent = true, noremap = true })
+vim.keymap.set(modes, '<leader>z', '<cmd>ZenMode<cr>', { silent = true, noremap = true })

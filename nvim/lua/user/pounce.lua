@@ -10,5 +10,7 @@ pounce.setup{
   debug = false,
 }
 
-vim.api.nvim_set_keymap('', 'f',  "<cmd>Pounce<cr>", {})
-vim.api.nvim_set_keymap('', 'F',  "<cmd>PounceRepeat<cr>", {})
+local modes = { 'n', 'x', 'o' }
+
+vim.keymap.set(modes, 'f',  "<cmd>Pounce<cr>", {})
+vim.keymap.set(modes, 'F',  "<cmd>PounceRepeat<cr>", {})

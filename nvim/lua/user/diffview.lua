@@ -7,6 +7,8 @@ local icons = require("user.icons")
 
 local actions = require("diffview.actions")
 
+local modes = { 'n' }
+
 diffview.setup({
   diff_binaries = false,    -- Show diffs for binaries
   enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
@@ -178,5 +180,5 @@ diffview.setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>do', ':DiffviewOpen<CR>',  { noremap = true })
-vim.api.nvim_set_keymap('n', '<leader>dc', ':DiffviewClose<CR>', { noremap = true })
+vim.keymap.set(modes, '<leader>do', ':DiffviewOpen<CR>',  { noremap = true })
+vim.keymap.set(modes, '<leader>dc', ':DiffviewClose<CR>', { noremap = true })

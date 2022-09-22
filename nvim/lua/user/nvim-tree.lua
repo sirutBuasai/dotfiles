@@ -12,6 +12,8 @@ local icons = require("user.icons")
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
+local modes = { 'n' }
+
 nvim_tree.setup({
   disable_netrw = true,
   hijack_netrw = true,
@@ -103,4 +105,4 @@ nvim_tree.setup({
   },
 })
 
-vim.api.nvim_set_keymap('n', '<leader>t', ':NvimTreeToggle<CR>', { noremap = true })
+vim.keymap.set(modes, '<leader>t', ':NvimTreeToggle<CR>', { noremap = true })
