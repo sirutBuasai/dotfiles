@@ -8,6 +8,9 @@ Plug 'hrsh7th/cmp-cmdline'        " cmdline completions
 Plug 'saadparwaiz1/cmp_luasnip'   " snippet completions
 Plug 'hrsh7th/cmp-nvim-lsp'       " lsp completions
 
+" Better annotation and docstring
+Plug 'danymat/neogen'
+
 " Better argument highlighting
 Plug 'm-demare/hlargs.nvim'
 
@@ -86,6 +89,9 @@ Plug 'williamboman/mason.nvim'
 Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'tamago324/nlsp-settings.nvim'
 Plug 'stevearc/aerial.nvim'
+
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
 " Remove trailing whitespace
 Plug 'mcauley-penney/tidy.nvim'
