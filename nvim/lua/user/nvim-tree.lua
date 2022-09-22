@@ -78,7 +78,6 @@ nvim_tree.setup({
   },
   view = {
     width = 35,
-    height = 30,
     side = "left",
     preserve_window_proportions = false,
     mappings = {
@@ -89,9 +88,7 @@ nvim_tree.setup({
         { key = "o", action = "close" },
         { key = "v", cb = tree_cb "vsplit" },
         { key = "h", cb = tree_cb "split" },
-        { key = "<leader>f", action = "live_filter" },
         { key = "f", action = ""},
-        { key = "<leader>F", action = "clear_live_filter" },
         { key = "F", action = ""},
       },
     },

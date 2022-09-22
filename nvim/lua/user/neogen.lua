@@ -14,6 +14,7 @@ neogen.setup {
   languages = {
     python = {
       template = {
+        -- annotation_convention = "numpydoc"
         annotation_convention = "google_docstrings"
       }
     },
@@ -28,7 +29,7 @@ neogen.setup {
   snippet_engine = "luasnip",
 
   -- -- Enables placeholders when inserting annotation
-  enable_placeholders = true,
+  -- enable_placeholders = true,
   --
   -- -- Placeholders used during annotation expansion
   placeholders_text = {
