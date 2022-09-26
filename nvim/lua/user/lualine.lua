@@ -10,11 +10,12 @@ local hide_in_width = function()
 end
 
 local colors = {
-  darkgray  = '#202328',
-  lightgray = '#BBC2CF',
-  green     = '#A6E22E',
-  lavender  = '#7070F0',
-  orange    = '#FD971F',
+  white      = '#FFFFFF',
+  darkgray   = '#202328',
+  lightgray  = '#BBC2CF',
+  lightgreen = '#A6E22E',
+  lavender   = '#7070F0',
+  orange     = '#FD971F',
 }
 
 local icon = {
@@ -26,22 +27,28 @@ local icon = {
 
 local filetype = {
   'filetype',
-  fmt = string.upper,
-  icons_enabled = true,
-  icon = nil,
-  color = { fg = colors.green, gui = 'bold' }
+  icon = {
+    align = 'reight'
+  },
+  icon_only = true,
 }
 
 local filename = {
   'filename',
-  color = { fg = colors.lightgray, gui = 'bold' }
+  path = 1,
+  color = { fg = colors.lightgray }
 }
 
 local diagnostics = {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
-  sections = { 'error', 'warn' },
-  symbols = { error = icons.diagnostics.Error, warn = icons.diagnostics.Warning},
+  sections = { 'error', 'warn', 'info', 'hint' },
+  symbols = {
+    error = icons.diagnostics.Error .. ' ',
+    warn = icons.diagnostics.Warning .. ' ',
+    info = icons.diagnostics.Info .. ' ',
+    hint = icons.diagnostics.Hint .. ' ',
+  },
   colored = true,
   update_in_insert = false,
   always_visible = true,
@@ -50,7 +57,11 @@ local diagnostics = {
 local diff = {
   'diff',
   colored = true,
-  symbols = { added = icons.git.Add, modified = icons.git.Mod, removed = icons.diagnostics.Remove},
+  symbols = {
+    added = icons.git.Add .. ' ',
+    modified = icons.git.Mod .. ' ',
+    removed = icons.git.Remove .. ' ',
+  },
   cond = hide_in_width
 }
 
@@ -58,7 +69,7 @@ local branch = {
   'branch',
   icons_enabled = true,
   icon = '',
-  color = { fg = colors.lightgray }
+  color = { fg = colors.lightgreen }
 }
 
 local lsp = {
@@ -78,7 +89,7 @@ local lsp = {
     return msg
   end,
   icon = '',
-  color = { fg = '#ffffff', gui = 'bold' }
+  color = { fg = colors.white, gui = 'bold' }
 }
 
 local location = {
@@ -90,13 +101,6 @@ local location = {
 local progress = {
   'progress',
   color = { fg = colors.orange, gui = 'bold' }
-}
-
-local encoding = {
-  'encoding',
-  fmt = string.upper,
-  icon = '',
-  color = { fg = colors.green, gui = 'bold' },
 }
 
 lualine.setup({
@@ -111,8 +115,8 @@ lualine.setup({
   sections = {
     lualine_a = { icon },
     lualine_b = {},
-    lualine_c = { filetype, filename, diagnostics },
-    lualine_x = { diff, branch, lsp, location, progress, encoding },
+    lualine_c = { branch, diff, filetype, filename },
+    lualine_x = { lsp, diagnostics, location, progress },
     lualine_y = { icon },
     lualine_z = {},
   },
