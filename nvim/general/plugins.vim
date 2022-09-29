@@ -109,7 +109,7 @@ Plug 'goolord/alpha-nvim'
 " Terminal emulator
 Plug 'akinsho/toggleterm.nvim'
 
-" UI and visual QOL
+" UI
 Plug 'stevearc/dressing.nvim'
 Plug 'winston0410/cmd-parser.nvim'
 Plug 'winston0410/range-highlight.nvim'

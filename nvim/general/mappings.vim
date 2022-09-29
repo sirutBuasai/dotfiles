@@ -35,10 +35,14 @@ nnoremap <leader>ss :set spell<CR>          " Enable spell checking
 nnoremap <leader>ns :set nospell<CR>        " Disable spell cheking
 
 " Lazy shift fingers
+:command QA qa                              " Allows QA to quit all
+:command Qa qa                              " Allows Qa to quit all
+:command Q q                                " Allows Q to quit
+:command WA wa                              " Allows WA to write all
+:command Wa wa                              " Allows Qa to write all
+:command W w                                " Allows W to write
 :command WQ wq                              " Allows WQ to write and quit
 :command Wq wq                              " Allows Wq to write and quit
-:command W w                                " Allows W to write
-:command Q q                                " Allows Q to quit
 
 " Window splitting
 nnoremap <leader>vs :vs<CR>                 " Split window vertically
