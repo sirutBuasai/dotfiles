@@ -16,9 +16,9 @@ plugins=(git colored-man-pages colorize pip python macos web-search sudo history
 
 # Source scripts
 source $ZSH/oh-my-zsh.sh
-source $HOME/.zsh_custom_config/function.sh
-source $HOME/.zsh_custom_config/alias.sh
-source $HOME/.zsh_custom_config/temp.sh
+source $HOME/.zsh_custom/function.sh
+source $HOME/.zsh_custom/alias.sh
+source $HOME/.zsh_custom/temp.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
