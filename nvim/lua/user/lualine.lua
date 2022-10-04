@@ -13,7 +13,6 @@ local colors = {
   white      = '#FFFFFF',
   darkgray   = '#202328',
   lightgray  = '#BBC2CF',
-  lightgreen = '#A6E22E',
   lavender   = '#7070F0',
   orange     = '#FD971F',
 }
@@ -36,7 +35,7 @@ local filetype = {
 local filename = {
   'filename',
   path = 1,
-  color = { fg = colors.lightgray }
+  color = { fg = colors.lightgray, gui='bold' }
 }
 
 local diagnostics = {
@@ -69,7 +68,7 @@ local branch = {
   'branch',
   icons_enabled = true,
   icon = '',
-  color = { fg = colors.lightgreen }
+  color = { fg = colors.orange }
 }
 
 local lsp = {
@@ -115,7 +114,7 @@ lualine.setup({
   sections = {
     lualine_a = { icon },
     lualine_b = {},
-    lualine_c = { branch, diff, filetype, filename },
+    lualine_c = { filetype, filename, branch, diff },
     lualine_x = { lsp, diagnostics, location, progress },
     lualine_y = { icon },
     lualine_z = {},
