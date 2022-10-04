@@ -55,7 +55,7 @@ Plug 'nvim-treesitter/nvim-treesitter-context'
 Plug 'NvChad/nvim-colorizer.lua'
 
 " Colorscheme
-Plug 'sirutBuasai/molokai.nvim'
+Plug 'sirutBuasai/molokai'
 Plug 'sirutBuasai/oxocarbon-lua.nvim'
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'catppuccin/nvim'

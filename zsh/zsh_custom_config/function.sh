@@ -13,7 +13,7 @@ function ol() {
 function oa() {
   if [[ ! -z "${1}" ]]; then
     input="${1}"
-    ## Add your applicaiton aliases here
+    ## Add your application aliases here
     declare -A app_map=( ['chrome']='google chrome'
                          ['outlook']='microsoft outlook'
                          ['tor']='tor browser'
