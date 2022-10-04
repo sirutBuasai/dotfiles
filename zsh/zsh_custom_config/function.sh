@@ -1,18 +1,22 @@
-## Open link start https:// prefix
+## Open link start https:// prefix -----------------------------------------------------------------
 function ol() {
   if [[ ! -z "${1}" ]]; then
     input="${1}"
+
     open 'https://'"${input}"
+
   else
     >&2 echo 'Error: No website given'
+
   fi
 }
 
 
-## Open application on the computer
+## Open application on the computer ----------------------------------------------------------------
 function oa() {
   if [[ ! -z "${1}" ]]; then
     input="${1}"
+
     ## Add your application aliases here
     declare -A app_map=( ['chrome']='google chrome'
                          ['outlook']='microsoft outlook'
@@ -28,22 +32,38 @@ function oa() {
 
   else
     >&2 echo 'Error: No application given'
+
   fi
 }
 
 
-## Open a set of default applications
+## Search on youtube -------------------------------------------------------------------------------
+function yt() {
+  if [[ ! -z "${*}" ]]; then
+    local IFS=+
+    input="${*}"
+    open 'http://www.youtube.com/results?search_query='"${input}"
+
+  else
+    open 'https://youtube.com'
+
+  fi
+}
+
+
+## Open a set of default applications --------------------------------------------------------------
 function startup() {
   # Add your default applications here
   default=('spotify' 'todoist' 'notion' 'outlook')
 
   for app in ${default}; do
     oa "${app}"
+
   done
 }
 
 
-## Fizzy find directory
+## Fizzy find directory ----------------------------------------------------------------------------
 function fd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
@@ -52,13 +72,13 @@ function fd() {
 }
 
 
-## Fuzzy find command history
+## Fuzzy find command history ----------------------------------------------------------------------
 function fh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
 
-## Update all dotfiles onto git repo
+## Update all dotfiles onto git repo ---------------------------------------------------------------
 function upd(){
   rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
   rsync -avh ~/.ssh/config ~/personal_dev/dotfiles/ssh/config --delete
@@ -70,13 +90,16 @@ function upd(){
 }
 
 
-## Make a directory and cd into the new directory
+## Make a directory and cd into the new directory --------------------------------------------------
 function mkcd() {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
+
   elif [ -d $1 ]; then
     echo "\`$1' already exists"
+
   else
     mkdir $1 && cd $1
+
   fi
 }

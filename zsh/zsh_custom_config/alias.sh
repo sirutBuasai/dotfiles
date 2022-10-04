@@ -14,6 +14,7 @@ alias vim='nvim'
 alias diff='git diff --no-index'
 
 # Git typos
+alias got='git'
 alias gir='git'
 alias gti='git'
 
@@ -26,6 +27,11 @@ alias py3test='python3 -m unittest'
 alias de='cd ~/Desktop'
 alias dl='cd ~/Downloads'
 alias p='cd ~/personal_dev'
+
+# One-off open links
+alias ghsb='open https://github.com/sirutBuasai'
+alias drive='open https://drive.google.com'
+alias canvas='open https://canvas.wpi.edu'
 
 # Others
 alias gg='google'
