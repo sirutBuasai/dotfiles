@@ -26,4 +26,4 @@ set splitbelow                  " Force split screen downwards
 set splitright                  " Force split screen rightwards
 set tabstop=2                   " Set tabs to 2 spaces
 set updatetime=250              " Faster autocompletion
-set timeoutlen=500              " Set timeoutlen for key mappings (default = 1000ms)
+set timeoutlen=400              " Set timeoutlen for key mappings (default = 1000ms)
