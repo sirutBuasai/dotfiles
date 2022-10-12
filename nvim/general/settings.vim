@@ -2,7 +2,7 @@ syntax enable                   " Enable Syntax highlighting
 set autoindent                  " Set auto indentation
 set backspace=indent,eol,start  " Allow backspace to work as normal
 set clipboard=unnamedplus       " Use global clipboard
-set cmdheight=0                 " Remove command height line
+set cmdheight=0                 " Set command height line height
 set conceallevel=0              " See `` in markdown
 set cursorline                  " Highlighting of the current line
 set encoding=utf-8              " Display encoding
