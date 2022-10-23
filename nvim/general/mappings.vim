@@ -46,9 +46,9 @@ nnoremap d<S-h> d^
 " dL to delete to end of line
 nnoremap d<S-l> d$
 " cH to change to start of line
-nnoremap c<S-h> d^
+nnoremap c<S-h> c^
 " cL to change to end of line
-nnoremap c<S-l> d$
+nnoremap c<S-l> c$
 
 " Window resizing ------------------------------------------
 " Resize up

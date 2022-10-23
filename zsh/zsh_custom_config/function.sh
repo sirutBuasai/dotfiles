@@ -64,7 +64,7 @@ function startup() {
 
 
 ## Fizzy find directory ----------------------------------------------------------------------------
-function fd() {
+function fzd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
@@ -73,7 +73,7 @@ function fd() {
 
 
 ## Fuzzy find command history ----------------------------------------------------------------------
-function fh() {
+function fzh() {
   eval $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 

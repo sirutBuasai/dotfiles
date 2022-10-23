@@ -13,6 +13,7 @@ Plug 'danymat/neogen'
 
 " Better argument highlighting
 Plug 'm-demare/hlargs.nvim'
+Plug 'RRethy/vim-illuminate'
 
 " Better buffer closing
 Plug 'moll/vim-bbye'
@@ -42,7 +43,7 @@ Plug 'romainl/vim-cool'
 Plug 'karb94/neoscroll.nvim'
 
 " Better quotation keybind
-Plug 'tpope/vim-surround'
+Plug 'kylechui/nvim-surround'
 
 " Bufferline
 Plug 'akinsho/bufferline.nvim', { 'tag': '*' }
