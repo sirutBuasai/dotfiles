@@ -27,11 +27,12 @@ source $HOME/.zsh_custom/temp.sh
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-export PATH="$(pyenv root)/shims:$PATH"
-export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.2/lib/python3.10/site-packages:$PYTHONPATH"
-export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.9.10/lib/python3.9/site-packages:$PYTHONPATH"
+export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.7/lib/python3.10/site-packages:$PYTHONPATH"
+export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.9.14/lib/python3.9/site-packages:$PYTHONPATH"
 export PYTHONPATH="/Users/sirutbuasai/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
 export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
 
-# Others
+# pyenv Initialization
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"

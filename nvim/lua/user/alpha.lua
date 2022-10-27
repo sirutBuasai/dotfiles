@@ -42,7 +42,8 @@ dashboard.section.buttons.val = {
   dashboard.button("e", "  New file", ":ene <BAR> startinsert <CR>"),
   dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
   dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
-  dashboard.button("c", "  Configuration", ":e ~/.config/nvim/ <CR>"),
+  dashboard.button("c", "  Neovim Configuration", ":e $HOME/.config/nvim/ <CR>"),
+  dashboard.button("z", "  Shell Configuration", ":e $HOME/.zshrc <CR>"),
   dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
 }
 
