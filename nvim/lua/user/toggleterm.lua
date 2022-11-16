@@ -38,6 +38,6 @@ toggleterm.setup({
 })
 
 vim.keymap.set("n", "<leader>sl", "<cmd>ToggleTermSendCurrentLine<CR>")
-vim.keymap.set("", "<C-\\>f", "<cmd>ToggleTerm direction=float<CR>")
-vim.keymap.set("", "<C-\\>h", "<cmd>ToggleTerm direction=horizontal<CR>")
-vim.keymap.set("", "<C-\\>v", "<cmd>ToggleTerm direction=vertical<CR>")
+vim.keymap.set("", "<leader>\\f", "<cmd>ToggleTerm direction=float<CR>")
+vim.keymap.set("", "<leader>\\h", "<cmd>ToggleTerm direction=horizontal<CR>")
+vim.keymap.set("", "<leader>\\v", "<cmd>ToggleTerm direction=vertical<CR>")

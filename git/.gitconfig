@@ -12,6 +12,8 @@
   b = branch
   cm = commit
   cmm = commit -m
+  ca = commit --amend --no-edit
+  cam = commit --amend -m
   cl = clone
   co = checkout
   dc = diff --cached
