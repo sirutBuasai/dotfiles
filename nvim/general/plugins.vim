@@ -39,9 +39,6 @@ Plug 'windwp/nvim-autopairs'
 " Better search
 Plug 'romainl/vim-cool'
 
-" Better scrolling
-Plug 'karb94/neoscroll.nvim'
-
 " Better quotation keybind
 Plug 'kylechui/nvim-surround'
 
