@@ -66,8 +66,8 @@ Plug 'tiagovla/tokyodark.nvim'
 Plug 'folke/trouble.nvim'
 
 " File explorer
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'nvim-tree/nvim-web-devicons'
+Plug 'nvim-tree/nvim-tree.lua'
 
 " Formatting and Linting
 Plug 'jose-elias-alvarez/null-ls.nvim'
