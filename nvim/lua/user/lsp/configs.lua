@@ -5,7 +5,7 @@ end
 
 local servers = {
   "jsonls",
-  "sumneko_lua",
+  "lua_ls",
   "pyright",
   "jdtls",
   "clangd",
