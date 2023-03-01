@@ -51,18 +51,6 @@ function yt() {
 }
 
 
-## Open a set of default applications --------------------------------------------------------------
-function startup() {
-  # Add your default applications here
-  default=('spotify' 'todoist' 'notion' 'outlook')
-
-  for app in ${default}; do
-    oa "${app}"
-
-  done
-}
-
-
 ## Fizzy find directory ----------------------------------------------------------------------------
 function fzd() {
   local dir
