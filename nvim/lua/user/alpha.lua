@@ -44,7 +44,8 @@ dashboard.section.buttons.val = {
   dashboard.button("t", "  Find text", ":Telescope live_grep <CR>"),
   dashboard.button("c", "  Neovim Configuration", ":e $HOME/.config/nvim/ <CR>"),
   dashboard.button("z", "  Shell Configuration", ":e $HOME/.zshrc <CR>"),
-  dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
+  dashboard.button("q", "蘒 Close Dashboard", ":q<CR>"),
+  dashboard.button("Q", "  Quit Neovim", ":qa<CR>"),
 }
 
 local function footer()

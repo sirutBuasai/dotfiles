@@ -46,7 +46,7 @@ cybu.setup {
       },
     },
   },
-  display_time = 1500,            -- time the cybu window is displayed
+  display_time = 500,            -- time the cybu window is displayed
 }
 
 vim.keymap.set("n", "<C-S-n>", "<Plug>(CybuLastusedNext)")
