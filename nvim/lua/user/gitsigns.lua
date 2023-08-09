@@ -5,14 +5,16 @@ end
 
 local modes = { 'n' }
 
+local icons = require("user.icons")
+
 gitsigns.setup {
   signs = {
-    untracked    = { hl = 'GitSignsAdd'   , text = "▎",  numhl = 'GitSignsAddNr'   , linehl = 'GitSignsAddLn'    },
-    add          = { hl = "GitSignsAdd",    text = "▎",  numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn" },
-    change       = { hl = "GitSignsChange", text = "▎",  numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-    delete       = { hl = 'GitSignsDelete', text = "契", numhl =' GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-    topdelete    = { hl = 'GitSignsDelete', text = "契", numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
-    changedelete = { hl = 'GitSignsChange', text = "~",  numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
+    untracked    = { hl = "GitSignsAdd"   , text = icons.ui.Separator,   numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn"    },
+    add          = { hl = "GitSignsAdd",    text = icons.ui.Separator,   numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn"    },
+    change       = { hl = "GitSignsChange", text = icons.ui.Separator,   numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+    delete       = { hl = "GitSignsDelete", text = icons.ui.FilledArrow, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    topdelete    = { hl = "GitSignsDelete", text = icons.ui.FilledArrow, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
+    changedelete = { hl = "GitSignsChange", text = icons.ui.Tilde,       numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
   numhl = false, -- Toggle with `:Gitsigns toggle_numhl`
@@ -50,10 +52,10 @@ gitsigns.setup {
   },
 }
 
-vim.keymap.set(modes, ']h',         ':Gitsigns next_hunk<CR>',    { noremap = true })
-vim.keymap.set(modes, '[h',         ':Gitsigns prev_hunk<CR>',    { noremap = true })
-vim.keymap.set(modes, '<leader>gh', ':Gitsigns preview_hunk<CR>', { noremap = true })
-vim.keymap.set(modes, '<leader>sh', ':Gitsigns stage_hunk<CR>',   { noremap = true })
-vim.keymap.set(modes, '<leader>sb', ':Gitsigns stage_buffer<CR>', { noremap = true })
-vim.keymap.set(modes, '<leader>rh', ':Gitsigns reset_hunk<CR>',   { noremap = true })
-vim.keymap.set(modes, '<leader>rb', ':Gitsigns reset_buffer<CR>', { noremap = true })
+vim.keymap.set(modes, "]h",         ":Gitsigns next_hunk<CR>",    { noremap = true })
+vim.keymap.set(modes, "[h",         ":Gitsigns prev_hunk<CR>",    { noremap = true })
+vim.keymap.set(modes, "<leader>gh", ":Gitsigns preview_hunk<CR>", { noremap = true })
+vim.keymap.set(modes, "<leader>sh", ":Gitsigns stage_hunk<CR>",   { noremap = true })
+vim.keymap.set(modes, "<leader>sb", ":Gitsigns stage_buffer<CR>", { noremap = true })
+vim.keymap.set(modes, "<leader>rh", ":Gitsigns reset_hunk<CR>",   { noremap = true })
+vim.keymap.set(modes, "<leader>rb", ":Gitsigns reset_buffer<CR>", { noremap = true })

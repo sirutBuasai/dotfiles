@@ -3,23 +3,25 @@ if not status_ok then
   return
 end
 
+local icons = require("user.icons")
+
 todo_comments.setup {
   signs = true, -- show icons in the signs column
   sign_priority = 8, -- sign priority
   -- keywords recognized as todo comments
   keywords = {
     FIX = {
-      icon = " ", -- icon used for the sign, and in search results
+      icon = icons.ui.Bug .. " ", -- icon used for the sign, and in search results
       color = "error", -- can be a hex color, or a named color (see below)
       alt = { "FIXME", "BUG", "FIXIT", "ISSUE", "ERROR" }, -- a set of other keywords that all map to this FIX keywords
       signs = true, -- configure signs for some keywords individually
     },
-    TODO = { icon = "", color = "info", signs = true },
-    HACK = { icon = "", color = "warning", signs = true },
-    WARN = { icon = "", color = "warning", alt = { "WARNING", "XXX" }, signs = true },
-    PERF = { icon = "", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" }, signs = true },
-    NOTE = { icon = "", color = "hint", alt = { "INFO" }, signs = true },
-    TEST = { icon = "ﭧ", color = "test", alt = { "TESTING", "PASSED", "FAILED" }, signs = true },
+    TODO = { icon = icons.ui.BoldCheck, color = "info", signs = true },
+    HACK = { icon = icons.ui.Fire, color = "warning", signs = true },
+    WARN = { icon = icons.diagnostics.FilledWarning, color = "warning", alt = { "WARNING", "XXX" }, signs = true },
+    PERF = { icon = icons.ui.ClockFast, alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" }, signs = true },
+    NOTE = { icon = icons.ui.Comment, color = "hint", alt = { "INFO" }, signs = true },
+    TEST = { icon = icons.ui.TestTube, color = "test", alt = { "TESTING", "PASSED", "FAILED" }, signs = true },
   },
   gui_style = {
     fg = "NONE", -- The gui style to use for the fg highlight group.

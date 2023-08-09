@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local icons = require("user.icons")
+
 colorizer.setup {
   filetypes = { "*" },
   user_default_options = {
@@ -16,7 +18,7 @@ colorizer.setup {
     css_fn   = false;        -- Enable all CSS *functions*: rgb_fn, hsl_fn
     -- Available modes for `mode`: foreground, background,  virtualtext
     mode = "background", -- Set the display mode.
-    virtualtext = "■",
+    virtualtext = icons.ui.Square,
   },
   -- all the sub-options of filetypes apply to buftypes
   buftypes = {},
