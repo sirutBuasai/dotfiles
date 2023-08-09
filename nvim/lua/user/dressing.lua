@@ -3,13 +3,15 @@ if not status_ok then
   return
 end
 
+local icons = require("user.icons")
+
 dressing.setup({
   input = {
     -- Set to false to disable the vim.ui.input implementation
     enabled = true,
 
     -- Default prompt string
-    default_prompt = " ",
+    default_prompt = icons.ui.Prompt .. " ",
 
     -- Can be 'left', 'right', or 'center'
     prompt_align = "left",

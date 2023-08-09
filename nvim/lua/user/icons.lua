@@ -82,6 +82,7 @@ return {
     ArrowClosed = "",
     ArrowOpen = "",
     FilledArrow = "󰐊",
+    EnterArrow = "",
     Lock = "󰍁",
     Circle = "",
     BigCircle = "",
@@ -121,6 +122,7 @@ return {
     Tilde = "~",
     TestTube = "󰙨",
     ClockFast = "󰅒",
+    Prompt = "",
   },
   diagnostics = {
     Error = "󰅚",

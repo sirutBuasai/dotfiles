@@ -5,12 +5,14 @@ end
 
 local modes = { 'n' }
 
+local icons = require("user.icons")
+
 -- Telescope setups
 telescope.setup({
   defaults = {
     layout_strategy = "vertical",
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = icons.ui.Telescope .. " ",
+    selection_caret = icons.ui.EnterArrow .. " ",
     path_display = { "smart" },
   },
   pickers = {
