@@ -1,3 +1,8 @@
+# Enable Kerb Forwarding
+Host git.amazon.com
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials yes
+
 Host *
   Compression yes
   #CompressionLevel 2

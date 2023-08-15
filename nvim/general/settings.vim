@@ -13,7 +13,7 @@ set formatoptions-=cro          " Disable comments continuation on new line
 set hidden                      " Required to keep multiple buffers open
 set iskeyword+=-                " Treat - separated word as a word object
 set laststatus=2                " Always display last status
-set mouse=a                     " Enable mouse withing vim
+set mouse=a                     " Enable mouse within vim
 set nowrap                      " Display long lines instead of one line
 set number                      " Display line numbers
 set numberwidth=3               " Set line number column width
