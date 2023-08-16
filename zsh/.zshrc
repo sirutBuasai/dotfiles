@@ -36,6 +36,3 @@ export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-export PATH=$PATH:/Users/sbuasai/.toolbox/bin
-source /Users/sbuasai/.brazil_completion/zsh_completion
