@@ -20,6 +20,7 @@ alias gti='git'
 
 # Language compilation
 alias cppc='c++ -std=c++11 -stdlib=libc++'
+alias py=python
 alias py3='python3'
 alias py3test='python3 -m unittest'
 
