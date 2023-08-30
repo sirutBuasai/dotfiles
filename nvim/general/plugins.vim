@@ -57,7 +57,7 @@ Plug 'NvChad/nvim-colorizer.lua'
 
 " Colorscheme
 Plug 'sirutBuasai/molokai'
-Plug 'sirutBuasai/oxocarbon-lua.nvim'
+Plug 'nyoom-engineering/oxocarbon.nvim'
 Plug 'olimorris/onedarkpro.nvim'
 Plug 'catppuccin/nvim'
 Plug 'tiagovla/tokyodark.nvim'
