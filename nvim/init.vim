@@ -1,7 +1,5 @@
 " User files setup
 source $HOME/.config/nvim/general/plugins.vim
-source $HOME/.config/nvim/general/mappings.vim
-lua require("user.autocommands")
 lua require("user.colorscheme")
 lua require("user.mappings")
 lua require("user.options")

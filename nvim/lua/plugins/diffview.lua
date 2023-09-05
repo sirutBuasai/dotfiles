@@ -94,7 +94,7 @@ diffview.setup({
       -- The `view` bindings are active in the diff buffers, only when the current
       -- tabpage is a Diffview.
       ["<tab>"]      = actions.select_next_entry,         -- Open the diff for the next file
-      ["<s-tab>"]    = actions.select_prev_entry,         -- Open the diff for the previous file
+      ["<S-tab>"]    = actions.select_prev_entry,         -- Open the diff for the previous file
       -- ["gf"]         = actions.goto_file,                 -- Open the file in a new split in the previous tabpage
       -- ["<C-w><C-f>"] = actions.goto_file_split,           -- Open the file in a new split
       ["gf"]         = actions.goto_file_tab,             -- Open the file in a new tabpage
@@ -185,3 +185,5 @@ diffview.setup({
 
 vim.keymap.set(modes, "<leader>do", ":DiffviewOpen<CR>",  { noremap = true })
 vim.keymap.set(modes, "<leader>dc", ":DiffviewClose<CR>", { noremap = true })
+
+vim.opt.fillchars:append({ diff = "/"})
