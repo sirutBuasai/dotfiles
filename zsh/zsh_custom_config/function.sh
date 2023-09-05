@@ -68,12 +68,41 @@ function fzh() {
 
 ## Update all dotfiles onto git repo ---------------------------------------------------------------
 function upd(){
-  rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
-  rsync -avh ~/.ssh/config ~/personal_dev/dotfiles/ssh/config --delete
-  rsync -avh ~/.p10k.zsh ~/personal_dev/dotfiles/zsh/.p10k.zsh --delete
-  rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
-  rsync -avh ~/.zsh_custom/ ~/personal_dev/dotfiles/zsh/zsh_custom_config/ --delete
-  rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
+  if [[ $# -gt 0 ]]; then
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        git) shift;
+          echo "Updating Git"
+          rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
+        ;;
+        ssh) shift;
+          echo "Updating Ssh"
+          rsync -avh ~/.ssh/config ~/personal_dev/dotfiles/ssh/config --delete
+        ;;
+        zsh) shift;
+          echo "Updating Zsh"
+          rsync -avh ~/.p10k.zsh ~/personal_dev/dotfiles/zsh/.p10k.zsh --delete
+          rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
+          rsync -avh ~/.zsh_custom/ ~/personal_dev/dotfiles/zsh/zsh_custom_config/ --delete
+        ;;
+        nvim) shift;
+          echo "Updating Nvim"
+          rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
+        ;;
+        *) shift;
+          echo "Invalid Update"
+        ;;
+      esac
+    done
+  else
+    echo "Updating All"
+    rsync -avh ~/.gitconfig ~/personal_dev/dotfiles/git/.gitconfig --delete
+    rsync -avh ~/.ssh/config ~/personal_dev/dotfiles/ssh/config --delete
+    rsync -avh ~/.p10k.zsh ~/personal_dev/dotfiles/zsh/.p10k.zsh --delete
+    rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
+    rsync -avh ~/.zsh_custom/ ~/personal_dev/dotfiles/zsh/zsh_custom_config/ --delete
+    rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
+  fi
   cd ~/personal_dev/dotfiles/
 }
 
