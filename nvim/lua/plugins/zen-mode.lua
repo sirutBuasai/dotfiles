@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local modes = { 'n' }
+local modes = { "n" }
 
 zen_mode.setup {
   window = {
@@ -37,11 +37,11 @@ zen_mode.setup {
     },
   },
   -- callback where you can add custom code when the Zen window opens
-  on_open = function(win)
+  on_open = function()
   end,
   -- callback where you can add custom code when the Zen window closes
   on_close = function()
   end,
 }
 
-vim.keymap.set(modes, '<leader>z', '<cmd>ZenMode<cr>', { silent = true, noremap = true })
+vim.keymap.set(modes, "<leader>z", "<cmd>ZenMode<cr>", { silent = true, noremap = true })

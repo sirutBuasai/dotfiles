@@ -10,43 +10,43 @@ local hide_in_width = function()
 end
 
 local colors = {
-  white      = '#FFFFFF',
-  darkgray   = '#202328',
-  lightgray  = '#BBC2CF',
-  lavender   = '#7070F0',
-  orange     = '#FD971F',
+  white      = "#FFFFFF",
+  darkgray   = "#202328",
+  lightgray  = "#BBC2CF",
+  lavender   = "#7070F0",
+  orange     = "#FD971F",
 }
 
-local icon = {
+local separator = {
   function()
-    return '▊'
+    return icons.ui.ThickSeparator
   end,
   padding = { left = 0, right = 1 },
 }
 
 local filetype = {
-  'filetype',
+  "filetype",
   icon = {
-    align = 'reight'
+    align = "right"
   },
   icon_only = true,
 }
 
 local filename = {
-  'filename',
+  "filename",
   path = 1,
-  color = { fg = colors.lightgray, gui='bold' }
+  color = { fg = colors.lightgray, gui="bold" }
 }
 
 local diagnostics = {
-  'diagnostics',
-  sources = { 'nvim_diagnostic' },
-  sections = { 'error', 'warn', 'info', 'hint' },
+  "diagnostics",
+  sources = { "nvim_diagnostic" },
+  sections = { "error", "warn", "info", "hint" },
   symbols = {
-    error = icons.diagnostics.Error .. ' ',
-    warn = icons.diagnostics.Warning .. ' ',
-    info = icons.diagnostics.Info .. ' ',
-    hint = icons.diagnostics.Hint .. ' ',
+    error = icons.diagnostics.Error .. " ",
+    warn = icons.diagnostics.Warning .. " ",
+    info = icons.diagnostics.Info .. " ",
+    hint = icons.diagnostics.Hint .. " ",
   },
   colored = true,
   update_in_insert = false,
@@ -54,27 +54,27 @@ local diagnostics = {
 }
 
 local diff = {
-  'diff',
+  "diff",
   colored = true,
   symbols = {
-    added = icons.git.Add .. ' ',
-    modified = icons.git.Mod .. ' ',
-    removed = icons.git.Remove .. ' ',
+    added = icons.git.Add .. " ",
+    modified = icons.git.Mod .. " ",
+    removed = icons.git.Remove .. " ",
   },
   cond = hide_in_width
 }
 
 local branch = {
-  'branch',
+  "branch",
   icons_enabled = true,
-  icon = '',
+  icon = icons.git.Branch,
   color = { fg = colors.orange }
 }
 
 local lsp = {
  function()
-    local msg = 'no active lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local msg = "no active lsp"
+    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
       return msg
@@ -87,36 +87,36 @@ local lsp = {
     end
     return msg
   end,
-  icon = '',
-  color = { fg = colors.white, gui = 'bold' }
+  icon = icons.ui.Comment,
+  color = { fg = colors.white, gui = "bold" }
 }
 
 local location = {
-  'location',
+  "location",
   padding = { left = 0, right = 1 },
-  color = { fg = colors.lavender, gui = 'bold' }
+  color = { fg = colors.lavender, gui = "bold" }
 }
 
 local progress = {
-  'progress',
-  color = { fg = colors.orange, gui = 'bold' }
+  "progress",
+  color = { fg = colors.orange, gui = "bold" }
 }
 
 lualine.setup({
   options = {
     icons_enabled = true,
     theme = "molokai",
-    component_separators = { left = '', right = ''},
-    section_separators = { left = '', right = '' },
-    disabled_filetypes = { 'dashboard', 'NvimTree', 'Outline' },
+    component_separators = { left = "", right = ""},
+    section_separators = { left = "", right = "" },
+    disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
     always_divide_middle = true,
   },
   sections = {
-    lualine_a = { icon },
+    lualine_a = { separator },
     lualine_b = {},
     lualine_c = { filetype, filename, branch, diff },
     lualine_x = { lsp, diagnostics, location, progress },
-    lualine_y = { icon },
+    lualine_y = { separator },
     lualine_z = {},
   },
   inactive_sections = {

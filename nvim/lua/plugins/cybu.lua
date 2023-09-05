@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local modes = { "n" }
+
 cybu.setup {
   position = {
     relative_to = "editor",       -- win, editor, cursor
@@ -49,7 +51,7 @@ cybu.setup {
   display_time = 500,            -- time the cybu window is displayed
 }
 
-vim.keymap.set("n", "<C-S-n>", "<Plug>(CybuLastusedNext)")
-vim.keymap.set("n", "<C-S-b>", "<Plug>(CybuLastusedPrev)")
-vim.keymap.set("n", "<C-n>", "<Plug>(CybuNext)")
-vim.keymap.set("n", "<C-b>", "<Plug>(CybuPrev)")
+vim.keymap.set(modes, "<C-S-n>", "<Plug>(CybuLastusedNext)")
+vim.keymap.set(modes, "<C-S-b>", "<Plug>(CybuLastusedPrev)")
+vim.keymap.set(modes, "<C-n>", "<Plug>(CybuNext)")
+vim.keymap.set(modes, "<C-b>", "<Plug>(CybuPrev)")

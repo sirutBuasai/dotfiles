@@ -6,24 +6,24 @@ end
 treesitter_context.setup {
     enable = true,
     max_lines = 0,
-    trim_scope = 'outer',
+    trim_scope = "outer",
     patterns = {
         default = {
-            'class',
-            'function',
-            'method',
-            -- 'for',
-            -- 'while',
-            -- 'if',
-            -- 'switch',
-            -- 'case',
+            "class",
+            "function",
+            "method",
+            -- "for",
+            -- "while",
+            -- "if",
+            -- "switch",
+            -- "case",
         },
         --   rust = {
-        --       'impl_item',
+        --       "impl_item",
         --   },
     },
     -- [!] The options below are exposed but shouldn't require your attention,
     --     you can safely ignore them.
     zindex = 20,
-    mode = 'cursor',
+    mode = "cursor",
 }

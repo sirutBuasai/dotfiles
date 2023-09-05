@@ -77,6 +77,7 @@ return {
     Diff = "",
     Repo = "",
     Octoface = "",
+    Branch = "",
   },
   ui = {
     ArrowClosed = "",
@@ -119,6 +120,7 @@ return {
     TruncLeft = "",
     TruncRight = "",
     Separator = "▎",
+    ThickSeparator = "▊",
     Tilde = "~",
     TestTube = "󰙨",
     ClockFast = "󰅒",

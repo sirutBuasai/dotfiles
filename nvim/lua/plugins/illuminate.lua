@@ -5,9 +5,9 @@ end
 
 illuminate.configure({
     providers = {
-        'lsp',
-        'treesitter',
-        'regex',
+        "lsp",
+        "treesitter",
+        "regex",
     },
     delay = 100,
     filetype_overrides = {},

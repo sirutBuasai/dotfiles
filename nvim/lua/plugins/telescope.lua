@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local modes = { 'n' }
+local modes = { "n" }
 
 local icons = require("user.icons")
 
@@ -40,12 +40,12 @@ telescope.setup({
 })
 
 -- Load telescope extensions
-telescope.load_extension('fzf')
+telescope.load_extension("fzf")
 telescope.load_extension("aerial")
 
 -- Telescope keybindings
-vim.keymap.set(modes, '<leader>ff', ':Telescope find_files<CR>',                                { noremap = true })
-vim.keymap.set(modes, '<leader>fb', ':Telescope buffers<CR>',                                   { noremap = true })
-vim.keymap.set(modes, '<leader>f/', ':Telescope current_buffer_fuzzy_find previewer=false<CR>', { noremap = true })
-vim.keymap.set(modes, '<leader>fg', ':Telescope live_grep<CR>',                                 { noremap = true })
-vim.keymap.set(modes, '<leader>fa', ':Telescope aerial<CR>',                                    { noremap = true })
+vim.keymap.set(modes, "<leader>ff", ":Telescope find_files<CR>",                                { noremap = true })
+vim.keymap.set(modes, "<leader>fb", ":Telescope buffers<CR>",                                   { noremap = true })
+vim.keymap.set(modes, "<leader>f/", ":Telescope current_buffer_fuzzy_find previewer=false<CR>", { noremap = true })
+vim.keymap.set(modes, "<leader>fg", ":Telescope live_grep<CR>",                                 { noremap = true })
+vim.keymap.set(modes, "<leader>fa", ":Telescope aerial<CR>",                                    { noremap = true })

@@ -3,6 +3,8 @@ if not status_ok then
   return
 end
 
+local modes = { "n" }
+
 toggleterm.setup({
   -- open_mapping = [[<leader>\]],
   open_mapping = [[<C-\>]],
@@ -37,7 +39,7 @@ toggleterm.setup({
   },
 })
 
-vim.keymap.set("n", "<leader>sl", "<cmd>ToggleTermSendCurrentLine<CR>")
+vim.keymap.set(modes, "<leader>sl", "<cmd>ToggleTermSendCurrentLine<CR>")
 vim.keymap.set("", "<leader>\\f", "<cmd>ToggleTerm direction=float<CR>")
 vim.keymap.set("", "<leader>\\h", "<cmd>ToggleTerm direction=horizontal<CR>")
 vim.keymap.set("", "<leader>\\v", "<cmd>ToggleTerm direction=vertical<CR>")

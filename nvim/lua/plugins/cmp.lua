@@ -17,7 +17,6 @@ end
 
 local icons = require("user.icons")
 
---   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = icons.kind.Text,
   Method = icons.kind.Method,
@@ -103,7 +102,7 @@ cmp.setup {
     format = function(entry, vim_item)
       -- Kind icons
       -- vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
       vim_item.menu = ({
         nvim_lsp = "[LSP]",
         luasnip = "[Snippet]",
@@ -135,4 +134,10 @@ cmp.setup {
 }
 
 -- autoclose quickfix once a field is selected
-vim.cmd [[ autocmd FileType qf nnoremap <buffer> <CR> <CR>:cclose<CR> ]]
+vim.api.nvim_create_autocmd(
+  "FileType",
+  {
+    pattern = { "qf" },
+    command = [[ nnoremap <buffer> <CR> <CR>:cclose<CR> ]]
+  }
+)

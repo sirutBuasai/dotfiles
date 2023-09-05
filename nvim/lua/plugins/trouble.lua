@@ -5,9 +5,7 @@ end
 
 local icons = require("user.icons")
 
-local opts = { silent = true, noremap = true }
-
-local modes = { 'n' }
+local modes = { "n" }
 
 trouble.setup {
     position = "bottom", -- position of the list can be: bottom, top, left, right
@@ -57,7 +55,7 @@ trouble.setup {
     use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
 }
 
-vim.keymap.set(modes, '<leader>xx', '<cmd>TroubleToggle<cr>',                 opts)
-vim.keymap.set(modes, '<leader>xw', '<cmd>Trouble workspace_diagnostics<cr>', opts)
-vim.keymap.set(modes, '<leader>xd', '<cmd>Trouble document_diagnostics<cr>',  opts)
-vim.keymap.set(modes, 'gR',         '<cmd>Trouble lsp_references<cr>',        opts)
+vim.keymap.set(modes, "<leader>xx", "<cmd>TroubleToggle<cr>",                 { silent = true, noremap = true })
+vim.keymap.set(modes, "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", { silent = true, noremap = true })
+vim.keymap.set(modes, "<leader>xd", "<cmd>Trouble document_diagnostics<cr>",  { silent = true, noremap = true })
+vim.keymap.set(modes, "gR",         "<cmd>Trouble lsp_references<cr>",        { silent = true, noremap = true })

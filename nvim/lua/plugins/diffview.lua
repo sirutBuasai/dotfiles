@@ -7,11 +7,11 @@ local icons = require("user.icons")
 
 local actions = require("diffview.actions")
 
-local modes = { 'n' }
+local modes = { "n" }
 
 diffview.setup({
   diff_binaries = false,    -- Show diffs for binaries
-  enhanced_diff_hl = true, -- See ':h diffview-config-enhanced_diff_hl'
+  enhanced_diff_hl = true, -- See ":h diffview-config-enhanced_diff_hl"
   git_cmd = { "git" },      -- The git executable followed by default args.
   use_icons = true,         -- Requires nvim-web-devicons
   icons = {                 -- Only applies when use_icons is true.
@@ -26,14 +26,14 @@ diffview.setup({
   view = {
     -- Configure the layout and behavior of different types of views.
     -- Available layouts:
-    --  'diff1_plain'
-    --    |'diff2_horizontal'
-    --    |'diff2_vertical'
-    --    |'diff3_horizontal'
-    --    |'diff3_vertical'
-    --    |'diff3_mixed'
-    --    |'diff4_mixed'
-    -- For more info, see ':h diffview-config-view.x.layout'.
+    --  "diff1_plain"
+    --    |"diff2_horizontal"
+    --    |"diff2_vertical"
+    --    |"diff3_horizontal"
+    --    |"diff3_vertical"
+    --    |"diff3_mixed"
+    --    |"diff4_mixed"
+    -- For more info, see ":h diffview-config-view.x.layout".
     default = {
       -- Config for changed files, and staged files in diff views.
       layout = "diff2_horizontal",
@@ -49,12 +49,12 @@ diffview.setup({
     },
   },
   file_panel = {
-    listing_style = "tree",             -- One of 'list' or 'tree'
-    tree_options = {                    -- Only applies when listing_style is 'tree'
+    listing_style = "tree",             -- One of "list" or "tree"
+    tree_options = {                    -- Only applies when listing_style is "tree"
       flatten_dirs = true,              -- Flatten dirs that only contain one single dir
-      folder_statuses = "only_folded",  -- One of 'never', 'only_folded' or 'always'.
+      folder_statuses = "only_folded",  -- One of "never", "only_folded" or "always".
     },
-    win_config = {                      -- See ':h diffview-config-win_config'
+    win_config = {                      -- See ":h diffview-config-win_config"
       position = "left",
       width = 35,
       win_opts = {}
@@ -72,14 +72,14 @@ diffview.setup({
         },
       },
     },
-    win_config = {    -- See ':h diffview-config-win_config'
+    win_config = {    -- See ":h diffview-config-win_config"
       position = "bottom",
       height = 16,
       win_opts = {}
     },
   },
   commit_log_panel = {
-    win_config = {   -- See ':h diffview-config-win_config'
+    win_config = {   -- See ":h diffview-config-win_config"
       win_opts = {},
     }
   },
@@ -87,7 +87,7 @@ diffview.setup({
     DiffviewOpen = {},
     DiffviewFileHistory = {},
   },
-  hooks = {},         -- See ':h diffview-config-hooks'
+  hooks = {},         -- See ":h diffview-config-hooks"
   keymaps = {
     disable_defaults = false, -- Disable the default keymaps
     view = {
@@ -143,7 +143,7 @@ diffview.setup({
       -- ["gf"]            = actions.goto_file,
       -- ["<C-w><C-f>"]    = actions.goto_file_split,
       ["gf"]            = actions.goto_file_tab,
-      ["i"]             = actions.listing_style,        -- Toggle between 'list' and 'tree' views
+      ["i"]             = actions.listing_style,        -- Toggle between "list" and "tree" views
       ["f"]             = actions.toggle_flatten_dirs,  -- Flatten empty subdirectories in tree listing style.
       ["<leader>e"]     = actions.focus_files,
       ["<leader>b"]     = actions.toggle_files,
@@ -183,5 +183,5 @@ diffview.setup({
   },
 })
 
-vim.keymap.set(modes, '<leader>do', ':DiffviewOpen<CR>',  { noremap = true })
-vim.keymap.set(modes, '<leader>dc', ':DiffviewClose<CR>', { noremap = true })
+vim.keymap.set(modes, "<leader>do", ":DiffviewOpen<CR>",  { noremap = true })
+vim.keymap.set(modes, "<leader>dc", ":DiffviewClose<CR>", { noremap = true })

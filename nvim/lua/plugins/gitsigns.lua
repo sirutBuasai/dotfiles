@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local modes = { 'n' }
+local modes = { "n" }
 
 local icons = require("user.icons")
 
@@ -28,7 +28,7 @@ gitsigns.setup {
   current_line_blame = false, -- Toggle with `:Gitsigns toggle_current_line_blame`
   current_line_blame_opts = {
     virt_text = true,
-    virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+    virt_text_pos = "eol", -- "eol" | "overlay" | "right_align"
     delay = 1000,
     ignore_whitespace = false,
   },

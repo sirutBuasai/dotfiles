@@ -5,8 +5,8 @@ end
 
 hlargs.setup {
   color = "#B2B9D7",
-  -- color = '#FFCE78',
-  -- color = '#F6955B',
+  -- color = "#FFCE78",
+  -- color = "#F6955B",
   highlight = {},
   excluded_filetypes = {},
   paint_arg_declarations = true,
@@ -19,8 +19,8 @@ hlargs.setup {
   excluded_argnames = {
     declarations = {},
     usages = {
-      python = { 'self', 'cls' },
-      lua = { 'self' }
+      python = { "self", "cls" },
+      lua = { "self" }
     }
   },
   performance = {

@@ -13,7 +13,7 @@ dressing.setup({
     -- Default prompt string
     default_prompt = icons.ui.Prompt .. " ",
 
-    -- Can be 'left', 'right', or 'center'
+    -- Can be "left", "right", or "center"
     prompt_align = "left",
 
     -- When true, <Esc> will close the modal
@@ -21,7 +21,7 @@ dressing.setup({
 
     -- These are passed to nvim_open_win
     border = "rounded",
-    -- 'editor' and 'win' will default to being centered
+    -- "editor" and "win" will default to being centered
     relative = "cursor",
 
     -- These can be integers or a float between 0 and 1 (e.g. 0.4 for 40%)
@@ -54,7 +54,7 @@ dressing.setup({
 
     -- Options for telescope selector
     -- These are passed into the telescope picker directly. Can be used like:
-    -- telescope = require('telescope.themes').get_ivy({...})
+    -- telescope = require("telescope.themes").get_ivy({...})
     telescope = nil,
 
     -- Options for fzf selector
@@ -89,7 +89,7 @@ dressing.setup({
     builtin = {
       -- These are passed to nvim_open_win
       border = "rounded",
-      -- 'editor' and 'win' will default to being centered
+      -- "editor" and "win" will default to being centered
       relative = "editor",
 
       win_options = {

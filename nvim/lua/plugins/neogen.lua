@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local modes = { 'n' }
+local modes = { "n" }
 
 neogen.setup {
   -- Enables Neogen capabilities
@@ -52,4 +52,4 @@ neogen.setup {
   -- placeholders_hl = "None",
 }
 
-vim.keymap.set(modes, '<leader>an',  "<cmd>Neogen<cr>", {})
+vim.keymap.set(modes, "<leader>an",  "<cmd>Neogen<cr>", {})
