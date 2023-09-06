@@ -101,7 +101,7 @@ function upd(){
     rsync -avh ~/.p10k.zsh ~/personal_dev/dotfiles/zsh/.p10k.zsh --delete
     rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
     rsync -avh ~/.zsh_custom/ ~/personal_dev/dotfiles/zsh/zsh_custom_config/ --delete
-    rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
+    rsync -avh ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
   fi
   cd ~/personal_dev/dotfiles/
 }

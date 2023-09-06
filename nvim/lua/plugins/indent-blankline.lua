@@ -4,8 +4,8 @@ if not status_ok then
 end
 
 vim.opt.list = true
--- vim.opt.listchars = "eol:¬"
 vim.opt.listchars = ""
+-- vim.opt.listchars = "eol:¬"
 
 indent_blankline.setup {
   buftype_exclude = {

@@ -1,8 +1,8 @@
 " User files setup
-source $HOME/.config/nvim/general/plugins.vim
+lua require("user.plugin")
 lua require("user.colorscheme")
-lua require("user.mappings")
 lua require("user.options")
+lua require("user.mappings")
 " Lua plugins
 lua require("impatient")
 lua require("plugins.lsp")
