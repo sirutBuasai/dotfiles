@@ -14,6 +14,7 @@ local options = {
   hlsearch = true,                          -- Highlight all matches on previous search pattern
   ignorecase = true,                        -- Ignore case in search patterns
   laststatus = 2,                           -- Always display last status
+  modifiable = true,                        -- Set buffer modifible
   mouse = "a",                              -- Allow the mouse to be used in neovim
   number = true,                            -- Set numbered lines
   numberwidth = 3,                          -- Set number column width to 3 {default 4}

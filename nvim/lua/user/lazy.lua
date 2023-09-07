@@ -32,12 +32,8 @@ local plugins = {
   -- Better annotation and docstring
   { "danymat/neogen",                           lazy = true },
 
-  -- Better argument highlighting
-  { "m-demare/hlargs.nvim",                     lazy = false },
-  { "RRethy/vim-illuminate",                    lazy = false },
-
   -- Better buffer closing
-  { "moll/vim-bbye",                            lazy = true },
+  { "moll/vim-bbye",                            lazy = false },
 
   -- Better buffer switching
   { "ghillb/cybu.nvim",                         lazy = true },
@@ -55,6 +51,17 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
+  -- Better highlighting
+  { "m-demare/hlargs.nvim",                     lazy = false },
+  { "RRethy/vim-illuminate",                    lazy = false },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate"
+  },
+  { "nvim-treesitter/nvim-treesitter-context",  lazy = false },
+  { "tzachar/highlight-undo.nvim",              lazy = false},
+
   -- Better indentation marker
   { "lukas-reineke/indent-blankline.nvim",      lazy = true },
 
@@ -65,7 +72,7 @@ local plugins = {
   },
 
   -- Better search
-  { "romainl/vim-cool",                         lazy = true },
+  { "romainl/vim-cool",                         lazy = false },
 
   -- Better scrolling
   { "karb94/neoscroll.nvim",                    lazy = true },
@@ -81,16 +88,8 @@ local plugins = {
     dependencies = "nvim-tree/nvim-web-devicons"
   },
 
-  -- Code interface highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate"
-  },
-  { "nvim-treesitter/nvim-treesitter-context",  lazy = false },
-
   -- Coloring gui
-  { "NvChad/nvim-colorizer.lua",                lazy = false },
+  { "NvChad/nvim-colorizer.lua",                lazy = true },
 
   -- Colorscheme
   { "sirutBuasai/molokai",                      lazy = true },
