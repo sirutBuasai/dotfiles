@@ -56,7 +56,7 @@ local plugins = {
   },
 
   -- Better indentation marker
-  { "lukas-reineke/indent-blankline.nvim",      lazy = true },
+  { "lukas-reineke/indent-blankline.nvim",      lazy = false },
 
   -- Better parentheses pairing
   {
@@ -65,7 +65,7 @@ local plugins = {
   },
 
   -- Better search
-  { "romainl/vim-cool",                         lazy = true },
+  { "romainl/vim-cool",                         lazy = false },
 
   -- Better scrolling
   { "karb94/neoscroll.nvim",                    lazy = true },
@@ -115,11 +115,11 @@ local plugins = {
   },
 
   -- File explorer
-  { "nvim-tree/nvim-web-devicons",              lazy = true },
+  { "nvim-tree/nvim-web-devicons",              lazy = false },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    lazy = false,
+    lazy = true,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
@@ -144,7 +144,7 @@ local plugins = {
   },
 
   -- Git integration
-  { "lewis6991/gitsigns.nvim",                  lazy = true },
+  { "lewis6991/gitsigns.nvim",                  lazy = false },
   { "sindrets/diffview.nvim",                   lazy = true },
 
   -- LSP
@@ -157,7 +157,6 @@ local plugins = {
   -- Markdown
   {
     "ellisonleao/glow.nvim",
-    lazy = true,
     cmd = "Glow"
   },
 
@@ -196,10 +195,9 @@ local plugins = {
   },
 
   -- UI
-  { "stevearc/dressing.nvim",                   lazy = true },
+  { "stevearc/dressing.nvim",                   lazy = false },
   {
     "winston0410/range-highlight.nvim",
-    lazy = true,
     dependencies = { "winston0410/cmd-parser.nvim" }
   },
   { "winston0410/cmd-parser.nvim",              lazy = true },
