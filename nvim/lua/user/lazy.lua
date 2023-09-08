@@ -63,7 +63,7 @@ local plugins = {
   { "tzachar/highlight-undo.nvim",              lazy = false},
 
   -- Better indentation marker
-  { "lukas-reineke/indent-blankline.nvim",      lazy = true },
+  { "lukas-reineke/indent-blankline.nvim",      lazy = false },
 
   -- Better parentheses pairing
   {
@@ -89,7 +89,7 @@ local plugins = {
   },
 
   -- Coloring gui
-  { "NvChad/nvim-colorizer.lua",                lazy = true },
+  { "NvChad/nvim-colorizer.lua",                lazy = false },
 
   -- Colorscheme
   { "sirutBuasai/molokai",                      lazy = true },
@@ -114,7 +114,7 @@ local plugins = {
   },
 
   -- File explorer
-  { "nvim-tree/nvim-web-devicons",              lazy = true },
+  { "nvim-tree/nvim-web-devicons",              lazy = false },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -143,7 +143,7 @@ local plugins = {
   },
 
   -- Git integration
-  { "lewis6991/gitsigns.nvim",                  lazy = true },
+  { "lewis6991/gitsigns.nvim",                  lazy = false },
   { "sindrets/diffview.nvim",                   lazy = true },
 
   -- LSP
@@ -156,10 +156,8 @@ local plugins = {
   -- Markdown
   {
     "ellisonleao/glow.nvim",
-    lazy = true,
     cmd = "Glow"
   },
-
 
   -- Remove trailing whitespace
   { "mcauley-penney/tidy.nvim",                 lazy = true },
@@ -195,7 +193,7 @@ local plugins = {
   },
 
   -- UI
-  { "stevearc/dressing.nvim",                   lazy = true },
+  { "stevearc/dressing.nvim",                   lazy = false },
   {
     "winston0410/range-highlight.nvim",
     lazy = true,
