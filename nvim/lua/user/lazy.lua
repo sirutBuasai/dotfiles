@@ -139,6 +139,7 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
+    lazy = true,
     build = "make"
   },
 
@@ -196,7 +197,7 @@ local plugins = {
   { "stevearc/dressing.nvim",                   lazy = false },
   {
     "winston0410/range-highlight.nvim",
-    lazy = true,
+    lazy = false,
     dependencies = { "winston0410/cmd-parser.nvim" }
   },
   { "winston0410/cmd-parser.nvim",              lazy = true },
