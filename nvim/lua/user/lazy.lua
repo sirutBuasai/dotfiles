@@ -55,6 +55,17 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
+  -- Better highlighting
+  { "m-demare/hlargs.nvim",                     lazy = false },
+  { "RRethy/vim-illuminate",                    lazy = false },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate"
+  },
+  { "nvim-treesitter/nvim-treesitter-context",  lazy = false },
+  { "tzachar/highlight-undo.nvim",              lazy = false},
+
   -- Better indentation marker
   { "lukas-reineke/indent-blankline.nvim",      lazy = false },
 
@@ -80,14 +91,6 @@ local plugins = {
     version = "*",
     dependencies = "nvim-tree/nvim-web-devicons"
   },
-
-  -- Code interface highlighting
-  {
-    "nvim-treesitter/nvim-treesitter",
-    lazy = false,
-    build = ":TSUpdate"
-  },
-  { "nvim-treesitter/nvim-treesitter-context",  lazy = false },
 
   -- Coloring gui
   { "NvChad/nvim-colorizer.lua",                lazy = false },
@@ -119,7 +122,7 @@ local plugins = {
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
-    lazy = true,
+    lazy = false,
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 

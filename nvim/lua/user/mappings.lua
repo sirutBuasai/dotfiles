@@ -2,6 +2,7 @@
 local n = { "n" }
 local t = { "t" }
 local v = { "v" }
+local nv = { "n", "v" }
 local noremap = { noremap = true }
 
 -- Set leader key
@@ -38,13 +39,9 @@ vim.keymap.set(t, "<esc>", "<C-\\><C-n>", noremap)
 
 -- Line navigation ------------------------------------------
 -- H to move to start of line
-vim.keymap.set(n, "<S-h>", "^", noremap)
+vim.keymap.set(nv, "<S-h>", "^", noremap)
 -- L to move to end of line
-vim.keymap.set(n, "<S-l>", "$", noremap)
--- H to move to start of line
-vim.keymap.set(v, "<S-h>", "^", noremap)
--- L to move to end of line
-vim.keymap.set(v, "<S-l>", "$", noremap)
+vim.keymap.set(nv, "<S-l>", "$", noremap)
 
 -- Extend custom line navigation ----------------------------
 -- dH to delete to start of line
@@ -107,3 +104,10 @@ vim.keymap.set(n, "\\", "ggVG")
 
 -- Remove command history -----------------------------------
 vim.keymap.set(n, "q:", "<nop>", noremap)
+
+-- Delete and paste text without yanking --------------------
+-- Delete without yanking
+vim.keymap.set(n, "<leader>dd", "\"_dd", noremap)
+vim.keymap.set(v, "<leader>d", "\"_d", noremap)
+-- Replace currently selected text without yanking
+vim.keymap.set(v, "<leader>p", "\"_dp", noremap)

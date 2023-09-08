@@ -14,8 +14,17 @@ telescope.setup({
     prompt_prefix = icons.ui.Telescope .. " ",
     selection_caret = icons.ui.EnterArrow .. " ",
     path_display = { "smart" },
+    file_ignore_patterns = {
+      "node_modules",
+      ".git",
+    },
   },
   pickers = {
+    live_grep = {
+      additional_args = function()
+        return {"--hidden"}
+      end
+      },
     buffers = {
       sort_lastused = true,
       mappings = {
