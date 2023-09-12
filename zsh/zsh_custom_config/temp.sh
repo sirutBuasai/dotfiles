@@ -18,3 +18,5 @@ alias p='cd /fsx/personal_dev'
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
+
+complete -d cd
