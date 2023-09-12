@@ -18,3 +18,5 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+complete -d cd
