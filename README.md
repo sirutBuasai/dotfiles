@@ -33,7 +33,6 @@ personal repo for configuration files
 - install ripgrep `brew install ripgrep`
 - install neovim `brew install neovim`
   - add python3 support `python3 -m pip install pynvim`
-  - install vim-plug `sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'`
 - install fonts `https://www.nerdfonts.com/font-downloads` or `https://www.jetbrains.com/lp/mono/`
 
 #TODO
