@@ -139,7 +139,7 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
-    lazy = true,
+    lazy = false,
     build = "make"
   },
 
