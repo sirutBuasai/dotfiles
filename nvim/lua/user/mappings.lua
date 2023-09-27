@@ -110,4 +110,4 @@ vim.keymap.set(n, "q:", "<nop>", noremap)
 vim.keymap.set(n, "<leader>dd", "\"_dd", noremap)
 vim.keymap.set(v, "<leader>d", "\"_d", noremap)
 -- Replace currently selected text without yanking
-vim.keymap.set(v, "<leader>p", "\"_dp", noremap)
+vim.keymap.set(v, "<leader>p", "\"_dP", noremap)
