@@ -2,6 +2,7 @@ alias mqp='cd ~/personal_dev/advanced_gen_modeling_mqp_2022_2023'
 alias zon='cd ~/workplace'
 
 export PATH=$PATH:/Users/sbuasai/.toolbox/bin
+export PATH="$HOME/.rbenv/versions/2.7.8/bin:$PATH"
 source /Users/sbuasai/.brazil_completion/zsh_completion
 
 function upaws(){
@@ -37,3 +38,22 @@ function upaws(){
 
   aws s3 sync --delete /fsx/personal_dev/dotfiles/ s3://sbuasai-dev/personal_dev/dotfiles/
 }
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/sbuasai/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/sbuasai/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/sbuasai/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/sbuasaiminiforge3anaconda3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
