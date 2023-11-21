@@ -137,7 +137,7 @@ nvim_tree.setup({
     timeout = 500,
   },
   view = {
-    width = 35,
+    width = 55,
     side = "left",
     preserve_window_proportions = false,
     number = false,

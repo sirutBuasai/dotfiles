@@ -1,8 +1,26 @@
 alias mqp='cd ~/personal_dev/advanced_gen_modeling_mqp_2022_2023'
 alias zon='cd ~/workplace'
+alias cdk="npx aws-cdk"
+
+# brazil aliases
+alias bb='brazil-build'
+alias bba='brazil-build apollo-pkg'
+alias bre='brazil-runtime-exec'
+alias brc='brazil-recursive-cmd'
+alias bws='brazil ws'
+alias bwsuse='bws use --gitMode -p'
+alias bwscreate='bws create -n'
+alias brc='brazil-recursive-cmd'
+alias bbr='brc brazil-build'
+alias bball='brc --allPackages'
+alias bbb='brc --allPackages brazil-build'
+alias bbra='bbr apollo-pkg'
 
 export PATH=$PATH:/Users/sbuasai/.toolbox/bin
 export PATH="$HOME/.rbenv/versions/2.7.8/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 source /Users/sbuasai/.brazil_completion/zsh_completion
 
 function upaws(){
