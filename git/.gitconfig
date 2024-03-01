@@ -34,6 +34,9 @@
   rstg = reset --mixed
   rsoft = reset --soft
   st = status
+  sts = stash
+  stsp = stash pop
+  stsa = stash apply
   tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
 
 [color]
