@@ -71,7 +71,7 @@ else
 fi
 unset __conda_setup
 
-if [ -f "/Users/sbuasaiminiforge3anaconda3/etc/profile.d/mamba.sh" ]; then
+if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh" ]; then
     . "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<

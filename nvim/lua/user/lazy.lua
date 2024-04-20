@@ -92,10 +92,10 @@ local plugins = {
   { "NvChad/nvim-colorizer.lua",                lazy = false },
 
   -- Colorscheme
-  { "sirutBuasai/molokai",                      lazy = true },
-  { "olimorris/onedarkpro.nvim",                lazy = true },
-  { "catppuccin/nvim",                          lazy = true },
-  { "tiagovla/tokyodark.nvim",                  lazy = true },
+  { "sirutBuasai/molokai",                      lazy = false },
+  { "olimorris/onedarkpro.nvim",                lazy = false },
+  { "catppuccin/nvim",                          lazy = false },
+  { "tiagovla/tokyodark.nvim",                  lazy = false },
   {
     "nyoom-engineering/oxocarbon.nvim",
     lazy = false,
