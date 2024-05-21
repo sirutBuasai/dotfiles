@@ -2,6 +2,7 @@ alias mqp='cd ~/personal_dev/advanced_gen_modeling_mqp_2022_2023'
 alias zon='cd ~/workplace'
 alias cdk="npx aws-cdk"
 alias dlc='open https://github.com/sirutBuasai/deep-learning-containers'
+alias awsdlc='open https://github.com/aws/deep-learning-containers'
 
 # brazil aliases
 alias bb='brazil-build'
