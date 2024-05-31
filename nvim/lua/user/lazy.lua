@@ -63,7 +63,11 @@ local plugins = {
   { "tzachar/highlight-undo.nvim",              lazy = false},
 
   -- Better indentation marker
-  { "lukas-reineke/indent-blankline.nvim",      lazy = false },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    lazy = false
+  },
 
   -- Better parentheses pairing
   {
@@ -166,6 +170,7 @@ local plugins = {
   -- Snippets
   {
     "L3MON4D3/LuaSnip",
+    version = "v2.*",
     lazy = true,
     build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" }

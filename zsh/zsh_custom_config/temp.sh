@@ -3,6 +3,8 @@ alias zon='cd ~/workplace'
 alias cdk="npx aws-cdk"
 alias dlc='open https://github.com/sirutBuasai/deep-learning-containers'
 alias awsdlc='open https://github.com/aws/deep-learning-containers'
+alias dlami='open https://github.com/sirutBuasai/deep-learning-amis'
+alias awsdlami='open https://github.com/aws/deep-learning-amis'
 
 # brazil aliases
 alias bb='brazil-build'
