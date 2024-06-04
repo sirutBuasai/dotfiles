@@ -15,13 +15,13 @@ conform.setup({
   },
   formatters = {
     black = {
-      prepend_args = { "--fast", "-l 100" },
+      prepend_args = { "--fast", "-l",  "100" },
     },
     prettierd = {
       prepend_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },
     },
     stylua = {
-      prepend_args = { "--indent-width 2", "--indent-type Spaces" },
+      prepend_args = { "--indent-width", "2", "--indent-type", "Spaces" },
     },
   },
 })

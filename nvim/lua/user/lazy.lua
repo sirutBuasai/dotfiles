@@ -39,11 +39,9 @@ local plugins = {
 
   -- Better code navigation
   { "tpope/vim-repeat", lazy = true },
-  { "phaazon/hop.nvim", lazy = true },
   { "rlane/pounce.nvim", lazy = true },
 
   -- Better comment
-  { "numToStr/Comment.nvim", lazy = true },
   {
     "folke/todo-comments.nvim",
     lazy = true,
@@ -76,9 +74,6 @@ local plugins = {
 
   -- Better search
   { "romainl/vim-cool", lazy = false },
-
-  -- Better scrolling
-  { "karb94/neoscroll.nvim", lazy = true },
 
   -- Better quotation keybind
   { "kylechui/nvim-surround", lazy = true },
