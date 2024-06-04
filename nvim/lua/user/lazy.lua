@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
     "--branch=stable", -- latest stable release
     lazypath,
   })
-
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -22,29 +21,29 @@ end
 
 local plugins = {
   -- Autocompletion
-  { "hrsh7th/nvim-cmp",                         lazy = false },   -- the completion plugin
-  { "hrsh7th/cmp-buffer",                       lazy = false },   -- buffer completions
-  { "hrsh7th/cmp-path",                         lazy = false },   -- path completions
-  { "hrsh7th/cmp-cmdline",                      lazy = false },   -- cmdline completions
-  { "saadparwaiz1/cmp_luasnip",                 lazy = false },   -- snippet completions
-  { "hrsh7th/cmp-nvim-lsp",                     lazy = false },   -- lsp completions
+  { "hrsh7th/nvim-cmp", lazy = false }, -- the completion plugin
+  { "hrsh7th/cmp-buffer", lazy = false }, -- buffer completions
+  { "hrsh7th/cmp-path", lazy = false }, -- path completions
+  { "hrsh7th/cmp-cmdline", lazy = false }, -- cmdline completions
+  { "saadparwaiz1/cmp_luasnip", lazy = false }, -- snippet completions
+  { "hrsh7th/cmp-nvim-lsp", lazy = false }, -- lsp completions
 
   -- Better annotation and docstring
-  { "danymat/neogen",                           lazy = true },
+  { "danymat/neogen", lazy = true },
 
   -- Better buffer closing
-  { "moll/vim-bbye",                            lazy = false },
+  { "moll/vim-bbye", lazy = false },
 
   -- Better buffer switching
-  { "ghillb/cybu.nvim",                         lazy = true },
+  { "ghillb/cybu.nvim", lazy = true },
 
   -- Better code navigation
-  { "tpope/vim-repeat",                         lazy = true },
-  { "phaazon/hop.nvim",                         lazy = true },
-  { "rlane/pounce.nvim",                        lazy = true },
+  { "tpope/vim-repeat", lazy = true },
+  { "phaazon/hop.nvim", lazy = true },
+  { "rlane/pounce.nvim", lazy = true },
 
   -- Better comment
-  { "numToStr/Comment.nvim",                    lazy = true },
+  { "numToStr/Comment.nvim", lazy = true },
   {
     "folke/todo-comments.nvim",
     lazy = true,
@@ -52,54 +51,54 @@ local plugins = {
   },
 
   -- Better highlighting
-  { "m-demare/hlargs.nvim",                     lazy = false },
-  { "RRethy/vim-illuminate",                    lazy = false },
+  { "m-demare/hlargs.nvim", lazy = false },
+  { "RRethy/vim-illuminate", lazy = false },
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
-    build = ":TSUpdate"
+    build = ":TSUpdate",
   },
-  { "nvim-treesitter/nvim-treesitter-context",  lazy = false },
-  { "tzachar/highlight-undo.nvim",              lazy = false},
+  { "nvim-treesitter/nvim-treesitter-context", lazy = false },
+  { "tzachar/highlight-undo.nvim", lazy = false },
 
   -- Better indentation marker
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
-    lazy = false
+    lazy = false,
   },
 
   -- Better parentheses pairing
   {
     "windwp/nvim-autopairs",
-    event = "InsertEnter"
+    event = "InsertEnter",
   },
 
   -- Better search
-  { "romainl/vim-cool",                         lazy = false },
+  { "romainl/vim-cool", lazy = false },
 
   -- Better scrolling
-  { "karb94/neoscroll.nvim",                    lazy = true },
+  { "karb94/neoscroll.nvim", lazy = true },
 
   -- Better quotation keybind
-  { "kylechui/nvim-surround",                   lazy = true },
+  { "kylechui/nvim-surround", lazy = true },
 
   -- Bufferline
   {
     "akinsho/bufferline.nvim",
     lazy = false,
     version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons"
+    dependencies = "nvim-tree/nvim-web-devicons",
   },
 
   -- Coloring gui
-  { "NvChad/nvim-colorizer.lua",                lazy = false },
+  { "NvChad/nvim-colorizer.lua", lazy = false },
 
   -- Colorscheme
-  { "sirutBuasai/molokai",                      lazy = false },
-  { "olimorris/onedarkpro.nvim",                lazy = false },
-  { "catppuccin/nvim",                          lazy = false },
-  { "tiagovla/tokyodark.nvim",                  lazy = false },
+  { "sirutBuasai/molokai", lazy = false },
+  { "olimorris/onedarkpro.nvim", lazy = false },
+  { "catppuccin/nvim", lazy = false },
+  { "tiagovla/tokyodark.nvim", lazy = false },
   {
     "nyoom-engineering/oxocarbon.nvim",
     lazy = false,
@@ -114,11 +113,11 @@ local plugins = {
   {
     "folke/trouble.nvim",
     lazy = true,
-    dependencies = { "nvim-tree/nvim-web-devicons" }
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- File explorer
-  { "nvim-tree/nvim-web-devicons",              lazy = false },
+  { "nvim-tree/nvim-web-devicons", lazy = false },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
@@ -126,46 +125,40 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
-  -- Formatting and Linting
-  {
-    "jose-elias-alvarez/null-ls.nvim",
-    lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-
   -- Fuzzy finder
-  { "nvim-lua/plenary.nvim",                    lazy = true },
+  { "nvim-lua/plenary.nvim", lazy = true },
   { "nvim-telescope/telescope.nvim" },
   {
     "nvim-telescope/telescope.nvim",
     lazy = true,
-    dependencies = { "nvim-lua/plenary.nvim" }
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     lazy = false,
-    build = "make"
+    build = "make",
   },
 
   -- Git integration
-  { "lewis6991/gitsigns.nvim",                  lazy = false },
-  { "sindrets/diffview.nvim",                   lazy = true },
+  { "lewis6991/gitsigns.nvim", lazy = false },
+  { "sindrets/diffview.nvim", lazy = true },
 
   -- LSP
-  { "neovim/nvim-lspconfig",                    lazy = false },
-  { "williamboman/mason.nvim",                  lazy = false },
-  { "williamboman/mason-lspconfig.nvim",        lazy = false },
-  { "tamago324/nlsp-settings.nvim",             lazy = false },
-  { "stevearc/aerial.nvim",                     lazy = true },
+  { "neovim/nvim-lspconfig", lazy = false },
+  { "williamboman/mason.nvim", lazy = false },
+  { "williamboman/mason-lspconfig.nvim", lazy = false },
+  { "tamago324/nlsp-settings.nvim", lazy = false },
+  { "stevearc/aerial.nvim", lazy = true },
+  { "stevearc/conform.nvim", lazy = false },
 
   -- Markdown
   {
     "ellisonleao/glow.nvim",
-    cmd = "Glow"
+    cmd = "Glow",
   },
 
   -- Remove trailing whitespace
-  { "mcauley-penney/tidy.nvim",                 lazy = true },
+  { "mcauley-penney/tidy.nvim", lazy = true },
 
   -- Snippets
   {
@@ -173,9 +166,9 @@ local plugins = {
     version = "v2.*",
     lazy = true,
     build = "make install_jsregexp",
-    dependencies = { "rafamadriz/friendly-snippets" }
+    dependencies = { "rafamadriz/friendly-snippets" },
   },
-  { "rafamadriz/friendly-snippets",             lazy = true },
+  { "rafamadriz/friendly-snippets", lazy = true },
 
   -- Status line
   {
@@ -188,27 +181,27 @@ local plugins = {
   {
     "goolord/alpha-nvim",
     lazy = false,
-    dependencies = { "nvim-tree/nvim-web-devicons" }
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- Terminal emulator
   {
     "akinsho/toggleterm.nvim",
     lazy = true,
-    version = "*"
+    version = "*",
   },
 
   -- UI
-  { "stevearc/dressing.nvim",                   lazy = false },
+  { "stevearc/dressing.nvim", lazy = false },
   {
     "winston0410/range-highlight.nvim",
     lazy = false,
-    dependencies = { "winston0410/cmd-parser.nvim" }
+    dependencies = { "winston0410/cmd-parser.nvim" },
   },
-  { "winston0410/cmd-parser.nvim",              lazy = true },
+  { "winston0410/cmd-parser.nvim", lazy = true },
 
   -- Zenmode
-  { "folke/zen-mode.nvim",                      lazy = true },
+  { "folke/zen-mode.nvim", lazy = true },
 }
 
 local opts = {}

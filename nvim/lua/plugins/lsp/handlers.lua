@@ -1,5 +1,5 @@
-local aerial = require('aerial')
-aerial.setup{}
+local aerial = require("aerial")
+aerial.setup({})
 
 local icons = require("user.icons")
 
@@ -8,9 +8,9 @@ local M = {}
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = icons.diagnostics.Error },
-    { name = "DiagnosticSignWarn",  text = icons.diagnostics.Warning},
-    { name = "DiagnosticSignHint",  text = icons.diagnostics.Hint},
-    { name = "DiagnosticSignInfo",  text = icons.diagnostics.Info},
+    { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+    { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
+    { name = "DiagnosticSignInfo", text = icons.diagnostics.Info },
   }
 
   for _, sign in ipairs(signs) do
@@ -72,8 +72,8 @@ local function lsp_keymaps(bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-  vim.api.nvim_buf_set_keymap(bufnr, "", "<leader>fm", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-  vim.cmd [[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false }) ]]
+  vim.api.nvim_buf_set_keymap(bufnr, "", "<leader>fm", "<cmd>lua require'conform'.format()<CR>", opts)
+  vim.cmd([[ autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focus = false }) ]])
 end
 
 M.on_attach = function(client, bufnr)
@@ -82,13 +82,13 @@ M.on_attach = function(client, bufnr)
   lsp_highlight_document(client)
 end
 
--- local capabilities = vim.lsp.protocol.make_client_capabilities()
-
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
   return
 end
 
+-- Use for override capabilities
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 M.capabilities = cmp_nvim_lsp.default_capabilities()
 

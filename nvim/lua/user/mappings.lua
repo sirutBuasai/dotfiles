@@ -71,21 +71,21 @@ vim.keymap.set(n, "<leader>ns", ":set nospell<CR>", noremap)
 
 -- Lazy shift fingers ---------------------------------------
 -- Allows QA to quit all
-vim.cmd [[ :command QA qa ]]
+vim.cmd([[ :command QA qa ]])
 -- Allows Qa to quit all
-vim.cmd [[ :command Qa qa ]]
+vim.cmd([[ :command Qa qa ]])
 -- Allows Q to quit
-vim.cmd [[ :command Q q ]]
+vim.cmd([[ :command Q q ]])
 -- Allows WA to write all
-vim.cmd [[ :command WA wa ]]
+vim.cmd([[ :command WA wa ]])
 -- Allows Qa to write all
-vim.cmd [[ :command Wa wa ]]
+vim.cmd([[ :command Wa wa ]])
 -- Allows W to write
-vim.cmd [[ :command W w ]]
+vim.cmd([[ :command W w ]])
 -- Allows WQ to write and quit
-vim.cmd [[ :command WQ wq ]]
+vim.cmd([[ :command WQ wq ]])
 -- Allows Wq to write and quit
-vim.cmd [[ :command Wq wq ]]
+vim.cmd([[ :command Wq wq ]])
 
 -- Window splitting -----------------------------------------
 -- Split window vertically
@@ -107,7 +107,7 @@ vim.keymap.set(n, "q:", "<nop>", noremap)
 
 -- Delete and paste text without yanking --------------------
 -- Delete without yanking
-vim.keymap.set(n, "<leader>dd", "\"_dd", noremap)
-vim.keymap.set(v, "<leader>d", "\"_d", noremap)
+vim.keymap.set(n, "<leader>dd", '"_dd', noremap)
+vim.keymap.set(v, "<leader>d", '"_d', noremap)
 -- Replace currently selected text without yanking
-vim.keymap.set(v, "<leader>p", "\"_dP", noremap)
+vim.keymap.set(v, "<leader>p", '"_dP', noremap)

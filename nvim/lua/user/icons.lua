@@ -132,7 +132,7 @@ return {
     FilledWarning = "",
     Info = "",
     Hint = "󰌶",
-    Other = "󰗡"
+    Other = "󰗡",
   },
   misc = {
     Robot = "󰚩",
@@ -153,5 +153,5 @@ return {
     Shell = "",
     Close = "󰔡",
     Quit = "󰅚",
-  }
+  },
 }

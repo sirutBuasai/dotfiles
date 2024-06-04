@@ -5,7 +5,7 @@ end
 
 local icons = require("user.icons")
 
-todo_comments.setup {
+todo_comments.setup({
   signs = true, -- show icons in the signs column
   sign_priority = 8, -- sign priority
   -- keywords recognized as todo comments
@@ -49,7 +49,7 @@ todo_comments.setup {
     info = { "#2563EB" },
     hint = { "#10B981" },
     default = { "#7C3AED" },
-    test = { "#FF00FF" }
+    test = { "#FF00FF" },
   },
   search = {
     command = "rg",
@@ -65,4 +65,4 @@ todo_comments.setup {
     pattern = [[\b(KEYWORDS):]], -- ripgrep regex
     -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
   },
-}
+})

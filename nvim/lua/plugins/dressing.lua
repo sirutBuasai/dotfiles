@@ -37,7 +37,7 @@ dressing.setup({
       winblend = 0,
       -- Change default highlight groups (see :help winhl)
       winhighlight = "",
-      },
+    },
 
     -- see :help dressing_get_config
     get_config = nil,

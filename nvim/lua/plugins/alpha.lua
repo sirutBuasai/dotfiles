@@ -39,15 +39,15 @@ dashboard.section.header.val = {
   [[                                                                               ]],
 }
 dashboard.section.buttons.val = {
-  dashboard.button("o", icons.dashboard.Folder  .. "  Open tree", ":NvimTreeToggle<CR>"),
-  dashboard.button("f", icons.dashboard.Find    .. "  Find file", ":Telescope find_files<CR>"),
-  dashboard.button("e", icons.dashboard.File    .. "  New file", ":ene <BAR> startinsert<CR>"),
-  dashboard.button("r", icons.dashboard.Time    .. "  Recently used files", ":Telescope oldfiles<CR>"),
-  dashboard.button("g", icons.dashboard.Text    .. "  Find text", ":Telescope live_grep<CR>"),
+  dashboard.button("o", icons.dashboard.Folder .. "  Open tree", ":NvimTreeToggle<CR>"),
+  dashboard.button("f", icons.dashboard.Find .. "  Find file", ":Telescope find_files<CR>"),
+  dashboard.button("e", icons.dashboard.File .. "  New file", ":ene <BAR> startinsert<CR>"),
+  dashboard.button("r", icons.dashboard.Time .. "  Recently used files", ":Telescope oldfiles<CR>"),
+  dashboard.button("g", icons.dashboard.Text .. "  Find text", ":Telescope live_grep<CR>"),
   dashboard.button("c", icons.dashboard.Setting .. "  Neovim Configuration", ":e $HOME/.config/nvim/ <CR>"),
-  dashboard.button("z", icons.dashboard.Shell   .. "  Shell Configuration", ":e $HOME/.zshrc <CR>"),
-  dashboard.button("q", icons.dashboard.Close   .. "  Close Dashboard", ":q<CR>"),
-  dashboard.button("Q", icons.dashboard.Quit    .. "  Quit Neovim", ":qa<CR>"),
+  dashboard.button("z", icons.dashboard.Shell .. "  Shell Configuration", ":e $HOME/.zshrc <CR>"),
+  dashboard.button("q", icons.dashboard.Close .. "  Close Dashboard", ":q<CR>"),
+  dashboard.button("Q", icons.dashboard.Quit .. "  Quit Neovim", ":qa<CR>"),
 }
 
 local function footer()

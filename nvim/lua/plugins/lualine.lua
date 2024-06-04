@@ -10,11 +10,11 @@ local hide_in_width = function()
 end
 
 local colors = {
-  white      = "#FFFFFF",
-  darkgray   = "#202328",
-  lightgray  = "#BBC2CF",
-  lavender   = "#7070F0",
-  orange     = "#FD971F",
+  white = "#FFFFFF",
+  darkgray = "#202328",
+  lightgray = "#BBC2CF",
+  lavender = "#7070F0",
+  orange = "#FD971F",
 }
 
 local separator = {
@@ -27,7 +27,7 @@ local separator = {
 local filetype = {
   "filetype",
   icon = {
-    align = "right"
+    align = "right",
   },
   icon_only = true,
 }
@@ -35,7 +35,7 @@ local filetype = {
 local filename = {
   "filename",
   path = 1,
-  color = { fg = colors.lightgray, gui="bold" }
+  color = { fg = colors.lightgray, gui = "bold" },
 }
 
 local diagnostics = {
@@ -61,18 +61,18 @@ local diff = {
     modified = icons.git.Mod .. " ",
     removed = icons.git.Remove .. " ",
   },
-  cond = hide_in_width
+  cond = hide_in_width,
 }
 
 local branch = {
   "branch",
   icons_enabled = true,
   icon = icons.git.Branch,
-  color = { fg = colors.orange }
+  color = { fg = colors.orange },
 }
 
 local lsp = {
- function()
+  function()
     local msg = "no active lsp"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
@@ -88,25 +88,25 @@ local lsp = {
     return msg
   end,
   icon = icons.ui.Comment,
-  color = { fg = colors.white, gui = "bold" }
+  color = { fg = colors.white, gui = "bold" },
 }
 
 local location = {
   "location",
   padding = { left = 0, right = 1 },
-  color = { fg = colors.lavender, gui = "bold" }
+  color = { fg = colors.lavender, gui = "bold" },
 }
 
 local progress = {
   "progress",
-  color = { fg = colors.orange, gui = "bold" }
+  color = { fg = colors.orange, gui = "bold" },
 }
 
 lualine.setup({
   options = {
     icons_enabled = true,
     theme = "molokai",
-    component_separators = { left = "", right = ""},
+    component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
     always_divide_middle = true,

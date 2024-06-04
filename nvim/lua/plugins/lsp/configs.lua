@@ -4,30 +4,31 @@ if not status_ok then
 end
 
 local servers = {
+  "bashls",
+  "clangd",
+  "jdtls",
   "jsonls",
   "lua_ls",
   "pyright",
-  "jdtls",
-  "clangd",
-  "bashls"
+  "tsserver",
 }
 
 local lspconfig = require("lspconfig")
 local mason_lspconfig = require("mason-lspconfig")
 
-mason_lspconfig.setup {
-  automatic_installation = true
-}
+mason_lspconfig.setup({
+  automatic_installation = true,
+})
 
-mason.setup {
+mason.setup({
   ui = {
     icons = {
       server_installed = "✓",
       server_pending = "➜",
-      server_uninstalled = "✗"
+      server_uninstalled = "✗",
     },
   },
-}
+})
 
 for _, server in pairs(servers) do
   local opts = {
@@ -35,7 +36,7 @@ for _, server in pairs(servers) do
     capabilities = require("plugins.lsp.handlers").capabilities,
   }
 
-  local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.settings." .. server)
+  local has_custom_opts, server_custom_opts = pcall(require, "plugins.lsp.lsp-settings." .. server)
 
   if has_custom_opts then
     opts = vim.tbl_deep_extend("force", server_custom_opts, opts)

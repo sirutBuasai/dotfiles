@@ -5,7 +5,7 @@ end
 
 local modes = { "n" }
 
-zen_mode.setup {
+zen_mode.setup({
   window = {
     backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
     width = 120, -- width of the Zen window
@@ -37,11 +37,9 @@ zen_mode.setup {
     },
   },
   -- callback where you can add custom code when the Zen window opens
-  on_open = function()
-  end,
+  on_open = function() end,
   -- callback where you can add custom code when the Zen window closes
-  on_close = function()
-  end,
-}
+  on_close = function() end,
+})
 
 vim.keymap.set(modes, "<leader>z", "<cmd>ZenMode<cr>", { silent = true, noremap = true })

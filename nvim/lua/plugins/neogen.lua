@@ -5,7 +5,7 @@ end
 
 local modes = { "n" }
 
-neogen.setup {
+neogen.setup({
   -- Enables Neogen capabilities
   enabled = true,
 
@@ -17,14 +17,14 @@ neogen.setup {
     python = {
       template = {
         -- annotation_convention = "numpydoc"
-        annotation_convention = "google_docstrings"
-      }
+        annotation_convention = "google_docstrings",
+      },
     },
     java = {
       template = {
-        annotation_convention = "javadoc"
-      }
-    }
+        annotation_convention = "javadoc",
+      },
+    },
   },
 
   -- Use a snippet engine to generate annotations.
@@ -50,6 +50,6 @@ neogen.setup {
   --
   -- -- Placeholders highlights to use. If you don't want custom highlight, pass "None"
   -- placeholders_hl = "None",
-}
+})
 
-vim.keymap.set(modes, "<leader>an",  "<cmd>Neogen<cr>", {})
+vim.keymap.set(modes, "<leader>an", "<cmd>Neogen<cr>", {})

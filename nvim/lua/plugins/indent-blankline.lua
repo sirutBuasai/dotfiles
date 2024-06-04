@@ -3,11 +3,7 @@ if not status_ok then
   return
 end
 
-vim.opt.list = true
-vim.opt.listchars = ""
--- vim.opt.listchars = "eol:¬"
-
-indent_blankline.setup {
+indent_blankline.setup({
   enabled = true,
   exclude = {
     filetypes = {
@@ -25,4 +21,4 @@ indent_blankline.setup {
   scope = {
     enabled = false,
   },
-}
+})

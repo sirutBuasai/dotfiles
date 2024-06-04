@@ -34,10 +34,10 @@ local ensure_servers = {
 }
 
 local ignore_servers = {
-  "phpdoc"
+  "phpdoc",
 }
 
-treesitter_configs.setup {
+treesitter_configs.setup({
   ensure_installed = ensure_servers,
   sync_install = false,
   auto_install = true,
@@ -48,4 +48,4 @@ treesitter_configs.setup {
     additional_vim_regex_highlighting = true,
   },
   indent = { enable = true, disable = { "" } },
-}
+})
