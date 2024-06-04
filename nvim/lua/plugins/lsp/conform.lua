@@ -7,15 +7,13 @@ conform.setup({
   formatters_by_ft = {
     lua = { "stylua" },
     javascript = { { "prettierd", "prettier" } },
+    typescript = { { "prettierd", "prettier" } },
     python = { "isort", "black" },
     java = { "google-java-format" },
   },
-  format_after_save = {
-    lsp_fallback = true,
-  },
   formatters = {
     black = {
-      prepend_args = { "--fast", "-l",  "100" },
+      prepend_args = { "-l", "100" },
     },
     prettierd = {
       prepend_args = { "--no-semi", "--single-quote", "--jsx-single-quote" },

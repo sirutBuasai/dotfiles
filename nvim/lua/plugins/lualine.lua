@@ -73,18 +73,20 @@ local branch = {
 
 local lsp = {
   function()
-    local msg = "no active lsp"
-    local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
-    local clients = vim.lsp.get_clients()
-    if next(clients) == nil then
-      return msg
+    local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
+    if #buf_clients == 0 then
+      return "no active lsp"
     end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.get_language_id
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
+
+    local buf_ft = vim.bo.filetype
+    local buf_client_names = {}
+
+    for _, client in pairs(buf_clients) do
+      table.insert(buf_client_names, client.name)
     end
+
+    local unique_client_names = table.concat(buf_client_names, ", ")
+    local msg = string.format("[%s]", unique_client_names)
     return msg
   end,
   icon = icons.ui.Comment,
