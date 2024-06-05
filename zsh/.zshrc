@@ -26,8 +26,8 @@ plugins=(
   sudo
   web-search
   zsh-autosuggestions
-  zsh-syntax-highlighting
   zsh-bat
+  zsh-syntax-highlighting
 )
 
 # Source scripts
@@ -52,3 +52,6 @@ export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# Vim keys in terminal
+bindkey -v
