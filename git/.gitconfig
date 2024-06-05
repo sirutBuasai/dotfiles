@@ -18,6 +18,7 @@
   cam = commit --amend -m
   cl = clone
   co = checkout
+  com = checkout origin/master --
   dc = diff --cached
   df = diff
   dh = diff HEAD^
