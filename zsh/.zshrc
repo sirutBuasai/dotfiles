@@ -24,6 +24,7 @@ plugins=(
   pip
   python
   sudo
+  vi-mode
   web-search
   zsh-autosuggestions
   zsh-bat
@@ -52,6 +53,3 @@ export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-# Vim keys in terminal
-bindkey -v

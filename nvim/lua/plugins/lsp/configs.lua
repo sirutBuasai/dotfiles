@@ -10,6 +10,7 @@ local servers = {
   "jdtls",
   "jsonls",
   "lua_ls",
+  "marksman",
   "pyright",
   "tsserver",
 }
