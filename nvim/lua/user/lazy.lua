@@ -42,6 +42,7 @@ local plugins = {
   { "rlane/pounce.nvim", lazy = true },
 
   -- Better comment
+  { "numToStr/Comment.nvim", lazy = true },
   {
     "folke/todo-comments.nvim",
     lazy = true,
