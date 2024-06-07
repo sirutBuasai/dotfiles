@@ -90,6 +90,13 @@ end
 -- Use for override capabilities
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- M.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
+--Initialize default capabilities
 M.capabilities = cmp_nvim_lsp.default_capabilities()
+-- Used for intializing nvim-ufo lsp provider
+M.capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
 
 return M

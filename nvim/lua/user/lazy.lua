@@ -131,9 +131,15 @@ local plugins = {
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
+  -- Folding
+  {
+    "kevinhwang91/nvim-ufo",
+    lazy = false,
+    dependencies = "kevinhwang91/promise-async"
+  },
+
   -- Fuzzy finder
   { "nvim-lua/plenary.nvim", lazy = true },
-  { "nvim-telescope/telescope.nvim" },
   {
     "nvim-telescope/telescope.nvim",
     lazy = true,
