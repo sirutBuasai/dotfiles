@@ -61,3 +61,4 @@ vim.keymap.set(modes, "<leader>fb", ":Telescope buffers<CR>", { noremap = true }
 vim.keymap.set(modes, "<leader>f/", ":Telescope current_buffer_fuzzy_find previewer=false<CR>", { noremap = true })
 vim.keymap.set(modes, "<leader>fg", ":Telescope live_grep<CR>", { noremap = true })
 vim.keymap.set(modes, "<leader>fa", ":Telescope aerial<CR>", { noremap = true })
+vim.keymap.set(modes, "<leader>fr", ":Telescope oldfiles<CR>", { noremap = true })

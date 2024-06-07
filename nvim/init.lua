@@ -32,6 +32,5 @@ require("plugins.tidy")
 require("plugins.toggleterm")
 require("plugins.treesitter-context")
 require("plugins.treesitter")
-require("plugins.trouble")
 -- require("plugins.zen-mode") -- disable, not needed unless doing demo
 require("plugins.todo-comments")

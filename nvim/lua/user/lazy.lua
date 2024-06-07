@@ -115,13 +115,6 @@ local plugins = {
     end,
   },
 
-  -- Errors diagnostics
-  {
-    "folke/trouble.nvim",
-    lazy = true,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-
   -- File explorer
   { "nvim-tree/nvim-web-devicons", lazy = false },
   {
