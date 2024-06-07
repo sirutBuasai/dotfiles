@@ -162,16 +162,6 @@ local plugins = {
     cmd = "Glow",
   },
 
-  -- Pet
-  {
-    "giusgad/pets.nvim",
-    lazy = true,
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "giusgad/hologram.nvim",
-    },
-  },
-
   -- Remove trailing whitespace
   { "mcauley-penney/tidy.nvim", lazy = true },
 
