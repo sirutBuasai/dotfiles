@@ -78,7 +78,6 @@ local lsp = {
       return "no active lsp"
     end
 
-    local buf_ft = vim.bo.filetype
     local buf_client_names = {}
 
     for _, client in pairs(buf_clients) do
@@ -107,7 +106,6 @@ local progress = {
 lualine.setup({
   options = {
     icons_enabled = true,
-    theme = "molokai",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
     disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
