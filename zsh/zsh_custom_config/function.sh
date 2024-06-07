@@ -89,6 +89,10 @@ function upd(){
           echo "Updating Nvim"
           rsync -avh --exclude 'autoload' ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
         ;;
+        kitty) shift;
+          echo "Updating Kitty"
+          rsync -avh ~/.config/kitty/ ~/personal_dev/dotfiles/kitty/ --delete
+        ;;
         *) shift;
           echo "Invalid Update"
         ;;
@@ -102,6 +106,7 @@ function upd(){
     rsync -avh ~/.zshrc ~/personal_dev/dotfiles/zsh/.zshrc --delete
     rsync -avh ~/.zsh_custom/ ~/personal_dev/dotfiles/zsh/zsh_custom_config/ --delete
     rsync -avh ~/.config/nvim/ ~/personal_dev/dotfiles/nvim/ --delete
+    rsync -avh ~/.config/kitty/ ~/personal_dev/dotfiles/kitty/ --delete
   fi
   cd ~/personal_dev/dotfiles/
 }
@@ -111,12 +116,9 @@ function upd(){
 function mkcd() {
   if [ ! -n "$1" ]; then
     echo "Enter a directory name"
-
   elif [ -d $1 ]; then
     echo "\`$1' already exists"
-
   else
     mkdir $1 && cd $1
-
   fi
 }

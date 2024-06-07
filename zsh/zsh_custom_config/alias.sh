@@ -38,3 +38,9 @@ alias canvas='open https://canvas.wpi.edu'
 alias gg='google'
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
+
+# Kitty
+alias ks='kitten ssh'
+alias kd='kitten diff'
+alias icat='kitten icat'
+alias themes='kitten themes'

@@ -95,13 +95,13 @@ local plugins = {
   { "olimorris/onedarkpro.nvim", lazy = false },
   { "catppuccin/nvim", lazy = false },
   { "tiagovla/tokyodark.nvim", lazy = false },
+  { "nyoom-engineering/oxocarbon.nvim", lazy = false },
   {
-    "nyoom-engineering/oxocarbon.nvim",
+    "rebelot/kanagawa.nvim",
     lazy = false,
     priority = 25000,
     config = function()
-      vim.opt.background = "dark" -- set this to dark or light
-      vim.cmd("colorscheme oxocarbon")
+      vim.cmd("colorscheme kanagawa")
     end,
   },
 
