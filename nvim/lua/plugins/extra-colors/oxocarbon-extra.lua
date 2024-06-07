@@ -34,4 +34,4 @@ vim.api.nvim_set_hl(0, "PounceCursorAcceptBest", {
   bg = "#03cafc",
 })
 
-require("lualine").setup({ options = { theme = "molokai" }})
+require("lualine").setup({ options = { theme = "molokai" } })

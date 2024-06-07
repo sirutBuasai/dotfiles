@@ -95,8 +95,8 @@ end
 M.capabilities = cmp_nvim_lsp.default_capabilities()
 -- Used for intializing nvim-ufo lsp provider
 M.capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
+  dynamicRegistration = false,
+  lineFoldingOnly = true,
 }
 
 return M

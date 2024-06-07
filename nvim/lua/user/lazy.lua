@@ -84,7 +84,7 @@ local plugins = {
     "akinsho/bufferline.nvim",
     lazy = false,
     version = "*",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
   },
 
   -- Coloring gui
@@ -128,7 +128,7 @@ local plugins = {
   {
     "kevinhwang91/nvim-ufo",
     lazy = false,
-    dependencies = "kevinhwang91/promise-async"
+    dependencies = { "kevinhwang91/promise-async" },
   },
 
   -- Fuzzy finder
@@ -160,6 +160,16 @@ local plugins = {
   {
     "ellisonleao/glow.nvim",
     cmd = "Glow",
+  },
+
+  -- Pet
+  {
+    "giusgad/pets.nvim",
+    lazy = true,
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "giusgad/hologram.nvim",
+    },
   },
 
   -- Remove trailing whitespace
