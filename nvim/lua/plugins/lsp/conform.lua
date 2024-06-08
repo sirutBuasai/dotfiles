@@ -10,6 +10,7 @@ conform.setup({
     typescript = { { "prettierd", "prettier" } },
     python = { "isort", "black" },
     java = { "google-java-format" },
+    markdown = { "mdformat" },
   },
   formatters = {
     black = {

@@ -31,10 +31,10 @@ smart_splits.setup({
 })
 
 -- Resizing splits
-vim.keymap.set("n", "-", require("smart-splits").resize_left)
-vim.keymap.set("n", "_", require("smart-splits").resize_down)
-vim.keymap.set("n", "+", require("smart-splits").resize_up)
-vim.keymap.set("n", "=", require("smart-splits").resize_right)
+vim.keymap.set("n", "<C-9>", require("smart-splits").resize_left)
+vim.keymap.set("n", "<C-0>", require("smart-splits").resize_down)
+vim.keymap.set("n", "<C-->", require("smart-splits").resize_up)
+vim.keymap.set("n", "<C-=>", require("smart-splits").resize_right)
 -- Moving between splits
 vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
 vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
