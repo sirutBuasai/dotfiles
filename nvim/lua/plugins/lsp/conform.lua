@@ -22,5 +22,8 @@ conform.setup({
     stylua = {
       prepend_args = { "--indent-width", "2", "--indent-type", "Spaces" },
     },
+    mdformat = {
+      prepend_args = { "-" },
+    },
   },
 })
