@@ -65,7 +65,7 @@ local plugins = {
     config = function()
       vim.g.loaded_netrw = 1
       vim.g.loaded_netrwPlugin = 1
-    end
+    end,
   },
   { "nvim-treesitter/nvim-treesitter-context", lazy = false },
   { "tzachar/highlight-undo.nvim", lazy = false },

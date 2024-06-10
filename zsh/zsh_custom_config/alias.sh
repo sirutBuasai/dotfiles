@@ -32,7 +32,6 @@ alias p='cd ~/personal_dev'
 # One-off open links
 alias ghsb='open https://github.com/sirutBuasai'
 alias drive='open https://drive.google.com'
-alias canvas='open https://canvas.wpi.edu'
 
 # Others
 alias gg='google'
