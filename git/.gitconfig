@@ -11,6 +11,7 @@
   a = add
   aa = add -A
   ac = commit -am
+  aca = commit --amend --no-edit -a
   b = branch
   c = commit
   cm = commit -m
