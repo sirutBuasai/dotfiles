@@ -10,40 +10,22 @@ local icons = require("user.icons")
 gitsigns.setup({
   signs = {
     untracked = {
-      hl = "GitSignsAdd",
       text = icons.ui.Separator,
-      numhl = "GitSignsAddNr",
-      linehl = "GitSignsAddLn",
     },
     add = {
-      hl = "GitSignsAdd",
       text = icons.ui.Separator,
-      numhl = "GitSignsAddNr",
-      linehl = "GitSignsAddLn",
     },
     change = {
-      hl = "GitSignsChange",
       text = icons.ui.Separator,
-      numhl = "GitSignsChangeNr",
-      linehl = "GitSignsChangeLn",
     },
     delete = {
-      hl = "GitSignsDelete",
       text = icons.ui.FilledArrow,
-      numhl = "GitSignsDeleteNr",
-      linehl = "GitSignsDeleteLn",
     },
     topdelete = {
-      hl = "GitSignsDelete",
       text = icons.ui.FilledArrow,
-      numhl = "GitSignsDeleteNr",
-      linehl = "GitSignsDeleteLn",
     },
     changedelete = {
-      hl = "GitSignsChange",
       text = icons.ui.Tilde,
-      numhl = "GitSignsChangeNr",
-      linehl = "GitSignsChangeLn",
     },
   },
   signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
@@ -65,9 +47,6 @@ gitsigns.setup({
     virt_text_priority = 100,
   },
   current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
-  current_line_blame_formatter_opts = {
-    relative_time = false,
-  },
   sign_priority = 6,
   update_debounce = 100,
   status_formatter = nil, -- Use default

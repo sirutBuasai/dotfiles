@@ -50,7 +50,7 @@ local plugins = {
   { "numToStr/Comment.nvim", lazy = true },
   {
     "folke/todo-comments.nvim",
-    lazy = true,
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
 
