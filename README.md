@@ -38,6 +38,7 @@ personal repo for configuration files
 - install neovim `brew install neovim`
   - add python3 support `python3 -m pip install pynvim`
 - install fonts `https://www.nerdfonts.com/font-downloads` or `https://www.jetbrains.com/lp/mono/`
+- install tmux `https://www.redhat.com/sysadmin/introduction-tmux-linux`
 
 #TODO
 - install python java c c++ go rust
