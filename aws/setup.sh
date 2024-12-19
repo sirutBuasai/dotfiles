@@ -17,6 +17,7 @@ mkdir -p ~/.config
 cp -rf /fsx/personal_dev/dotfiles/nvim ~/.config/
 
 # setup tmux
+sudo apt install tmux
 rm -rf ~/.tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 cp -f /fsx/personal_dev/dotfiles/tmux/.tmux.conf ~
