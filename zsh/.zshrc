@@ -44,6 +44,7 @@ source $HOME/.zsh_custom/temp.sh
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.10.7/lib/python3.10/site-packages:$PYTHONPATH"
 export PYTHONPATH="/Users/sirutbuasai/.pyenv/versions/3.9.14/lib/python3.9/site-packages:$PYTHONPATH"
 export PYTHONPATH="/Users/sirutbuasai/Library/Python/3.9/lib/python/site-packages:$PYTHONPATH"
@@ -53,3 +54,22 @@ export PYTHONPATH="/opt/homebrew/lib/python3.9/site-packages:$PYTHONPATH"
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/sbuasai/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/sbuasai/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/sbuasai/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<

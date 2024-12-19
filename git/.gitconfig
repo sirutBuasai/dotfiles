@@ -1,7 +1,7 @@
 [user]
   ; name = G Buasai
   ; email = sbuasai@amazon.com
-  name = Sirut Buasai
+  name = sirutBuasai
   email = sirutbuasai27@outlook.com
 
 [github]
@@ -13,6 +13,9 @@
   ac = commit -am
   aca = commit --amend --no-edit -a
   b = branch
+  bd = branch -D
+  bm = branch -m
+  brd = branch --remote -D
   c = commit
   cm = commit -m
   ca = commit --amend --no-edit
@@ -31,6 +34,7 @@
   po = push origin
   pom = push origin master
   pu = push
+  pud = pu -d
   rb = rebase
   re = restore
   res = restore --staged
