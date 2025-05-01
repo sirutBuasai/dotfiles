@@ -286,3 +286,5 @@ source $HOME/.zsh_custom/temp.sh
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/home/ubuntu/.cargo/bin:$PATH"
+export PATH="/home/ubuntu/go/bin:$PATH"
+export PATH="/home/ubuntu/gopath/bin:$PATH"
