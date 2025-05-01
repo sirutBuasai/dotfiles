@@ -1,10 +1,15 @@
 alias mqp='cd ~/personal_dev/advanced_gen_modeling_mqp_2022_2023'
 alias zon='cd ~/workplace'
+alias ackdir='cd ~/workplace/ack/github.com/aws-controllers-k8s'
 alias cdk="npx aws-cdk"
 alias dlc='open https://github.com/sirutBuasai/deep-learning-containers'
+alias pdlc='open https://github.com/sirutBuasai/PRIVATE-deep-learning-containers'
 alias awsdlc='open https://github.com/aws/deep-learning-containers'
+alias pawsdlc='open https://github.com/aws/PRIVATE-deep-learning-containers'
 alias dlami='open https://github.com/sirutBuasai/deep-learning-amis'
 alias awsdlami='open https://github.com/aws/deep-learning-amis'
+alias ack='open https://github.com/sirutBuasai/sagemaker-controller'
+alias awsack='open https://github.com/aws-controllers-k8s/sagemaker-controller'
 
 # brazil aliases
 alias bb='brazil-build'

@@ -3,21 +3,25 @@
 # setup shell
 cd ~
 bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
-cp -f /fsx/personal_dev/dotfiles/aws/.bashrc ~
+cp -f aws/.bashrc $HOME
 
 # setup git
-cp -f /fsx/personal_dev/dotfiles/git/.gitconfig ~
+cp -f git/.gitconfig $HOME
+
+# setup tmux
+sudo apt install tmux
+rm -rf $HOME/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm $HOME/tmux/plugins/tpm
+cp -f tmux/.tmux.conf $HOME
+
+# setup conda/mamba
+wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+bash Miniforge3-$(uname)-$(uname -m).sh
 
 # setup neovim
 sudo snap install --beta nvim --classic
 sudo apt update
 sudo apt install nodejs
 sudo apt install npm
-mkdir -p ~/.config
-cp -rf /fsx/personal_dev/dotfiles/nvim ~/.config/
-
-# setup tmux
-sudo apt install tmux
-rm -rf ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-cp -f /fsx/personal_dev/dotfiles/tmux/.tmux.conf ~
+mkdir -p $HOME/config
+cp -rf nvim $HOME/config/

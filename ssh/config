@@ -2,6 +2,7 @@
 Host git.amazon.com
   GSSAPIAuthentication yes
   GSSAPIDelegateCredentials yes
+  PreferredAuthentications=publickey
 
 Host *
   Compression yes
