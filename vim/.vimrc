@@ -16,14 +16,13 @@ set laststatus=2                  " Always display last status
 set modifiable                    " Set buffer modifible
 set mouse=a                       " Allow the mouse to be used in vim
 set number                        " Set numbered lines
-set numberwidth=3                 " Set number column width to 3 {default 4}
+set numberwidth=4                 " Set number column width to 3 {default 4}
 set pumheight=10                  " Pop up menu height
 set norelativenumber              " Set relative numbered lines
 set ruler                         " Show cursor position at all times
 set scrolloff=8                   " Minimal number of screen lines to keep above and below the cursor
 set shiftwidth=2                  " The number of spaces inserted for each indentation
 set noshowmode                    " We don't need to see things like -- INSERT -- anymore
-set showtabline=2                 " Always show tabs
 set sidescrolloff=8               " Minimal number of screen columns either side of cursor if wrap is `false`
 set signcolumn=auto               " Always show the sign column, otherwise it would shift the text each time
 set smartcase                     " Smart case
@@ -34,7 +33,6 @@ set splitbelow                    " Force all horizontal splits to go below curr
 set splitright                    " Force all vertical splits to go to the right of current window
 set noswapfile                    " Creates a swapfile
 set tabstop=2                     " Insert 2 spaces for a tab
-set termguicolors                 " Set term gui colors (most terminals support this)
 set timeoutlen=500                " Time to wait for a mapped sequence to complete (in milliseconds)
 set undofile                      " Enable persistent undo
 set updatetime=250                " Faster completion (4000ms default)
