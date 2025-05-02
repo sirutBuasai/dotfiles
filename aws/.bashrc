@@ -274,11 +274,6 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Source scripts
-source $HOME/.zsh_custom/function.sh
-source $HOME/.zsh_custom/alias.sh
-source $HOME/.zsh_custom/temp.sh
-
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
@@ -292,3 +287,6 @@ export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$PATH:/usr/local/go/bin"
 export PATH="$PATH:$GOPATH/bin"
+
+# Aliases
+alias ackdir="cd $HOME/go/src/github.com/aws-controllers-k8s"
