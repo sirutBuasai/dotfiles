@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-# setup shell
 cd $HOME
-wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O oh-my-bash-install.sh
-bash oh-my-bash-install.sh
-cp -f $HOME/dotfiles/aws/.bashrc $HOME
 
 # setup git
 cp -f $HOME/dotfiles/git/.gitconfig $HOME
@@ -21,3 +17,8 @@ cp -f $HOME/dotfiles/tmux/.tmux.conf $HOME
 # setup conda/mamba
 wget "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
 bash Miniforge3-$(uname)-$(uname -m).sh
+
+# setup shell
+wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O oh-my-bash-install.sh
+bash oh-my-bash-install.sh
+cp -f $HOME/dotfiles/aws/.bashrc $HOME
