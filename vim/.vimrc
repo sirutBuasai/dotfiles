@@ -1,10 +1,47 @@
 " Configuration -------------------------------------------
-set number
-set tabstop=2
-set expandtab
-set autoindent
-set shiftwidth=2
-set backspace=2
+set autoindent                    " Set auto indentation
+set backspace=indent,eol,start    " Allow backspace to work as normal
+set nobackup                      " Creates a backup file
+set clipboard=unnamedplus         " Allows vim to access the system clipboard
+set cmdheight=0                   " More space in the vim command line for displaying messages
+set completeopt=menuone,noselect  " Mostly just for cmp
+set conceallevel=0                " So that `` is visible in markdown files
+set cursorline                    " Highlight the current line
+set encoding=utf-8                " Display encoding
+set expandtab                     " Convert tabs to spaces
+set fileencoding=utf-8            " The encoding written to a file
+set hidden                        " Required to keep multiple buffers open
+set hlsearch                      " Highlight all matches on previous search pattern
+set ignorecase                    " Ignore case in search patterns
+set laststatus=2                  " Always display last status
+set modifiable                    " Set buffer modifible
+set mouse=a                       " Allow the mouse to be used in vim
+set number                        " Set numbered lines
+set numberwidth=3                 " Set number column width to 3 {default 4}
+set pumheight=10                  " Pop up menu height
+set norelativenumber              " Set relative numbered lines
+set ruler                         " Show cursor position at all times
+set scrolloff=8                   " Minimal number of screen lines to keep above and below the cursor
+set shiftwidth=2                  " The number of spaces inserted for each indentation
+set noshowmode                    " We don't need to see things like -- INSERT -- anymore
+set showtabline=2                 " Always show tabs
+set sidescrolloff=8               " Minimal number of screen columns either side of cursor if wrap is `false`
+set signcolumn=auto               " Always show the sign column, otherwise it would shift the text each time
+set smartcase                     " Smart case
+set smartindent                   " Make indenting smarter again
+set smarttab                      " Auto detect tab sizes
+set softtabstop=2                 " Number of spaces inserted instead of a tab character
+set splitbelow                    " Force all horizontal splits to go below current window
+set splitright                    " Force all vertical splits to go to the right of current window
+set noswapfile                    " Creates a swapfile
+set tabstop=2                     " Insert 2 spaces for a tab
+set termguicolors                 " Set term gui colors (most terminals support this)
+set timeoutlen=500                " Time to wait for a mapped sequence to complete (in milliseconds)
+set undofile                      " Enable persistent undo
+set updatetime=250                " Faster completion (4000ms default)
+set nowrap                        " Display long lines instead of one line
+set nowritebackup                 " If a file is being edited by another program, it is not allowed to be edited
+set nolist                        " Remove ^I from indentation
 
 " Mappings ------------------------------------------------
 let mapleader = " "
@@ -24,12 +61,6 @@ nnoremap d<S-l> d$
 nnoremap c<S-h> c^
 " cL to change to end of line
 nnoremap c<S-l> c$
-
-" Spell checking ------------------------------------------
-" Enable spell checking
-vim.keymap.set(n, "<leader>ss", ":set spell<CR>", noremap)
-" Disable spell cheking
-vim.keymap.set(n, "<leader>ns", ":set nospell<CR>", noremap)
 
 " Lazy shift fingers --------------------------------------
 " Allows QA to quit all
