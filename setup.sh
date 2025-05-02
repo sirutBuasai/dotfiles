@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #### THIS SCRIPT IS INCOMPLETE. TESTING NEEDED!!!! ####
-cd ~
+cd $HOME/
 
 echo 'Installing xcode developer tools'
 sudo xcode-select --install
@@ -10,7 +10,7 @@ echo 'Installing homebrew'
 brew update
 
 echo 'Setting path to .bash_profile'
-echo 'PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+echo 'PATH="/usr/local/bin:$PATH"' >> $HOME/bash_profile
 
 echo 'Installing python'
 brew install python
@@ -30,10 +30,10 @@ brew install --cask iterm2
 echo 'Installing zsh'
 brew install zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -rf ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-rm -rf ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+rm -rf ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-autosuggestions
+rm -rf ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo 'Installing powerlevel10k'
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -50,20 +50,19 @@ brew install ripgrep
 
 echo 'Transferring custom config files'
 echo 'Transferring zsh'
-cp -f ~/personal_dev/dotfiles/zsh/.zshrc ~
+cp -f $HOME/personal_dev/dotfiles/zsh/.zshrc $HOME/
 
 echo 'Transferring zsh'
-cp -f ~/personal_dev/dotfiles/git/.gitconfig ~
-cp -f /fsx/personal_dev/dotfiles/git/.gitconfig ~
+cp -f $HOME/personal_dev/dotfiles/git/.gitconfig $HOME/
 
 echo 'Transferring neovim'
-mkdir -p ~/.config
-cp -rf ~/personal_dev/dotfiles/nvim ~/.config/
+mkdir -p $HOME/config
+cp -rf $HOME/personal_dev/dotfiles/nvim $HOME/config/
 
 echo 'Transferggin tmux'
-rm -rf ~/.tmux/plugins/tpm
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-cp -f ~/personal_dev/dotfiles/tmux/.tmux.conf ~
+rm -rf $HOME/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm $HOME/tmux/plugins/tpm
+cp -f $HOME/personal_dev/dotfiles/tmux/.tmux.conf $HOME/
 
 echo 'Setup is done!'
 echo 'Todo: ---------------------------------------------------------'
