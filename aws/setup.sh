@@ -2,7 +2,8 @@
 
 # setup shell
 cd $HOME
-bash -c "$(wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O -)"
+wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O oh-my-bash-install.sh
+bash oh-my-bash-install.sh
 cp -f $HOME/dotfiles/aws/.bashrc $HOME
 
 # setup git
