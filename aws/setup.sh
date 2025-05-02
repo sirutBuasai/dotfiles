@@ -20,5 +20,5 @@ bash Miniforge3-$(uname)-$(uname -m).sh
 
 # setup shell
 wget https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh -O oh-my-bash-install.sh
-bash oh-my-bash-install.sh
+bash -c "$(< oh-my-bash-install.sh)" --unattended
 cp -f $HOME/dotfiles/aws/.bashrc $HOME
