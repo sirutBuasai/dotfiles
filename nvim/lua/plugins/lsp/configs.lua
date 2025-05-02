@@ -13,6 +13,7 @@ local servers = {
   "marksman",
   "pyright",
   "tsserver",
+  "gopls",
 }
 
 local lspconfig = require("lspconfig")
