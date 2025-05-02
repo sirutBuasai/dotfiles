@@ -3,7 +3,6 @@ set autoindent                    " Set auto indentation
 set backspace=indent,eol,start    " Allow backspace to work as normal
 set nobackup                      " Creates a backup file
 set clipboard=unnamedplus         " Allows vim to access the system clipboard
-set cmdheight=0                   " More space in the vim command line for displaying messages
 set completeopt=menuone,noselect  " Mostly just for cmp
 set conceallevel=0                " So that `` is visible in markdown files
 set cursorline                    " Highlight the current line
