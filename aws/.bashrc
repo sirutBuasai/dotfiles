@@ -285,6 +285,10 @@ source $HOME/.zsh_custom/temp.sh
 # User configuration
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+# Rust configuration
 export PATH="/home/ubuntu/.cargo/bin:$PATH"
-export PATH="/home/ubuntu/go/bin:$PATH"
-export PATH="/home/ubuntu/gopath/bin:$PATH"
+# Go configuration
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$GOPATH/bin"
