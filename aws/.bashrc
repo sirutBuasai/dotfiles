@@ -290,3 +290,4 @@ export PATH="$PATH:$GOPATH/bin"
 
 # Aliases
 alias ackdir="cd $HOME/go/src/github.com/aws-controllers-k8s"
+alias k="kubectl"

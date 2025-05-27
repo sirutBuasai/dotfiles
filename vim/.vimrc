@@ -39,6 +39,7 @@ set updatetime=250                " Faster completion (4000ms default)
 set nowrap                        " Display long lines instead of one line
 set nowritebackup                 " If a file is being edited by another program, it is not allowed to be edited
 set nolist                        " Remove ^I from indentation
+set noundofile                    " Remove .un files
 
 " Mappings ------------------------------------------------
 let mapleader = " "
