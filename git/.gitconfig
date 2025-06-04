@@ -21,8 +21,10 @@
   ca = commit --amend --no-edit
   cam = commit --amend -m
   cl = clone
+  cln = clean
   co = checkout
   com = checkout origin/master --
+  comn = checkout origin/main --
   dc = diff --cached
   df = diff
   dh = diff HEAD^
@@ -31,8 +33,10 @@
   pl = pull
   plo = pull origin
   plom = pull origin master
+  plomn = pull origin main
   po = push origin
   pom = push origin master
+  pomn = push origin main
   pu = push
   pud = pu -d
   rb = rebase
