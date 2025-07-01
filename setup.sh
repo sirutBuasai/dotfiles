@@ -14,8 +14,6 @@ echo 'PATH="/usr/local/bin:$PATH"' >> $HOME/bash_profile
 
 echo 'Installing python'
 brew install python
-pip install --upgrade setuptools
-pip install --upgrade pip
 
 echo 'Installing node'
 brew install node
@@ -24,12 +22,9 @@ echo 'Installing rust'
 brew install rustup
 rustup-init
 
-echo 'Installing iterm2'
-brew install --cask iterm2
-
 echo 'Installing zsh'
 brew install zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 rm -rf ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-autosuggestions
 rm -rf ${ZSH_CUSTOM:-$HOME/oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -40,7 +35,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 
 echo 'Installing neovim'
 brew install neovim
-python3 -m pip install pynvim
 
 echo 'Installing other useful programs'
 brew install tree
@@ -51,6 +45,7 @@ brew install ripgrep
 echo 'Transferring custom config files'
 echo 'Transferring zsh'
 cp -f $HOME/personal_dev/dotfiles/zsh/.zshrc $HOME/
+cp -f $HOME/personal_dev/dotfiles/zsh/zsh_custom_config/* $HOME/.zsh_custom/
 
 echo 'Transferring zsh'
 cp -f $HOME/personal_dev/dotfiles/git/.gitconfig $HOME/
@@ -64,6 +59,10 @@ rm -rf $HOME/tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm $HOME/tmux/plugins/tpm
 cp -f $HOME/personal_dev/dotfiles/tmux/.tmux.conf $HOME/
 
+echo 'Installing python packages'
+pip install --upgrade setuptools
+pip install --upgrade pip
+pip install --upgrade pynvim --break-system-packages
 echo 'Setup is done!'
 echo 'Todo: ---------------------------------------------------------'
 echo '1. Dont forget to setup iterm2 preferences!'

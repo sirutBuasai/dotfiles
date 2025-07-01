@@ -70,8 +70,17 @@ else
     fi
 fi
 unset __conda_setup
-
-if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh"
-fi
 # <<< conda initialize <<<
+
+# >>> mamba initialize >>>
+# !! Contents within this block are managed by 'mamba shell init' !!
+export MAMBA_EXE='/Users/sbuasai/miniforge3/bin/mamba';
+export MAMBA_ROOT_PREFIX='/Users/sbuasai/miniforge3';
+__mamba_setup="$("$MAMBA_EXE" shell hook --shell zsh --root-prefix "$MAMBA_ROOT_PREFIX" 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__mamba_setup"
+else
+    alias mamba="$MAMBA_EXE"  # Fallback on help from mamba activate
+fi
+unset __mamba_setup
+# <<< mamba initialize <<<
