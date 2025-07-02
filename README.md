@@ -17,7 +17,7 @@ Personal repository for configuration files
 - Mac Setup https://sourabhbajaj.com/mac-setup/
 
 ### Setup guide
-- For a smooth experience, install Kitty terminal
+- For a smooth experience, install Kitty terminal first
 ```
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ```
