@@ -6,7 +6,7 @@
 # ======================
 function print_usage() {
   echo "Usage:"
-  echo "bash setup.sh --include-kube [OPTIONAL][FLAG]"
+  echo "bash setup.sh --include-k8s [OPTIONAL][FLAG]"
 }
 
 function log_info() {
@@ -22,7 +22,7 @@ function log_error() {
 # ======================
 while [[ $# -gt 0 ]]; do
   case "${1}" in
-    -k|--include-kube) shift; INSTALL_KUBE=1
+    -k|--include-k8s) shift; INSTALL_KUBE=1
     ;;
     *) log_error "Bad argument ${1}"; print_usage; exit 1
     ;;

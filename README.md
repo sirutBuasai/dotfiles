@@ -23,7 +23,7 @@ curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 ```
 - Run setup script
 ```
-bash setup.sh
+bash setup.sh --include-k8s
 ```
 - Install fonts https://www.nerdfonts.com/font-downloads or https://www.jetbrains.com/lp/mono/
   - Current font recommendation: FiraCode NerdFont Mono
