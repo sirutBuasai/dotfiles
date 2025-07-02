@@ -18,12 +18,16 @@ Personal repository for configuration files
 
 ### Setup guide
 - For a smooth experience, install Kitty terminal
-`curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin`
+```
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+```
 - Run setup script
-`bash setup.sh`
-- Install fonts `https://www.nerdfonts.com/font-downloads` or `https://www.jetbrains.com/lp/mono/`
-  - Current font: FiraCode NerdFont Mono
+```
+bash setup.sh
+```
+- Install fonts https://www.nerdfonts.com/font-downloads or https://www.jetbrains.com/lp/mono/
+  - Current font recommendation: FiraCode NerdFont Mono
 - Restart terminal and shell
 
 ### Extras
-- Install tmux `https://www.redhat.com/sysadmin/introduction-tmux-linux`
+- Install tmux https://www.redhat.com/sysadmin/introduction-tmux-linux
