@@ -1,8 +1,9 @@
 # dotfiles
-personal repo for configuration files
+Personal repository for configuration files
 
-### needed programs
+### Common programs
 - Google Chrome https://www.google.com/chrome/
+- Firefox https://www.mozilla.org/en-US/firefox/new/
 - Slack https://slack.com/downloads/mac
 - Spotify https://www.spotify.com/us/download/other/
 - Discord https://discord.com/download
@@ -12,33 +13,17 @@ personal repo for configuration files
 - Zoom https://zoom.us/download
 - Notion https://www.notion.so/desktop
 
-### terminal and coding configurations
+### Terminal and coding configurations guide
 - Mac Setup https://sourabhbajaj.com/mac-setup/
 
-### setup guide
-- install xcode cli tools `xcode-select --install`
-- install homebrew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
-  - on apple M1 chip `echo 'export PATH=/opt/homebrew/bin:$PATH' >> .$(basename $SHELL)rc && source .$(basename $SHELL)rc`
-  - on intel chip `echo 'export PATH=/usr/local/bin:$PATH' >> .$(basename $SHELL)rc && source .$(basename $SHELL)rc`
-  - check if brew is working using `brew doctor`
-- install iterm2 `brew install --cask iterm2`
-  - dont forget to change iterm settings
-- install kitty `https://sw.kovidgoyal.net/kitty/binary/`
-  - install kitty themes `https://github.com/dexpota/kitty-themes`
-- install oh my zsh `sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"`
-  - install zsh-autosuggestion `git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions`
-  - install zsh-syntax-highlighting `git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting`
-  - install zsh-bat `git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-bat`
-- install powerlevel10k `git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
-- install git `brew install git`
-- install bat `brew install bat`
-- install tree `brew install tree`
-- install fzf `brew install fzf`
-- install ripgrep `brew install ripgrep`
-- install neovim `brew install neovim`
-  - add python3 support `python3 -m pip install pynvim`
-- install fonts `https://www.nerdfonts.com/font-downloads` or `https://www.jetbrains.com/lp/mono/`
-- install tmux `https://www.redhat.com/sysadmin/introduction-tmux-linux`
+### Setup guide
+- For a smooth experience, install Kitty terminal
+`curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin`
+- Run setup script
+`bash setup.sh`
+- Install fonts `https://www.nerdfonts.com/font-downloads` or `https://www.jetbrains.com/lp/mono/`
+  - Current font: FiraCode NerdFont Mono
+- Restart terminal and shell
 
-#TODO
-- install python java c c++ go rust
+### Extras
+- Install tmux `https://www.redhat.com/sysadmin/introduction-tmux-linux`
