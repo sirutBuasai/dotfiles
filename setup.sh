@@ -46,8 +46,8 @@ log_info "---------------------------------------------"
 # Setup initial PATH
 log_info "Setting preliminary binary path to .bash_profile"
 log_info "---------------------------------------------"
-log_info "PATH="/usr/local/bin:$PATH"" >> $HOME/bash_profile
-source $HOME/bash_profile
+log_info "PATH="/usr/local/bin:$PATH"" >> $HOME/.bash_profile
+source $HOME/.bash_profile
 log_info "---------------------------------------------"
 
 # Setup all programming languages
