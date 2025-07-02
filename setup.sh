@@ -46,7 +46,7 @@ log_info "---------------------------------------------"
 # Setup initial PATH
 log_info "Setting preliminary binary path to .bash_profile"
 log_info "---------------------------------------------"
-log_info "PATH="/usr/local/bin:$PATH"" >> $HOME/.bash_profile
+echo "PATH="/usr/local/bin:$PATH"" >> $HOME/.bash_profile
 source $HOME/.bash_profile
 log_info "---------------------------------------------"
 
@@ -161,9 +161,12 @@ log_info "Installation steps:"
 log_info "                    setuptools"
 log_info "                    pip"
 log_info "                    pynvim"
+log_info "                    pyenv"
+log_info "                    pyenv-virtualenv"
 ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python
 ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
 pip install --upgrade setuptools pip pynvim --break-system-packages
+brew install pyenv openssl readline sqlite3 xz zlib tcl-tk@8 libb2 pyenv-virtualenv
 log_info "---------------------------------------------"
 
 log_info "Setup is done!"

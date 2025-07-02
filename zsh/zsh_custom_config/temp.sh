@@ -26,11 +26,11 @@ alias bbb='brc --allPackages brazil-build'
 alias bbra='bbr apollo-pkg'
 
 export PATH=$PATH:/Users/sbuasai/.toolbox/bin
-export PATH="$HOME/.rbenv/versions/2.7.8/bin:$PATH"
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 source /Users/sbuasai/.brazil_completion/zsh_completion
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+# Set up mise for runtime management
+eval "$(mise activate zsh)"
 
 function upaws(){
   if [[ $# -gt 0 ]]; then
@@ -65,22 +65,3 @@ function upaws(){
 
   aws s3 sync --delete /fsx/personal_dev/dotfiles/ s3://sbuasai-dev/personal_dev/dotfiles/
 }
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/sbuasai/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/sbuasai/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/sbuasai/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-
-if [ -f "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/sbuasai/miniforge3/etc/profile.d/mamba.sh"
-fi
-# <<< conda initialize <<<
