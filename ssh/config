@@ -1,3 +1,15 @@
+# Enable Kerb Forwarding
+Host git.amazon.com
+  GSSAPIAuthentication yes
+  GSSAPIDelegateCredentials yes
+  PreferredAuthentications=publickey
+
+Host *
+  Compression yes
+  #CompressionLevel 2
+  ServerAliveInterval 15
+  TCPKeepAlive yes
+  StrictHostKeyChecking no
 
 ### Start of WSSH Config Block ###
 

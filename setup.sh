@@ -123,8 +123,8 @@ log_info "                     .gitconfig"
 log_info "                     .vimrc"
 log_info "                     .config/nvim"
 # transfer zsh
-mkdir -p $HOME/.zsh_custom
 cp -f $HOME/personal_dev/dotfiles/zsh/.zshrc $HOME/
+mkdir -p $HOME/.zsh_custom
 cp -rf $HOME/personal_dev/dotfiles/zsh/zsh_custom_config $HOME/.zsh_custom/
 # transfer p10k
 cp -f $HOME/personal_dev/dotfiles/zsh/.p10k.zsh $HOME/
