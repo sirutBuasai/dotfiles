@@ -44,11 +44,12 @@ source $HOME/.zsh_custom/temp.sh
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export PATH="$PATH:/Users/sbuasai/go/bin"
+export PATH="$HOME/go/bin:$PATH"
 
 # Pyenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 eval "$(pyenv virtualenv-init -)"
