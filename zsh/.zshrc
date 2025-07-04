@@ -45,11 +45,15 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="/opt/homebrew/sbin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/go/bin:$PATH"
+
+# Go configuration
+export GOPATH="$HOME/go" # You can change this to whatever you GOPATH was in the previous step
+export GOBIN="$GOPATH/bin"
+export PATH="$GOPATH/bin:$PATH"
+export PATH="/usr/local/go/bin:$PATH"
 
 # Pyenv configuration
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - zsh)"
+eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"

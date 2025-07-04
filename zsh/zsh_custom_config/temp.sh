@@ -1,6 +1,5 @@
-alias mqp='cd ~/personal_dev/advanced_gen_modeling_mqp_2022_2023'
 alias zon='cd ~/workplace'
-alias ackdir='cd ~/workplace/ack/github.com/aws-controllers-k8s'
+alias ackdir='cd ~/go/src/github.com/aws-controllers-k8s'
 alias cdk="npx aws-cdk"
 alias dlc='open https://github.com/sirutBuasai/deep-learning-containers'
 alias pdlc='open https://github.com/sirutBuasai/PRIVATE-deep-learning-containers'
