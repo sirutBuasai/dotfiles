@@ -73,8 +73,7 @@ log_info "                    ripgrep"
 log_info "                    yq"
 log_info "                    jq"
 log_info "                    bat"
-log_info "                    glow"
-brew install git tree fzf ripgrep bat yq jq bat glow
+brew install git tree fzf ripgrep bat yq jq bat
 log_info "---------------------------------------------"
 
 # Setup Kubernetes if flag provided
