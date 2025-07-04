@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local icons = require("user.icons")
+local icons = require("config.icons")
 
 local dashboard = require("alpha.themes.dashboard")
 dashboard.section.header.val = {
@@ -39,9 +39,10 @@ dashboard.section.header.val = {
 }
 dashboard.section.buttons.val = {
   dashboard.button("o", icons.dashboard.Folder .. "  Open tree", ":NvimTreeToggle<CR>"),
-  dashboard.button("f", icons.dashboard.Find .. "  Find file", ":Telescope find_files<CR>"),
-  dashboard.button("r", icons.dashboard.Time .. "  Recently used files", ":Telescope oldfiles<CR>"),
-  dashboard.button("g", icons.dashboard.Text .. "  Find text", ":Telescope live_grep<CR>"),
+  dashboard.button("o", icons.dashboard.Folder .. "  Open tree", ":NvimTreeToggle<CR>"),
+  dashboard.button("f", icons.dashboard.Find .. "  Find file", ":FzfLua files<CR>"),
+  dashboard.button("r", icons.dashboard.Time .. "  Recently used files", ":FzfLua oldfiles<CR>"),
+  dashboard.button("g", icons.dashboard.Text .. "  Find text", ":FzfLua live_grep_glob<CR>"),
   dashboard.button("c", icons.dashboard.Setting .. "  Neovim Configuration", ":e $HOME/.config/nvim/ <CR>"),
   dashboard.button("t", icons.dashboard.Shell .. "  Kitty Configuration", ":e $HOME/.config/kitty/ <CR>"),
   dashboard.button("z", icons.dashboard.Shell .. "  Shell Configuration", ":e $HOME/.zshrc <CR>"),
@@ -59,5 +60,4 @@ dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
-dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)

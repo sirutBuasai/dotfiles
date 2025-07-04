@@ -4,38 +4,16 @@ if not status_ok then
 end
 
 range_highlight.setup({
-  highlight = "Visual",
-  highlight_with_out_range = {
-    d = true,
-    delete = true,
-    m = true,
-    move = true,
-    y = true,
-    yank = true,
-    c = true,
-    change = true,
-    j = true,
-    join = true,
-    ["<"] = true,
-    [">"] = true,
-    s = true,
-    subsititue = true,
-    sno = true,
-    snomagic = true,
-    sm = true,
-    smagic = true,
-    ret = true,
-    retab = true,
-    t = true,
-    co = true,
-    copy = true,
-    ce = true,
-    center = true,
-    ri = true,
-    right = true,
-    le = true,
-    left = true,
-    sor = true,
-    sort = true,
+  highlight = {
+    group = "Visual",
+    priority = 10,
+    -- if you want to highlight empty line, set it to true
+    to_eol = false,
+  },
+  -- disable range highlight, if the cmd is matched here. Value here does not accept shorthand
+  excluded = { cmd = {} },
+  debounce = {
+    -- how long to debounce, set to 0 to disable
+    wait = 100,
   },
 })

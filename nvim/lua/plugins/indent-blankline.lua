@@ -11,7 +11,6 @@ indent_blankline.setup({
       "dashboard",
       "neogitstatus",
       "NvimTree",
-      "Trouble",
     },
     buftypes = {
       "terminal",

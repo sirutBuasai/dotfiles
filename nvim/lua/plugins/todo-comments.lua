@@ -3,7 +3,9 @@ if not status_ok then
   return
 end
 
-local icons = require("user.icons")
+local icons = require("config.icons")
+
+local opts = { silent = true }
 
 todo_comments.setup({
   signs = true, -- show icons in the signs column
@@ -66,3 +68,11 @@ todo_comments.setup({
     -- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
   },
 })
+
+vim.keymap.set("n", "]t", function()
+  require("todo-comments").jump_next()
+end, opts)
+
+vim.keymap.set("n", "[t", function()
+  require("todo-comments").jump_prev()
+end, opts)

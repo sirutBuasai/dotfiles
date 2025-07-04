@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local icons = require("user.icons")
+local icons = require("config.icons")
 
 local hide_in_width = function()
   return vim.fn.winwidth(0) > 80
@@ -108,7 +108,7 @@ lualine.setup({
     icons_enabled = true,
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { "dashboard", "NvimTree", "Outline" },
+    disabled_filetypes = { "dashboard", "NvimTree", "Outline", "Netrw" },
     always_divide_middle = true,
   },
   sections = {

@@ -5,7 +5,7 @@ end
 
 local modes = { "n" }
 
-local icons = require("user.icons")
+local icons = require("config.icons")
 
 local api = require("nvim-tree.api")
 
@@ -73,12 +73,13 @@ local on_attach = function(bufnr)
   vim.keymap.set(modes, "<2-RightMouse>", api.tree.change_root_to_node, opts("CD"))
 end
 
+-- lua
+require("nvim-tree").setup({})
+
 nvim_tree.setup({
   disable_netrw = true,
   hijack_netrw = true,
-  open_on_tab = false,
   hijack_cursor = false,
-  update_cwd = true,
   on_attach = on_attach,
   diagnostics = {
     enable = true,
@@ -91,9 +92,7 @@ nvim_tree.setup({
   },
   renderer = {
     icons = {
-      webdev_colors = true,
       git_placement = "before",
-      padding = " ",
       symlink_arrow = " ➛ ",
       show = {
         file = true,
@@ -125,11 +124,6 @@ nvim_tree.setup({
       },
     },
   },
-  update_focused_file = {
-    enable = true,
-    update_cwd = true,
-    ignore_list = { "toggleterm" },
-  },
   git = {
     enable = true,
     ignore = false,
@@ -147,6 +141,13 @@ nvim_tree.setup({
       quit_on_open = false,
       resize_window = true,
     },
+  },
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = {
+    enable = true,
+    update_root = true,
+    ignore_list = { "toggleterm" },
   },
 })
 

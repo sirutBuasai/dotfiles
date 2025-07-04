@@ -3,7 +3,7 @@ if not status_ok then
   return
 end
 
-local icons = require("user.icons")
+local icons = require("config.icons")
 
 local actions = require("diffview.actions")
 
@@ -93,8 +93,8 @@ diffview.setup({
     view = {
       -- The `view` bindings are active in the diff buffers, only when the current
       -- tabpage is a Diffview.
-      ["<tab>"] = actions.select_next_entry, -- Open the diff for the next file
-      ["<S-tab>"] = actions.select_prev_entry, -- Open the diff for the previous file
+      ["<Tab>"] = actions.select_next_entry, -- Open the diff for the next file
+      ["<S-Tab>"] = actions.select_prev_entry, -- Open the diff for the previous file
       -- ["gf"]         = actions.goto_file,                 -- Open the file in a new split in the previous tabpage
       -- ["<C-w><C-f>"] = actions.goto_file_split,           -- Open the file in a new split
       ["gf"] = actions.goto_file_tab, -- Open the file in a new tabpage

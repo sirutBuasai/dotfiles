@@ -7,6 +7,7 @@ local noremap = { noremap = true }
 
 -- Set leader key
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Line navigation -----------------------------------------
 -- H to move to start of line
@@ -84,38 +85,3 @@ vim.keymap.set(t, "<C-k>", "<cmd>wincmd k<CR>", noremap)
 vim.keymap.set(t, "<C-l>", "<cmd>wincmd l<CR>", noremap)
 -- Esc to go to normal mode in terminal
 vim.keymap.set(t, "<esc>", "<C-\\><C-n>", noremap)
-
--- #########################################################
--- Defaults; Currently replaced with plugins
--- #########################################################
-
--- `smart-splits`
--- ---------------------------------------------------------
--- Window resizing -----------------------------------------
--- -- Resize up
--- vim.keymap.set(n, "<S-Up>", ":resize +2<CR>", noremap)
--- -- Resize down
--- vim.keymap.set(n, "<S-Down>", ":resize -2<CR>", noremap)
--- -- Resize left
--- vim.keymap.set(n, "<S-Left>", ":vertical resize +2<CR>", noremap)
--- -- Resize right
--- vim.keymap.set(n, "<S-Right>", ":vertical resize -2<CR>", noremap)
---
--- Window navigation ---------------------------------------
--- Ctrl+h to go to left window
--- vim.keymap.set(n, "<C-h>", "<C-w>h", noremap)
--- Ctrl+j to go to bottom window
--- vim.keymap.set(n, "<C-j>", "<C-w>j", noremap)
--- Ctrl+k to go to top window
--- vim.keymap.set(n, "<C-k>", "<C-w>k", noremap)
--- Ctrl+l to go to right window
--- vim.keymap.set(n, "<C-l>", "<C-w>l", noremap)
-
--- `cybu`
--- ---------------------------------------------------------
--- Switching between buffers -------------------------------
--- Currently using cybu instead
--- Ctrl+n to go to next buffer
--- nnoremap <C-n> :bnext<CR>
--- Ctrl+b to go to previous buffer
--- nnoremap <C-b> :bprevious<CR>
