@@ -159,6 +159,16 @@ local plugins = {
   },
   { "stevearc/conform.nvim", lazy = false },
 
+  -- Markdown
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    lazy = true,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "echasnovski/mini.icons"
+    },
+  },
+
   -- Remove trailing whitespace
   { "mcauley-penney/tidy.nvim", lazy = true },
 

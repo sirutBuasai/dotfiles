@@ -58,8 +58,10 @@ vim.keymap.set(n, "<leader>hs", ":sp<CR>", noremap)
 -- Replace words -------------------------------------------
 -- Replace current word and move to the next occurence
 vim.keymap.set(n, "c*", "/\\<<C-r>=expand('<cword>')<CR>\\>\\C<CR>``cgn", noremap)
+vim.keymap.set(n, "d*", "/\\<<C-r>=expand('<cword>')<CR>\\>\\C<CR>``dgn", noremap)
 -- Replace current word and move to the previous occurence
 vim.keymap.set(n, "c#", "?\\<<C-r>=expand('<cword>')<CR>\\>\\C<CR>``cgN", noremap)
+vim.keymap.set(n, "d#", "?\\<<C-r>=expand('<cword>')<CR>\\>\\C<CR>``dgN", noremap)
 
 -- Highlight the whole file --------------------------------
 vim.keymap.set(n, "\\", "ggVG")

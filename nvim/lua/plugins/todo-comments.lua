@@ -70,9 +70,9 @@ todo_comments.setup({
 })
 
 vim.keymap.set("n", "]t", function()
-  require("todo-comments").jump_next()
+  todo_comments.jump_next()
 end, opts)
 
 vim.keymap.set("n", "[t", function()
-  require("todo-comments").jump_prev()
+  todo_comments.jump_prev()
 end, opts)
