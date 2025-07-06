@@ -60,7 +60,7 @@ local on_attach = function(bufnr)
   vim.keymap.set(modes, "p", api.fs.paste, opts("Paste"))
   vim.keymap.set(modes, "P", api.node.navigate.parent, opts("Parent Directory"))
   vim.keymap.set(modes, "q", api.tree.close, opts("Close")) -- Custom close mapping to allow closing in dashboard
-  vim.keymap.set(modes, "r", api.fs.rename, opts("Rename"))
+  vim.keymap.set(modes, "<leader>rn", api.fs.rename, opts("Rename"))
   vim.keymap.set(modes, "R", api.tree.reload, opts("Refresh"))
   vim.keymap.set(modes, "s", api.node.run.system, opts("Run System"))
   vim.keymap.set(modes, "S", api.tree.search_node, opts("Search"))
@@ -135,6 +135,7 @@ nvim_tree.setup({
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
+    signcolumn = "yes",
   },
   actions = {
     open_file = {

@@ -69,6 +69,9 @@ vim.keymap.set(n, "\\", "ggVG")
 -- Remove command history ----------------------------------
 vim.keymap.set(n, "q:", "<nop>", noremap)
 
+-- Close buffer window -------------------------------------
+vim.keymap.set(n, "<C-q>", ":q<CR>", noremap)
+
 -- Delete and paste text without yanking -------------------
 -- Delete without yanking
 vim.keymap.set(n, "<leader>dd", '"_dd', noremap)

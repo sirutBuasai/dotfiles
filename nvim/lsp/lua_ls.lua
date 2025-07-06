@@ -19,6 +19,8 @@ return {
         library = {
           vim.api.nvim_get_runtime_file("", true),
           "${3rd}/luv/library",
+          "snacks.nvim",
+          "mini.files",
         },
       },
       -- Do not send telemetry data containing a randomized but unique identifier

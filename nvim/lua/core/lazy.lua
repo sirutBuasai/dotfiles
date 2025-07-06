@@ -36,9 +36,6 @@ local plugins = {
     },
   },
 
-  -- Better buffer closing
-  { "moll/vim-bbye", lazy = false },
-
   -- Better buffer switching
   { "ghillb/cybu.nvim", lazy = true },
 
@@ -61,7 +58,6 @@ local plugins = {
   -- Better highlighting
   { "m-demare/hlargs.nvim", lazy = false },
   { "RRethy/vim-illuminate", lazy = false },
-  { "tzachar/highlight-undo.nvim", lazy = false },
 
   -- Better indentation marker
   {
@@ -82,6 +78,14 @@ local plugins = {
 
   -- Better quotation keybind
   { "echasnovski/mini.surround", lazy = false },
+  { "echasnovski/mini.ai", lazy = false },
+
+  -- Better QOL
+  {
+    "folke/snacks.nvim",
+    priority = 24000,
+    lazy = false,
+  },
 
   -- Bufferline
   {
@@ -165,7 +169,7 @@ local plugins = {
     lazy = true,
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
-      "echasnovski/mini.icons"
+      "echasnovski/mini.icons",
     },
   },
 
@@ -175,13 +179,6 @@ local plugins = {
   -- Status line
   {
     "nvim-lualine/lualine.nvim",
-    lazy = false,
-    dependencies = { "echasnovski/mini.icons" },
-  },
-
-  -- Startup dashboard
-  {
-    "goolord/alpha-nvim",
     lazy = false,
     dependencies = { "echasnovski/mini.icons" },
   },

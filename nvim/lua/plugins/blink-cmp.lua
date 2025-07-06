@@ -59,7 +59,7 @@ blink_cmp.setup({
   completion = {
     ghost_text = {
       enabled = true,
-      show_with_menu = true,
+      show_with_selection = true,
     },
     documentation = {
       auto_show = false,
