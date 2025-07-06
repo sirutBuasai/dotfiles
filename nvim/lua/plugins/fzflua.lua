@@ -18,7 +18,7 @@ fzf_lua.setup({
   },
   previewers = {
     builtin = {
-      syntax_limit_b = 1024 * 100, -- 100KB
+      syntax_limit_b = 1024 * 150, -- 150KB
     },
   },
 })
@@ -31,3 +31,8 @@ vim.keymap.set(modes, "<leader>fr", fzf_lua.oldfiles, opts)
 vim.keymap.set(modes, "<leader>fk", fzf_lua.keymaps, opts)
 vim.keymap.set(modes, "<leader>fh", fzf_lua.helptags, opts)
 vim.keymap.set(modes, "<leader>f?", fzf_lua.builtin, opts)
+vim.keymap.set(modes, "<leader>gs", fzf_lua.git_status, opts)
+vim.keymap.set(modes, "<leader>gS", fzf_lua.git_stash, opts)
+vim.keymap.set(modes, "<leader>gl", fzf_lua.git_commits, opts)
+vim.keymap.set(modes, "<leader>gf", fzf_lua.git_bcommits, opts)
+vim.keymap.set(modes, "<leader>gbl", fzf_lua.git_blame, opts)
