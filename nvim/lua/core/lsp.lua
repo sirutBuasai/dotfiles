@@ -63,17 +63,42 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+
+    -- Custom float diagnostic behavior
+    -- By default hovering over keyword will show float window for diagnostics
+    -- This function toggle_diagnostic_float is used to toggle this behavior on/off
+    vim.g.cursor_diagnostic_float_id = vim.api.nvim_create_autocmd({ "CursorHold" }, {
+      buffer = event.buf,
+      callback = function()
+        vim.diagnostic.open_float(nil, { focus = false })
+        vim.g.toggle_diagnostic_float_enabled = true
+      end,
+    })
+    local function toggle_diagnostic_hover()
+      if vim.g.toggle_diagnostic_float_enabled then
+        -- Remove the autocommand
+        vim.api.nvim_del_autocmd(vim.g.cursor_diagnostic_float_id)
+        vim.g.toggle_diagnostic_float_enabled = false
+      else
+        -- Create the autocommand
+        vim.g.cursor_diagnostic_float_id = vim.api.nvim_create_autocmd({ "CursorHold" }, {
+          buffer = event.buf,
+          callback = function()
+            vim.diagnostic.open_float(nil, { focus = false })
+          end,
+        })
+        vim.g.toggle_diagnostic_float_enabled = true
+      end
+    end
+    -- To get into float window type "gl"
+    -- To disable float window when hovering to reduce clutter, "type gtl"
     map("gl", function()
       vim.diagnostic.open_float()
     end, "[G]oto F[l]oat")
-
-    -- Hovering over keyword will show float window for diagnostics
-    -- vim.api.nvim_create_autocmd({ "CursorHold" }, {
-    --   buffer = event.buf,
-    --   callback = function()
-    --     vim.diagnostic.open_float(nil, { focus = false })
-    --   end,
-    -- })
+    map("gtl", function()
+      toggle_diagnostic_hover()
+    end, "Toggle Diagnostic Hover Float")
 
     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
     local function client_supports_method(client, method, bufnr)
