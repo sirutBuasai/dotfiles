@@ -47,9 +47,24 @@ return {
     preset = {
       keys = {
         { icon = icons.dashboard.Folder, key = "o", desc = "  Open tree", action = ":NvimTreeToggle" },
-        { icon = icons.dashboard.Find, key = "f", desc = "  Find file", action = ":FzfLua files" },
-        { icon = icons.dashboard.Time, key = "r", desc = "  Recently used files", action = ":FzfLua oldfiles" },
-        { icon = icons.dashboard.Text, key = "g", desc = "  Find text", action = ":FzfLua live_grep_glob" },
+        {
+          icon = icons.dashboard.Find,
+          key = "f",
+          desc = "  Find file",
+          action = ":lua Snacks.dashboard.pick('files')",
+        },
+        {
+          icon = icons.dashboard.Time,
+          key = "r",
+          desc = "  Recently used files",
+          action = ":lua Snacks.dashboard.pick('oldfiles')",
+        },
+        {
+          icon = icons.dashboard.Text,
+          key = "g",
+          desc = "  Find text",
+          action = ":lua Snacks.dashboard.pick('live_grep')",
+        },
         {
           icon = icons.dashboard.Setting,
           key = "c",

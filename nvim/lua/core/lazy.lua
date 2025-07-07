@@ -117,13 +117,6 @@ local plugins = {
     dependencies = { "echasnovski/mini.icons" },
   },
 
-  -- Fuzzy finder
-  {
-    "ibhagwan/fzf-lua",
-    lazy = true,
-    dependencies = { "echasnovski/mini.icons" },
-  },
-
   -- Icons
   {
     "echasnovski/mini.icons",

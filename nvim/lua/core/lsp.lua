@@ -1,7 +1,5 @@
 local icons = require("config.icons")
 
-local fzf_lua = require("fzf-lua")
-
 local mason = require("mason")
 
 local mason_tool_installer = require("mason-tool-installer")
@@ -44,12 +42,24 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- Jump to the definition of the word under your cursor.
     -- To jump back, press <C-t>.
-    map("gd", fzf_lua.lsp_definitions, "[G]oto [D]efinition")
-    map("gr", fzf_lua.lsp_references, "[G]oto [R]eferences")
-    map("gi", fzf_lua.lsp_implementations, "[G]oto [I]mplementation")
-    map("<leader>D", fzf_lua.lsp_typedefs, "Type [D]efinition")
-    map("<leader>ds", fzf_lua.lsp_document_symbols, "[D]ocument [S]ymbols")
-    map("<leader>ws", fzf_lua.lsp_live_workspace_symbols, "[W]orkspace [S]ymbols")
+    map("gd", function()
+      Snacks.picker.lsp_definitions()
+    end, "[G]oto [D]efinition")
+    map("gr", function()
+      Snacks.picker.lsp_references()
+    end, "[G]oto [R]eferences")
+    map("gi", function()
+      Snacks.picker.lsp_implementations()
+    end, "[G]oto [I]mplementation")
+    map("<leader>D", function()
+      Snacks.picker.lsp_type_definitions()
+    end, "Type [D]efinition")
+    map("<leader>ds", function()
+      Snacks.picker.lsp_symbols()
+    end, "[D]ocument [S]ymbols")
+    map("<leader>ws", function()
+      Snacks.picker.lsp_workspace_symbols()
+    end, "[W]orkspace [S]ymbols")
     map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -58,12 +68,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end, "[G]oto F[l]oat")
 
     -- Hovering over keyword will show float window for diagnostics
-    vim.api.nvim_create_autocmd({ "CursorHold" }, {
-      buffer = event.buf,
-      callback = function()
-        vim.diagnostic.open_float(nil, { focus = false })
-      end,
-    })
+    -- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+    --   buffer = event.buf,
+    --   callback = function()
+    --     vim.diagnostic.open_float(nil, { focus = false })
+    --   end,
+    -- })
 
     -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
     local function client_supports_method(client, method, bufnr)
