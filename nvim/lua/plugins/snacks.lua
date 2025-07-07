@@ -6,7 +6,7 @@ end
 local extra_config = require("plugins.extra-snacks")
 
 snacks.setup({
-  bigfile = { enabled = true },
+  bigfile = { enabled = false },
   dashboard = extra_config.dashboard.config,
   explorer = { enabled = false },
   indent = { enabled = true },
