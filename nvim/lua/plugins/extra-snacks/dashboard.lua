@@ -9,8 +9,7 @@ return {
         height = 5,
         padding = 1,
       },
-      -- { pane = 1, icon = icons.ui.FilledBookMark, title = "General", section = "keys", indent = 2, gap = 0.5, padding = 1,1 },
-      -- { pane = 1, icon = icons.ui.FilledBookMark, title = "General", indent = 2, gap = 1, padding = 1 },
+      -- { pane = 1, icon = icons.ui.FilledBookMark, title = "General", indent = 2 },
       { pane = 1, section = "keys", indent = 2, gap = 1, padding = 1 },
       {
         pane = 2,
@@ -64,6 +63,12 @@ return {
           key = "g",
           desc = "  Find text",
           action = ":lua Snacks.picker.grep()",
+        },
+        {
+          icon = icons.dashboard.Notes,
+          key = "n",
+          desc = "  Obsidian Vault",
+          action = ":e $HOME/obsidian_vault/",
         },
         {
           icon = icons.dashboard.Setting,

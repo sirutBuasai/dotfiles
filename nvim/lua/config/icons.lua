@@ -153,6 +153,7 @@ return {
     File = "",
     Time = "󰄉",
     Text = "󰊄",
+    Notes = "󰧑",
     Setting = "",
     Shell = "",
     Close = "󰔡",

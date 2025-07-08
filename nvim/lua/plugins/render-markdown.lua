@@ -10,5 +10,7 @@ render_markdown.setup({
   },
 })
 
+vim.cmd(":RenderMarkdown disable")
+
 vim.keymap.set("n", "<leader>md", ":RenderMarkdown enable<CR>")
 vim.keymap.set("n", "<leader>mdd", ":RenderMarkdown disable<CR>")
