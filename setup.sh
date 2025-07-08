@@ -31,6 +31,15 @@ function detect_os() {
 }
 
 # ======================
+# Path Resolution
+# ======================
+function get_script_dir() {
+  # Get the directory where setup.sh lives
+  # Works with both symlinks and direct execution
+  dirname "$(readlink -f "${BASH_SOURCE[0]}")"
+}
+
+# ======================
 # Package Manager Functions
 # ======================
 function install_packages() {
@@ -90,8 +99,12 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Install everything in $HOME
+# Set up paths
 cd $HOME/
+# Get the dotfiles directory path
+DOTFILES_DIR=$(get_script_dir)
+log_info "Dotfiles directory: $DOTFILES_DIR"
+log_info "---------------------------------------------"
 
 # Detect OS
 OS=$(detect_os)
@@ -272,22 +285,22 @@ log_info "                     .p10k.zsh"
 log_info "                     .gitconfig"
 log_info "                     .vimrc"
 # transfer zsh
-cp -f $HOME/personal_dev/dotfiles/zsh/.zshrc $HOME/
+cp -f "$DOTFILES_DIR/zsh/.zshrc" "$HOME/"
 mkdir -p $HOME/.zsh_custom
-cp -rf $HOME/personal_dev/dotfiles/zsh/zsh_custom_config $HOME/.zsh_custom/
+cp -rf "$DOTFILES_DIR/zsh/zsh_custom_config" "$HOME/.zsh_custom/"
 # transfer p10k
-cp -f $HOME/personal_dev/dotfiles/zsh/.p10k.zsh $HOME/
+cp -f "$DOTFILES_DIR/zsh/.p10k.zsh" "$HOME/"
 # transfer git
-cp -f $HOME/personal_dev/dotfiles/git/.gitconfig $HOME/
+cp -f "$DOTFILES_DIR/git/.gitconfig" "$HOME/"
 # transfer vim
-cp -rf $HOME/personal_dev/dotfiles/vim/.vimrc $HOME/
+cp -rf "$DOTFILES_DIR/vim/.vimrc" "$HOME/"
 # transfer neovim
 mkdir -p $HOME/.config
-cp -rf $HOME/personal_dev/dotfiles/nvim $HOME/.config/
+cp -rf "$DOTFILES_DIR/nvim" "$HOME/.config/"
 # transfer tmux
 rm -rf $HOME/tmux/plugins/tpm
 git clone https://github.com/tmux-plugins/tpm $HOME/tmux/plugins/tpm
-cp -f $HOME/personal_dev/dotfiles/tmux/.tmux.conf $HOME/
+cp -f "$DOTFILES_DIR/tmux/.tmux.conf" "$HOME/"
 log_info "---------------------------------------------"
 
 # Setup kitty terminal
@@ -296,7 +309,7 @@ if kitty -v >/dev/null 2>&1; then
   log_info "---------------------------------------------"
   log_info "Configuration steps:"
   log_info "                     .config/kitty"
-  cp -rf $HOME/personal_dev/dotfiles/kitty $HOME/.config/
+  cp -rf "$DOTFILES_DIR/kitty" "$HOME/.config/"
   log_info "---------------------------------------------"
 fi
 
