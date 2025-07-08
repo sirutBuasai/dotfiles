@@ -13,15 +13,21 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
 plugins=(
+  aws
+  brew
   colored-man-pages
   colorize
   copybuffer
   copyfile
   copypath
+  fast-syntax-highlighting
+  fzf-tab
   git
+  golang
   history
   macos
   pip
+  pyenv
   python
   sudo
   vi-mode
