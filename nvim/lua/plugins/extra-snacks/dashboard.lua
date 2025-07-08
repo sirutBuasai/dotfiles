@@ -51,19 +51,19 @@ return {
           icon = icons.dashboard.Find,
           key = "f",
           desc = "  Find file",
-          action = ":lua Snacks.dashboard.pick('files')",
+          action = ":lua Snacks.picker.files()",
         },
         {
           icon = icons.dashboard.Time,
           key = "r",
           desc = "  Recently used files",
-          action = ":lua Snacks.dashboard.pick('oldfiles')",
+          action = ":lua Snacks.picker.recent({ filter = { cwd = true }})",
         },
         {
           icon = icons.dashboard.Text,
           key = "g",
           desc = "  Find text",
-          action = ":lua Snacks.dashboard.pick('live_grep')",
+          action = ":lua Snacks.picker.grep()",
         },
         {
           icon = icons.dashboard.Setting,
