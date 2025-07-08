@@ -12,8 +12,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Plugins
-plugins=(
-  aws
+plugins=(aws
   brew
   colored-man-pages
   colorize
@@ -24,7 +23,9 @@ plugins=(
   fzf-tab
   git
   golang
+  helm
   history
+  kubectl
   macos
   pip
   pyenv
@@ -34,8 +35,7 @@ plugins=(
   web-search
   zsh-autosuggestions
   zsh-bat
-  zsh-syntax-highlighting
-)
+  zsh-syntax-highlighting)
 
 # Source scripts
 source $ZSH/oh-my-zsh.sh

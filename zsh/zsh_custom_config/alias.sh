@@ -45,3 +45,6 @@ alias ks='kitten ssh'
 alias kd='kitten diff'
 alias icat='kitten icat'
 alias themes='kitten themes'
+
+# Kubernetes
+alias k="kubectl"

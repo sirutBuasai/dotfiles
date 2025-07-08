@@ -17,6 +17,67 @@ function log_error() {
   echo "[ERROR]: ${1}"
 }
 
+function detect_os() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "macos"
+  elif command -v apt-get &>/dev/null; then
+    echo "ubuntu"
+  elif command -v dnf &>/dev/null; then
+    echo "amazonlinux"
+  else
+    log_error "Unsupported operating system"
+    exit 1
+  fi
+}
+
+# ======================
+# Package Manager Functions
+# ======================
+function install_packages() {
+  local os=$1
+  shift
+  local packages=("$@")
+
+  case $os in
+    macos)
+      brew install "${packages[@]}"
+      ;;
+    ubuntu)
+      sudo apt-get update
+      sudo apt-get install -y "${packages[@]}"
+      ;;
+    amazonlinux)
+      sudo dnf update -y
+      sudo dnf install -y "${packages[@]}"
+      ;;
+  esac
+}
+
+function setup_package_manager() {
+  local os=$1
+
+  case $os in
+    macos)
+      # Install Homebrew
+      if ! command -v brew &>/dev/null; then
+        log_info "Installing Homebrew..."
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+        brew update
+      fi
+      ;;
+    ubuntu)
+      # Update apt
+      sudo apt-get update
+      sudo apt-get install -y curl wget git
+      ;;
+    amazonlinux)
+      # Update dnf
+      sudo dnf update -y
+      sudo dnf install -y curl wget git
+      ;;
+  esac
+}
+
 # ======================
 # Arguments handling
 # ======================
@@ -32,21 +93,25 @@ done
 # Install everything in $HOME
 cd $HOME/
 
-# MacOS utils
-log_info "Starting setup for new MacOS machine"
+# Detect OS
+OS=$(detect_os)
+log_info "Detected OS: $OS"
 log_info "---------------------------------------------"
-log_info "Installation steps:"
-log_info "                    xcode-developer-tools"
-log_info "                    homebrew"
-sudo xcode-select --install
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-brew update
+# Setup package manager
+#
+setup_package_manager $OS
+
+# MacOS-specific setup
+if [[ "$OS" == "macos" ]]; then
+  log_info "Installing xcode developer tools..."
+  sudo xcode-select --install || true
+fi
 log_info "---------------------------------------------"
 
 # Setup initial PATH
 log_info "Setting preliminary binary path to .bash_profile"
 log_info "---------------------------------------------"
-echo "PATH="/usr/local/bin:$PATH"" >> $HOME/.bash_profile
+echo 'export PATH="/usr/local/bin:$PATH"' >> $HOME/.bash_profile
 source $HOME/.bash_profile
 log_info "---------------------------------------------"
 
@@ -57,9 +122,27 @@ log_info "Installation steps:"
 log_info "                    python"
 log_info "                    node"
 log_info "                    go"
-log_info "                    rustup"
-brew install python node go rustup
-rustup-init
+log_info "                    rust"
+
+case $OS in
+  macos)
+    install_packages $OS python node go rustup
+    ;;
+  ubuntu)
+    # Add Node.js repository
+    curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+    # Add Go repository
+    sudo add-apt-repository -y ppa:longsleep/golang-backports
+    install_packages $OS python3 python3-pip nodejs golang rustc cargo
+    ;;
+  amazonlinux)
+    # Add Node.js repository
+    curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+    install_packages $OS python3 python3-pip nodejs golang rust cargo
+    ;;
+esac
+
+[[ "$OS" != "macos" ]] && rustup-init -y
 log_info "---------------------------------------------"
 
 # Setup utility programs
@@ -70,10 +153,40 @@ log_info "                    git"
 log_info "                    tree"
 log_info "                    fzf"
 log_info "                    ripgrep"
-log_info "                    yq"
-log_info "                    jq"
 log_info "                    bat"
-brew install git tree fzf ripgrep bat yq jq bat
+log_info "                    jq"
+log_info "                    yq"
+
+case $OS in
+  macos)
+    install_packages $OS git tree fzf ripgrep bat yq jq
+    ;;
+  ubuntu)
+    install_packages $OS git tree fzf ripgrep bat
+    # Install yq
+    sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+    sudo chmod +x /usr/bin/yq
+    # Install jq
+    install_packages $OS jq
+    ;;
+  amazonlinux)
+    install_packages $OS git tree
+    # Install fzf
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install --all
+    # Install ripgrep
+    sudo dnf copr enable -y carlwgeorge/ripgrep
+    install_packages $OS ripgrep
+    # Install bat
+    sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    install_packages $OS bat
+    # Install yq
+    sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
+    sudo chmod +x /usr/bin/yq
+    # Install jq
+    install_packages $OS jq
+    ;;
+esac
 log_info "---------------------------------------------"
 
 # Setup Kubernetes if flag provided
@@ -85,7 +198,27 @@ if [[ "${INSTALL_KUBE}" -eq 1 ]]; then
   log_info "                    helm"
   log_info "                    kustomize"
   log_info "                    kind"
-  brew install kubectl helm kustomize kind
+
+  case $OS in
+    macos)
+      install_packages $OS kubectl helm kustomize kind
+      ;;
+    ubuntu|amazonlinux)
+      # Install kubectl
+      curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+      sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+      rm kubectl
+      # Install helm
+      curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+      # Install kustomize
+      curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+      sudo mv kustomize /usr/local/bin/
+      # Install kind
+      curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+      sudo install -o root -g root -m 0755 kind /usr/local/bin/kind
+      rm kind
+      ;;
+  esac
 else
   log_info "K8s flag not provided, skipping k8s utility programs"
 fi
@@ -99,8 +232,27 @@ log_info "                    zsh"
 log_info "                    oh-my-zsh"
 log_info "                    powerlevel10k"
 log_info "                    neovim"
-# install zsh
-brew install zsh
+
+# Install zsh and neovim
+case $OS in
+  macos)
+    install_packages $OS zsh neovim
+    ;;
+  ubuntu)
+    install_packages $OS zsh
+    # Install neovim from PPA
+    sudo add-apt-repository -y ppa:neovim-ppa/unstable
+    sudo apt-get update
+    install_packages $OS neovim
+    ;;
+  amazonlinux)
+    install_packages $OS zsh
+    # Install neovim from EPEL
+    sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    install_packages $OS neovim
+    ;;
+esac
+
 # install oh-my-zsh and plugins
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" --unattended
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions || true
@@ -108,18 +260,17 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 git clone https://github.com/zdharma-continuum/fast-syntax-highlighting.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fast-syntax-highlighting || true
 git clone https://github.com/fdellwing/zsh-bat.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-bat || true
 git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/fzf-tab || true
+
 # install powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-# install neovim
-brew install neovim
-# Transfer configuraiton files
+
+# Transfer configuration files
 log_info "---------------------------------------------"
 log_info "Configuration steps:"
 log_info "                     .zshrc"
 log_info "                     .p10k.zsh"
 log_info "                     .gitconfig"
 log_info "                     .vimrc"
-log_info "                     .config/nvim"
 # transfer zsh
 cp -f $HOME/personal_dev/dotfiles/zsh/.zshrc $HOME/
 mkdir -p $HOME/.zsh_custom
@@ -161,10 +312,37 @@ log_info "                    pip"
 log_info "                    pynvim"
 log_info "                    pyenv"
 log_info "                    pyenv-virtualenv"
-ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python
-ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip
-pip install --upgrade setuptools pip pynvim --break-system-packages
-brew install pyenv openssl readline sqlite3 xz zlib tcl-tk@8 libb2 pyenv-virtualenv
+
+case $OS in
+  macos)
+    ln -s /opt/homebrew/bin/python3 /opt/homebrew/bin/python || true
+    ln -s /opt/homebrew/bin/pip3 /opt/homebrew/bin/pip || true
+    pip install --upgrade setuptools pip pynvim --break-system-packages
+    brew install pyenv openssl readline sqlite3 xz zlib tcl-tk@8 libb2 pyenv-virtualenv
+    ;;
+  ubuntu)
+    sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
+      libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
+      libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
+    pip3 install --upgrade setuptools pip pynvim --break-system-packages
+    curl https://pyenv.run | bash
+    ;;
+  amazonlinux)
+    sudo dnf groupinstall -y "Development Tools"
+    sudo dnf install -y \
+      openssl-devel \
+      bzip2-devel \
+      libffi-devel \
+      zlib-devel \
+      readline-devel \
+      sqlite-devel \
+      tk-devel \
+      xz-devel \
+      python3-devel
+    pip3 install --upgrade setuptools pip pynvim --break-system-packages
+    curl https://pyenv.run | bash
+    ;;
+esac
 log_info "---------------------------------------------"
 
 log_info "Setup is done!"
