@@ -25,7 +25,6 @@ end
 local plugins = {
   -- Autocompletion
   { "rafamadriz/friendly-snippets", lazy = false },
-  { "xzbdmw/colorful-menu.nvim", lazy = false },
   {
     "saghen/blink.cmp",
     version = "*",
@@ -58,13 +57,6 @@ local plugins = {
   -- Better highlighting
   { "m-demare/hlargs.nvim", lazy = false },
   { "RRethy/vim-illuminate", lazy = false },
-
-  -- Better indentation marker
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    lazy = false,
-  },
 
   -- Better parentheses pairing
   {
