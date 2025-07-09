@@ -22,7 +22,7 @@ function detect_os() {
     echo "macos"
   elif command -v apt-get &>/dev/null; then
     echo "ubuntu"
-  elif command -v dnf &>/dev/null; then
+  elif command -v yum &>/dev/null; then
     echo "amazonlinux"
   else
     log_error "Unsupported operating system"
@@ -56,8 +56,8 @@ function install_packages() {
       sudo apt-get install -y "${packages[@]}"
       ;;
     amazonlinux)
-      sudo dnf update -y
-      sudo dnf install -y "${packages[@]}"
+      sudo yum update -y
+      sudo yum install -y "${packages[@]}"
       ;;
   esac
 }
@@ -80,9 +80,9 @@ function setup_package_manager() {
       sudo apt-get install -y curl wget git
       ;;
     amazonlinux)
-      # Update dnf
-      sudo dnf update -y
-      sudo dnf install -y curl wget git
+      # Update yum
+      sudo yum update -y
+      sudo yum install -y curl wget git
       ;;
   esac
 }
@@ -187,13 +187,13 @@ case $OS in
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
     ~/.fzf/install --all
     # Install ripgrep
-    sudo dnf copr enable -y carlwgeorge/ripgrep
+    sudo yum copr enable -y carlwgeorge/ripgrep
     install_packages $OS ripgrep
     # Install bat
-    sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     install_packages $OS bat
     # Install fd
-    sudo dnf copr enable -y atim/fd
+    sudo yum copr enable -y atim/fd
     install_packages $OS fd
     # Install yq
     sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
@@ -263,7 +263,7 @@ case $OS in
   amazonlinux)
     install_packages $OS zsh
     # Install neovim from EPEL
-    sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+    sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     install_packages $OS neovim
     ;;
 esac
@@ -343,8 +343,8 @@ case $OS in
     curl https://pyenv.run | bash
     ;;
   amazonlinux)
-    sudo dnf groupinstall -y "Development Tools"
-    sudo dnf install -y \
+    sudo yum groupinstall -y "Development Tools"
+    sudo yum install -y \
       openssl-devel \
       bzip2-devel \
       libffi-devel \
