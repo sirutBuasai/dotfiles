@@ -99,15 +99,19 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
-# Set up paths
-cd $HOME/
+# Get the dotfiles directory path
+log_info "---------------------------------------------"
+DOTFILES_DIR=$(get_script_dir)
+log_info "Dotfiles directory: $DOTFILES_DIR"
 
 # Detect OS
 OS=$(detect_os)
 log_info "Detected OS: $OS"
 log_info "---------------------------------------------"
+
+# Set up paths
+cd $HOME/
 # Setup package manager
-#
 setup_package_manager $OS
 
 # MacOS-specific setup
@@ -121,7 +125,7 @@ log_info "---------------------------------------------"
 log_info "Setting preliminary binary path to .bash_profile"
 log_info "---------------------------------------------"
 echo 'export PATH="/usr/local/bin:$PATH"' >> $HOME/.bash_profile
-source $HOME/.bash_profile
+sh -c ". $HOME/.bash_profile"
 log_info "---------------------------------------------"
 
 # Setup all programming languages
@@ -273,10 +277,6 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custo
 # install powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-# Get the dotfiles directory path
-log_info "---------------------------------------------"
-DOTFILES_DIR=$(get_script_dir)
-log_info "Dotfiles directory: $DOTFILES_DIR"
 # Transfer configuration files
 log_info "---------------------------------------------"
 log_info "Configuration steps:"
@@ -314,7 +314,7 @@ if kitty -v >/dev/null 2>&1; then
 fi
 
 # Restart shell
-sh -c "source ~/.zshrc"
+sh -c ". $HOME/.zshrc"
 
 # Setup python runtime
 log_info "Setting up python runtime"
