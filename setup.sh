@@ -103,7 +103,6 @@ done
 log_info "---------------------------------------------"
 DOTFILES_DIR=$(get_script_dir)
 log_info "Dotfiles directory: $DOTFILES_DIR"
-
 # Detect OS
 OS=$(detect_os)
 log_info "Detected OS: $OS"
