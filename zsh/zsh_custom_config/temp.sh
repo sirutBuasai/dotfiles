@@ -25,6 +25,7 @@ alias bbb='brc --allPackages brazil-build'
 alias bbra='bbr apollo-pkg'
 
 export PATH=$PATH:/Users/sbuasai/.toolbox/bin
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
 source /Users/sbuasai/.brazil_completion/zsh_completion
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
