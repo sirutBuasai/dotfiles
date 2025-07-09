@@ -139,6 +139,7 @@ log_info "                    rust"
 case $OS in
   macos)
     install_packages $OS python node go rustup
+    rustup-init -y
     ;;
   ubuntu)
     # Add Node.js repository
@@ -153,8 +154,6 @@ case $OS in
     install_packages $OS python3 python3-pip nodejs golang rust cargo
     ;;
 esac
-
-[[ "$OS" != "macos" ]] && rustup-init -y
 log_info "---------------------------------------------"
 
 # Setup utility programs
@@ -286,7 +285,7 @@ log_info "                     .vimrc"
 # transfer zsh
 cp -f "$DOTFILES_DIR/zsh/.zshrc" "$HOME/"
 mkdir -p $HOME/.zsh_custom
-cp -rf "$DOTFILES_DIR/zsh/zsh_custom_config" "$HOME/.zsh_custom/"
+cp -rf "$DOTFILES_DIR/zsh/zsh_custom_config/." "$HOME/.zsh_custom/"
 # transfer p10k
 cp -f "$DOTFILES_DIR/zsh/.p10k.zsh" "$HOME/"
 # transfer git
@@ -355,6 +354,15 @@ case $OS in
     curl https://pyenv.run | bash
     ;;
 esac
+log_info "---------------------------------------------"
+
+# Setup neovim related dependencies
+log_info "Setting up neovim plugin dependencies"
+log_info "---------------------------------------------"
+log_info "Installation steps:"
+git clone https://github.com/shreyas-a-s/shell-color-scripts.git
+cd shell-color-scripts
+sudo make install
 log_info "---------------------------------------------"
 
 log_info "Setup is done!"
