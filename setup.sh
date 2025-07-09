@@ -165,15 +165,16 @@ log_info "                    tree"
 log_info "                    fzf"
 log_info "                    ripgrep"
 log_info "                    bat"
+log_info "                    fd"
 log_info "                    jq"
 log_info "                    yq"
 
 case $OS in
   macos)
-    install_packages $OS git tree fzf ripgrep bat yq jq
+    install_packages $OS git tree fzf ripgrep bat fd yq jq
     ;;
   ubuntu)
-    install_packages $OS git tree fzf ripgrep bat
+    install_packages $OS git tree fzf ripgrep bat fd-find
     # Install yq
     sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
     sudo chmod +x /usr/bin/yq
@@ -191,6 +192,9 @@ case $OS in
     # Install bat
     sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     install_packages $OS bat
+    # Install fd
+    sudo dnf copr enable -y atim/fd
+    install_packages $OS fd
     # Install yq
     sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
     sudo chmod +x /usr/bin/yq
