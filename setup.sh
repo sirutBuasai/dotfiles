@@ -101,10 +101,6 @@ done
 
 # Set up paths
 cd $HOME/
-# Get the dotfiles directory path
-DOTFILES_DIR=$(get_script_dir)
-log_info "Dotfiles directory: $DOTFILES_DIR"
-log_info "---------------------------------------------"
 
 # Detect OS
 OS=$(detect_os)
@@ -277,6 +273,10 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custo
 # install powerlevel10k
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
+# Get the dotfiles directory path
+log_info "---------------------------------------------"
+DOTFILES_DIR=$(get_script_dir)
+log_info "Dotfiles directory: $DOTFILES_DIR"
 # Transfer configuration files
 log_info "---------------------------------------------"
 log_info "Configuration steps:"
@@ -314,7 +314,7 @@ if kitty -v >/dev/null 2>&1; then
 fi
 
 # Restart shell
-zsh -c "source ~/.zshrc"
+sh -c "source ~/.zshrc"
 
 # Setup python runtime
 log_info "Setting up python runtime"
