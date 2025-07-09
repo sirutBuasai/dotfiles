@@ -20,8 +20,9 @@ local servers = {
 }
 
 local formatters = {
-  "google-java-format",
   "black",
+  "goimports",
+  "google-java-format",
   "isort",
   "jq",
   "mdformat",
