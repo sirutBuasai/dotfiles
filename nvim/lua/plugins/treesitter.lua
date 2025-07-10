@@ -45,7 +45,7 @@ treesitter_configs.setup({
   ignore_install = ignore_servers, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
-    -- disable = { "dockerfile" }, -- list of language that will be disabled
+    disable = { "dockerfile" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = false,
   },
   indent = { enable = true, disable = { "" } },
