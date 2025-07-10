@@ -22,8 +22,6 @@ function detect_os() {
     echo "macos"
   elif command -v apt-get &>/dev/null; then
     echo "ubuntu"
-  elif command -v yum &>/dev/null; then
-    echo "amazonlinux"
   else
     log_error "Unsupported operating system"
     exit 1
@@ -55,10 +53,6 @@ function install_packages() {
       sudo apt-get update
       sudo apt-get install -y "${packages[@]}"
       ;;
-    amazonlinux)
-      sudo yum update -y
-      sudo yum install -y "${packages[@]}"
-      ;;
   esac
 }
 
@@ -78,11 +72,6 @@ function setup_package_manager() {
       # Update apt
       sudo apt-get update
       sudo apt-get install -y curl wget git
-      ;;
-    amazonlinux)
-      # Update yum
-      sudo yum update -y
-      sudo yum install -y curl wget git
       ;;
   esac
 }
@@ -148,11 +137,6 @@ case $OS in
     sudo add-apt-repository -y ppa:longsleep/golang-backports
     install_packages $OS python3 python3-pip nodejs golang rustc cargo
     ;;
-  amazonlinux)
-    # Add Node.js repository
-    curl -sL https://rpm.nodesource.com/setup_lts.x | sudo bash -
-    install_packages $OS python3 python3-pip nodejs golang rust cargo
-    ;;
 esac
 log_info "---------------------------------------------"
 
@@ -181,26 +165,6 @@ case $OS in
     # Install jq
     install_packages $OS jq
     ;;
-  amazonlinux)
-    install_packages $OS git tree
-    # Install fzf
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all
-    # Install ripgrep
-    sudo yum copr enable -y carlwgeorge/ripgrep
-    install_packages $OS ripgrep
-    # Install bat
-    sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-    install_packages $OS bat
-    # Install fd
-    sudo yum copr enable -y atim/fd
-    install_packages $OS fd
-    # Install yq
-    sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq
-    sudo chmod +x /usr/bin/yq
-    # Install jq
-    install_packages $OS jq
-    ;;
 esac
 log_info "---------------------------------------------"
 
@@ -218,7 +182,7 @@ if [[ "${INSTALL_KUBE}" -eq 1 ]]; then
     macos)
       install_packages $OS kubectl helm kustomize kind
       ;;
-    ubuntu|amazonlinux)
+    ubuntu)
       # Install kubectl
       curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
       sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -258,12 +222,6 @@ case $OS in
     # Install neovim from PPA
     sudo add-apt-repository -y ppa:neovim-ppa/unstable
     sudo apt-get update
-    install_packages $OS neovim
-    ;;
-  amazonlinux)
-    install_packages $OS zsh
-    # Install neovim from EPEL
-    sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
     install_packages $OS neovim
     ;;
 esac
@@ -339,21 +297,6 @@ case $OS in
     sudo apt-get install -y make build-essential libssl-dev zlib1g-dev \
       libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm \
       libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev
-    pip3 install --upgrade setuptools pip pynvim --break-system-packages
-    curl https://pyenv.run | bash
-    ;;
-  amazonlinux)
-    sudo yum groupinstall -y "Development Tools"
-    sudo yum install -y \
-      openssl-devel \
-      bzip2-devel \
-      libffi-devel \
-      zlib-devel \
-      readline-devel \
-      sqlite-devel \
-      tk-devel \
-      xz-devel \
-      python3-devel
     pip3 install --upgrade setuptools pip pynvim --break-system-packages
     curl https://pyenv.run | bash
     ;;
