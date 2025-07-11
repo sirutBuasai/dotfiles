@@ -65,11 +65,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
     map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
-
     -- Custom float diagnostic behavior
     -- By default hovering over keyword will show float window for diagnostics
     -- This function toggle_diagnostic_float is used to toggle this behavior on/off
-    vim.g.cursor_diagnostic_float_id = vim.api.nvim_create_autocmd({ "CursorHold" }, {
+    vim.api.nvim_create_augroup("AutoFloat", { clear = false })
+    vim.api.nvim_clear_autocmds({ buffer = event.buf, group = "AutoFloat" })
+    vim.api.nvim_create_autocmd({ "CursorHold" }, {
+      group = "AutoFloat",
       buffer = event.buf,
       callback = function()
         vim.diagnostic.open_float(nil, { focus = false })
@@ -79,14 +81,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local function toggle_diagnostic_hover()
       if vim.g.toggle_diagnostic_float_enabled then
         -- Remove the autocommand
-        vim.api.nvim_del_autocmd(vim.g.cursor_diagnostic_float_id)
+        vim.api.nvim_clear_autocmds({ buffer = event.buf, group = "AutoFloat" })
         vim.g.toggle_diagnostic_float_enabled = false
       else
         -- Create the autocommand
-        vim.g.cursor_diagnostic_float_id = vim.api.nvim_create_autocmd({ "CursorHold" }, {
+        vim.api.nvim_clear_autocmds({ buffer = event.buf, group = "AutoFloat" })
+        vim.api.nvim_create_autocmd({ "CursorHold" }, {
+          group = "AutoFloat",
           buffer = event.buf,
           callback = function()
             vim.diagnostic.open_float(nil, { focus = false })
+            vim.g.toggle_diagnostic_float_enabled = true
           end,
         })
         vim.g.toggle_diagnostic_float_enabled = true
@@ -97,7 +102,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gl", function()
       vim.diagnostic.open_float()
     end, "[G]oto F[l]oat")
-    map("gtl", function()
+    map("gL", function()
       toggle_diagnostic_hover()
     end, "Toggle Diagnostic Hover Float")
 
