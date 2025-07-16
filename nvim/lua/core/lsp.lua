@@ -74,10 +74,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
       group = "AutoFloat",
       buffer = event.buf,
       callback = function()
-        vim.diagnostic.open_float(nil, { focus = false })
-        vim.g.toggle_diagnostic_float_enabled = true
+        vim.diagnostic.open_float(nil, {
+          focus = false,
+          close_events = {
+            "CursorMoved",
+            "CursorMovedI",
+            "BufHidden",
+            "InsertCharPre",
+          },
+        })
       end,
     })
+    vim.g.toggle_diagnostic_float_enabled = true
     local function toggle_diagnostic_hover()
       if vim.g.toggle_diagnostic_float_enabled then
         -- Remove the autocommand
@@ -85,13 +93,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.g.toggle_diagnostic_float_enabled = false
       else
         -- Create the autocommand
-        vim.api.nvim_clear_autocmds({ buffer = event.buf, group = "AutoFloat" })
         vim.api.nvim_create_autocmd({ "CursorHold" }, {
           group = "AutoFloat",
           buffer = event.buf,
           callback = function()
-            vim.diagnostic.open_float(nil, { focus = false })
-            vim.g.toggle_diagnostic_float_enabled = true
+            vim.diagnostic.open_float(nil, {
+              focus = false,
+              close_events = {
+                "CursorMoved",
+                "CursorMovedI",
+                "BufHidden",
+                "InsertCharPre",
+              },
+            })
           end,
         })
         vim.g.toggle_diagnostic_float_enabled = true
