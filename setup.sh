@@ -285,6 +285,7 @@ log_info "                    pip"
 log_info "                    pynvim"
 log_info "                    pyenv"
 log_info "                    pyenv-virtualenv"
+log_info "                    uv"
 
 case $OS in
   macos)
@@ -301,6 +302,7 @@ case $OS in
     curl https://pyenv.run | bash
     ;;
 esac
+curl -LsSf https://astral.sh/uv/install.sh | sh
 log_info "---------------------------------------------"
 
 # Setup neovim related dependencies
