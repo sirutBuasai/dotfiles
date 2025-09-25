@@ -28,6 +28,7 @@ local formatters = {
   "mdformat",
   "prettier",
   "prettierd",
+  "shfmt",
   "stylua",
 }
 

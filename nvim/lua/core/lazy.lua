@@ -23,6 +23,9 @@ if not status_ok then
 end
 
 local plugins = {
+  -- AI
+  { "awslabs/amazonq.nvim", lazy = false },
+
   -- Autocompletion
   { "rafamadriz/friendly-snippets", lazy = false },
   {

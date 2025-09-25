@@ -4,6 +4,7 @@ require("config.mappings")
 require("core.lazy")
 require("core.lsp")
 -- Lua config
+require("plugins.amazonq")
 require("plugins.autopairs")
 require("plugins.blink-cmp")
 require("plugins.bufferline")
