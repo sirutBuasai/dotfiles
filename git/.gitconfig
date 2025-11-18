@@ -37,8 +37,9 @@
   po = push origin
   pom = push origin master
   pomn = push origin main
-  pu = push
-  pud = pu -d
+  pu = push upstream
+  p = push
+  pd = pu -d
   rb = rebase
   re = restore
   res = restore --staged

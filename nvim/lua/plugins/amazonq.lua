@@ -4,6 +4,6 @@ if not status_ok then
 end
 
 amazonq.setup({
-  ssoStartUrl = 'https://view.awsapps.com/start',  -- Authenticate with Amazon Q Free Tier
+  ssoStartUrl = 'https://amzn.awsapps.com/start',
   inline_suggest = true,
 })
