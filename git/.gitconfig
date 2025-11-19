@@ -13,6 +13,7 @@
   ac = commit -am
   aca = commit --amend --no-edit -a
   b = branch
+  ba = branch -a
   bd = branch -D
   bm = branch -m
   brd = branch --remote -D
