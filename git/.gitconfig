@@ -25,10 +25,13 @@
   co = checkout
   com = checkout origin/master --
   comn = checkout origin/main --
+  cum = checkout upstream/master --
+  cumn = checkout upstream/main --
   dc = diff --cached
   df = diff
   dh = diff HEAD^
   f = fetch
+  fa = fetch --all
   m = merge
   pl = pull
   plo = pull origin
@@ -38,6 +41,9 @@
   pom = push origin master
   pomn = push origin main
   pu = push upstream
+  plu = pull upstream
+  plum = pull upstream master
+  plumn = pull upstream main
   p = push
   pd = pu -d
   rb = rebase
