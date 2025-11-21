@@ -10,7 +10,14 @@ conform.setup({
     lua = { "stylua" },
     javascript = { "prettierd", "prettier", stop_after_first = true },
     typescript = { "prettierd", "prettier", stop_after_first = true },
-    python = { "isort", "black" },
+    python = {
+      -- To fix auto-fixable lint errors.
+      "ruff_fix",
+      -- To run the Ruff formatter.
+      "ruff_format",
+      -- To organize the imports.
+      "ruff_organize_imports",
+    },
     java = { "google-java-format" },
     markdown = { "mdformat" },
     json = { "jq", "prettierd", "prettier" },

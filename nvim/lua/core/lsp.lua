@@ -10,20 +10,20 @@ local servers = {
   "bashls",
   "clangd",
   "dockerls",
+  "gh_actions_ls",
   "gopls",
   "jdtls",
   "jsonls",
   "lua_ls",
   "marksman",
+  "ruff",
   "pyright",
   "ts_ls",
 }
 
 local formatters = {
-  "black",
   "goimports",
   "google-java-format",
-  "isort",
   "jq",
   "mdformat",
   "prettier",
