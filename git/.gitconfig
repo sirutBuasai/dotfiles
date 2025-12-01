@@ -21,6 +21,7 @@
   cm = commit -m
   ca = commit --amend --no-edit
   cam = commit --amend -m
+  cem = commit --allow-empty -m
   cl = clone
   cln = clean
   co = checkout
