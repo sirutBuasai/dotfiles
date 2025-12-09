@@ -1,3 +1,4 @@
+alias kcli='kiro-cli'
 alias zon='cd ~/workplace'
 alias ackdir='cd ~/go/src/github.com/aws-controllers-k8s'
 alias cdk="npx aws-cdk"
