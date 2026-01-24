@@ -43,6 +43,8 @@
   pom = push origin master
   pomn = push origin main
   pu = push upstream
+  pum = push upstream master
+  pumn = push upstream main
   plu = pull upstream
   plum = pull upstream master
   plumn = pull upstream main
