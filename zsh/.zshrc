@@ -69,3 +69,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 . "$HOME/.local/bin/env"
+
+# Added by AIM CLI
+export PATH="/Users/sbuasai/.aim/mcp-servers:$PATH"

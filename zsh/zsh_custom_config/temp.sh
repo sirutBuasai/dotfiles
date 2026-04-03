@@ -69,3 +69,5 @@ function upaws(){
 
   aws s3 sync --delete /fsx/personal_dev/dotfiles/ s3://sbuasai-dev/personal_dev/dotfiles/
 }
+
+stty eof ""
