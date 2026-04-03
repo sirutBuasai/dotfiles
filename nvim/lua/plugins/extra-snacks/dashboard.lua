@@ -71,6 +71,12 @@ return {
           action = ":e $HOME/obsidian_vault/",
         },
         {
+          icon = icons.dashboard.Notes,
+          key = "K",
+          desc = "  Kiro Configuration",
+          action = ":e $HOME/.kiro/",
+        },
+        {
           icon = icons.dashboard.Setting,
           key = "c",
           desc = "  Neovim Configuration",

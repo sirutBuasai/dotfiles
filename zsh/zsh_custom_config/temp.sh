@@ -33,6 +33,9 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Set up mise for runtime management
 eval "$(mise activate zsh)"
 
+# Added by AIM CLI
+export PATH="/Users/sbuasai/.aim/mcp-servers:$PATH"
+
 function upaws(){
   if [[ $# -gt 0 ]]; then
     while [[ $# -gt 0 ]]; do

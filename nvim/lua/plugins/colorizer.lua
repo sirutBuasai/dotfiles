@@ -19,6 +19,7 @@ colorizer.setup({
     -- Available modes for `mode`: foreground, background,  virtualtext
     mode = "background", -- Set the display mode.
     virtualtext = icons.ui.Square,
+    suppress_deprecation = true,
   },
   -- all the sub-options of filetypes apply to buftypes
   buftypes = {},
