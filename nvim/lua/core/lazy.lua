@@ -174,6 +174,7 @@ local plugins = {
   -- Treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     lazy = false,
     build = ":TSUpdate",
     priority = 1,

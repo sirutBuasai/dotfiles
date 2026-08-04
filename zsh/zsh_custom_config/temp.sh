@@ -2,7 +2,7 @@ alias kcli='kiro-cli'
 alias zon='cd ~/workplace'
 alias ackdir='cd ~/go/src/github.com/aws-controllers-k8s'
 alias cdk="npx aws-cdk"
-alias dlc='open https://github.com/sirutBuasai/deep-learning-containers'
+alias dlcgh='open https://github.com/sirutBuasai/deep-learning-containers'
 alias pdlc='open https://github.com/sirutBuasai/PRIVATE-deep-learning-containers'
 alias awsdlc='open https://github.com/aws/deep-learning-containers'
 alias pawsdlc='open https://github.com/aws/PRIVATE-deep-learning-containers'
@@ -25,6 +25,8 @@ alias bball='brc --allPackages'
 alias bbb='brc --allPackages brazil-build'
 alias bbra='bbr apollo-pkg'
 
+# Added by AIM CLI
+export PATH="/Users/sbuasai/.aim/mcp-servers:$PATH"
 export PATH=$PATH:/Users/sbuasai/.toolbox/bin
 export JAVA_HOME="/Library/Java/JavaVirtualMachines/amazon-corretto-21.jdk/Contents/Home"
 source /Users/sbuasai/.brazil_completion/zsh_completion
@@ -32,6 +34,9 @@ source /Users/sbuasai/.brazil_completion/zsh_completion
 eval "$(/opt/homebrew/bin/brew shellenv)"
 # Set up mise for runtime management
 eval "$(mise activate zsh)"
+
+# Rust/Cargo
+export PATH="$HOME/.rustup/toolchains/stable-aarch64-apple-darwin/bin:$PATH"
 
 # Added by AIM CLI
 export PATH="/Users/sbuasai/.aim/mcp-servers:$PATH"
