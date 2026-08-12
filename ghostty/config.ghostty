@@ -13,6 +13,7 @@ theme = Kanagawa Wave
 font-family = FiraCode Nerd Font Mono
 font-size = 12
 font-shaping-break = cursor
+adjust-cell-height = 10%
 
 # ── Cursor ───────────────────────────────────────────────
 cursor-style = block
@@ -27,6 +28,12 @@ clipboard-paste-protection = true
 scrollback-limit = 100000000
 
 # ── Window / macOS ───────────────────────────────────────
-macos-titlebar-style = transparent
 quit-after-last-window-closed = true
 confirm-close-surface = false
+
+# ── Window extras ────────────────────────────────────────
+window-colorspace = display-p3
+background-opacity = 0.95
+
+# ── Keybinds ─────────────────────────────────────────────
+keybind = global:cmd+grave_accent=toggle_quick_terminal
