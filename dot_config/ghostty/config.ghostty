@@ -1,0 +1,32 @@
+# ~/.config/ghostty/config.ghostty
+# Reload live after edits with: Cmd+Shift+,
+# Inspect effective values with: ghostty +show-config
+#
+# NOTE: multiplexing (splits/panes/sessions/nav/resize) is intentionally NOT
+# configured here — tmux owns that layer. Ghostty stays a fast single window
+# (+ native Cmd tabs). Alt/Option is left unbound, reserved for a future WM.
+
+# ── Theme ────────────────────────────────────────────────
+theme = Kanagawa Wave
+
+# ── Fonts ────────────────────────────────────────────────
+font-family = FiraCode Nerd Font Mono
+font-size = 12
+font-shaping-break = cursor
+
+# ── Cursor ───────────────────────────────────────────────
+cursor-style = block
+cursor-style-blink = true
+
+# ── Mouse / clipboard ────────────────────────────────────
+mouse-hide-while-typing = true
+copy-on-select = true
+clipboard-paste-protection = true
+
+# ── Scrollback ───────────────────────────────────────────
+scrollback-limit = 100000000
+
+# ── Window / macOS ───────────────────────────────────────
+macos-titlebar-style = transparent
+quit-after-last-window-closed = true
+confirm-close-surface = false
