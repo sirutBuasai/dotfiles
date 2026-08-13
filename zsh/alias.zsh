@@ -47,6 +47,7 @@ alias ip6='curl -6 icanhazip.com'
 alias k='kubectl'
 
 # ── tmux ─────────────────────────────────────────────────────
+alias tm='tmux'
 alias tml='tmux ls'                                             # list sessions
 tma() { [ -n "$1" ] && tmux attach -t "$1" || tmux attach; }    # attach (named, or most recent)
 tmn() { tmux new -s "${1:-$(basename "$PWD")}"; }               # new session (named, or cwd basename)
