@@ -136,8 +136,8 @@ nnoremap <C-u> <C-u>zz
 nnoremap J mzJ`z
 
 " fuzzy-ish file find (uses path+=**) and project grep
-nnoremap <leader>ff :find
-nnoremap <leader>fg :grep
+nnoremap <leader>ff :find<Space>
+nnoremap <leader>fg :grep<Space>
 
 " terminal (if compiled): Esc to normal mode, <C-hjkl> window nav
 if has('terminal')

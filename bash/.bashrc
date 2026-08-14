@@ -114,3 +114,6 @@ fi
 
 # ── Machine-local overrides (untracked, never committed) ─────────────
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
+
+# keep this file's last command exit 0 so the first prompt renders green
+:
