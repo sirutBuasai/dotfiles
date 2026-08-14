@@ -1,0 +1,116 @@
+[user]
+  ; name = G Buasai
+  ; email = sbuasai@amazon.com
+  name = sirutBuasai
+  email = sirutbuasai27@outlook.com
+
+[github]
+  user = sirutBuasai
+
+[alias]
+  a = add
+  aa = add -A
+  ac = commit -am
+  aca = commit --amend --no-edit -a
+  b = branch
+  ba = branch -a
+  bd = branch -D
+  bm = branch -m
+  brd = branch --remote -D
+  c = commit
+  cm = commit -m
+  ca = commit --amend --no-edit
+  cam = commit --amend -m
+  cem = commit --allow-empty -m
+  cl = clone
+  cln = clean
+  co = checkout
+  com = checkout origin/master --
+  comn = checkout origin/main --
+  cum = checkout upstream/master --
+  cumn = checkout upstream/main --
+  dc = diff --cached
+  df = diff
+  dh = diff HEAD^
+  f = fetch
+  fa = fetch --all
+  m = merge
+  pl = pull
+  plo = pull origin
+  plom = pull origin master
+  plomn = pull origin main
+  po = push origin
+  pom = push origin master
+  pomn = push origin main
+  pu = push upstream
+  pum = push upstream master
+  pumn = push upstream main
+  plu = pull upstream
+  plum = pull upstream master
+  plumn = pull upstream main
+  p = push
+  pd = pu -d
+  rb = rebase
+  re = restore
+  res = restore --staged
+  rhard = reset --hard
+  rstg = reset --mixed
+  rsoft = reset --soft
+  st = status
+  sts = stash
+  stsa = stash apply
+  stsd = stash drop
+  stsl = stash list
+  stsp = stash pop
+  tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
+
+[color]
+  branch = auto
+  diff = auto
+  ui = auto
+  status = auto
+
+[credential]
+  helper = osxkeychain
+
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red
+  new = green
+
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+
+[pull]
+  rebase = false
+
+; ── Modern defaults (community-standard QoL) ─────────────────────────
+[init]
+  defaultBranch = main
+
+[fetch]
+  prune = true                 ; drop deleted remote branches on fetch
+
+[rebase]
+  autosquash = true            ; auto-order fixup!/squash! commits
+  autostash = true             ; stash/unstash dirty tree around rebase
+
+[merge]
+  conflictstyle = zdiff3       ; 3-way conflict markers incl. the base
+
+[diff]
+  algorithm = histogram
+  colorMoved = zebra           ; distinctly color moved lines
+
+[column]
+  ui = auto                    ; columned `git branch` / status
+
+[branch]
+  sort = -committerdate        ; most-recent branches first
+
+[tag]
+  sort = version:refname       ; semantic tag ordering
