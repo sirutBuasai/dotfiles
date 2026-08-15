@@ -36,5 +36,8 @@ confirm-close-surface = false
 window-colorspace = display-p3
 background-opacity = 0.95
 
+# ── Notifications ────────────────────────────────────────
+desktop-notifications = true
+
 # ── Keybinds ─────────────────────────────────────────────
 keybind = global:cmd+grave_accent=toggle_quick_terminal

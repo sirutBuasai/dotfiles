@@ -1,0 +1,38 @@
+# bootstrap/Brewfile — macOS full-stack dependencies.
+# Used by deps.sh:  brew bundle --file bootstrap/Brewfile
+# (oh-my-zsh, powerlevel10k, OMZ plugins, and TPM are git-cloned by deps.sh, not brewed.)
+
+tap "joshmedeski/sesh"
+
+# core CLI
+brew "git"
+brew "git-lfs"
+brew "zsh"
+brew "bash"
+brew "tmux"
+brew "neovim"
+brew "jq"
+
+# search / navigation
+brew "ripgrep"
+brew "fd"
+brew "bat"
+brew "fzf"
+brew "zoxide"
+brew "sesh"
+
+# editor toolchain
+brew "tree-sitter"    # tree-sitter CLI (nvim-treesitter main branch)
+brew "rust"           # cargo — tmux-thumbs builds from source
+brew "go"             # gopls / goimports
+brew "node"           # node LSP servers, prettier, tree-sitter npm
+brew "uv"             # python toolchain
+
+# optional (uncomment if you use them):
+# brew "kubectl"
+# brew "helm"
+# brew "python@3.12"
+
+# GUI / fonts (skipped on headless Linux)
+cask "ghostty"
+cask "font-fira-code-nerd-font"
