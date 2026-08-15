@@ -1,11 +1,3 @@
--- plugins/mini-icons.lua — echasnovski/mini.icons
---
--- Icon provider. Restored your LazyVim-style setup: mini.icons loads lazily and
--- transparently answers `require('nvim-web-devicons')` with its mock (via
--- package.preload), so any plugin expecting devicons gets mini.icons instead.
--- `specs` disables the real nvim-web-devicons if a plugin pulls it in as a dep.
--- (More robust than eagerly mocking at startup.)
-
 return {
   {
     "echasnovski/mini.icons",

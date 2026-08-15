@@ -1,13 +1,3 @@
--- plugins/diffview.lua — sindrets/diffview.nvim
---
--- Dedicated tab for reviewing whole-tree diffs and git history. Restored from
--- your prior config: enhanced diff highlighting, custom folder/fold icons, tree
--- file panel (left, 35w), merge_tool diff3_mixed, and gf → open-in-new-tab.
---
--- NOTE: your old config also spelled out ~40 keymaps — those were diffview's
--- DEFAULTS (disable_defaults stays false, so they're still active). We only
--- re-declare the one real deviation: gf → goto_file_tab.
-
 return {
   "sindrets/diffview.nvim",
   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles", "DiffviewFileHistory" },
@@ -21,7 +11,7 @@ return {
     local actions = require("diffview.actions")
 
     require("diffview").setup({
-      enhanced_diff_hl = true, -- default false; better diff coloring
+      enhanced_diff_hl = true,
       use_icons = true,
       icons = {
         folder_closed = icons.documents.Folder,
@@ -52,7 +42,6 @@ return {
         win_config = { position = "bottom", height = 16 },
       },
       keymaps = {
-        -- defaults stay on; only override gf to open the file in a new tab
         view = { ["gf"] = actions.goto_file_tab },
         file_panel = { ["gf"] = actions.goto_file_tab },
       },

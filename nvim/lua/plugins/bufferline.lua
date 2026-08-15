@@ -1,21 +1,13 @@
--- plugins/bufferline.lua — akinsho/bufferline.nvim
---
--- Tab-like buffer strip along the top (showtabline=2 keeps it always shown).
--- Restored from your prior config: flat TabLine-matched look, custom glyphs,
--- thin separators, and the NvimTree offset so the tree doesn't overlap the strip.
--- close/right-mouse rewired to Snacks.bufdelete (Bdelete/vim-bbye no longer used).
-
 return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
-  dependencies = { "echasnovski/mini.icons" }, -- file icons via mini.icons' devicons mock
+  dependencies = { "echasnovski/mini.icons" },
   config = function()
     local icons = require("config.icons")
 
     require("bufferline").setup({
       options = {
         numbers = "none",
-        -- rewired from "Bdelete! %d" → snacks (we dropped vim-bbye's :Bdelete):
         close_command = function(n)
           Snacks.bufdelete(n)
         end,
@@ -34,7 +26,7 @@ return {
         left_trunc_marker = icons.ui.TruncLeft,
         right_trunc_marker = icons.ui.TruncRight,
         max_name_length = 30,
-        max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
+        max_prefix_length = 30,
         tab_size = 20,
         diagnostics = false, -- diagnostics shown in lualine instead
         offsets = { { filetype = "NvimTree", text = "", padding = 0 } },
@@ -116,7 +108,7 @@ return {
           bg = { attribute = "bg", highlight = "Normal" },
         },
         indicator_selected = {
-          fg = { attribute = "fg", highlight = "DiagnosticHint" }, -- was LspDiagnosticsDefaultHint (removed in nvim 0.6+)
+          fg = { attribute = "fg", highlight = "DiagnosticHint" },
           bg = { attribute = "bg", highlight = "Normal" },
         },
       },

@@ -1,12 +1,3 @@
--- plugins/lsp.lua — native LSP setup for Neovim 0.11+/0.12.
---
--- ARCHITECTURE: uses first-class vim.lsp.config / vim.lsp.enable (0.11+), NOT
--- the legacy require('lspconfig').<server>.setup{}. nvim-lspconfig is a dep only
--- for its per-server default DATA (cmd/filetypes/root markers) consumed by
--- vim.lsp.enable; our overrides live in ~/.config/nvim/lsp/<server>.lua. mason
--- installs binaries; mason-lspconfig bridges names and auto-enables installed
--- servers. Reference highlighting is handled by snacks.words (not lsp doc-hl).
-
 return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
@@ -14,12 +5,12 @@ return {
     "mason-org/mason.nvim",
     "mason-org/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "saghen/blink.cmp", -- for get_lsp_capabilities()
+    "saghen/blink.cmp",
   },
   config = function()
     local icons = require("config.icons")
 
-    -- ── mason (custom UI icons restored) ──────────────────────────────────
+    -- -- mason --------------------------------------------------------------
     require("mason").setup({
       ui = {
         icons = {
@@ -30,7 +21,7 @@ return {
       },
     })
 
-    -- ── mason-lspconfig: install listed servers + auto-enable (v2) ─────────
+    -- -- mason-lspconfig- ----------------------------------------------------
     require("mason-lspconfig").setup({
       ensure_installed = {
         "bashls",
@@ -40,7 +31,7 @@ return {
         "gopls",
         "jdtls",
         "jsonls",
-        "lua_ls", -- overrides in lsp/lua_ls.lua
+        "lua_ls",
         "marksman",
         "ruff",
         "pyright",
@@ -49,7 +40,7 @@ return {
       automatic_enable = true,
     })
 
-    -- ── mason-tool-installer: non-LSP tools used by conform.nvim ──────────
+    -- -- mason-tool-installer -----------------------------------------------
     require("mason-tool-installer").setup({
       ensure_installed = {
         "goimports",
@@ -63,14 +54,14 @@ return {
       },
     })
 
-    -- ── default capabilities for all servers (advertise blink's) ──────────
+    -- -- default capabilities -----------------------------------------------
     vim.lsp.config("*", {
       capabilities = require("blink.cmp").get_lsp_capabilities(),
     })
 
-    -- ── diagnostics UI (custom gutter glyphs + underline restored) ────────
+    -- -- diagnostics UI -----------------------------------------------------
     vim.diagnostic.config({
-      virtual_text = false, -- no inline noise; float on demand / auto-float
+      virtual_text = false,
       update_in_insert = true,
       underline = true,
       severity_sort = true,
@@ -85,7 +76,7 @@ return {
       float = { border = "rounded", source = true },
     })
 
-    -- ── auto-open diagnostic float on CursorHold (toggle with gL) ─────────
+    -- -- auto-open diagnostic float on CursorHold ---------------------------
     local float_group = vim.api.nvim_create_augroup("AutoFloat", { clear = false })
     local function enable_auto_float(bufnr)
       vim.api.nvim_create_autocmd("CursorHold", {
@@ -100,7 +91,7 @@ return {
       })
     end
 
-    -- ── buffer-local keymaps on attach (nav via snacks.picker) ────────────
+    -- -- keymaps ------------------------------------------------------------
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("user-lsp-attach", { clear = true }),
       callback = function(event)
@@ -137,7 +128,7 @@ return {
           end
         end, "Toggle diagnostic auto-float")
 
-        -- inlay hints toggle (no-ops if the server lacks support)
+        -- inlay hints toggle
         bmap("n", "<leader>hi", function()
           local enabled = vim.lsp.inlay_hint.is_enabled({ bufnr = buf })
           vim.lsp.inlay_hint.enable(not enabled, { bufnr = buf })

@@ -1,15 +1,7 @@
--- plugins/lualine.lua — nvim-lualine/lualine.nvim
---
--- Your hand-built statusline, restored verbatim: no powerline separators,
--- ThickSeparator bookends (lualine_a/_y), icon-only filetype, bold filename
--- with parent path, orange branch, colored diff, an LSP client-names segment,
--- always-visible colored diagnostics, lavender location, orange progress.
--- No mode indicator (you rely on the cursor shape). Disabled in dashboard/tree.
-
 return {
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
-  dependencies = { "echasnovski/mini.icons" }, -- filetype icons via devicons mock
+  dependencies = { "echasnovski/mini.icons" },
   config = function()
     local icons = require("config.icons")
 

@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
-# Notification + Stop hook — play a sound, but not too often. Gated by:
-#   • how long this turn has run (start stamped by prompt-start.sh), and
-#   • whether the terminal is focused.
-#     focused   → notify only if the turn ran > 60s (you're watching; skip quick ones)
-#     unfocused → notify if the turn ran > 30s (you're away; ping sooner)
-# Side-effect only; exit code is ignored for these events.
+# Notification + Stop hook:
+# focused   → notify only if the turn ran > 60s
+# unfocused → notify if the turn ran > 30s
+
 input=$(cat 2>/dev/null)
 event=$(printf '%s' "$input" | jq -r '.hook_event_name // empty' 2>/dev/null)
 sid=$(printf '%s' "$input" | jq -r '.session_id // "default"' 2>/dev/null)
 
-# ── elapsed since this turn started ────────────────────────────────────────
+# -- elapsed since this turn started -----------------------------------------
 start_file="${TMPDIR:-/tmp}/claude-turn-start-${sid}"
 now=$(date +%s)
 if [[ -r "$start_file" ]] && start=$(cat "$start_file" 2>/dev/null) && [[ "$start" =~ ^[0-9]+$ ]]; then
@@ -18,7 +16,7 @@ else
   elapsed=99999   # unknown → don't suppress
 fi
 
-# ── terminal focused? frontmost app is a known terminal emulator ───────────
+# -- find focused term -------------------------------------------------------
 # CC_NOTIFY_FOCUS=yes|no overrides detection (for testing).
 focused="no"
 if [[ -n "${CC_NOTIFY_FOCUS:-}" ]]; then
@@ -31,7 +29,7 @@ fi
 
 if [[ "$focused" == "yes" ]]; then threshold=60; else threshold=30; fi
 
-# ── debug: print the decision instead of playing (CC_NOTIFY_DEBUG=1) ───────
+# -- debug: print the decision instead of playing (CC_NOTIFY_DEBUG=1) --------
 if [[ "${CC_NOTIFY_DEBUG:-}" == "1" ]]; then
   printf 'event=%s focused=%s elapsed=%ss threshold=%ss -> %s\n' \
     "$event" "$focused" "$elapsed" "$threshold" \
@@ -39,9 +37,9 @@ if [[ "${CC_NOTIFY_DEBUG:-}" == "1" ]]; then
   exit 0
 fi
 
-(( elapsed < threshold )) && exit 0   # too quick for the current focus state → stay silent
+(( elapsed < threshold )) && exit 0
 
-# ── play ───────────────────────────────────────────────────────────────────
+# -- play --------------------------------------------------------------------
 play() { # $1 = macOS system sound name
   if command -v afplay >/dev/null 2>&1; then afplay "/System/Library/Sounds/$1.aiff" >/dev/null 2>&1 &
   elif command -v paplay >/dev/null 2>&1; then paplay /usr/share/sounds/freedesktop/stereo/complete.oga >/dev/null 2>&1 &

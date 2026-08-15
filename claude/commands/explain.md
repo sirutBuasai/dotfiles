@@ -7,4 +7,4 @@ Be concise. No preamble.
 
 Explain: $ARGUMENTS
 
-Cover only what matters: what it does, key inputs/outputs, and any non-obvious behavior or gotcha. Reference code as `file:line`. Do not modify anything.
+Cover only what matters: what it does, key inputs/outputs, and any non-obvious behavior. Reference code as `file:line`. Do not modify anything.

@@ -1,13 +1,3 @@
-# ═══════════════════════════════════════════════════════════════════
-# ~/.bashrc — portable fallback shell (the "stone-age kit")
-# Self-contained & dependency-free. Meant to be scp'd/curled onto a bare
-# box (EC2, container) where the full zsh + p10k stack isn't available.
-# Pairs with ~/.vimrc. Everything degrades gracefully if a tool is absent.
-#
-# Login shells read ~/.bash_profile (not this file) — that file sources
-# this one, so both interactive and login shells get the same setup.
-# ═══════════════════════════════════════════════════════════════════
-
 # Interactive shells only — bail out for scp/rsync/non-interactive.
 case $- in
   *i*) ;;
@@ -75,7 +65,7 @@ tma() { [ -n "$1" ] && tmux attach -t "$1" || tmux attach; }   # attach named/mo
 tmn() { tmux new -s "${1:-$(basename "$PWD")}"; }              # new named/cwd session
 tmk() { tmux kill-session -t "$1"; }                           # kill named session
 
-# ── Prompt status ────────────────────────────────────────────────────
+# -- Prompt status ----------------------------------------------------
 __prompt_git() {
   local b
   b=$(git symbolic-ref --quiet --short HEAD 2>/dev/null) \
@@ -86,15 +76,15 @@ __prompt_git() {
   printf ' (%s%s)' "$b" "$dirty"
 }
 __set_prompt() {
-  local ec=$?                                    # capture BEFORE anything else
+  local ec=$?
   local g; g=$(__prompt_git)
   local pchar
   [ "$ec" -eq 0 ] && pchar='\[\e[32m\]' || pchar='\[\e[31m\]'   # green ok / red fail
   PS1="\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\[\e[33m\]${g}\[\e[0m\]\n${pchar}\$\[\e[0m\] "
 }
-PROMPT_COMMAND="__set_prompt; $PROMPT_COMMAND"   # run first so $? is accurate
+PROMPT_COMMAND="__set_prompt; $PROMPT_COMMAND"
 
-# ── Tool init ────────────────────────────────────────────────────────
+# -- Tool init ---------------------------------------------------------
 if   [ -x /opt/homebrew/bin/brew ];              then eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
@@ -103,7 +93,7 @@ fi
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init bash)"        # smart cd (z/zi)
 command -v fzf    >/dev/null 2>&1 && eval "$(fzf --bash)" 2>/dev/null  # C-r/C-t/M-c
 
-# ── bash completion ───────────────────────────────────────────────────
+# -- bash completion ---------------------------------------------------
 if ! shopt -oq posix; then
   for f in /usr/share/bash-completion/bash_completion \
            /etc/bash_completion \
@@ -112,7 +102,7 @@ if ! shopt -oq posix; then
   done
 fi
 
-# ── Machine-local overrides (untracked, never committed) ─────────────
+# -- Machine-local overrides -------------------------------------------
 [ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
 
 # keep this file's last command exit 0 so the first prompt renders green

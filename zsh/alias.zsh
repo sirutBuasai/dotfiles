@@ -1,10 +1,6 @@
 #!/usr/bin/env zsh
-# ─────────────────────────────────────────────────────────────
-# alias.sh — aliases + thin program-launch wrappers.
-# Script-like functions live in func.zsh.
-# ─────────────────────────────────────────────────────────────
 
-# ── Utilities ────────────────────────────────────────────────
+# -- utils ----------------------------------------------------
 alias clr='clear'
 alias cln="find . -type f -name '*.DS_Store' -ls -delete"
 alias cppath='copypath'          # OMZ copypath plugin
@@ -19,34 +15,34 @@ alias tc='touch'
 alias vim='nvim'
 alias diff='git diff --no-index'
 
-# ── Git typo forgiveness ─────────────────────────────────────
+# -- git ------------------------------------------------------
 alias got='git'
 alias gir='git'
 alias gti='git'
 
-# ── Languages ────────────────────────────────────────────────
+# -- languages ------------------------------------------------
 alias cppc='c++ -std=c++11 -stdlib=libc++'
 alias py='python'
 alias py3='python3'
 
-# ── Navigation ───────────────────────────────────────────────
+# -- nav ------------------------------------------------------
 alias de='cd ~/Desktop'
 alias dl='cd ~/Downloads'
 alias p='cd ~/personal_dev'
 
-# ── Quick links ──────────────────────────────────────────────
+# -- quick links ----------------------------------------------
 alias ghsb='open https://github.com/sirutBuasai'
 alias drive='open https://drive.google.com'
 
-# ── Misc ─────────────────────────────────────────────────────
+# -- misc -----------------------------------------------------
 alias gg='google'
 alias ip4='curl -4 icanhazip.com'
 alias ip6='curl -6 icanhazip.com'
 
-# ── K8s ──────────────────────────────────────────────────────
+# -- k8s ------------------------------------------------------
 alias k='kubectl'
 
-# ── tmux ─────────────────────────────────────────────────────
+# -- tmux -----------------------------------------------------
 alias tm='tmux'
 alias tml='tmux ls'                                             # list sessions
 tma() { [ -n "$1" ] && tmux attach -t "$1" || tmux attach; }    # attach (named, or most recent)

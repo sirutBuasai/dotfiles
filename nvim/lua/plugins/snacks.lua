@@ -1,13 +1,3 @@
--- plugins/snacks.lua — folke/snacks.nvim
---
--- Snacks is a "meta" plugin: many small QoL modules behind one dependency.
--- We enable the ones we use (picker/dashboard/notifier/input/zen/indent/words/
--- quickfile/rename/gitbrowse/bufdelete) and disable the rest for predictability.
--- Loaded eagerly (lazy=false, high priority) since the picker/dashboard/notifier
--- are referenced by other plugins and our keymaps at startup.
---
--- Per-module configs restored from the old extra-snacks/* split.
-
 local icons = require("config.icons")
 
 return {
@@ -15,13 +5,31 @@ return {
   lazy = false,
   priority = 1000,
   init = function()
-    -- disable snacks animations (scroll/etc.) — restored preference
+    -- disable snacks animations
     vim.g.snacks_animate = false
   end,
   ---@type snacks.Config
   opts = {
-    -- ── picker (fuzzy finder) ───────────────────────────────────────────
-    -- frecency ranking, filename-shown-first, and <S-arrows> to scroll the preview.
+    -- enabled modules
+    words = { enabled = true },
+    indent = { enabled = true },
+    bufdelete = { enabled = true },
+    gitbrowse = { enabled = true },
+    quickfile = { enabled = true },
+    rename = { enabled = true },
+
+    -- disabled modules
+    statuscolumn = { enabled = false },
+    scroll = { enabled = false },
+    zen = { enabled = false },
+    bigfile = { enabled = false },
+    explorer = { enabled = false },
+    scratch = { enabled = false },
+    toggle = { enabled = false },
+    image = { enabled = false },
+    scope = { enabled = false },
+
+    -- picker
     picker = {
       matcher = { frecency = true },
       win = {
@@ -39,19 +47,9 @@ return {
       },
     },
 
-    -- ── other enabled modules ───────────────────────────────────────────
-    words = { enabled = true },         -- reference highlight (replaces vim-illuminate)
-    indent = { enabled = true },        -- indent guides + scope (was on in old config)
-    statuscolumn = { enabled = false }, -- old: OFF. flip to true for the combined gutter
-    scroll = { enabled = false },       -- no smooth-scroll animation
-    bufdelete = { enabled = true },
-    gitbrowse = { enabled = true },
-    quickfile = { enabled = true },
-    rename = { enabled = true },
-
-    -- notifier: diagnostic icons + wrapped body (style below)
+    -- notifier
     notifier = {
-      level = vim.log.levels.Info,
+      level = vim.log.levels.INFO,
       icons = {
         error = icons.diagnostics.Error,
         warn = icons.diagnostics.Warning,
@@ -61,41 +59,16 @@ return {
       },
     },
 
-    -- input: pencil icon, floats at the cursor (style below)
+    -- input
     input = { icon = icons.ui.Pencil },
 
-    -- zen: distraction-free toggles
-    zen = {
-      toggles = {
-        dim = true,
-        git_signs = false,
-        mini_diff_signs = false,
-        diagnostics = false,
-        inlay_hints = false,
-        line_number = false,
-        relative_number = false,
-        signcolumn = "no",
-        indent = false,
-      },
-      show = { statusline = false, tabline = false },
-      win = { width = 0, height = 0, backdrop = { transparent = false, blend = 75 } },
-    },
-
-    -- ── disabled modules ────────────────────────────────────────────────
-    bigfile = { enabled = false },
-    explorer = { enabled = false },
-    scratch = { enabled = false },
-    toggle = { enabled = false },
-    image = { enabled = false },
-    scope = { enabled = false },
-
-    -- window styles: input floats at the cursor; notifications wrap long lines
+    -- window styles
     styles = {
       input = { relative = "cursor", row = -3, col = 0 },
       notification = { wo = { wrap = true } },
     },
 
-    -- ── Dashboard ───────────────────────────────────────────────────────
+    -- dashboard
     dashboard = {
       enabled = true,
       sections = {
@@ -156,12 +129,9 @@ return {
     },
   },
 
-  -- ── Keymaps ───────────────────────────────────────────────────────────
+  -- keymaps
   keys = {
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete buffer" },
-    -- <C-w> closes the current buffer (keeps the window/layout); quits if it's the
-    -- last listed buffer. Overrides Vim's native <C-w> window-command prefix, which
-    -- you've replaced with smart-splits (<C-hjkl>/<M-hjkl>) + <leader>vs/hs + <C-q>.
     {
       "<C-w>",
       function()
@@ -176,12 +146,12 @@ return {
       end,
       desc = "Close buffer (or quit if last)",
     },
-    -- gitbrowse on <leader>ghb (gitsigns owns gb=blame toggle, gB=full-line blame popup)
+
     { "<leader>ghb", function() Snacks.gitbrowse() end, desc = "Git browse (open in web)", mode = { "n", "v" } },
     { "<leader>nh", function() Snacks.notifier.show_history() end, desc = "Notification history" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss notifications" },
 
-    -- pickers (file/text finders)
+    -- pickers keymaps
     { "<leader>ff", function() Snacks.picker.files() end, desc = "Find files" },
     { "<leader>fb", function() Snacks.picker.grep_buffers() end, desc = "Grep open buffers" },
     { "<leader>fB", function() Snacks.picker.buffers() end, desc = "List buffers" },
@@ -190,15 +160,12 @@ return {
     { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Search keymaps" },
     { "<leader>fh", function() Snacks.picker.help() end, desc = "Search help tags" },
 
-    -- git pickers
+    -- git keymaps
     { "<leader>gs", function() Snacks.picker.git_status() end, desc = "Git status" },
     { "<leader>gS", function() Snacks.picker.git_stash() end, desc = "Git stash" },
     { "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git diff (hunks)" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git log" },
     { "<leader>gf", function() Snacks.picker.git_log_file() end, desc = "Git log (this file)" },
     { "<leader>gL", function() Snacks.picker.git_log_line() end, desc = "Git log (this line)" },
-
-    -- zen mode
-    { "<leader>z", function() Snacks.zen() end, desc = "Toggle zen mode" },
   },
 }

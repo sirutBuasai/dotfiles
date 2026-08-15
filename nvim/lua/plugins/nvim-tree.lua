@@ -1,6 +1,6 @@
 return {
   "nvim-tree/nvim-tree.lua",
-  lazy = false, -- eager so hijack_netrw works & tree is always available (it's cheap)
+  lazy = false,
   dependencies = { "echasnovski/mini.icons" },
   keys = { { "<leader>t", "<cmd>NvimTreeToggle<CR>", desc = "Toggle file tree" } },
   config = function()
@@ -41,8 +41,8 @@ return {
       vim.keymap.set("n", "gy", api.fs.copy.absolute_path, opts("Copy Absolute Path"))
 
       -- filters / view
-      vim.keymap.set("n", "H", api.tree.toggle_hidden_filter, opts("Toggle Dotfiles"))
-      vim.keymap.set("n", "I", api.tree.toggle_gitignore_filter, opts("Toggle Git Ignore"))
+      vim.keymap.set("n", "H", api.filter.dotfiles.toggle, opts("Toggle Dotfiles"))
+      vim.keymap.set("n", "I", api.filter.git.ignored.toggle, opts("Toggle Git Ignore"))
       vim.keymap.set("n", "E", api.tree.expand_all, opts("Expand All"))
       vim.keymap.set("n", "W", api.tree.collapse_all, opts("Collapse"))
       vim.keymap.set("n", "R", api.tree.reload, opts("Refresh"))

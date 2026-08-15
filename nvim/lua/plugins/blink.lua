@@ -1,25 +1,10 @@
--- plugins/blink.lua — saghen/blink.cmp
---
--- Completion engine. Config restored from your previous setup:
---   • kind-icon two-column menu (icons from config.icons.kind)
---   • signature help enabled
---   • <C-space> shows snippets only
---   • <C-e> = false → freed for autopairs fast-wrap
---   • cmdline completion (menu hidden until asked)
--- Capabilities are also consumed by the LSP layer (lsp.lua).
-
 return {
   "saghen/blink.cmp",
   dependencies = {
     "rafamadriz/friendly-snippets",
     "mikavilpas/blink-ripgrep.nvim", -- project-wide grep completion source
   },
-  -- version = "*" pulls the latest tagged release (prebuilt Rust fuzzy binary,
-  -- no cargo needed). NOTE: blink v2 is in active development with breaking
-  -- changes; pin `version = "1.*"` if you want to stay on the stable v1 line.
   version = "*",
-  ---@module 'blink.cmp'
-  ---@type blink.cmp.Config
   opts = function()
     local icons = require("config.icons")
     local kind_icons = {
@@ -83,8 +68,6 @@ return {
               kind_icon = {
                 text = function(ctx)
                   -- prefer our custom kind icons; fall back to blink's built-in
-                  -- (buffer/path/ripgrep can emit kinds not in our map), and
-                  -- guard icon_gap in case the blink API omits it.
                   local icon = kind_icons[ctx.kind] or ctx.kind_icon or ""
                   return " " .. icon .. (ctx.icon_gap or " ") .. " "
                 end,
@@ -100,8 +83,7 @@ return {
       sources = {
         default = { "lsp", "path", "snippets", "buffer", "ripgrep" },
         providers = {
-          -- Clear LSP's fallback (default {"buffer"}) so buffer/codebase words
-          -- show ALONGSIDE LSP results instead of only when LSP returns nothing.
+          -- buffer/codebase words show ALONGSIDE LSP results
           lsp = { fallbacks = {} },
           -- Project-wide grep completion (needs `rg` on PATH).
           ripgrep = {

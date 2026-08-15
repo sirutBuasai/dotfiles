@@ -1,12 +1,3 @@
--- plugins/mini-surround.lua — echasnovski/mini.surround
---
--- vim-surround-style keymaps restored (your muscle memory):
---   ys = add      (e.g. ysiw"  → surround word with ")
---   ds = delete   (ds"        → remove surrounding ")
---   cs = replace  (cs"'       → change " to ')
---   ch = highlight surrounding
--- find / next / last suffixes are disabled.
-
 return {
   {
     "echasnovski/mini.surround",
@@ -30,9 +21,6 @@ return {
         search_method = "cover_or_nearest",
         silent = true,
       })
-      -- Note: `ys` is intentionally left mapped in VISUAL mode too (your
-      -- preference), so visual `y` waits ~timeoutlen before yanking. Accepted
-      -- tradeoff for consistent `ys` everywhere.
     end,
   },
 }

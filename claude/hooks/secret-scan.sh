@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Claude Code PreToolUse guard (matcher: Write|Edit) — blocks writing obvious secrets.
 # High-signal patterns only. exit 2 blocks the write; stderr is shown to Claude.
+
 input=$(cat 2>/dev/null)
 content=$(printf '%s' "$input" | jq -r '(.tool_input.content // .tool_input.new_string // empty)' 2>/dev/null)
 [ -z "$content" ] && exit 0

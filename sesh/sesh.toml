@@ -1,6 +1,3 @@
-# ~/.config/sesh/sesh.toml — v2 (live; folds into chezmoi at L6)
-# sesh is a standalone session manager; invoked from tmux (C-a o) and the tms alias.
-
 [default_session]
 startup_command = "nvim"
 

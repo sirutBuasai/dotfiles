@@ -1,10 +1,3 @@
--- plugins/conform.lua — stevearc/conform.nvim
---
--- Formatter runner. Formatting is MANUAL only (<leader>fm) — no format_on_save,
--- so saves stay fast and diffs stay under your control. Formatter *style* args
--- (prettier no-semi/single-quote, stylua 2-space) are restored from your prior
--- config; markdown also formats embedded code blocks via the "injected" formatter.
-
 return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
@@ -16,17 +9,15 @@ return {
       typescript = { "prettierd", "prettier", stop_after_first = true },
       javascriptreact = { "prettierd", "prettier", stop_after_first = true },
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-      json = { "prettierd", "prettier", stop_after_first = true }, -- dropped jq (prettier handles JSON)
+      json = { "prettierd", "prettier", stop_after_first = true },
       css = { "prettierd", "prettier", stop_after_first = true },
       html = { "prettierd", "prettier", stop_after_first = true },
       go = { "goimports", "gofmt" },
       lua = { "stylua" },
       sh = { "shfmt" },
-      markdown = { "mdformat", "injected" }, -- injected = format embedded ```code``` fences
+      markdown = { "mdformat", "injected" },
       java = { "google-java-format" },
     },
-    -- Formatter-specific customizations (merged onto conform's built-ins;
-    -- `inherit` defaults to true so prepend_args extend the base command).
     formatters = {
       prettier = {
         options = {
@@ -58,15 +49,12 @@ return {
         prepend_args = { "-" },
       },
     },
-    -- no format_on_save / format_after_save — manual only (keymap below)
+    -- no format_on_save / format_after_save
   },
   keys = {
     {
       "<leader>fm",
       function()
-        -- async so a slow formatter never blocks; lsp_format='fallback' uses the
-        -- LSP formatter only when no conform formatter exists for the filetype.
-        -- On success, if we formatted a visual selection, drop back to normal mode.
         require("conform").format({ async = true, lsp_format = "fallback" }, function(err)
           if not err then
             local mode = vim.api.nvim_get_mode().mode

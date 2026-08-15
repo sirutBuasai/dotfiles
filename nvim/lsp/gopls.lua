@@ -1,7 +1,3 @@
--- lsp/gopls.lua — Go. Only the non-default settings are kept here; cmd,
--- filetypes and root_markers come from nvim-lspconfig's gopls defaults.
--- (Dropped the old redundant cmd/root_markers and the non-standard "gosum"
--- filetype addition.)
 return {
   settings = {
     gopls = {

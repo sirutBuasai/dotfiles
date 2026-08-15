@@ -1,6 +1,4 @@
 [user]
-  ; name = G Buasai
-  ; email = sbuasai@amazon.com
   name = sirutBuasai
   email = sirutbuasai27@outlook.com
 
@@ -70,8 +68,9 @@
   ui = auto
   status = auto
 
-[credential]
-  helper = osxkeychain
+[credential "https://github.com"]
+  helper =
+  helper = !gh auth git-credential
 
 [color "diff"]
   meta = yellow bold
@@ -88,29 +87,28 @@
 [pull]
   rebase = false
 
-; ── Modern defaults (community-standard QoL) ─────────────────────────
 [init]
   defaultBranch = main
 
 [fetch]
-  prune = true                 ; drop deleted remote branches on fetch
+  prune = true
 
 [rebase]
-  autosquash = true            ; auto-order fixup!/squash! commits
-  autostash = true             ; stash/unstash dirty tree around rebase
+  autosquash = true
+  autostash = true
 
 [merge]
-  conflictstyle = zdiff3       ; 3-way conflict markers incl. the base
+  conflictstyle = zdiff3
 
 [diff]
   algorithm = histogram
-  colorMoved = zebra           ; distinctly color moved lines
+  colorMoved = zebra
 
 [column]
-  ui = auto                    ; columned `git branch` / status
+  ui = auto
 
 [branch]
-  sort = -committerdate        ; most-recent branches first
+  sort = -committerdate
 
 [tag]
-  sort = version:refname       ; semantic tag ordering
+  sort = version:refname

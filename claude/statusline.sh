@@ -1,16 +1,7 @@
 #!/usr/bin/env bash
-# ~/.claude/statusline.sh — personal Claude Code statusLine (lualine-flavored).
-# Reads JSON on stdin, prints a single line of conditional segments:
+# claudecode statusline reads JSON on stdin, prints a single line of conditional segments:
 #   left:   <cwd> · <branch> · <ctx-bar> · <git-diff?>
 #   right:  <model+thinking> · <cost> · <rate-limit?>
-#
-# Wire in ~/.claude/settings.json:
-#   "statusLine": {
-#     "type": "command",
-#     "command": "$HOME/.claude/statusline.sh",
-#     "padding": 1,
-#     "refreshInterval": 5
-#   }
 
 set -uo pipefail
 
@@ -19,7 +10,6 @@ HAVE_JQ=0
 command -v jq >/dev/null 2>&1 && HAVE_JQ=1
 
 j() {
-    # j '<jq filter>' [default]
     if (( HAVE_JQ )); then
         local out
         out="$(jq -r "$1 // empty" <<<"$INPUT" 2>/dev/null)"
@@ -28,7 +18,7 @@ j() {
     printf '%s' "${2:-}"
 }
 
-# ── palette (kanagawa-toned 256-color) ─────────────────────────────────────
+# -- palette (kanagawa-toned 256-color) --------------------------------------
 RESET=$'\033[0m'; BOLD=$'\033[1m'; DIM=$'\033[38;5;242m'
 C_CWD=$'\033[38;5;110m'    # crystal blue
 C_MODEL=$'\033[38;5;209m'  # salmon
@@ -46,7 +36,7 @@ G_THINK=$''    #  thinking / effort
 
 CWD="$(j '.workspace.current_dir' "$PWD")"
 
-# ── cwd (smart-shortened: ~/first/.../last2 when deep) ─────────────────────
+# -- cwd ---------------------------------------------------------------------
 shorten_path() {
     local p="$1"
     case "$p" in "$HOME"|"$HOME/"*) p="~${p#$HOME}" ;; esac
@@ -59,7 +49,7 @@ shorten_path() {
 }
 CWD_SEG="${BOLD}${C_CWD}$(shorten_path "$CWD")${RESET}"
 
-# ── model + thinking/effort ────────────────────────────────────────────────
+# -- model + thinking/effort -------------------------------------------------
 MODEL="$(j '.model.display_name' "claude")"
 THINKING="$(j '.thinking.enabled' "")"
 EFFORT="$(j '.effort.level' "")"
@@ -69,7 +59,7 @@ if [[ "$THINKING" == "true" ]]; then
 fi
 MODEL_SEG="${BOLD}${C_MODEL}${MODEL}${RESET}${MODEL_EXTRA}"
 
-# ── context window (fractional eighth-block bar, threshold-colored; ALWAYS shown) ──
+# -- context window ----------------------------------------------------------
 CTX_PCT="$(j '.context_window.used_percentage' "0")"
 used="${CTX_PCT%.*}"; [[ -z "$used" ]] && used=0
 (( used > 100 )) && used=100
@@ -84,7 +74,7 @@ if (( frac > 0 && full < W )); then bar+="${parts:frac-1:1}"; ((i++)); fi
 empty=""; while (( i < W )); do empty+="░"; ((i++)); done
 CTX_SEG="${color}${bar}${DIM}${empty}${RESET} ${color}${used}%${RESET}"
 
-# ── git branch + dirty + working-tree diff (A/M/D counts) ──────────────────
+# -- git ---------------------------------------------------------------------
 GIT_SEG=""; DIFF_SEG=""
 if cd "$CWD" 2>/dev/null && git rev-parse --git-dir >/dev/null 2>&1; then
     branch="$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)"
@@ -112,12 +102,12 @@ if cd "$CWD" 2>/dev/null && git rev-parse --git-dir >/dev/null 2>&1; then
     fi
 fi
 
-# ── cost ───────────────────────────────────────────────────────────────────
+# -- cost --------------------------------------------------------------------
 COST_USD="$(j '.cost.total_cost_usd' "")"
 COST_SEG=""
 [[ -n "$COST_USD" ]] && COST_SEG="${C_COST}\$$(printf '%.2f' "$COST_USD" 2>/dev/null || echo "$COST_USD")${RESET}"
 
-# ── rate limit (ALWAYS shown; '—' when data absent, e.g. on Bedrock) ───────
+# -- rate limit --------------------------------------------------------------
 fmt_rate() {
     local label="$1" pct="$2"; local i="${pct%.*}"
     if [[ -z "$i" ]]; then printf '%s%s:—%s' "$DIM" "$label" "$RESET"; return; fi
@@ -128,7 +118,7 @@ r5="$(fmt_rate "5h" "$(j '.rate_limits.five_hour.used_percentage' "")")"
 r7="$(fmt_rate "7d" "$(j '.rate_limits.seven_day.used_percentage' "")")"
 RATE_SEG="⏳ ${r5} ${r7}"
 
-# ── assemble (left-justified + right-justified) ────────────────────────────
+# -- alignment ---------------------------------------------------------------
 sep="${DIM} · ${RESET}"
 join_with_sep() {
     local s="$1"; shift; local out=""
