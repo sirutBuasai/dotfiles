@@ -1,39 +1,44 @@
-# bootstrap/Brewfile — macOS full-stack dependencies.
-# Used by deps.sh:  brew bundle --file bootstrap/Brewfile
-# (oh-my-zsh, powerlevel10k, OMZ plugins, and TPM are git-cloned by deps.sh, not brewed.)
+# -- taps -------------------------------------------------
+tap "hashicorp/tap"
 
-tap "joshmedeski/sesh"
-
-# core CLI
+# ── development ------------------------------------------
 brew "git"
 brew "git-lfs"
-brew "gh"             # GitHub CLI — git credential helper + PR/repo ops
+brew "gh"
 brew "zsh"
 brew "bash"
 brew "tmux"
 brew "neovim"
 brew "jq"
-
-# search / navigation
+brew "yq"
 brew "ripgrep"
 brew "fd"
 brew "bat"
 brew "fzf"
 brew "zoxide"
 brew "sesh"
+brew "tree-sitter"
+brew "rust"
+brew "go"
+brew "node"
+brew "uv"
 
-# editor toolchain
-brew "tree-sitter"    # tree-sitter CLI (nvim-treesitter main branch)
-brew "rust"           # cargo — tmux-thumbs builds from source
-brew "go"             # gopls / goimports
-brew "node"           # node LSP servers, prettier, tree-sitter npm
-brew "uv"             # python toolchain
+# -- k8s + IaC ---------------------------------------------
+brew "kubernetes-cli"
+brew "helm"
+brew "hashicorp/tap/terraform"
 
-# optional (uncomment if you use them):
-# brew "kubectl"
-# brew "helm"
-# brew "python@3.12"
-
-# GUI / fonts (skipped on headless Linux)
+# -- dev apps ----------------------------------------------
 cask "ghostty"
+cask "docker-desktop"
+cask "claude-code"
+
+# -- personal apps -----------------------------------------
+cask "firefox"
+cask "spotify"
+cask "obsidian"
+cask "zoom"
+cask "slack"
+
+# -- fonts -------------------------------------------------
 cask "font-fira-code-nerd-font"
