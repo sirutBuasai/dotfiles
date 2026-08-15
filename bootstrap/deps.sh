@@ -71,6 +71,9 @@ case "$OS" in
     esac
 
     if [ "$MINIMAL" -eq 0 ]; then
+      # GitHub CLI — used as the git credential helper (gh auth git-credential)
+      have gh || $SUDO "$PM" install -y gh 2>/dev/null \
+        || warn "gh not in default repos — install manually if you push over HTTPS: https://github.com/cli/cli#installation"
       # Rust toolchain + CLIs absent from AL2023 default repos
       have cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

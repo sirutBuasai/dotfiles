@@ -7,6 +7,7 @@ tap "joshmedeski/sesh"
 # core CLI
 brew "git"
 brew "git-lfs"
+brew "gh"             # GitHub CLI — git credential helper + PR/repo ops
 brew "zsh"
 brew "bash"
 brew "tmux"

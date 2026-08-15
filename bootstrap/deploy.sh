@@ -75,6 +75,7 @@ cat <<EOF
 ${C_G}── Deploy complete. Manual follow-ups: ──${C_0}
   • Shell:    chsh -s "\$(command -v zsh)"        # then log out / back in
   • git-lfs:  git lfs install
+  • GitHub:   gh auth login        # one-time per machine → HTTPS push/pull (gh is the git credential helper)
   • tmux:     start tmux, then press  <prefix> + I   (installs TPM plugins)
   • nvim:     launch nvim — lazy.nvim auto-installs plugins; then  :Lazy sync  ·  :TSUpdate  ·  :checkhealth
               (Mason installs LSP servers/formatters on first use)
