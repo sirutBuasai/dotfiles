@@ -17,7 +17,8 @@
     "type": "command",
     "command": "$HOME/.claude/statusline.sh",
     "padding": 1,
-    "refreshInterval": 5
+    "refreshInterval": 5,
+    "hideVimModeIndicator": true
   },
   "hooks": {
     "UserPromptSubmit": [

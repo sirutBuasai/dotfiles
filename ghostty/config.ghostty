@@ -20,7 +20,7 @@ clipboard-paste-protection = true
 scrollback-limit = 100000000
 
 # ── Window / macOS ───────────────────────────────────────
-macos-titlebar-style = tabs
+macos-titlebar-style = transparent
 quit-after-last-window-closed = true
 confirm-close-surface = false
 

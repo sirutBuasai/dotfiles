@@ -29,6 +29,10 @@ C_MOD=$'\033[38;5;179m'    # carp yellow
 C_DEL=$'\033[38;5;174m'    # autumn red
 C_COST=$'\033[38;5;109m'   # wave aqua
 OK=$'\033[38;5;108m'; WARN=$'\033[38;5;179m'; CRIT=$'\033[38;5;174m'
+# vim-mode colors — dedicated, not reused by any other segment
+C_MODE_N=$'\033[38;5;75m'   # azure   — NORMAL
+C_MODE_I=$'\033[38;5;114m'  # mint    — INSERT
+C_MODE_V=$'\033[38;5;213m'  # orchid  — VISUAL / VISUAL LINE
 
 # glyphs (FiraCode Nerd Font): swap if any don't render
 G_BRANCH=$''   #  git branch
@@ -118,6 +122,18 @@ r5="$(fmt_rate "5h" "$(j '.rate_limits.five_hour.used_percentage' "")")"
 r7="$(fmt_rate "7d" "$(j '.rate_limits.seven_day.used_percentage' "")")"
 RATE_SEG="⏳ ${r5} ${r7}"
 
+# -- vim mode (built-in "-- INSERT --" is hidden via hideVimModeIndicator) ----
+MODE="$(j '.vim.mode' "")"
+MODE_SEG=""
+if [[ -n "$MODE" ]]; then
+    case "$MODE" in
+        NORMAL) mc="$C_MODE_N" ;;
+        INSERT) mc="$C_MODE_I" ;;
+        *)      mc="$C_MODE_V" ;;   # VISUAL / VISUAL LINE
+    esac
+    MODE_SEG="${BOLD}${mc}${MODE}${RESET}"
+fi
+
 # -- alignment ---------------------------------------------------------------
 sep="${DIM} · ${RESET}"
 join_with_sep() {
@@ -142,7 +158,7 @@ print(w)
 " "$s" 2>/dev/null || printf '%s' "${#s}"
 }
 
-LEFT="$(join_with_sep "$sep" "$CWD_SEG" "$GIT_SEG" "$CTX_SEG" "$DIFF_SEG")"
+LEFT="$(join_with_sep "$sep" "$MODE_SEG" "$CWD_SEG" "$GIT_SEG" "$CTX_SEG" "$DIFF_SEG")"
 RIGHT="$(join_with_sep "$sep" "$MODEL_SEG" "$COST_SEG" "$RATE_SEG")"
 
 COLS="${COLUMNS:-}"
