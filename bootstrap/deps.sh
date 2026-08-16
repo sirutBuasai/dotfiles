@@ -31,6 +31,15 @@ install_common_clones() {   # oh-my-zsh + p10k + OMZ plugins + TPM + uv (both pl
   clone_if_missing https://github.com/fdellwing/zsh-bat                           "$ZC/plugins/zsh-bat"
   clone_if_missing https://github.com/tmux-plugins/tpm                            "$HOME/.tmux/plugins/tpm"
   have uv || curl -LsSf https://astral.sh/uv/install.sh | sh || warn "uv install failed"
+  # colorscript — snacks dashboard header (no brew formula; build from source, both platforms)
+  if ! have colorscript; then
+    local tmp scs_sudo=""; [ "$(id -u)" -ne 0 ] && scs_sudo="sudo"
+    tmp="$(mktemp -d)"
+    git clone --depth=1 https://gitlab.com/dwt1/shell-color-scripts "$tmp" \
+      && ( cd "$tmp" && $scs_sudo make install ) && ok "installed colorscript" \
+      || warn "colorscript install failed (optional; dashboard degrades gracefully)"
+    rm -rf "$tmp"
+  fi
 }
 
 case "$OS" in
@@ -83,7 +92,54 @@ case "$OS" in
       done
       have sesh || { have go && go install github.com/joshmedeski/sesh/v2@latest \
         || warn "install Go, then: go install github.com/joshmedeski/sesh/v2@latest"; }
-      have nvim || warn "neovim missing → install the AppImage (needs >=0.11 for native LSP): https://github.com/neovim/neovim/releases"
+      # fzf: not a Rust crate and absent from AL2023 repos → install via Go (no-op if apt already did)
+      have fzf || { have go && go install github.com/junegunn/fzf@latest \
+        || warn "install fzf manually: https://github.com/junegunn/fzf#installation"; }
+      # neovim: distro repos are usually <0.11 → fetch the official AppImage
+      if ! have nvim; then
+        NV_ARCH=x86_64; [ "$(uname -m)" = aarch64 ] && NV_ARCH=arm64
+        mkdir -p "$HOME/.local/bin"
+        if curl -fL -o "$HOME/.local/bin/nvim" \
+             "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${NV_ARCH}.appimage"; then
+          chmod +x "$HOME/.local/bin/nvim"
+          "$HOME/.local/bin/nvim" --version >/dev/null 2>&1 \
+            && ok "installed neovim AppImage → ~/.local/bin/nvim" \
+            || warn "nvim AppImage needs FUSE — run: ~/.local/bin/nvim --appimage-extract, then symlink squashfs-root/usr/bin/nvim"
+        else
+          warn "neovim AppImage download failed — install manually: https://github.com/neovim/neovim/releases"
+        fi
+      fi
+      # yq — Go binary (mikefarah/yq; the popular one, not the python yq)
+      have yq || { have go && go install github.com/mikefarah/yq/v4@latest \
+        || warn "install yq: go install github.com/mikefarah/yq/v4@latest"; }
+      # ── kubectl / helm / terraform (parity with the Brewfile) ──
+      mkdir -p "$HOME/.local/bin"
+      if ! have kubectl; then
+        K_ARCH=amd64; [ "$(uname -m)" = aarch64 ] && K_ARCH=arm64
+        kver="$(curl -Ls https://dl.k8s.io/release/stable.txt)"
+        curl -fLo "$HOME/.local/bin/kubectl" "https://dl.k8s.io/release/${kver}/bin/linux/${K_ARCH}/kubectl" \
+          && chmod +x "$HOME/.local/bin/kubectl" && ok "installed kubectl ${kver}" \
+          || warn "kubectl download failed"
+      fi
+      have helm || { curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash \
+        || warn "helm install failed"; }
+      if ! have terraform; then
+        case "$PM" in
+          apt)
+            curl -fsSL https://apt.releases.hashicorp.com/gpg \
+              | $SUDO gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg 2>/dev/null
+            . /etc/os-release 2>/dev/null
+            echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com ${VERSION_CODENAME:-stable} main" \
+              | $SUDO tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
+            $SUDO apt-get update && $SUDO apt-get install -y terraform || warn "terraform apt install failed" ;;
+          dnf|yum)
+            $SUDO "$PM" install -y dnf-plugins-core 2>/dev/null
+            $SUDO "$PM" config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo 2>/dev/null \
+              || $SUDO "$PM" config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo 2>/dev/null
+            $SUDO "$PM" install -y terraform || warn "terraform dnf install failed" ;;
+          *) warn "terraform: install manually (unknown package manager)" ;;
+        esac
+      fi
       install_common_clones
     fi
     ;;

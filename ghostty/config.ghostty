@@ -33,3 +33,13 @@ desktop-notifications = true
 
 # ── Keybinds ─────────────────────────────────────────────
 keybind = global:cmd+grave_accent=toggle_quick_terminal
+keybind = shift+enter=text:\x1b\x0d
+keybind = ctrl+one=text:\x011
+keybind = ctrl+two=text:\x012
+keybind = ctrl+three=text:\x013
+keybind = ctrl+four=text:\x014
+keybind = ctrl+five=text:\x015
+keybind = ctrl+six=text:\x016
+keybind = ctrl+seven=text:\x017
+keybind = ctrl+eight=text:\x018
+keybind = ctrl+nine=text:\x019
