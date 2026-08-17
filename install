@@ -14,6 +14,9 @@ set -e
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASEDIR"
 
+# git: fail fast instead of hanging on a credential prompt (e.g. the dotbot clone)
+export GIT_TERMINAL_PROMPT=0
+
 usage() {
   cat <<EOF
 Usage: ./install [--minimal] [-h] [-- <dotbot args>...]
@@ -48,7 +51,7 @@ if ! command -v python3 >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1; the
       exit 1 ;;
     Linux)
       SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO=sudo
-      if   command -v apt-get >/dev/null 2>&1; then $SUDO apt-get update && $SUDO apt-get install -y python3 git
+      if   command -v apt-get >/dev/null 2>&1; then $SUDO apt-get update && $SUDO DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get install -y python3 git
       elif command -v dnf     >/dev/null 2>&1; then $SUDO dnf install -y python3 git
       elif command -v yum     >/dev/null 2>&1; then $SUDO yum install -y python3 git
       else echo "Install python3 and git manually, then re-run ./install." >&2; exit 1; fi ;;

@@ -4,6 +4,9 @@
 
 LIB_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# interactive-safety: git fail fast instead of blocking on a credential prompt for a bad/private URL.
+export GIT_TERMINAL_PROMPT=0
+
 # --- logging ---
 if [ -t 1 ]; then
   C_G=$'\e[32m'; C_Y=$'\e[33m'; C_R=$'\e[31m'; C_B=$'\e[34m'; C_0=$'\e[0m'
@@ -38,6 +41,9 @@ clone_if_missing() {   # $1=url  $2=dest
   [ -d "$2" ] && { ok "present: ${2/#$HOME/~}"; return 0; }
   git clone --depth=1 "$1" "$2" && ok "cloned $(basename "$2")" || warn "clone failed: $1"
 }
+
+# apt-get install, hardened against interactive prompts
+apt_install() { $SUDO DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get install -y "$@"; }
 
 # oh-my-zsh + p10k + OMZ plugins + TPM + uv + colorscript
 install_common_clones() {
@@ -89,8 +95,8 @@ linux_install_core() {   # $1 = minimal [0-1]
   case "$PM" in
     apt)
       $SUDO apt-get update
-      $SUDO apt-get install -y $CORE build-essential xdg-utils
-      [ "$1" -eq 0 ] && $SUDO apt-get install -y \
+      apt_install $CORE build-essential xdg-utils
+      [ "$1" -eq 0 ] && apt_install \
         zsh jq ripgrep fd-find bat fzf zoxide golang nodejs npm python3 python3-pip
       ;;
 
@@ -174,7 +180,7 @@ linux_install_terraform() {
       echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com ${VERSION_CODENAME:-stable} main" \
         | $SUDO tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
 
-      $SUDO apt-get update && $SUDO apt-get install -y terraform || warn "terraform apt install failed" ;;
+      $SUDO apt-get update && apt_install terraform || warn "terraform apt install failed" ;;
 
     dnf|yum)
       $SUDO "$PM" install -y dnf-plugins-core 2>/dev/null
@@ -208,7 +214,7 @@ install_linux() {   # $1 = minimal [0-1]
 install_macos() {   # $1 = minimal [0-1]
   local minimal="$1"
   if ! have brew; then
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   fi
 
   eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv 2>/dev/null)"
