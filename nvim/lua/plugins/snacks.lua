@@ -135,6 +135,15 @@ return {
     {
       "<C-w>",
       function()
+        -- count non-floating windows in the current tab
+        local wins = vim.tbl_filter(function(w)
+          return vim.api.nvim_win_get_config(w).relative == ""
+        end, vim.api.nvim_tabpage_list_wins(0))
+        if #wins > 1 then
+          vim.cmd("close") -- a split is open → close just this split
+          return
+        end
+        -- sole window: delete the buffer (or quit on the last one)
         local listed = vim.tbl_filter(function(b)
           return vim.bo[b].buflisted
         end, vim.api.nvim_list_bufs())
@@ -144,7 +153,7 @@ return {
           vim.cmd("quit")
         end
       end,
-      desc = "Close buffer (or quit if last)",
+      desc = "Close split (or delete buffer / quit if last)",
     },
 
     { "<leader>ghb", function() Snacks.gitbrowse() end, desc = "Git browse (open in web)", mode = { "n", "v" } },

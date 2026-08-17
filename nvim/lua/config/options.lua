@@ -31,7 +31,7 @@ opt.sidescrolloff = 8   -- keep 8 columns of context left/right (nowrap files)
 opt.termguicolors = true -- enable 24-bit RGB color
 opt.showmode = false    -- lualine already shows the mode
 opt.showtabline = 2     -- always show the tab/buffer line
-opt.signcolumn = "yes"  -- always show the sign gutter
+opt.signcolumn = "yes:1"  -- always show a single-column sign gutter
 
 -- -- Windows / splits -------------------------------------------------------
 opt.splitbelow = true -- horizontal splits open below the current window
@@ -67,7 +67,7 @@ opt.linebreak = true    -- wrap at word boundaries, not mid-word
 opt.smoothscroll = true -- scroll by screen-line through wrapped lines
 
 -- -- Folding -----------------------------------------------------------------
-opt.foldcolumn = "1"    -- thin fold-marker gutter ("0" to hide)
+opt.foldcolumn = "0"    -- hide the fold-marker gutter
 opt.foldlevel = 99      -- ufo needs a high foldlevel
 opt.foldlevelstart = 99 -- start unfolded; fold on demand with zM / za / zK (peek)
 opt.foldenable = true
