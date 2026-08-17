@@ -9,6 +9,6 @@ Delegate to a FRESH subagent to review the current diff:
 
 !`git diff`
 
-Instruct the subagent to report ONLY real problems — correctness bugs, security issues, and clear simplifications — ranked most-severe first. Format each as: `file:line — problem — suggested fix`. Optional focus: $ARGUMENTS
+Instruct the subagent to report ONLY real problems -- correctness bugs, security issues, and clear simplifications -- ranked most-severe first. Format each as: `file:line -- problem -- suggested fix`. Optional focus: $ARGUMENTS
 
 Return only the ranked findings.

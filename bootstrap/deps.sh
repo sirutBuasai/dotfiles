@@ -41,3 +41,4 @@ esac
 
 ok "dependency install done."
 [ "$MINIMAL" -eq 1 ] && log "Minimal set installed. Re-run without --minimal for the full stack."
+exit 0

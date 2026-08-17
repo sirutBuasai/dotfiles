@@ -23,6 +23,17 @@ opt.hlsearch = true   -- highlight all matches
 
 -- -- Clipboard --------------------------------------------------------------
 opt.clipboard = "unnamedplus"
+-- route yank to the local clipboard through OSC 52
+if vim.env.SSH_TTY or vim.env.SSH_CONNECTION then
+  local ok_osc, osc52 = pcall(require, "vim.ui.clipboard.osc52")
+  if ok_osc then
+    vim.g.clipboard = {
+      name = "OSC 52",
+      copy = { ["+"] = osc52.copy("+"), ["*"] = osc52.copy("*") },
+      paste = { ["+"] = osc52.paste("+"), ["*"] = osc52.paste("*") },
+    }
+  end
+end
 
 -- -- Visual comfort ---------------------------------------------------------
 opt.cursorline = true   -- highlight the line the cursor is on

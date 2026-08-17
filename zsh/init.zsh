@@ -1,11 +1,14 @@
 #!/usr/bin/env zsh
 
-# homebrew — sets PATH, MANPATH, HOMEBREW_* (guarded: no-op on Linux/EC2 where brew is absent)
+# homebrew -- sets PATH, MANPATH, HOMEBREW_*
 if [ -x /opt/homebrew/bin/brew ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
+
+# user-local bins
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin:$PATH"
 
 # rust / cargo
 [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"

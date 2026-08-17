@@ -142,6 +142,7 @@ return {
     Smiley = "󰞅",
     Package = "",
     CircuitBoard = "",
+    Dots = "…",
   },
   dashboard = {
     Folder = "",

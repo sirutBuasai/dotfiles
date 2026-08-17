@@ -45,7 +45,7 @@ done
 if ! command -v python3 >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1; then
   case "$(uname -s)" in
     Darwin)
-      echo "Installing Command Line Tools…"
+      echo "Installing Command Line Tools..."
       xcode-select --install 2>/dev/null || true
       echo "Re-run ./install once Command Line Tools have finished installing." >&2
       exit 1 ;;
@@ -66,7 +66,7 @@ if [ ! -e "$DOTBOT_DIR/bin/dotbot" ]; then
   git clone --recurse-submodules "$DOTBOT_URL" "$DOTBOT_DIR"
 else
   echo "▶ updating dotbot (main)"
-  git -C "$DOTBOT_DIR" pull --recurse-submodules --ff-only || echo "! dotbot pull failed — using existing checkout"
+  git -C "$DOTBOT_DIR" pull --recurse-submodules --ff-only || echo "! dotbot pull failed -- using existing checkout"
 fi
 
 exec "$DOTBOT_DIR/bin/dotbot" --base-directory "$BASEDIR" --config-file "$CONFIG" "${PASS[@]}"

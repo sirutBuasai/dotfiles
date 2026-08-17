@@ -20,7 +20,7 @@ dst="$HOME/.claude/settings.json"
 mkdir -p "$HOME/.claude"
 
 if [ ! -f "$base" ]; then
-  echo "! claude-settings: $base missing — skipped" >&2
+  echo "! claude-settings: $base missing -- skipped" >&2
   exit 0
 fi
 
@@ -29,7 +29,7 @@ if [ -f "$overlay" ] && command -v jq >/dev/null 2>&1; then
     echo "✓ merged settings.json (base + settings.local.json)"
 
   else
-    echo "✗ jq merge failed — writing base only" >&2
+    echo "✗ jq merge failed -- writing base only" >&2
     cp "$base" "$dst"
 
   fi

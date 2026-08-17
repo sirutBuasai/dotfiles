@@ -1,7 +1,12 @@
+local icons = require("config.icons")
+
 return {
   {
     "ghillb/cybu.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "echasnovski/mini.icons"
+    },
     keys = {
       { "<C-n>", "<Plug>(CybuNext)", desc = "Next buffer" },
       { "<C-b>", "<Plug>(CybuPrev)", desc = "Previous buffer" },
@@ -21,7 +26,7 @@ return {
         path = "relative", -- absolute, relative, tail
         border = "rounded",
         separator = " ",
-        prefix = "…",
+        prefix = icons.misc.Dots,
         padding = 1,
         hide_buffer_id = true,
         devicons = {

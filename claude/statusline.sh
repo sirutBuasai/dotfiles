@@ -29,10 +29,10 @@ C_MOD=$'\033[38;5;179m'    # carp yellow
 C_DEL=$'\033[38;5;174m'    # autumn red
 C_COST=$'\033[38;5;109m'   # wave aqua
 OK=$'\033[38;5;108m'; WARN=$'\033[38;5;179m'; CRIT=$'\033[38;5;174m'
-# vim-mode colors — dedicated, not reused by any other segment
-C_MODE_N=$'\033[38;5;75m'   # azure   — NORMAL
-C_MODE_I=$'\033[38;5;114m'  # mint    — INSERT
-C_MODE_V=$'\033[38;5;213m'  # orchid  — VISUAL / VISUAL LINE
+# vim-mode colors -- dedicated, not reused by any other segment
+C_MODE_N=$'\033[38;5;75m'   # azure   -- NORMAL
+C_MODE_I=$'\033[38;5;114m'  # mint    -- INSERT
+C_MODE_V=$'\033[38;5;213m'  # orchid  -- VISUAL / VISUAL LINE
 
 # glyphs (FiraCode Nerd Font): swap if any don't render
 G_BRANCH=$''   #  git branch
@@ -114,7 +114,7 @@ COST_SEG=""
 # -- rate limit --------------------------------------------------------------
 fmt_rate() {
     local label="$1" pct="$2"; local i="${pct%.*}"
-    if [[ -z "$i" ]]; then printf '%s%s:—%s' "$DIM" "$label" "$RESET"; return; fi
+    if [[ -z "$i" ]]; then printf '%s%s:-%s' "$DIM" "$label" "$RESET"; return; fi
     local c="$OK"; (( i >= 50 )) && c="$WARN"; (( i >= 80 )) && c="$CRIT"
     printf '%s%s:%s%%%s' "$c" "$label" "$i" "$RESET"
 }

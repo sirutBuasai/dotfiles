@@ -7,7 +7,7 @@ export VISUAL="nvim"
 # personal bin
 export PATH="$HOME/bin:$PATH"
 
-# go (toolchain itself comes from Homebrew; this only adds the GOPATH bin)
+# go PATH
 export GOPATH="$HOME/go"
 export GOBIN="$GOPATH/bin"
 export PATH="$GOBIN:$PATH"

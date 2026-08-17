@@ -17,7 +17,7 @@ ${G}--- Setup complete. Manual follow-ups: ---${Z}
   • Ghostty (mac): System Settings → Privacy & Security → Accessibility → enable Ghostty
                    (required for the global quick-terminal keybind)
   • Work mac: create ~/.claude/settings.local.json with your private keys block, then
-              re-run ./install — settings.json is a jq merge of the public base + that overlay
+              re-run ./install -- settings.json is a jq merge of the public base + that overlay
 
   Day-to-day sync:
     repo → env  :  git pull

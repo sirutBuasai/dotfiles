@@ -53,7 +53,7 @@ if [ -f /etc/pam.d/sudo_local ] && grep -q pam_tid.so /etc/pam.d/sudo_local; the
 else
   # sudo_local is included by /etc/pam.d/sudo on macOS 14+ and survives OS updates.
   sudo sh -c 'echo "auth       sufficient     pam_tid.so" > /etc/pam.d/sudo_local'
-  echo "  enabled — Touch ID will now authorize sudo"
+  echo "  enabled -- Touch ID will now authorize sudo"
 fi
 
 # apply the domains that have a live UI (safe if the process isn't running)

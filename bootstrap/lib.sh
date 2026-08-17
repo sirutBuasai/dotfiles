@@ -45,10 +45,35 @@ clone_if_missing() {   # $1=url  $2=dest
 # apt-get install, hardened against interactive prompts
 apt_install() { $SUDO DEBIAN_FRONTEND=noninteractive NEEDRESTART_MODE=a apt-get install -y "$@"; }
 
+# homebrew installer
+install_brew() {
+  have brew || NONINTERACTIVE=1 /bin/bash -c \
+    "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # put brew on PATH (Apple Silicon / Intel / Linuxbrew)
+  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null \
+        || /usr/local/bin/brew shellenv 2>/dev/null \
+        || /home/linuxbrew/.linuxbrew/bin/brew shellenv 2>/dev/null)"
+}
+
+# brew bundle from the Brewfile. cask GUI apps are macOs-only
+brew_bundle() {   # $1 = 1 → strip casks (Linux), 0 → full Brewfile (macOS)
+  if [ "${1:-0}" -eq 1 ]; then
+    local tmp; tmp="$(mktemp)"
+    grep -vE '^[[:space:]]*cask ' "$LIB_DIR/Brewfile" > "$tmp"
+    brew bundle --file "$tmp" || warn "brew bundle reported errors (continuing)"
+    rm -f "$tmp"
+
+  else
+    brew bundle --file "$LIB_DIR/Brewfile" || warn "brew bundle reported errors (continuing)"
+
+  fi
+}
+
 # oh-my-zsh + p10k + OMZ plugins + TPM + uv + colorscript
 install_common_clones() {
   if [ ! -d "$HOME/.oh-my-zsh" ]; then
-    # --keep-zshrc: never create/overwrite ~/.zshrc — dotbot symlinks ours.
+    # --keep-zshrc: never create/overwrite ~/.zshrc -- dotbot symlinks ours.
     RUNZSH=no CHSH=no sh -c \
       "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
       "" --unattended --keep-zshrc || warn "oh-my-zsh install failed"
@@ -86,111 +111,33 @@ set_default_shell_zsh() {
   grep -qx "$zbin" /etc/shells 2>/dev/null || echo "$zbin" | $sudo tee -a /etc/shells >/dev/null 2>&1 || true
   $sudo chsh -s "$zbin" "${USER:-$(id -un)}" 2>/dev/null \
     && ok "default shell → zsh (log out/in to take effect)" \
-    || warn "couldn't set default shell — run manually: chsh -s $zbin"
+    || warn "couldn't set default shell -- run manually: chsh -s $zbin"
 }
 
-# core packages via the distro package manager,
-# uses $PM / $SUDO / $CORE from the `install_linux`.
-linux_install_core() {   # $1 = minimal [0-1]
+# core packages for the minimal path.
+linux_install_core() {
   case "$PM" in
-    apt)
-      $SUDO apt-get update
-      apt_install $CORE build-essential xdg-utils
-      [ "$1" -eq 0 ] && apt_install \
-        zsh jq ripgrep fd-find bat fzf zoxide golang nodejs npm python3 python3-pip
-      ;;
-
-    dnf|yum)
-      $SUDO "$PM" install -y $CORE xdg-utils
-      $SUDO "$PM" groupinstall -y "Development Tools" 2>/dev/null \
-        || $SUDO "$PM" install -y gcc gcc-c++ make
-      # AL2023 has no EPEL → jq/go/node/python from base repo; Rust CLIs via cargo
-      [ "$1" -eq 0 ] && $SUDO "$PM" install -y zsh jq golang nodejs npm python3 python3-pip
-      ;;
-
-    *) warn "unknown Linux package manager — install these manually: $CORE" ;;
+    apt)     $SUDO apt-get update && apt_install $CORE ;;
+    dnf|yum) $SUDO "$PM" install -y $CORE ;;
+    *)       warn "unknown Linux package manager -- install these manually: $CORE" ;;
   esac
 }
 
-# full-stack dev tools absent from distro repos,
-# uses $PM / $SUDO / $CORE from the `install_linux`.
-linux_install_dev_extras() {
-  # github cli
-  have gh || $SUDO "$PM" install -y gh 2>/dev/null \
-    || warn "gh not in default repos — install manually if you push over HTTPS: https://github.com/cli/cli#installation"
-
-  # rust toolchain + cli
-  have cargo || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-  [ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
-
-  # ripgrep, fd, bat, zoxide, treesitter: install via cargo
-  local pair crate bin
-  for pair in "ripgrep:rg" "fd-find:fd" "bat:bat" "zoxide:zoxide" "tree-sitter-cli:tree-sitter"; do
-    crate="${pair%%:*}"; bin="${pair##*:}"
-    have "$bin" || cargo install "$crate" || warn "cargo install $crate failed"
-  done
-
-  # sesh, fzf, yq: install via go
-  local gopkg pkg
-  for gopkg in \
-    "sesh:github.com/joshmedeski/sesh/v2@latest" \
-    "fzf:github.com/junegunn/fzf@latest" \
-    "yq:github.com/mikefarah/yq/v4@latest"; do
-    bin="${gopkg%%:*}"; pkg="${gopkg#*:}"
-    have "$bin" || { have go && go install "$pkg"; } || warn "go install $pkg failed (need Go)"
-  done
-
-  # neovim: fetch the official AppImage
-  if ! have nvim; then
-    local nv_arch=x86_64; [ "$(uname -m)" = aarch64 ] && nv_arch=arm64
-    mkdir -p "$HOME/.local/bin"
-    if curl -fL -o "$HOME/.local/bin/nvim" \
-         "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${nv_arch}.appimage"; then
-      chmod +x "$HOME/.local/bin/nvim"
-      "$HOME/.local/bin/nvim" --version >/dev/null 2>&1 \
-        && ok "installed neovim AppImage → ~/.local/bin/nvim" \
-        || warn "nvim AppImage needs FUSE — run: ~/.local/bin/nvim --appimage-extract, then symlink squashfs-root/usr/bin/nvim"
-    else
-      warn "neovim AppImage download failed — install manually: https://github.com/neovim/neovim/releases"
-    fi
-  fi
-
-  # kubectl, helm, terraform
-  mkdir -p "$HOME/.local/bin"
-  if ! have kubectl; then
-    local k_arch=amd64 kver; [ "$(uname -m)" = aarch64 ] && k_arch=arm64
-    kver="$(curl -Ls https://dl.k8s.io/release/stable.txt)"
-    curl -fLo "$HOME/.local/bin/kubectl" "https://dl.k8s.io/release/${kver}/bin/linux/${k_arch}/kubectl" \
-      && chmod +x "$HOME/.local/bin/kubectl" && ok "installed kubectl ${kver}" \
-      || warn "kubectl download failed"
-  fi
-  have helm || { curl -fsSL https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash \
-    || warn "helm install failed"; }
-  have terraform || linux_install_terraform
-}
-# HashiCorp repo per package manager,
-# uses $PM / $SUDO / $CORE from the `install_linux`.
-linux_install_terraform() {
+# minimal distro packages needed to bootstrap homebrew on Linux.
+linux_install_brew_prereqs() {
   case "$PM" in
     apt)
-      curl -fsSL https://apt.releases.hashicorp.com/gpg \
-        | $SUDO gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg 2>/dev/null
-      . /etc/os-release 2>/dev/null
-
-      echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com ${VERSION_CODENAME:-stable} main" \
-        | $SUDO tee /etc/apt/sources.list.d/hashicorp.list >/dev/null
-
-      $SUDO apt-get update && apt_install terraform || warn "terraform apt install failed" ;;
+      $SUDO apt-get update
+      apt_install build-essential procps curl file git ;;
 
     dnf|yum)
-      $SUDO "$PM" install -y dnf-plugins-core 2>/dev/null
+      $SUDO "$PM" groupinstall -y "Development Tools" 2>/dev/null \
+        || $SUDO "$PM" install -y gcc gcc-c++ make
 
-      $SUDO "$PM" config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo 2>/dev/null \
-        || $SUDO "$PM" config-manager addrepo --from-repofile=https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo 2>/dev/null
+      $SUDO "$PM" install -y procps-ng curl file git libxcrypt-compat 2>/dev/null \
+        || $SUDO "$PM" install -y procps-ng curl file git ;;
 
-      $SUDO "$PM" install -y terraform || warn "terraform dnf install failed" ;;
-
-    *) warn "terraform: install manually (unknown package manager)" ;;
+    *) warn "install Homebrew prereqs manually (gcc, make, curl, git)" ;;
   esac
 }
 
@@ -202,30 +149,37 @@ install_linux() {   # $1 = minimal [0-1]
   SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO=sudo
   CORE="git git-lfs bash vim tmux curl unzip"
 
-  linux_install_core "$minimal"
-  if [ "$minimal" -eq 0 ]; then
-    linux_install_dev_extras
-    install_common_clones
-    set_default_shell_zsh
+  if [ "$minimal" -eq 1 ]; then
+    linux_install_core          # lean, bash-only, distro packages
+    return 0
   fi
+
+  # full stack: install via homebrew
+  linux_install_brew_prereqs
+  install_brew
+  brew_bundle 1                 # strip GUI apps
+
+  # claude-code: native installer
+  if ! have claude && [ ! -x "$HOME/.local/bin/claude" ]; then
+    curl -fsSL https://claude.ai/install.sh | bash >/dev/null 2>&1 \
+      && ok "installed claude-code" || warn "claude-code install failed"
+  fi
+
+  install_common_clones         # oh-my-zsh, p10k, TPM, uv, colorscript
+  set_default_shell_zsh
 }
 
 # --- macOS ---
 install_macos() {   # $1 = minimal [0-1]
   local minimal="$1"
-  if ! have brew; then
-    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  fi
-
-  eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null || /usr/local/bin/brew shellenv 2>/dev/null)"
+  install_brew
 
   if [ "$minimal" -eq 1 ]; then
     brew install git git-lfs bash vim tmux
 
   else
-    brew bundle --file "$LIB_DIR/Brewfile" || warn "brew bundle reported errors (continuing)"
+    brew_bundle 0               # full Brewfile incl. casks
     install_common_clones
-    # macOS system preferences
     [ -f "$LIB_DIR/macos.sh" ] && bash "$LIB_DIR/macos.sh" || true
 
   fi

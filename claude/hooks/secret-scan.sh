@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Claude Code PreToolUse guard (matcher: Write|Edit) — blocks writing obvious secrets.
+# Claude Code PreToolUse guard (matcher: Write|Edit) -- blocks writing obvious secrets.
 # High-signal patterns only. exit 2 blocks the write; stderr is shown to Claude.
 
 input=$(cat 2>/dev/null)

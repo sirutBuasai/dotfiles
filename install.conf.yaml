@@ -51,12 +51,7 @@
     - command: bootstrap/claude-settings.sh
       description: Merging Claude settings.json (base + settings.local.json)
 
-# 5) macOS system preferences
-- shell:
-    - command: '[ "$(uname -s)" = Darwin ] && bootstrap/macos.sh || true'
-      description: macOS system preferences setting
-
-# 6) Manual follow-ups notification
+# 5) Manual follow-ups notification
 - shell:
     - command: bootstrap/postinstall-notes.sh
       description: Printing manual follow-up steps
