@@ -1,0 +1,31 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stdout: true
+      stderr: true
+      quiet: false
+
+- clean:
+    '~': {}
+    '~/.ssh': {}
+
+# 1) Backups in ~/.dotfiles-backup/<timestamp>/
+- shell:
+    - command: bootstrap/backup.py install.minimal.conf.yaml
+      description: Backing up any existing real config files
+
+# 2) Install minimal dependencies
+- shell:
+    - command: bootstrap/deps.sh --minimal
+      description: Installing minimal dependencies (bash-only core)
+
+# 3) Symlink tracked configs
+- link:
+    ~/.bashrc: bash/.bashrc
+    ~/.bash_profile: bash/.bash_profile
+    ~/.gitconfig: git/.gitconfig
+    ~/.vimrc: vim/.vimrc
+    ~/.tmux.conf: tmux/.tmux.minimal.conf   # lean tmux, no TPM/plugins
+    ~/.ssh/config: ssh/config

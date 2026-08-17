@@ -1,2 +1,5 @@
-/checklist.md
+.dotbot/
+__pycache__/
+
 zsh/local.zsh
+nvim/autoload/

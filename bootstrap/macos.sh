@@ -1,23 +1,20 @@
 #!/usr/bin/env bash
-# ═══════════════════════════════════════════════════════════════════
-# bootstrap/macos.sh — one-time-per-machine macOS system tweaks.
-# Run automatically by deps.sh on macOS, or standalone:  bash bootstrap/macos.sh
-# Some changes need a logout/restart to take effect.
-# Idempotent: safe to re-run.
-# ═══════════════════════════════════════════════════════════════════
+# set macOS system preferences
 set -euo pipefail
 
-echo "▶ Keyboard: key repeat (captured from the source machine)"
-# Lower = faster. These are the exact values from this laptop's UI settings.
+usage() { echo "Usage: macos.sh [-h]   (one-time macOS system tweaks; takes no options)"; }
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -h|--help) usage; exit 0 ;;
+    *)         echo "macos.sh: unexpected argument: $1" >&2; usage >&2; exit 2 ;;
+  esac
+done
+
+echo "▶ Keyboard: key repeat "
 defaults write -g KeyRepeat        -int 2    # repeat rate  (UI: "Key Repeat")
 defaults write -g InitialKeyRepeat -int 15   # repeat delay (UI: "Delay Until Repeat")
 
-# Recommended for vim/nvim: hold a key to REPEAT instead of showing the
-# accent-character popup. NOTE: this was NOT set on the source machine — it's a
-# recommended addition. Delete this line if you prefer the accent popup.
-defaults write -g ApplePressAndHoldEnabled -bool false
-
-echo "▶ Touch ID for sudo (upgrade-safe: /etc/pam.d/sudo_local, not /etc/pam.d/sudo)"
+echo "▶ Touch ID for sudo"
 if [ -f /etc/pam.d/sudo_local ] && grep -q pam_tid.so /etc/pam.d/sudo_local; then
   echo "  already enabled"
 else

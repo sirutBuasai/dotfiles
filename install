@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# install env setups for a fresh machine.
+# usage:
+#   git clone <repo> ~/personal_dev/dotfiles && cd ~/personal_dev/dotfiles
+#   ./install            full stack   (deps + all configs; macOS or long-lived Linux dev box)
+#   ./install --minimal  lean set     (short-lived EC2/test box: vim + bash + lean zsh, no plugins)
+#
+# Day-to-day after setup (configs are symlinks):
+#   repo → env  :  git pull
+#   env  → repo :  edit in place
+#   new tool    :  drop it under <tool>/, add a line to install.conf.yaml, re-run ./install
+set -e
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$BASEDIR"
+
+usage() {
+  cat <<EOF
+Usage: ./install [--minimal] [-h] [-- <dotbot args>...]
+
+  --minimal         lean set for a short-lived EC2/test box (bash + vim, no plugins)
+  -h, --help        show help message
+  -- <dotbot args>  forward the remaining args verbatim to dotbot (e.g. -- --only link)
+
+With no flags, installs the full stack.
+EOF
+}
+
+CONFIG="install.conf.yaml"
+PASS=()
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --minimal) CONFIG="install.minimal.conf.yaml"; shift ;;
+    -h|--help) usage; exit 0 ;;
+    --)        shift; PASS=("$@"); break ;;
+    -*)        echo "install: unknown option: $1" >&2; usage >&2; exit 2 ;;
+    *)         echo "install: unexpected argument: $1" >&2; usage >&2; exit 2 ;;
+  esac
+done
+
+# prerequisites
+if ! command -v python3 >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1; then
+  case "$(uname -s)" in
+    Darwin)
+      echo "Installing Command Line Tools…"
+      xcode-select --install 2>/dev/null || true
+      echo "Re-run ./install once Command Line Tools have finished installing." >&2
+      exit 1 ;;
+    Linux)
+      SUDO=""; [ "$(id -u)" -ne 0 ] && SUDO=sudo
+      if   command -v apt-get >/dev/null 2>&1; then $SUDO apt-get update && $SUDO apt-get install -y python3 git
+      elif command -v dnf     >/dev/null 2>&1; then $SUDO dnf install -y python3 git
+      elif command -v yum     >/dev/null 2>&1; then $SUDO yum install -y python3 git
+      else echo "Install python3 and git manually, then re-run ./install." >&2; exit 1; fi ;;
+  esac
+fi
+
+# fetch / update dotbot
+DOTBOT_DIR=".dotbot"
+DOTBOT_URL="https://github.com/anishathalye/dotbot"
+if [ ! -e "$DOTBOT_DIR/bin/dotbot" ]; then
+  echo "▶ cloning dotbot (main) → $DOTBOT_DIR"
+  git clone --recurse-submodules "$DOTBOT_URL" "$DOTBOT_DIR"
+else
+  echo "▶ updating dotbot (main)"
+  git -C "$DOTBOT_DIR" pull --recurse-submodules --ff-only || echo "! dotbot pull failed — using existing checkout"
+fi
+
+exec "$DOTBOT_DIR/bin/dotbot" --base-directory "$BASEDIR" --config-file "$CONFIG" "${PASS[@]}"

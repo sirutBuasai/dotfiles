@@ -1,0 +1,62 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stdout: true
+      stderr: true
+      quiet: false
+
+- clean:
+    '~': {}
+    '~/.config': {recursive: true}
+    '~/.claude': {}
+    '~/.ssh': {}
+
+# 1) Backups in ~/.dotfiles-backup/<timestamp>/
+- shell:
+    - command: bootstrap/backup.py install.conf.yaml
+      description: Backing up any existing real config files
+
+# 2) Install all dependencies
+- shell:
+    - command: bootstrap/deps.sh
+      description: Installing dependencies
+
+# 3) Symlink tracked configs
+- link:
+    ~/.tmux.conf: tmux/.tmux.conf
+    ~/.config/nvim: nvim
+    ~/.zshrc: zsh/.zshrc
+    ~/.p10k.zsh: zsh/.p10k.zsh
+    ~/.config/zsh/alias.zsh: zsh/alias.zsh
+    ~/.config/zsh/init.zsh: zsh/init.zsh
+    ~/.config/zsh/path.zsh: zsh/path.zsh
+    ~/.bashrc: bash/.bashrc
+    ~/.bash_profile: bash/.bash_profile
+    ~/.config/sesh/sesh.toml: sesh/sesh.toml
+    ~/.gitconfig: git/.gitconfig
+    ~/.vimrc: vim/.vimrc
+    ~/.ssh/config: ssh/config
+    ~/.claude/CLAUDE.md: claude/CLAUDE.md
+    ~/.claude/commands: claude/commands
+    ~/.claude/hooks: claude/hooks
+    ~/.claude/statusline.sh: claude/statusline.sh
+    ~/.config/ghostty/config.ghostty:
+      path: ghostty/config.ghostty
+      if: '[ "$(uname -s)" = Darwin ]'
+
+# 4) Merge claudecode settings.json with local machine settings.local.json
+- shell:
+    - command: bootstrap/claude-settings.sh
+      description: Merging Claude settings.json (base + settings.local.json)
+
+# 5) macOS system preferences
+- shell:
+    - command: '[ "$(uname -s)" = Darwin ] && bootstrap/macos.sh || true'
+      description: macOS system preferences setting
+
+# 6) Manual follow-ups notification
+- shell:
+    - command: bootstrap/postinstall-notes.sh
+      description: Printing manual follow-up steps
