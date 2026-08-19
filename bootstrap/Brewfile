@@ -22,6 +22,7 @@ brew "tree-sitter-cli"
 brew "rust"
 brew "go"
 brew "node"
+brew "bun"
 brew "uv"
 
 # -- k8s + IaC ---------------------------------------------

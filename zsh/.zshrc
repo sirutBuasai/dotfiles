@@ -44,5 +44,5 @@ source "$ZSH/oh-my-zsh.sh"
 # -- per-machine overrides ------------------------------------
 [ -f "$ZSH_CFG/local.zsh" ] && source "$ZSH_CFG/local.zsh"
 
-# ── p10k prompt config ---------------------------------------
+# -- p10k prompt config ---------------------------------------
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
