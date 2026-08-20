@@ -27,6 +27,7 @@
   comn = checkout origin/main --
   cum = checkout upstream/master --
   cumn = checkout upstream/main --
+  cp = cherry-pick
   dc = diff --cached
   df = diff
   dh = diff HEAD^
