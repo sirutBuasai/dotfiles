@@ -4,6 +4,17 @@
   "editorMode": "vim",
   "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": true,
+  "extraKnownMarketplaces": {
+    "thedotmack": {
+      "source": {
+        "source": "github",
+        "repo": "thedotmack/claude-mem"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "claude-mem@thedotmack": true
+  },
   "permissions": {
     "deny": [
       "Read(./.env)",
