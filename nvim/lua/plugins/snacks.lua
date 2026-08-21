@@ -118,7 +118,6 @@ return {
           { icon = icons.dashboard.Time, key = "r", desc = "  Recently used files", action = ":lua Snacks.picker.recent({ filter = { cwd = true }})" },
           { icon = icons.dashboard.Text, key = "g", desc = "  Find text", action = ":lua Snacks.picker.grep()" },
           { icon = icons.dashboard.Notes, key = "n", desc = "  Obsidian Vault", action = ":e $HOME/obsidian_vault/" },
-          { icon = icons.dashboard.Notes, key = "K", desc = "  Kiro Configuration", action = ":e $HOME/.kiro/" },
           { icon = icons.dashboard.Setting, key = "c", desc = "  Neovim Configuration", action = ":e $HOME/.config/nvim/" },
           { icon = icons.dashboard.Shell, key = "t", desc = "  Ghostty Configuration", action = ":e $HOME/.config/ghostty/" },
           { icon = icons.dashboard.Shell, key = "z", desc = "  Shell Configuration", action = ":e $HOME/.zshrc" },
