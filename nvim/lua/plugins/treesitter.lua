@@ -15,7 +15,7 @@ return {
         "java",
         "javascript",
         "typescript",
-        "scss,"
+        "scss",
         "tsx",
         "c",
         "cpp",
