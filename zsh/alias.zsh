@@ -49,3 +49,6 @@ tma() { [ -n "$1" ] && tmux attach -t "$1" || tmux attach; }    # attach (named,
 tmn() { tmux new -s "${1:-$(basename "$PWD")}"; }               # new session (named, or cwd basename)
 tmk() { tmux kill-session -t "$1"; }                            # kill a named session
 tms() { sesh connect "$(sesh list --icons | fzf --height 40% --reverse)"; }  # fuzzy project jump
+
+# -- claude ---------------------------------------------------
+alias claude='claude --dangerously-skip-permissions'
