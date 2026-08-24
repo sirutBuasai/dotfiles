@@ -6,22 +6,46 @@ return {
     build = ":TSUpdate",
     config = function()
       local langs = {
-        "lua", "vim", "python", "bash", "go", "gomod", "java",
-        "javascript", "typescript", "tsx", "c", "cpp", "rust", "r", "sql",
-        "json", "json5", "yaml", "html", "css", "hcl",
-        "markdown", "markdown_inline",
-        "vimdoc", "query", "comment", "regex", "jsdoc", "cmake", "cuda",
-        "gitcommit", "diff",
+        "lua",
+        "vim",
+        "python",
+        "bash",
+        "go",
+        "gomod",
+        "java",
+        "javascript",
+        "typescript",
+        "scss,"
+        "tsx",
+        "c",
+        "cpp",
+        "rust",
+        "r",
+        "sql",
+        "json",
+        "json5",
+        "yaml",
+        "html",
+        "css",
+        "hcl",
+        "markdown",
+        "markdown_inline",
+        "vimdoc",
+        "query",
+        "comment",
+        "regex",
+        "jsdoc",
+        "cmake",
+        "cuda",
+        "gitcommit",
+        "diff",
       }
       local nt = require("nvim-treesitter")
       if type(nt.install) == "function" then
         nt.install(langs)
       else
         vim.schedule(function()
-          vim.notify(
-            "nvim-treesitter: run :Lazy sync to check out the 'main' branch",
-            vim.log.levels.WARN
-          )
+          vim.notify("nvim-treesitter: run :Lazy sync to check out the 'main' branch", vim.log.levels.WARN)
         end)
       end
 
