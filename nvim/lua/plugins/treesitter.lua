@@ -16,6 +16,7 @@ return {
         "javascript",
         "typescript",
         "scss",
+        "svelte",
         "tsx",
         "c",
         "cpp",
