@@ -64,6 +64,17 @@
   tree = log --graph --date=local --pretty=format:'%Cgreen%ad%Creset %Cred%h%Creset %an: %s %Creset %C(yellow)%d%Creset' --all
   wt = worktree
 
+[core]
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
+  side-by-side = false
+
 [color]
   branch = auto
   diff = auto

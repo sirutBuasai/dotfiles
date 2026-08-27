@@ -4,6 +4,7 @@ tap "hashicorp/tap"
 # ── development ------------------------------------------
 brew "git"
 brew "git-lfs"
+brew "git-delta"
 brew "gh"
 brew "zsh"
 brew "bash"
