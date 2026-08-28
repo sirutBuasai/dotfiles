@@ -51,6 +51,19 @@ return {
 
         -- inspect
         bmap("n", "<leader>gh", gs.preview_hunk, "Preview hunk")
+        bmap("n", "<leader>gd", function()
+          if vim.wo.diff then
+            for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+              local name = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
+              if name:match("^gitsigns://") then
+                vim.api.nvim_win_close(win, true)
+              end
+            end
+            vim.cmd("diffoff")
+          else
+            gs.diffthis()
+          end
+        end, "Toggle diff (side-by-side)")
 
         -- stage / reset
         bmap("n", "<leader>sh", gs.stage_hunk, "Stage hunk")
