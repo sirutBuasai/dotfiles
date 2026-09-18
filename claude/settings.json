@@ -2,13 +2,28 @@
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
   "theme": "dark",
   "editorMode": "vim",
+  "tui": "fullscreen",
+  "outputStyle": "Concise",
   "includeCoAuthoredBy": false,
   "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
   "extraKnownMarketplaces": {
     "thedotmack": {
       "source": {
         "source": "github",
         "repo": "thedotmack/claude-mem"
+      }
+    },
+    "claude-code-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "anthropics/claude-code"
+      }
+    },
+    "fullstack-dev-skills": {
+      "source": {
+        "source": "github",
+        "repo": "jeffallan/claude-skills"
       }
     }
   },
@@ -16,6 +31,7 @@
     "claude-mem@thedotmack": true
   },
   "permissions": {
+    "defaultMode": "auto",
     "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
