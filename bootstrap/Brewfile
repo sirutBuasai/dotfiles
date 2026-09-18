@@ -31,6 +31,16 @@ brew "kubernetes-cli"
 brew "helm"
 brew "hashicorp/tap/terraform"
 
+# -- containers --------------------------------------------
+brew "colima"
+brew "docker"
+brew "docker-compose"
+
+# -- networking --------------------------------------------
+brew "tailscale"
+brew "caddy"
+brew "coredns"
+
 # -- dev apps ----------------------------------------------
 cask "ghostty"
 cask "docker-desktop"
