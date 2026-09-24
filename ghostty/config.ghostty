@@ -3,7 +3,7 @@ theme = TokyoNight Night
 
 # ── Fonts ────────────────────────────────────────────────
 font-family = FiraCode Nerd Font Mono
-font-size = 12
+font-size = 12.5
 font-shaping-break = cursor
 adjust-cell-height = 10%
 
