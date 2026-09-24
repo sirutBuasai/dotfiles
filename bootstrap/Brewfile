@@ -45,6 +45,7 @@ brew "coredns"
 cask "ghostty"
 cask "docker-desktop"
 cask "claude-code"
+cask "codex"
 
 # -- personal apps -----------------------------------------
 cask "firefox"
