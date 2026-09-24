@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
-# Claude Code PreToolUse guard (matcher: Write|Edit) -- blocks writing obvious secrets.
-# High-signal patterns only. exit 2 blocks the write; stderr is shown to Claude.
+# Agent PreToolUse guard (matcher: Write|Edit|apply_patch) -- blocks writing obvious secrets.
+# High-signal patterns only. exit 2 blocks the write; stderr is shown to the agent.
 
 input=$(cat 2>/dev/null)
-content=$(printf '%s' "$input" | jq -r '(.tool_input.content // .tool_input.new_string // empty)' 2>/dev/null)
+# old_string is excluded so edits that remove a secret aren't blocked.
+content=$(printf '%s' "$input" | jq -r '.tool_input // {} | del(.old_string) | [.. | strings] | join("\n")' 2>/dev/null)
 [ -z "$content" ] && exit 0
 
 hit=""

@@ -167,6 +167,12 @@ install_linux() {   # $1 = minimal [0-1]
       && ok "installed claude-code" || warn "claude-code install failed"
   fi
 
+  # codex: the brew cask is stripped on Linux, so install from npm (node comes from the Brewfile)
+  if ! have codex; then
+    npm install -g @openai/codex >/dev/null 2>&1 \
+      && ok "installed codex" || warn "codex install failed"
+  fi
+
   install_common_clones         # oh-my-zsh, p10k, TPM, uv, colorscript
   set_default_shell_zsh
 }

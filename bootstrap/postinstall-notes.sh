@@ -16,8 +16,9 @@ ${G}--- Setup complete. Manual follow-ups: ---${Z}
   • GitHub:   gh auth login
   • Ghostty (mac): System Settings → Privacy & Security → Accessibility → enable Ghostty
                    (required for the global quick-terminal keybind)
-  • Work mac: create ~/.claude/settings.local.json with your private keys block, then
-              re-run ./install -- settings.json is a jq merge of the public base + that overlay
+  • Work mac: create ~/.claude/settings.local.json / ~/.codex/config.local.toml with your
+              private keys, then re-run ./install -- both are a yq merge of the public base + overlay
+  • Codex:    run /hooks once and trust the shared hooks (Codex skips untrusted hooks)
 
   Day-to-day sync:
     repo → env  :  git pull

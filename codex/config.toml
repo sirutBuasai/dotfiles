@@ -1,0 +1,23 @@
+# Base Codex config, deep-merged into ~/.codex/config.toml by bootstrap/agent-settings.sh.
+# Codex writes its own state (project trust, hook trust, plugins) to that file, so it is merged, not symlinked.
+
+model_reasoning_effort = "high"
+personality = "pragmatic"
+approval_policy = "on-request"
+approvals_reviewer = "auto_review"
+sandbox_mode = "workspace-write"
+
+[tui]
+theme = "kanagawa"
+vim_mode_default = true
+status_line_use_colors = true
+status_line = [
+  "current-dir",
+  "git-branch",
+  "context-used",
+  "branch-changes",
+  "model-with-reasoning",
+  "estimated-thread-cost",
+  "five-hour-limit",
+  "weekly-limit",
+]

@@ -8,6 +8,7 @@ Symlinks are left for dotbot's relink; paths that don't exist are skipped.
   usage: bootstrap/backup.py [config]     (config default: install.conf.yaml)
 """
 import argparse
+import glob
 import os
 import shutil
 import sys
@@ -37,12 +38,22 @@ def parse_args():
 
 
 def link_targets(config_path):
-    """Yield every target path under the config's `link:` directive."""
+    """Yield every target path under the config's `link:` directive.
+
+    Glob entries expand to one target per match; their parent dir is not a
+    link target and may hold files the agent owns, so it must not be moved.
+    """
     with open(config_path) as f:
         docs = yaml.safe_load(f) or []
     for doc in docs:
-        if isinstance(doc, dict) and "link" in doc:
-            yield from doc["link"]
+        if not (isinstance(doc, dict) and "link" in doc):
+            continue
+        for target, spec in doc["link"].items():
+            if isinstance(spec, dict) and spec.get("glob"):
+                for src in glob.glob(os.path.join(REPO, spec["path"])):
+                    yield os.path.join(target, os.path.basename(src))
+            else:
+                yield target
 
 
 def backup_rel(path):

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Notification + Stop hook:
+# Notification/PermissionRequest + Stop hook:
 # focused   → notify only if the turn ran > 60s
 # unfocused → notify if the turn ran > 30s
 
@@ -8,7 +8,7 @@ event=$(printf '%s' "$input" | jq -r '.hook_event_name // empty' 2>/dev/null)
 sid=$(printf '%s' "$input" | jq -r '.session_id // "default"' 2>/dev/null)
 
 # -- elapsed since this turn started -----------------------------------------
-start_file="${TMPDIR:-/tmp}/claude-turn-start-${sid}"
+start_file="${TMPDIR:-/tmp}/agent-turn-start-${sid}"
 now=$(date +%s)
 if [[ -r "$start_file" ]] && start=$(cat "$start_file" 2>/dev/null) && [[ "$start" =~ ^[0-9]+$ ]]; then
   elapsed=$(( now - start ))
@@ -17,10 +17,10 @@ else
 fi
 
 # -- find focused term -------------------------------------------------------
-# CC_NOTIFY_FOCUS=yes|no overrides detection (for testing).
+# AGENT_NOTIFY_FOCUS=yes|no overrides detection (for testing).
 focused="no"
-if [[ -n "${CC_NOTIFY_FOCUS:-}" ]]; then
-  focused="$CC_NOTIFY_FOCUS"
+if [[ -n "${AGENT_NOTIFY_FOCUS:-}" ]]; then
+  focused="$AGENT_NOTIFY_FOCUS"
 elif command -v lsappinfo >/dev/null 2>&1; then
   fa=$(lsappinfo info -only name "$(lsappinfo front 2>/dev/null)" 2>/dev/null | sed -E 's/.*"LSDisplayName"="?([^"]*)"?.*/\1/')
   case "$fa" in Ghostty|kitty|iTerm2|Terminal|Alacritty|WezTerm|Hyper|Warp) focused="yes" ;; esac
@@ -29,8 +29,8 @@ fi
 
 if [[ "$focused" == "yes" ]]; then threshold=60; else threshold=30; fi
 
-# -- debug: print the decision instead of playing (CC_NOTIFY_DEBUG=1) --------
-if [[ "${CC_NOTIFY_DEBUG:-}" == "1" ]]; then
+# -- debug: print the decision instead of playing (AGENT_NOTIFY_DEBUG=1) --------
+if [[ "${AGENT_NOTIFY_DEBUG:-}" == "1" ]]; then
   printf 'event=%s focused=%s elapsed=%ss threshold=%ss -> %s\n' \
     "$event" "$focused" "$elapsed" "$threshold" \
     "$([ "$elapsed" -ge "$threshold" ] && echo PLAY || echo silent)"
@@ -46,8 +46,8 @@ play() { # $1 = macOS system sound name
   fi
 }
 case "$event" in
-  Notification) play Funk ;;   # CC wants input
-  Stop)         play Glass ;;  # CC finished a turn
-  *)            play Glass ;;
+  Notification|PermissionRequest) play Funk ;;   # agent wants input
+  Stop)                           play Glass ;;  # agent finished a turn
+  *)                              play Glass ;;
 esac
 exit 0

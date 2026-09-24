@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      { "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/prompt-start.sh" }] }
+    ],
+    "PermissionRequest": [
+      { "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/notify.sh" }] }
+    ],
+    "Stop": [
+      { "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/notify.sh" }] }
+    ],
+    "PreToolUse": [
+      { "matcher": "Bash", "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/guard.sh" }] },
+      { "matcher": "apply_patch|Edit|Write", "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/secret-scan.sh" }] }
+    ]
+  }
+}
