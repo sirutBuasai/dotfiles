@@ -5,7 +5,7 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 # personal bin
-export PATH="$HOME/bin:$PATH"
+export PATH="$PATH:$HOME/bin"
 
 # go PATH
 export GOPATH="$HOME/go"
