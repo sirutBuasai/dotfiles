@@ -56,6 +56,15 @@ else
   echo "  enabled -- Touch ID will now authorize sudo"
 fi
 
+echo "▶ Docker: load Homebrew's compose + buildx plugins"
+# Homebrew installs them outside ~/.docker/cli-plugins, so `docker compose` is unknown without this.
+docker_config="$HOME/.docker/config.json"
+plugins="$(brew --prefix)/lib/docker/cli-plugins"
+mkdir -p "$(dirname "$docker_config")"
+[ -f "$docker_config" ] || echo '{}' > "$docker_config"
+jq --arg d "$plugins" '.cliPluginsExtraDirs = [$d]' "$docker_config" > "$docker_config.tmp" \
+  && mv "$docker_config.tmp" "$docker_config"
+
 # apply the domains that have a live UI (safe if the process isn't running)
 echo "▶ Restarting Dock / Finder / SystemUIServer to apply"
 killall Dock           2>/dev/null || true

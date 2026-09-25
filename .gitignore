@@ -1,6 +1,7 @@
 .claude/
 .dotbot/
 __pycache__/
+.DS_Store
 
 zsh/local.zsh
 nvim/autoload/

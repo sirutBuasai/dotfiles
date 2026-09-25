@@ -35,6 +35,8 @@ brew "hashicorp/tap/terraform"
 brew "colima"
 brew "docker"
 brew "docker-compose"
+brew "docker-buildx"
+brew "docker-credential-helper"
 
 # -- networking --------------------------------------------
 brew "tailscale"
@@ -43,7 +45,6 @@ brew "coredns"
 
 # -- dev apps ----------------------------------------------
 cask "ghostty"
-cask "docker-desktop"
 cask "claude-code"
 cask "codex"
 cask "chatgpt"
