@@ -48,6 +48,6 @@ play() { # $1 = macOS system sound name
 case "$event" in
   Notification|PermissionRequest) play Funk ;;   # agent wants input
   Stop)                           play Glass ;;  # agent finished a turn
-  *)                              play Glass ;;
+  *)                              exit 0
 esac
 exit 0
