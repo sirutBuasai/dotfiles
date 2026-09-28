@@ -122,6 +122,12 @@ r5="$(fmt_rate "5h" "$(j '.rate_limits.five_hour.used_percentage' "")")"
 r7="$(fmt_rate "7d" "$(j '.rate_limits.seven_day.used_percentage' "")")"
 RATE_SEG="⏳ ${r5} ${r7}"
 
+# -- last refreshed ---------------------------------------------------------
+# frozen between runs by design: discloses how stale the other segments are
+# %-I is a glibc/BSD extension, so pad with %I and strip the zero instead
+HM="$(date '+%I:%M %p')"
+TIME_SEG="${DIM}Refreshed ${HM#0}${RESET}"
+
 # -- vim mode (built-in "-- INSERT --" is hidden via hideVimModeIndicator) ----
 MODE="$(j '.vim.mode' "")"
 MODE_SEG=""
@@ -159,7 +165,7 @@ print(w)
 }
 
 LEFT="$(join_with_sep "$sep" "$MODE_SEG" "$CWD_SEG" "$GIT_SEG" "$CTX_SEG" "$DIFF_SEG")"
-RIGHT="$(join_with_sep "$sep" "$MODEL_SEG" "$COST_SEG" "$RATE_SEG")"
+RIGHT="$(join_with_sep "$sep" "$MODEL_SEG" "$COST_SEG" "$RATE_SEG" "$TIME_SEG")"
 
 COLS="${COLUMNS:-}"
 if [[ -z "$COLS" ]]; then
