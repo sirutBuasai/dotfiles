@@ -112,14 +112,29 @@ COST_SEG=""
 [[ -n "$COST_USD" ]] && COST_SEG="${C_COST}\$$(printf '%.2f' "$COST_USD" 2>/dev/null || echo "$COST_USD")${RESET}"
 
 # -- rate limit --------------------------------------------------------------
+NOW="$(date +%s)"
+# coarse duration: days drop minutes, hours drop seconds -- keeps the segment narrow
+fmt_dur() {
+    local secs="$1"
+    (( secs < 60 )) && { printf '<1m'; return; }
+    local d=$(( secs / 86400 )) h=$(( secs % 86400 / 3600 )) m=$(( secs % 3600 / 60 ))
+    if   (( d > 0 )); then printf '%dd%dh' "$d" "$h"
+    elif (( h > 0 )); then printf '%dh%dm' "$h" "$m"
+    else                   printf '%dm' "$m"
+    fi
+}
 fmt_rate() {
-    local label="$1" pct="$2"; local i="${pct%.*}"
+    local label="$1" pct="$2" reset="${3:-}"; local i="${pct%.*}"
     if [[ -z "$i" ]]; then printf '%s%s:-%s' "$DIM" "$label" "$RESET"; return; fi
     local c="$OK"; (( i >= 50 )) && c="$WARN"; (( i >= 80 )) && c="$CRIT"
-    printf '%s%s:%s%%%s' "$c" "$label" "$i" "$RESET"
+    local eta="" r="${reset%.*}"
+    if [[ "$r" =~ ^[0-9]+$ ]] && (( r > NOW )); then
+        eta=" ${DIM}(T-$(fmt_dur $(( r - NOW ))))${RESET}"
+    fi
+    printf '%s%s:%s%%%s%s' "$c" "$label" "$i" "$RESET" "$eta"
 }
-r5="$(fmt_rate "5h" "$(j '.rate_limits.five_hour.used_percentage' "")")"
-r7="$(fmt_rate "7d" "$(j '.rate_limits.seven_day.used_percentage' "")")"
+r5="$(fmt_rate "5h" "$(j '.rate_limits.five_hour.used_percentage' "")" "$(j '.rate_limits.five_hour.resets_at' "")")"
+r7="$(fmt_rate "7d" "$(j '.rate_limits.seven_day.used_percentage' "")" "$(j '.rate_limits.seven_day.resets_at' "")")"
 RATE_SEG="⏳ ${r5} ${r7}"
 
 # -- vim mode (built-in "-- INSERT --" is hidden via hideVimModeIndicator) ----
