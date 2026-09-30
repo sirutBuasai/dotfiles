@@ -20,7 +20,7 @@ eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null \
 
 if ! command -v yq >/dev/null 2>&1; then
   echo "✗ agent-settings: yq missing -- left existing settings untouched" >&2
-  exit 0
+  exit 1
 fi
 
 # Layers merge left to right (later wins; arrays are replaced, not appended).

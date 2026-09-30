@@ -40,6 +40,20 @@ while [ $# -gt 0 ]; do
   esac
 done
 
+if [ "$(id -u)" -eq 0 ] && [ "$(uname -s)" = Darwin ]; then
+  err "don't run ./install with sudo -- Homebrew refuses root and files in ~ end up root-owned"
+  exit 1
+fi
+
+# dotbot runs tasks with stdin closed, so sudo can't prompt mid-run (Homebrew's installer silently fails).
+if [ "$(id -u)" -ne 0 ] && have sudo; then
+  log "caching sudo credentials for the install"
+  sudo -v
+  while kill -0 $$ 2>/dev/null; do sudo -n true; sleep 50; done 2>/dev/null &
+  SUDO_KEEPALIVE=$!
+  trap 'kill "$SUDO_KEEPALIVE" 2>/dev/null' EXIT
+fi
+
 # prerequisites
 if ! command -v python3 >/dev/null 2>&1 || ! command -v git >/dev/null 2>&1; then
   case "$(uname -s)" in

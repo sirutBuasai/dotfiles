@@ -17,8 +17,10 @@ else
 fi
 log()  { printf '%s▶%s %s\n' "$C_B" "$C_0" "$*"; }
 ok()   { printf '%s✓%s %s\n' "$C_G" "$C_0" "$*"; }
-warn() { printf '%s!%s %s\n' "$C_Y" "$C_0" "$*" >&2; }
-err()  { printf '%s✗%s %s\n' "$C_R" "$C_0" "$*" >&2; }
+# deps.sh fails the task when any were logged, so ./install's summary shows them
+LIB_ISSUES=0
+warn() { LIB_ISSUES=$((LIB_ISSUES + 1)); printf '%s!%s %s\n' "$C_Y" "$C_0" "$*" >&2; }
+err()  { LIB_ISSUES=$((LIB_ISSUES + 1)); printf '%s✗%s %s\n' "$C_R" "$C_0" "$*" >&2; }
 
 # list the tasks task.sh recorded as failed, each with the tail of its stderr log.
 print_failure_summary() {   # $1=log dir  $2=tail lines
@@ -72,6 +74,8 @@ install_brew() {
   eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null \
         || /usr/local/bin/brew shellenv 2>/dev/null \
         || /home/linuxbrew/.linuxbrew/bin/brew shellenv 2>/dev/null)"
+
+  have brew || { err "Homebrew install failed -- nothing from the Brewfile will be installed"; return 1; }
 }
 
 # brew bundle from the Brewfile. cask GUI apps are macOs-only
@@ -174,7 +178,7 @@ install_linux() {   # $1 = minimal [0-1]
 
   # full stack: install via homebrew
   linux_install_brew_prereqs
-  install_brew
+  install_brew || return 1
   brew_bundle 1                 # strip GUI apps
 
   # claude-code: native installer
@@ -196,7 +200,7 @@ install_linux() {   # $1 = minimal [0-1]
 # --- macOS ---
 install_macos() {   # $1 = minimal [0-1]
   local minimal="$1"
-  install_brew
+  install_brew || return 1
 
   if [ "$minimal" -eq 1 ]; then
     brew install git git-lfs bash vim tmux
@@ -204,7 +208,7 @@ install_macos() {   # $1 = minimal [0-1]
   else
     brew_bundle 0               # full Brewfile incl. casks
     install_common_clones
-    [ -f "$LIB_DIR/macos.sh" ] && bash "$LIB_DIR/macos.sh" || true
+    bash "$LIB_DIR/macos.sh" || warn "macos.sh failed"
 
   fi
 }

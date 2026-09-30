@@ -39,6 +39,10 @@ case "$OS" in
   *)     err "unsupported OS: $(uname -s)"; exit 1 ;;
 esac
 
+if [ "$LIB_ISSUES" -gt 0 ]; then
+  err "dependency install finished with issues -- see warnings above"
+  exit 1
+fi
 ok "dependency install done."
 [ "$MINIMAL" -eq 1 ] && log "Minimal set installed. Re-run without --minimal for the full stack."
 exit 0
