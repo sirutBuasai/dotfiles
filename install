@@ -69,8 +69,11 @@ else
 fi
 
 # per-run task logs; bootstrap/task.sh records failures here for the summary
-export DOTFILES_LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/install-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$DOTFILES_LOG_DIR"
+# falls back to a temp dir when ~/.local is root-owned (e.g. created by an earlier sudo install)
+DOTFILES_LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/install-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$DOTFILES_LOG_DIR" 2>/dev/null \
+  || DOTFILES_LOG_DIR="$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-install.XXXXXX")"
+export DOTFILES_LOG_DIR
 
 rc=0
 "$DOTBOT_DIR/bin/dotbot" --base-directory "$BASEDIR" --config-file "$CONFIG" "${PASS[@]}" || rc=$?
