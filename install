@@ -45,6 +45,19 @@ if [ "$(id -u)" -eq 0 ] && [ "$(uname -s)" = Darwin ]; then
   exit 1
 fi
 
+# root-owned dirs (left by an earlier `sudo ./install`) make installers fail with "permission denied".
+# depth 2 catches ~/.local/{bin,state} without walking large trees.
+not_owned=()
+for d in .local .config .claude .codex .agents .ssh .oh-my-zsh .tmux .dotfiles-backup; do
+  [ -e "$HOME/$d" ] || continue
+  [ -n "$(find "$HOME/$d" -maxdepth 2 ! -user "$(id -u)" -print -quit 2>/dev/null)" ] && not_owned+=("~/$d")
+done
+if [ "${#not_owned[@]}" -gt 0 ]; then
+  err "not owned by $(id -un): ${not_owned[*]}"
+  echo "  fix with:  sudo chown -R \"\$USER\" ${not_owned[*]}" >&2
+  exit 1
+fi
+
 # dotbot runs tasks with stdin closed, so sudo can't prompt mid-run (Homebrew's installer silently fails).
 if [ "$(id -u)" -ne 0 ] && have sudo; then
   log "caching sudo credentials for the install"
@@ -83,11 +96,8 @@ else
 fi
 
 # per-run task logs; bootstrap/task.sh records failures here for the summary
-# falls back to a temp dir when ~/.local is root-owned (e.g. created by an earlier sudo install)
-DOTFILES_LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/install-$(date +%Y%m%d-%H%M%S)"
-mkdir -p "$DOTFILES_LOG_DIR" 2>/dev/null \
-  || DOTFILES_LOG_DIR="$(mktemp -d "${TMPDIR:-/tmp}/dotfiles-install.XXXXXX")"
-export DOTFILES_LOG_DIR
+export DOTFILES_LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/install-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$DOTFILES_LOG_DIR"
 
 rc=0
 "$DOTBOT_DIR/bin/dotbot" --base-directory "$BASEDIR" --config-file "$CONFIG" "${PASS[@]}" || rc=$?
