@@ -18,12 +18,12 @@
 
 # 1) Backups in ~/.dotfiles-backup/<timestamp>/
 - shell:
-    - command: bootstrap/backup.py install.conf.yaml
+    - command: bootstrap/task.sh bootstrap/backup.py install.conf.yaml
       description: Backing up any existing real config files
 
 # 2) Install all dependencies
 - shell:
-    - command: bootstrap/deps.sh
+    - command: bootstrap/task.sh bootstrap/deps.sh
       description: Installing dependencies
 
 # 3) Symlink tracked configs
@@ -60,10 +60,10 @@
 
 # 4) Merge agent settings with local machine overlays
 - shell:
-    - command: bootstrap/agent-settings.sh
+    - command: bootstrap/task.sh bootstrap/agent-settings.sh
       description: Merging Claude settings.json and Codex config.toml (base + local overlay)
 
 # 5) Manual follow-ups notification
 - shell:
-    - command: bootstrap/postinstall-notes.sh
+    - command: bootstrap/task.sh bootstrap/postinstall-notes.sh
       description: Printing manual follow-up steps

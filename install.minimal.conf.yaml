@@ -13,12 +13,12 @@
 
 # 1) Backups in ~/.dotfiles-backup/<timestamp>/
 - shell:
-    - command: bootstrap/backup.py install.minimal.conf.yaml
+    - command: bootstrap/task.sh bootstrap/backup.py install.minimal.conf.yaml
       description: Backing up any existing real config files
 
 # 2) Install minimal dependencies
 - shell:
-    - command: bootstrap/deps.sh --minimal
+    - command: bootstrap/task.sh bootstrap/deps.sh --minimal
       description: Installing minimal dependencies (bash-only core)
 
 # 3) Symlink tracked configs

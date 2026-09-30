@@ -20,6 +20,22 @@ ok()   { printf '%s✓%s %s\n' "$C_G" "$C_0" "$*"; }
 warn() { printf '%s!%s %s\n' "$C_Y" "$C_0" "$*" >&2; }
 err()  { printf '%s✗%s %s\n' "$C_R" "$C_0" "$*" >&2; }
 
+# list the tasks task.sh recorded as failed, each with the tail of its stderr log.
+print_failure_summary() {   # $1=log dir  $2=tail lines
+  local dir="$1" lines="${2:-15}" rc name logf
+  [ -s "$dir/failed" ] || return 0
+
+  printf '\n%s✗ %s task(s) failed%s  (full logs: %s)\n' \
+    "$C_R" "$(wc -l < "$dir/failed" | tr -d ' ')" "$C_0" "${dir/#$HOME/~}"
+  while IFS=$'\t' read -r rc name logf; do
+    printf '\n  %s✗ %s%s  %s(exit %s)%s\n' "$C_R" "$name" "$C_0" "$C_Y" "$rc" "$C_0"
+    # keep only the final redraw of \r-updated progress lines, drop blanks
+    awk -F'\r' '{ for (i = NF; i > 1 && $i == ""; i--); if ($i != "") print $i }' "$logf" 2>/dev/null \
+      | tail -n "$lines" | sed "s/^/    ${C_B}│${C_0} /" | grep . || printf '    %s│%s (no stderr output)\n' "$C_B" "$C_0"
+  done < "$dir/failed"
+  echo
+}
+
 # ---- detection utils ---
 have() { command -v "$1" >/dev/null 2>&1; }
 

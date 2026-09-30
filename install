@@ -13,9 +13,8 @@ set -e
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$BASEDIR"
-
-# git: fail fast instead of hanging on a credential prompt (e.g. the dotbot clone)
-export GIT_TERMINAL_PROMPT=0
+# shellcheck source=bootstrap/lib.sh
+source bootstrap/lib.sh
 
 usage() {
   cat <<EOF
@@ -69,4 +68,15 @@ else
   git -C "$DOTBOT_DIR" pull --recurse-submodules --ff-only || echo "! dotbot pull failed -- using existing checkout"
 fi
 
-exec "$DOTBOT_DIR/bin/dotbot" --base-directory "$BASEDIR" --config-file "$CONFIG" "${PASS[@]}"
+# per-run task logs; bootstrap/task.sh records failures here for the summary
+export DOTFILES_LOG_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/install-$(date +%Y%m%d-%H%M%S)"
+mkdir -p "$DOTFILES_LOG_DIR"
+
+rc=0
+"$DOTBOT_DIR/bin/dotbot" --base-directory "$BASEDIR" --config-file "$CONFIG" "${PASS[@]}" || rc=$?
+
+print_failure_summary "$DOTFILES_LOG_DIR"
+if [ "$rc" -ne 0 ] && [ ! -s "$DOTFILES_LOG_DIR/failed" ]; then
+  err "dotbot reported failures outside shell tasks (link/clean) -- see output above"
+fi
+exit "$rc"
