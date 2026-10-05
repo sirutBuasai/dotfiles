@@ -13,12 +13,13 @@ G=$'\e[32m'; Z=$'\e[0m'; [ -t 1 ] || { G=; Z=; }
 cat <<EOF
 
 ${G}--- Setup complete. Manual follow-ups: ---${Z}
-  • GitHub:   gh auth login
+  • GitHub:        gh auth login
+  • tmux:          tmux source ~/.tmux.conf
   • Ghostty (mac): System Settings → Privacy & Security → Accessibility → enable Ghostty
                    (required for the global quick-terminal keybind)
-  • Work mac: create ~/.claude/settings.local.json / ~/.codex/config.local.toml with your
-              private keys, then re-run ./install -- both are a yq merge of the public base + overlay
-  • Codex:    run /hooks once and trust the shared hooks (Codex skips untrusted hooks)
+  • Work mac:      create ~/.claude/settings.local.json / ~/.codex/config.local.toml with your
+                   private keys, then re-run ./install -- both are a yq merge of the public base + overlay
+  • Codex:         run /hooks once and trust the shared hooks (Codex skips untrusted hooks)
 
   Day-to-day sync:
     repo → env  :  git pull
