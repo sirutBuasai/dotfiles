@@ -80,6 +80,12 @@ install_brew() {
 
 # brew bundle from the Brewfile. cask GUI apps are macOs-only
 brew_bundle() {   # $1 = 1 → strip casks (Linux), 0 → full Brewfile (macOS)
+  # Homebrew refuses to load formulae from untrusted third-party taps, failing the bundle.
+  local t
+  for t in $(sed -nE 's/^[[:space:]]*tap "([^"]+)".*/\1/p' "$LIB_DIR/Brewfile"); do
+    brew tap "$t" && brew trust --tap "$t" || warn "couldn't tap/trust $t"
+  done
+
   if [ "${1:-0}" -eq 1 ]; then
     local tmp; tmp="$(mktemp)"
     grep -vE '^[[:space:]]*cask ' "$LIB_DIR/Brewfile" > "$tmp"
@@ -112,11 +118,14 @@ install_common_clones() {
   have uv || curl -LsSf https://astral.sh/uv/install.sh | sh || warn "uv install failed"
 
   # colorscript -- nvim dashboard header
+  # upstream `make install` targets /usr/local/bin, which doesn't exist on Apple Silicon; install per-user instead.
   if ! have colorscript; then
-    local tmp scs_sudo=""; [ "$(id -u)" -ne 0 ] && scs_sudo="sudo"
+    local tmp scs_dir="$HOME/.local/share/shell-color-scripts"
     tmp="$(mktemp -d)"
     git clone --depth=1 https://gitlab.com/dwt1/shell-color-scripts "$tmp" \
-      && ( cd "$tmp" && $scs_sudo make install ) && ok "installed colorscript" \
+      && mkdir -p "$HOME/.local/bin" && rm -rf "$scs_dir" && cp -R "$tmp/colorscripts" "$scs_dir" \
+      && sed "s|/opt/shell-color-scripts/colorscripts|$scs_dir|" "$tmp/colorscript.sh" > "$HOME/.local/bin/colorscript" \
+      && chmod +x "$HOME/.local/bin/colorscript" && ok "installed colorscript" \
       || warn "colorscript install failed (optional; dashboard degrades gracefully)"
     rm -rf "$tmp"
   fi

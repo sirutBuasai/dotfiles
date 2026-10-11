@@ -113,11 +113,19 @@ defaults write com.apple.screencapture type           -string png
 defaults write com.apple.screencapture disable-shadow -bool true
 
 echo "▶ Touch ID for sudo"
-if [ -f /etc/pam.d/sudo_local ] && grep -q pam_tid.so /etc/pam.d/sudo_local; then
+# pam_reattach must precede pam_tid, or Touch ID silently falls back to a password inside tmux.
+pam_reattach="$(brew --prefix)/lib/pam/pam_reattach.so"
+sudo_local="auth       optional       $pam_reattach ignore_ssh
+auth       sufficient     pam_tid.so"
+if [ ! -f "$pam_reattach" ]; then
+  echo "  pam_reattach missing -- run brew bundle first; Touch ID won't work inside tmux"
+  sudo_local="auth       sufficient     pam_tid.so"
+fi
+if [ "$(cat /etc/pam.d/sudo_local 2>/dev/null)" = "$sudo_local" ]; then
   echo "  already enabled"
 else
   # sudo_local is included by /etc/pam.d/sudo on macOS 14+ and survives OS updates.
-  sudo sh -c 'echo "auth       sufficient     pam_tid.so" > /etc/pam.d/sudo_local'
+  printf '%s\n' "$sudo_local" | sudo tee /etc/pam.d/sudo_local >/dev/null
   echo "  enabled -- Touch ID will now authorize sudo"
 fi
 

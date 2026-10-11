@@ -46,3 +46,5 @@ source "$ZSH/oh-my-zsh.sh"
 
 # -- p10k prompt config ---------------------------------------
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
+
+. "$HOME/.local/bin/env"

@@ -9,6 +9,7 @@ brew "gh"
 brew "zsh"
 brew "bash"
 brew "tmux"
+brew "pam-reattach" if OS.mac?
 brew "vim"
 brew "neovim"
 brew "jq"
