@@ -35,9 +35,25 @@ defaults write -g NSAutomaticQuoteSubstitutionEnabled  -bool false
 defaults write -g NSAutomaticDashSubstitutionEnabled   -bool false
 defaults write -g AppleKeyboardUIMode                  -int 2        # Tab moves focus across all dialog controls
 defaults write com.apple.HIToolbox AppleFnUsageType    -int 1        # Fn/globe key changes input source
+defaults write -g shouldShowRSVPDataDetectors          -bool true    # suggest calendar events from Mail/Messages
+
+echo "▶ Keyboard: U.S. + Thai input sources"
+if ! defaults read com.apple.HIToolbox AppleEnabledInputSources 2>/dev/null | grep -q '"KeyboardLayout Name" = Thai'; then
+  defaults write com.apple.HIToolbox AppleEnabledInputSources -array-add \
+    "<dict><key>InputSourceKind</key><string>Keyboard Layout</string><key>KeyboardLayout ID</key><integer>-26624</integer><key>KeyboardLayout Name</key><string>Thai</string></dict>"
+fi
+defaults write com.apple.TextInputMenu visible -bool true
+# System Settings enables these when a second source is added; a defaults-only install doesn't.
+# 60: Ctrl+Space (previous source), 61: Ctrl+Opt+Space (next source)
+for hotkey in "60 262144" "61 786432"; do
+  read -r id mods <<<"$hotkey"
+  defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add "$id" \
+    "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>$mods</integer></array></dict></dict>"
+done
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 
 echo "▶ Appearance & windows"
-defaults write -g AppleInterfaceStyle -string "Dark"
+defaults write -g AppleInterfaceStyleSwitchesAutomatically -bool true
 defaults write -g AppleShowAllExtensions      -bool true
 defaults write -g NSTableViewDefaultSizeMode  -int 1       # small sidebar icons
 defaults write com.apple.WindowManager EnableTiledWindowMargins         -bool false
@@ -101,10 +117,18 @@ defaults write com.apple.finder ShowHardDrivesOnDesktop         -bool false
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores     -bool true
 
-echo "▶ Menu bar: 24h clock, battery %"
+echo "▶ Menu bar: 24h clock, battery %, sound always shown"
 defaults write com.apple.menuextra.clock Show24Hour  -bool true
 defaults write com.apple.menuextra.clock ShowSeconds -bool false
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
+defaults -currentHost write com.apple.controlcenter Sound -int 16   # 16 = always, 8 = when active
+
+echo "▶ Siri: on, press either Command key twice, no \"Hey Siri\""
+defaults write com.apple.assistant.support "Assistant Enabled" -bool true
+defaults write com.apple.Siri VoiceTriggerUserEnabled -bool false
+# Encoding copied from what System Settings writes for "Press Either Command Key Twice".
+defaults write com.apple.Siri KeyboardShortcutSAE \
+  "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>SAE1.0</string><key>parameters</key><array><integer>32</integer><integer>55</integer><integer>1048600</integer></array></dict></dict>"
 
 echo "▶ Screenshots: ~/Pictures/Screenshots, png, no window shadow"
 mkdir -p "$HOME/Pictures/Screenshots"
