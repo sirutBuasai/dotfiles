@@ -3,9 +3,6 @@
     "UserPromptSubmit": [
       { "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/prompt-start.sh" }] }
     ],
-    "PermissionRequest": [
-      { "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/notify.sh" }] }
-    ],
     "Stop": [
       { "hooks": [{ "type": "command", "command": "$HOME/.codex/hooks/notify.sh" }] }
     ],
